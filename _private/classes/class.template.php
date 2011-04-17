@@ -3,9 +3,9 @@
 define('appBase', '/Users/bobbeh/Sites/techodst-dev/');
 require_once (appBase.'_private/smarty/Smarty.class.php');
 //error_reporting(E_ALL);
-class Template extends Smarty
+class template extends Smarty
 {
-   function Template($Skin)
+   function template($Skin)
    {
       $this->Smarty();
       $this->template_dir = appBase.'public_html/skins/'.$Skin.'/templates/';

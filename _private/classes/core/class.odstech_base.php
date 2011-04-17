@@ -14,7 +14,7 @@ class core_odstech_base
 		}
 
 		$this->db->connection("odstech");
-		$this->tplBase = new Template('odstech');
+		$this->tplBase = new template('odstech');
 		//$this->global_minified_js = Minify_groupUri('sitebuilderjs');
 		//$this->global_minified_css = Minify_groupUri('sitebuildercss');
 		
