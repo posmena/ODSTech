@@ -45,7 +45,11 @@ class core_examplefeed
 							$property['Image1URL'] . $separator .
 							$property['PostCode'] . '"'.$newline;
 		}
+		
 		$output = $header . $output;
+		
+		header("Content-type: application/octet-stream");
+		header("Content-Disposition: attachment; filename=\"examplefeed.csv\"");
 		echo $output;
 		
 		
