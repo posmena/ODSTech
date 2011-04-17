@@ -1,0 +1,255 @@
+﻿/*
+
+Theme Name: ODST Theme
+
+Theme URI: 
+
+Description: Official theme for ODST site
+
+Version: 3.0
+
+Author: ODST Design
+
+Author URI: 
+
+Tags:
+
+*/
+
+
+
+
+
+/* CSS RESETS ================================= */
+
+html, body, div, span, applet, object, iframe,  h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline;}
+
+table						{border-collapse: collapse; border-spacing: 0;}
+
+caption, th, td				{text-align: left; font-weight: normal;}
+
+table, td, th				{vertical-align: middle;}
+
+a img						{border:none;}
+
+
+
+/* GLOBAL STYLE ================================ */
+
+body						{font-family: Calibri;	font-size: 12px; font-weight: normal; line-height: 18px; text-decoration: none; text-align: center; color: #000; background: #000; margin: 0; padding: 0;}
+
+a							{text-decoration: none; outline: none; color: #82bcef;}
+
+a:hover						{text-decoration: underline; color: #fff;}
+
+h1, h2, h3, h4, h5, h6, p,
+
+table						{margin: 0 0 1em;}
+
+h1							{font-size: 24px;}
+
+h2							{font-size: 18px;}
+
+h3							{font-size: 14px;}
+
+h4, h5, h6					{font-size: 12px;}
+
+h1, h2, h3, h4, h5, h6		{font-weight: bold;}
+
+strong						{font-weight: bold;}
+
+em							{font-style: italic;}
+
+
+
+/* UTILITIES =================================== */
+
+.clearfix:after					{visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
+
+* html .clearfix				{zoom: 1;} /* IE6 */
+
+*+html .clearfix				{zoom: 1;} /* IE7 */
+
+
+
+.clear							{clear: both;}
+
+.center							{text-align: center;}
+
+.fl								{float: left;}
+
+.fr								{float: right;}
+
+
+
+/* WRAPPER ===================================== */
+
+.inner							{width: 980px; text-align: left; margin: 0 auto;}
+
+
+
+/* HEADER ===================================== */
+
+#header							{height: 110px; background: #000 text-align: center;}
+
+#header .fl						{padding-top: 27px;}
+
+#header h1						{margin: 0;}
+
+#header h1 a					{display: block; width: 124px; height: 47px; margin: 0; background: url(../images/logo.png) no-repeat; text-indent: -9999px;}
+
+#header p						{color: #82bcef;}
+
+#header .ads					{float: right; display: inline; width: 728px; height: 90px; margin-top: 10px;}
+
+
+
+/*  ===================================== */
+
+#mainNav						{width:980px; margin: 0 auto; height: 33px; line-height: 33px; margin-bottom: 10px; background: url(../images/bg_main_nav.png) no-repeat center top;}
+
+#mainNav ul						{}
+
+#mainNav ul li					{display: inline;}
+
+#mainNav ul li a				{font-size: 14px; color: #fff; margin: 0 20px;}
+
+#mainNav ul li a:hover			{color: #82bcef; text-decoration: none;}
+
+
+
+/* CONTENT ===================================== */
+
+#content						{clear:both;}
+
+
+
+/* THUMB NAV */
+
+#thumb_nav						{width:980px; height:200px; margin-bottom: 10px; overflow:hidden;}
+
+#thumb_nav .thumb				{float:left; width:320px; height:200px; margin-right:10px; background:url(../images/bg_thumb_border.png) no-repeat; position:relative;}
+
+#thumb_nav .thumbLast			{margin-right:0px;}
+
+#thumb_nav .thumb a				{outline:none; text-decoration:none;}
+
+#thumb_nav img					{position:absolute; top:7px; left:7px; border:none; z-index:0;}
+
+#thumb_nav img:hover			{top:6px; left:6px; border:#82bcef 1px solid;}
+
+#thumb_nav .thumbLabel			{width:306px; height:75px; background:#000; opacity:0.85; filter:alpha(opacity=85); cursor:pointer; position:absolute; bottom:7px; left:7px; border-top:#333 1px solid; z-index:1;}
+
+#thumb_nav h2					{margin:50px 50px 0 0; padding:0; color:82bcef; font-size:24px; cursor:pointer; position:absolute; bottom:55px; left:18px; z-index:2;}
+
+#thumb_nav p					{width: 290px; margin:0; padding:0; color:#fff; font-size:12px; cursor:pointer; position:absolute; bottom:15px; left:18px; z-index:2;}
+
+
+
+/* MAIN CONTENT */
+
+#mainContent					{float: left; display: inline; width: 757px;}
+
+.post							{margin-bottom: 10px;}
+
+.post .postTitle				{margin: 0; padding: 0 0 0 20px; height: 37px; line-height: 37px; background: url(../images/bg_post_title.png) no-repeat; color: #82BCEF; font-size: 16px;}
+
+.post .postBody					{background: url(../images/bg_post_body.png) repeat-y; color: #fff; padding: 15px 20px 0;}
+
+.post .postBottom				{height: 10px; background: url(../images/bg_post_bottom.png) no-repeat;}
+
+.post .postThumb				{float: left; display: inline; margin: 20px;}
+
+.post .postBody p,
+
+.post .postBody ul				{margin: 0; padding: 0px 0px 10px;}
+
+.post .postTitle span			{float: right; display: inline; padding-right: 20px; font-size: 12px; font-weight: normal;}
+
+
+
+.ads2							{margin: 30px 0 30px; text-align: center;}
+
+
+
+/* SIDEBAR ------------------- */
+
+#sidebar ul.sideUL					{float: right; display: inline; width: 212px; list-style-type: none;}
+
+#sidebar li.widget					{margin: 0 0 10px 0;}
+
+#sidebar li.widget .widgettitle		{margin: 0; padding: 0 0 0 20px; height: 37px; line-height: 37px; font-size: 16px; background: url(../images/bg_side_title.png) no-repeat; color: #fff; font-size: 16px;}
+
+#sidebar li.widget .widgetBody		{background: url(../images/bg_side_body.png) repeat-y; color: #fff;}
+
+#sidebar li.widget .widgetBottom	{height: 10px; background: url(../images/bg_side_bottom.png) no-repeat;}
+
+#sidebar li.widget ul				{list-style-type: none;}
+
+#sidebar li.widget ul li			{margin-bottom:8px;}
+
+#sidebar li.widget ul li a			{}
+
+#sidebar li.widget ul li a:hover	{}
+
+#sidebar .widgetBody p,
+
+#sidebar .widgetBody ul				{margin: 0; padding: 15px 20px 10px;}
+
+
+
+/* Calendar */
+
+#calendar_wrap, .widget_calendar_upcoming ul	{padding: 15px 20px 0; background: url(../images/bg_side_body.png) repeat-y; color: #fff; border-bottom: 1px solid #3a3a3a;}
+
+.widget_calendar_upcoming ul li ul				{padding: 0; background: none; border-bottom: none;}
+
+li.widget .calnk a								{color: #82BCEF;}
+
+#wp-calendar									{width: 100%;}
+
+
+
+/* Search */
+
+#searchform				{margin: 0; padding: 15px 20px 0;}
+
+#searchform label		{display: none;}
+
+#s						{width: 170px; height: 18px; color: #fff; background-color: #060606; border: 1px solid #5d5d5d; font-size: 12px;}
+
+#searchsubmit			{width:41px; height: 23px; margin-top: 5px;	line-height: 21px; font-size: 12px; background: url(../images/btn_go.png) no-repeat top left; border: none;	cursor: pointer; overflow: hidden; text-indent: -9999px;}
+
+
+
+
+
+/* FOOTER 1 ===================================== */
+
+#footer							{clear: both; height: 182px; background: #000000; border-top: 5px solid;}
+
+
+
+/* ==========================================================================================
+
+									INDIVIDUAL PAGES						
+
+============================================================================================= */
+
+
+
+/* VIDEO PAGE ===================================== */
+
+ul.videoCat						{list-style-type: none; overflow: hidden;}
+
+ul.videoCat li					{float: left; display: inline; width: 129px; margin-right: 20px; text-align: center;}
+
+ul.videoCat li img				{}
+
+ul.videoCat li a				{}
+
+
+
+/* OTHERS */
+
+a.back							{display: block; width: 30px; margin: 0 0 0 0; padding-left: 20px; background: url(../images/arrow_back.png) no-repeat center left;}
