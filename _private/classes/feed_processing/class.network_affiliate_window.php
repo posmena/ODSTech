@@ -1,6 +1,6 @@
 <?php
 
-if (class_exists('network_affiliate_window') === false) {
+if (class_exists('feed_processor') === false) {
 	include 'classes/feed_processing/class.feed_processor.php';
 }
 
