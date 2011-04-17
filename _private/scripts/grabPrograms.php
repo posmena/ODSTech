@@ -5,7 +5,7 @@
  */
  
 include 'classes/class.errors.php';
-include 'classes/class.config.php';
+include 'classes/class.configuration.php';
 include 'classes/class.database.php';
 
 // network files

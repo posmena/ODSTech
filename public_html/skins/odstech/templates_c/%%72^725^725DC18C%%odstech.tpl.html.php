@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.9, created on 2011-04-17 19:56:55
+<?php /* Smarty version 2.6.9, created on 2011-04-17 21:18:48
          compiled from odstech.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
@@ -34,7 +34,8 @@
 
     				<div class="post" id="post-451">
 
-            <h2 class="postTitle"></h2>
+            <h2 class="postTitle"><?php echo $this->_tpl_vars['page']['title']; ?>
+</h2>
 
             <div class="postBody clearfix">
 

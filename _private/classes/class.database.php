@@ -24,7 +24,7 @@ class database extends configuration {
 	}
 
 	public function __construct(){
-  		$this->exceptionHandler = new exceptionHandling();
+  		$this->exceptionHandler = new errors();
 	}
 
 	public function __destruct(){

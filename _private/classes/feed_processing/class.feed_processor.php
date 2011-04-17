@@ -55,14 +55,24 @@ class feed_processor
 	}
 
 	// Function to download a file.
-	function curl_get_file_contents($url)
+	function curl_get_file_contents($url, $limit = null)
 	{
 		// Output something so we know it's working.
 		print "Downloading...\n";//'".$url."'\n";
 		flush();
-
+		
 		$c = curl_init();
 		curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+		
+		if ($limit !== null) {
+			$offset = 0;
+			$size = $limit;
+			
+			$a = $offset;
+			$b = $offset + $size-1;
+			curl_setopt($c, CURLOPT_HTTPHEADER, array("Range: bytes=$a-$b") );
+		}
+		
 		curl_setopt($c, CURLOPT_URL, $url);
 		curl_setopt($c, CURLOPT_CONNECTTIMEOUT, 5000);
 		curl_setopt($c, CURLOPT_TIMEOUT, 10000);
