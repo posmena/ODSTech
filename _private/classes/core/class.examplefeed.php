@@ -9,8 +9,7 @@ class core_examplefeed
 		$sql = 'SELECT ejh.price, p . * 
 				FROM  `Property` p
 				INNER JOIN pm_scrape_property_lookup s ON s.odst_id = p.PropertyID
-				INNER JOIN pm_scrape_ejh_property ejh ON ejh.id = s.scrape_id
-				LIMIT 0 , 30';
+				INNER JOIN pm_scrape_ejh_property ejh ON ejh.id = s.scrape_id';
 		$result = $db->getQuery($sql);
 		
 		$output = '';
