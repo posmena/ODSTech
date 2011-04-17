@@ -2,6 +2,8 @@
 
 class core_odstech_base
 {
+	private $assignments = '';
+	
 	public function __construct()
 	{
 		$this->db = new database;
@@ -22,11 +24,13 @@ class core_odstech_base
 	
 	public function direct() {
 		$this->template = 'home.tpl.html';
-		$classname      = 'core_'.$this->qs['loc'];
-		if(class_exists($classname) === true) {
-			$loc               = new $classname($this->db);
-			$this->template    = $loc->getTemplate();
-			$this->assignments = $loc->getAssignments();
+		if (array_key_exists('loc', $this->qs) === true) {
+			$classname      = 'core_'.$this->qs['loc'];
+			if(class_exists($classname) === true) {
+				$loc               = new $classname($this->db);
+				$this->template    = $loc->getTemplate();
+				$this->assignments = $loc->getAssignments();
+			}
 		}
 	}
 	
