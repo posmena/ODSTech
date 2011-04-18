@@ -27,7 +27,7 @@ class core_odstech_base
 		if (array_key_exists('loc', $this->qs) === true) {
 			$classname      = 'core_'.$this->qs['loc'];
 			if(class_exists($classname) === true) {
-				$loc               = new $classname($this->db);
+				$loc               = new $classname($this->db, $this->qs);
 				$this->template    = $loc->getTemplate();
 				$this->assignments = $loc->getAssignments();
 			}
