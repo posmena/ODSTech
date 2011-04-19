@@ -6,34 +6,71 @@ class feed_processor
 	{
 		global $db;
 		
-		$sql="SELECT f.id, f.name, f.url, n.class_name
+		$sql="SELECT f.id, f.name, f.url, f.connection, f.username, f.password, f.filename, COALESCE(n.class_name, f.class_name) as class_name
 				FROM pm_feeds f
-				INNER JOIN pm_networks n ON n.id=f.network_id
+				LEFT JOIN pm_networks n ON n.id=f.network_id
 			  	WHERE f.id=".$feed_id." ORDER BY f.name ASC";
 		$feeds = $db->getQuery($sql);
 		$path4feed = 'files/feeds/';
 		foreach($feeds as $feed)
 		{
 			print "Processing feed ". $feed['name']."\n";
-			$file = $path4feed.'feed'.$feed['id'];
-			$data = self::curl_get_file_contents($feed['url']);
-			$fp = fopen($file, 'w+');
-			fwrite($fp, $data);
-			fclose($fp);
+			switch ($feed['connection']) {
+				case 'ftp':
+				{
+					echo 'Downloading via FTP...';
+					$server_file = $feed['filename'];
+					//$local_file = $path4feed.'feed'.$feed['id'].'.'.substr(strrchr($server_file,'.'),1);
+					$local_file = $path4feed.$feed['filename'];
+					
+					// set up basic connection
+					$conn_id = ftp_connect($feed['url']);
+					
+					// login with username and password
+					$login_result = ftp_login($conn_id, $feed['username'], $feed['password']);
+					
+					print $login_result;
+					
+					// try to download $server_file and save to $local_file
+					/*
+					if (ftp_get($conn_id, $local_file, $server_file, FTP_BINARY)) {
+					    echo "Successfully written to $local_file\n";
+					} else {
+					    echo "There was a problem\n";
+					}
+					// close the connection
+					ftp_close($conn_id);
+					*/
+					break;
+				}
+				default:
+				{
+					$file = $path4feed.'feed'.$feed['id'];
+					$data = self::curl_get_file_contents($feed['url']);
+					$fp = fopen($file, 'w+');
+					fwrite($fp, $data);
+					fclose($fp);
+				}
+			}
 
 			// determine network
 			if (true === class_exists($feed['class_name'])) {
-				$network = new $feed['class_name'];
-				$products = $network->parse_xml($file, $feed_id);
-
-				// categorise
-				// this doesn't look right, but i've been drinking beer...
-				self::categorise();
+				if (false === strpos($feed['class_name'], 'custom')) {
+					$network = new $feed['class_name'];
+					$products = $network->parse_xml($file, $feed_id);
 	
-				$sql = 'UPDATE pm_feeds af SET af.products=(SELECT count(ap.id) FROM pm_products ap WHERE ap.feed_id=af.id) WHERE af.id='.$feed_id;
-				$db->changeQuery($sql);
-				if ($products !== false) {
-					print $products." products inserted.\nDone.\n";
+					// categorise
+					// this doesn't look right, but i've been drinking beer...
+					self::categorise();
+		
+					$sql = 'UPDATE pm_feeds af SET af.products=(SELECT count(ap.id) FROM pm_products ap WHERE ap.feed_id=af.id) WHERE af.id='.$feed_id;
+					$db->changeQuery($sql);
+					if ($products !== false) {
+						print $products." products inserted.\nDone.\n";
+					}
+				} else {
+					// custom feeds will handle their own shizzle.
+					$network = new $feed['class_name']($local_file);
 				}
 			} else {
 				print 'Class '.$feed['class_name'].' dunt exist\n';

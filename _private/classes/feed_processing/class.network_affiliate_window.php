@@ -10,7 +10,7 @@ class network_affiliate_window extends network_base
 	private static $fields = array();
 	private static $prefix;
 	
-	public function __construct()
+	public function __construct($local_file = null)
 	{
 		self::$fields = array(0 => array(
 									'id'   => 'id',

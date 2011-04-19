@@ -5,7 +5,7 @@ class core_examplefeed
 	private $template = 'n/a';
 	private $assignments;
 	
-	public function __construct($db) {
+	public function __construct($db, $qs) {
 		$sql = 'SELECT ejh.price, p . * 
 				FROM  `Property` p
 				INNER JOIN pm_scrape_property_lookup s ON s.odst_id = p.PropertyID

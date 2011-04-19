@@ -2,7 +2,7 @@
 
 class network_base implements network
 {
-	function __construct()
+	function __construct($local_file = null)
 	{
 	}
 	

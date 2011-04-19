@@ -11,6 +11,8 @@ include 'classes/feed_processing/class.network_base.php';
 include 'classes/feed_processing/class.network_webgains.php';
 include 'classes/feed_processing/class.network_affiliate_window.php';
 
+// custom feeds
+include 'classes/feed_processing/class.custom_easyjet_feed.php';
 
 class ODSTech_FeedManager extends feed_processor
 {
