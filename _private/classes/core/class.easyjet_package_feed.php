@@ -52,7 +52,14 @@ class core_easyjet_package_feed
 		raw.ret_departure_airport_name,
 		raw.ret_flight_departure_date,
 		raw.ret_destination_airport_name,
-		raw.ret_destination_airport_code
+		raw.ret_destination_airport_code,
+		p.HotelType,
+		p.Image1URL,
+		p.Image2URL,
+		p.Image3URL,
+		p.Description,
+		p.Address,
+		p.PostCode
 		FROM pm_custom_products_easyjet raw
 		INNER JOIN pm_scrape_property_lookup lookup ON lookup.scrape_id=raw.property_id
 		INNER JOIN Property p ON p.PropertyID=lookup.odst_id
@@ -85,7 +92,14 @@ class core_easyjet_package_feed
 					'ret_departure_airport_name' . $separator .
 					'ret_flight_departure_date' . $separator .
 					'ret_destination_airport_name' . $separator .
-					'ret_destination_airport_code"' . $newline;
+					'ret_destination_airport_code' . $separator .
+					'hotel_type' . $separator .
+					'additional_image1' . $separator .
+					'additional_image2' . $separator .
+					'additional_image3' . $separator .
+					'description' . $separator .
+					'address' . $separator .
+					'postcode"' . $newline;
 		foreach($result as $property) {
 			$output .= '"'.$property['hotel_name'] . $separator .
 							$property['url'] . $separator .
@@ -110,7 +124,14 @@ class core_easyjet_package_feed
 							$property['ret_departure_airport_name'] . $separator .
 							$property['ret_flight_departure_date'] . $separator .
 							$property['ret_destination_airport_name'] . $separator .
-							$property['ret_destination_airport_code'] . '"'.$newline;
+							$property['ret_destination_airport_code'] . $separator .
+							$property['HotelType'] . $separator .
+							$property['Image1URL'] . $separator .
+							$property['Image2URL'] . $separator .
+							$property['Image3URL'] . $separator .
+							$property['Description'] . $separator .
+							$property['Address'] . $separator .
+							$property['PostCode'] . '"'.$newline;
 		}
 		
 		$output = $header . $output;
