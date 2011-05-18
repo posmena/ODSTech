@@ -12,6 +12,9 @@ class custom_easyjet_feed extends network_base
 		
 		$this->setFields();
 		$fields = $this->getFields();
+		$delete = "DELETE FROM pm_custom_products_easyjet";
+		$db->changeQuery($delete);
+		
 		$insert = "INSERT INTO pm_custom_products_easyjet (id";
 		foreach ($fields as $field) {
 			if ($field != '') {
