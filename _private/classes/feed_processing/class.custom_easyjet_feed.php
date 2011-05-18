@@ -203,7 +203,8 @@ class custom_easyjet_feed extends network_base
 		}
 		else
 		{
-			throw new WebGainsException('Unable to remove BOM, file does not exist. '. $filename);
+			print 'File does not exist';
+			exit;
 		}
 		$bom2 = bin2hex(fread($handle, 2));//BOM can be 2 or 3 bytes
 		rewind($handle);
