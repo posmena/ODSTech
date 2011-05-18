@@ -20,9 +20,14 @@ class custom_easyjet_feed extends network_base
 		}
 		$insert .= ') VALUES';
 		
-		echo 'To do: unzip CSV, parse it, insert into db'."\n";
-		$local_file = 'files/feeds/easyJetHolidays_DDfeed.txt';
-		$handle     = fopen($local_file, 'r');
+		echo 'Unzipping'."\n";
+		$local_file = 'files/feeds/easyJetHolidays_DDfeed';
+		$cmd = 'unzip '.$local_file.'.zip -d files/feeds';;
+		exec($cmd);
+		print "Converting from binary\n";
+		$this->removeBOM($local_file.'.txt');
+		print "Inserting into DB\n";
+		$handle     = fopen($local_file.'.txt', 'r');
 		$comma      = ',';
 		$i          = 0;
 		$timeStart  = time();
@@ -31,7 +36,6 @@ class custom_easyjet_feed extends network_base
 		while ($data = fgetcsv($handle, null, $comma)) {
 			$i++;
 			$cycle++;
-
 			// check we split on the comma
 			if (count($data) == 1) {
 				$data = explode($comma, $data[0]);
@@ -42,24 +46,33 @@ class custom_easyjet_feed extends network_base
 				echo 'Column mismatch around line: '.$i."\n";
 				continue;
 			}
-
+			
 			$values .= "(''";
 			foreach ($fields as $key => $field) {
 				if ($field != '') {
-					$values .= ",".$db->queryParameter($data[$key]);
+					switch($field) {
+						case 'property_id':
+							$values .= ",".$db->queryParameter($data[$key], true);
+							break;
+						default:
+							$values .= ",".$db->queryParameter($data[$key]);
+					}
 				}
 			}
 			$values .= "),"; 
+			//if ($cycle == 10000) {
 			if ($cycle == 10000) {
 				$values = substr_replace($values,'',-1);
-				if(false === $db->changeQuery($insert.$values)) {
-					die("Error - see log\n\n".$insert.$values);
+				$sql = $insert.$values;
+				if(false === $db->changeQuery($sql)) {
+					die("Error - see log\n\n".$sql);
 				}
 				unset($data);
 				unset($key);
 				unset($field);
 				$cycle = 0;
 				$values = '';
+				break;
 			}
 		}
 		fclose($handle);
@@ -180,5 +193,51 @@ class custom_easyjet_feed extends network_base
 			return false;
 		}
 		return $i;
+	}
+	
+	public static function removeBOM($filename)
+	{
+		if (is_file($filename)) 
+		{
+			$handle = fopen($filename, "r+b");
+		}
+		else
+		{
+			throw new WebGainsException('Unable to remove BOM, file does not exist. '. $filename);
+		}
+		$bom2 = bin2hex(fread($handle, 2));//BOM can be 2 or 3 bytes
+		rewind($handle);
+		$bom3 = bin2hex(fread($handle, 3));
+		if($bom3 == 'efbbbf') //UTF-8. could possibly use iconv for this as well, but leaving in place for backwards compatibility
+		{
+			$cmd = "tail -c +4 ".escapeshellcmd($filename)." > ".escapeshellcmd($filename).".tmp";
+			exec($cmd);
+			
+			// remove old file and rename the temp file
+			unlink($filename);
+			$cmd = "mv ".escapeshellcmd($filename).".tmp ".escapeshellcmd($filename);
+			exec($cmd);
+        }
+		elseif($bom2 == 'fffe' || $bom2 == 'feff') // UTF-16
+		{
+			$cmd = "iconv -f UTF-16 -t UTF-8 ".escapeshellcmd($filename)." > ".escapeshellcmd($filename).'.tmp';
+			exec($cmd);
+			
+			// remove old file and rename the temp file
+			unlink($filename);
+			$cmd = "mv ".escapeshellcmd($filename).".tmp ".escapeshellcmd($filename);
+			exec($cmd);
+        }
+		elseif($bom3 == '0000feff' || $bom2 == 'fffe0000') // UTF-32
+		{
+			$cmd = "iconv -f UTF-32 -t UTF-8 ".escapeshellcmd($filename)." > ".escapeshellcmd($filename).'.tmp';
+			exec($cmd);
+			
+			// remove old file and rename the temp file
+			unlink($filename);
+			$cmd = "mv ".escapeshellcmd($filename).".tmp ".escapeshellcmd($filename);
+			exec($cmd);
+        }
+        fclose($handle);
 	}
 }

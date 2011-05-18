@@ -42,6 +42,16 @@ class core_odstech_base
 			}
 		}
 		
+		$sql = "SELECT 
+		CONCAT('http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=' , DAY(raw.departure_date) , '/' , MONTH(raw.departure_date) , '/', YEAR(raw.departure_date) , '&nights=', raw.duration, '&adults=2&airport=', out_departure_airport_code, '&resort=', p.ResortID) as 'url',
+		p.*, raw.*  FROM pm_custom_products_easyjet raw
+		INNER JOIN pm_scrape_property_lookup lookup ON lookup.scrape_id=raw.property_id
+		INNER JOIN Property p ON p.PropertyID=lookup.odst_id
+		LIMIT 0,10";
+		
+		$result = $this->db->getQuery($sql);
+		$this->tplBase->assign('example', $result);
+		
 		$this->tplBase->assign('content', $this->template);
 		$this->tplBase->assign('domain', '');
 		$this->tplBase->assign('current_url', '');
