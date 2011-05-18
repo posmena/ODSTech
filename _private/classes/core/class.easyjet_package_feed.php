@@ -28,7 +28,8 @@ class core_easyjet_package_feed
 	public function generateFeed($db)
 	{
 		echo 'Generating Feed...';
-		$sql = "SELECT raw.hotel_name, 
+		$sql = "SELECT raw.id,
+		raw.hotel_name, 
 		CONCAT('http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=' , DAY(raw.departure_date) , '/' , MONTH(raw.departure_date) , '/', YEAR(raw.departure_date) , '&nights=', raw.duration, '&adults=2&airport=', out_departure_airport_code, '&resort=', p.ResortID, '&property=', raw.property_id) as 'url',
 		raw.country,
 		raw.region,
@@ -38,7 +39,6 @@ class core_easyjet_package_feed
 		raw.cost,
 		raw.currency,
 		raw.departure_date,
-		raw.package_url,
 		raw.rating,
 		raw.property_id,
 		raw.image_url, 
@@ -69,7 +69,8 @@ class core_easyjet_package_feed
 		$output = '';
 		$separator = '","';
 		$newline = "\r\n";
-		$header = '"hotel_name'. $separator .
+		$header = '"id'. $separator .
+					'hotel_name' . $separator .
 					'url' . $separator .
 					'country' . $separator .
 					'region' . $separator .
@@ -79,7 +80,6 @@ class core_easyjet_package_feed
 					'cost' . $separator .
 					'currency' . $separator .
 					'departure_date' . $separator .
-					'package_url' . $separator .
 					'rating' . $separator .
 					'image_url' . $separator .
 					'room_type' . $separator .
@@ -98,10 +98,10 @@ class core_easyjet_package_feed
 					'additional_image2' . $separator .
 					'additional_image3' . $separator .
 					'description' . $separator .
-					'address' . $separator .
-					'postcode"' . $newline;
+					'address"' . $newline;
 		foreach($result as $property) {
-			$output .= '"'.$property['hotel_name'] . $separator .
+			$output .= '"'.$property['id'] . $separator .
+							$property['hotel_name'] . $separator .
 							$property['url'] . $separator .
 							$property['country'] . $separator .
 							$property['region'] . $separator .
@@ -111,7 +111,6 @@ class core_easyjet_package_feed
 							$property['cost'] . $separator .
 							$property['currency'] . $separator .
 							$property['departure_date'] . $separator .
-							$property['package_url'] . $separator .
 							$property['rating'] . $separator .
 							$property['image_url'] . $separator .
 							$property['room_type'] . $separator .
@@ -130,8 +129,7 @@ class core_easyjet_package_feed
 							$property['Image2URL'] . $separator .
 							$property['Image3URL'] . $separator .
 							$property['Description'] . $separator .
-							$property['Address'] . $separator .
-							$property['PostCode'] . '"'.$newline;
+							$property['Address'] . '"'.$newline;
 		}
 		
 		$output = $header . $output;
