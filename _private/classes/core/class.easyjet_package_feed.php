@@ -9,7 +9,7 @@ class core_easyjet_package_feed
 	public function __construct($db, $qs) {
 		$this->file = configuration::APPROOT . '_private/files/hostedfeeds/easyjet/packages.csv';
 		
-		if (array_key_exists('generate', $qs)) {
+		if (array_key_exists('generate', $qs) | is_array($argv)) {
 			$this->generateFeed($db);
 		} elseif (true === file_exists($this->file)) {
 			header("Content-type: application/octet-stream");
@@ -61,8 +61,8 @@ class core_easyjet_package_feed
 		p.PostCode
 		FROM pm_custom_products_easyjet raw
 		INNER JOIN pm_scrape_property_lookup lookup ON lookup.scrape_id=raw.property_id
-		INNER JOIN Property p ON p.PropertyID=lookup.odst_id";
-		$result = $db->getQuery($sql);
+		INNER JOIN Property p ON p.PropertyID=lookup.odst_id
+		LIMIT %d, %d";
 		
 		$output = '';
 		$separator = '","';
@@ -101,9 +101,19 @@ class core_easyjet_package_feed
 		$hn = fopen($this->file, 'w+');
 		fwrite($hn, $header);
 		fclose($hn);
-		$i=0;
-		foreach($result as $property) {
-			$output .= '"'.$property['id'] . $separator .
+		
+		
+		$rowsPerQuery = 10000;
+		$i = 0;
+		$done = false;
+		while($done === false) {
+			$start = $i*$rowsPerQuery;
+			$query = sprintf($sql, $start, $rowsPerQuery);
+			$result = $db->getQuery($query);
+			$x = 0;
+			$output = '';
+			foreach ($result as $property) {
+				$output .= '"'.$property['id'] . $separator .
 							$property['hotel_name'] . $separator .
 							$property['url'] . $separator .
 							$property['country'] . $separator .
@@ -133,15 +143,23 @@ class core_easyjet_package_feed
 							$property['Image3URL'] . $separator .
 							$property['Description'] . $separator .
 							$property['Address'] . '"'.$newline;
+				
+				$x++;
+			}
+
+			$hn = fopen($this->file, 'a');
+			fwrite($hn, $output);
+			fclose($hn);
 			$i++;
-			if ($i == 1000) {
-				$hn = fopen($this->file, 'a');
-				fwrite($hn, $output);
-				fclose($hn);
-				$output = '';
-				$i=0;
+
+			if ($x < 10000) {
+				$done = true;
+			} else {
+				echo $rowsPerQuery*$i."\n";		
 			}
 		}
+		
+		
 		
 		print "\n";
 		print 'File Generated';

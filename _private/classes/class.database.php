@@ -1,5 +1,5 @@
 <?php
-
+set_time_limit(0);
 class database extends configuration {
 
 	private $persistantConnection;

@@ -75,7 +75,7 @@ class custom_easyjet_feed extends network_base
 				unset($field);
 				$cycle = 0;
 				$values = '';
-				break;
+				//break;
 			}
 		}
 		fclose($handle);
