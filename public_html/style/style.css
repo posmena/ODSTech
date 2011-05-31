@@ -138,6 +138,14 @@ padding-top: 20px;
 	text-decoration: none;
 }
 
+.inner .navbar ol li a:hover{
+	color: #ffffff;
+}
+
+.inner .navbar ol li a.selected:hover{
+color: #607890;
+}
+
 .inner .navbar ol li:first-child a {
 	border-top-left-radius: 5px;
 	-moz-border-radius-topleft: 5px;
@@ -160,7 +168,7 @@ padding-top: 20px;
 #main {
 	margin-left: 148px;
 	border: 2px solid black;
-	
+	min-height: 300px;
 	padding: 10px;
 	
 	border-radius: 5px;
