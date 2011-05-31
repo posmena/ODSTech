@@ -5,21 +5,25 @@
 	
 {/if}
 
+<div class="feedback">
+	&nbsp;
+</div>
+
 <form action="/login" method="post">
-	<fieldset>
-		<legend>Please enter your details to login</legend>
+	<fieldset class="form">
 		<ol>
 			<li>
-				<label for="name">Email:</label>
-				<input id="name" name="email" class="text" type="text" />
+				<img src="images/odst_logo.png" />
 			</li>
 			<li>
-				 <label for="email">Password:</label>
-				 <input id="email" name="password" class="text" type="password" />
+				<input id="name" name="email" class="text" type="text" placeholder="Username" />
+			</li>
+			<li>
+				 <input id="email" name="password" class="text" type="password" placeholder="Password" />
+			</li>
+			<li>
+				<input class="submit" name="login" type="submit" value="Login" />
 			</li>
 		</ol>
-	</fieldset>
-	<fieldset class="submit">
-		<input class="submit" name="login" type="submit" value="Login" />
 	</fieldset>
 </form>

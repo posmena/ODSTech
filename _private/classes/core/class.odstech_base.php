@@ -3,6 +3,7 @@
 class core_odstech_base
 {
 	private $assignments = '';
+	private $action = 'home';
 	
 	public function __construct()
 	{
@@ -26,6 +27,7 @@ class core_odstech_base
 		$this->template = 'home.tpl.html';
 		if (array_key_exists('loc', $this->qs) === true) {
 			$classname      = 'core_'.$this->qs['loc'];
+			$this->action   = $this->qs['loc'];
 			if(class_exists($classname) === true) {
 				$loc               = new $classname($this->db, $this->qs);
 				$this->template    = $loc->getTemplate();
@@ -55,6 +57,7 @@ class core_odstech_base
 		$this->tplBase->assign('content', $this->template);
 		$this->tplBase->assign('domain', '');
 		$this->tplBase->assign('current_url', '');
+		$this->tplBase->assign('action', $this->action);
 
 
 		if($ajax)

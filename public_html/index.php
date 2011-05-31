@@ -20,7 +20,8 @@ $site = new core_odstech_base;
 $site->direct();
 $site->draw();
 /*
-http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=20/06/2011&nights=7&adults=2airport=LGW&resort=455
+http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=16-Jul-2011&nights=7&adults=2&airport=LGW&resort=455
+http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=16-Jul-2011&nights=1&adults=2&airport=27&resort=346&property=1283
 
 SELECT 
 CONCAT('http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=' , DAY(raw.departure_date) , '/' , MONTH(raw.departure_date) , '/', YEAR(raw.departure_date) , '&nights=', raw.duration, '&adults=2&airport=', out_departure_airport_code, '&resort=', p.ResortID) as 'url',

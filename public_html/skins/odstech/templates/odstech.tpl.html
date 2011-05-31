@@ -1,63 +1,147 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
 	<head>
 		<link rel="stylesheet" href="style/style.css" type="text/css" media="screen">
-		<title>Performance Marketing | ODST</title> 
+		<title>{if $page.title}{$page.title} - {/if}Performance Marketing | ODST</title>
+		<script language="JavaScript" type="text/javascript" src="/contentflow.js"></script> 
+		<script tyle="text/javascript">
+			{literal}
+	        var cf = new ContentFlow('contentFlow', {reflectionColor: "#ff0000", scaleFactor: 0.5});
+	        {/literal}
+	    </script>
 	</head>
-	<body class="home page page-id-47 page-template page-template-page-home-php">
+	<body class="">
 		<div id="header">
-			<div class="inner"><img src="images/logo-black.png"/></div>
+			<div class="innerHeader">
+				<img src="images/odst_logo.png" />
+			</div>
 		</div><!-- END #header -->
-		<div id="mainNav">
-			<ul>
-				<li class="page_item page-item-47 current_page_item"><a href="http://www.odst.co.uk/" title="Home">Home</a></li> 
-				<li class="page_item page-item-335"><a href="http://www.odst.co.uk/affiliates-management.html" title="Affiliate OPM">Affiliate OPM</a></li> 
-				<li class="page_item page-item-570"><a href="http://www.odst.co.uk/banner-design.html" title="Banner Design">Banner Design</a></li> 
-				<li class="page_item page-item-336"><a href="http://www.odst.co.uk/product-feeds.html" title="Product Feeds">Product Feeds</a></li>
-				<li class="page_item page-item-337"><a href="http://tech.odst.co.uk" title="ODSTech">ODSTech</a></li> 
-				<li class="page_item page-item-339"><a href="http://www.odst.co.uk/contact-us.html" title="Contact">Contact</a></li> 
-			</ul>
-		</div><!-- END #header -->
-		<div id="content">
+		
+		<div id="contentFlow" class="ContentFlow">
+        <!-- should be place before flow so that contained images will be loaded first -->
+
+	        <div class="flow">
+	
+	            <div class="item">
+	                <img class="content" src="/pics/pic0.png"/>
+	                <div class="caption">pic0: some stripes</div>
+	            </div>
+	            <div class="item">
+	                <img class="content" src="/pics/pic1.png"/>
+	                <div class="caption">pic1: some stripes</div>
+	            </div>
+	            <div class="item">
+	                <img class="content" src="/pics/pic2.png"/>
+	                <div class="caption">pic2: some stripes</div>
+	            </div>
+	            <div class="item">
+	                <img class="content" src="/pics/pic1.png"/>
+	                <div class="caption">pic1: some stripes</div>
+	            </div>
+	
+	            <div class="item">
+	                <img class="content" src="/pics/pic0.png"/>
+	                <div class="caption">pic0: some stripes</div>
+	            </div>
+	            <div class="item">
+	                <img class="content" src="/pics/pic1.png"/>
+	                <div class="caption">pic1: some stripes</div>
+	            </div>
+	            <div class="item">
+	                <img class="content" src="/pics/pic2.png"/>
+	                <div class="caption">pic2: some stripes</div>
+	            </div>
+	            <div class="item">
+	                <img class="content" src="/pics/pic1.png"/>
+	                <div class="caption">pic1: some stripes</div>
+	            </div>
+	
+	            <div class="item">
+	                <img class="content" src="/pics/pic0.png"/>
+	                <div class="caption">pic0: some stripes</div>
+	            </div>
+	            <div class="item">
+	                <img class="content" src="/pics/pic1.png"/>
+	                <div class="caption">pic1: some stripes</div>
+	            </div>
+	            <div class="item">
+	                <img class="content" src="/pics/pic2.png"/>
+	                <div class="caption">pic2: some stripes</div>
+	            </div>
+	            <div class="item">
+	                <img class="content" src="/pics/pic1.png"/>
+	                <div class="caption">pic1: some stripes</div>
+	            </div>
+			</div>
+	        <div class="globalCaption"></div>
+	    </div>
+		<div id="content" class="clearfix">
 			<div class="inner">
-				<div id="mainContent">
-					<div class="post" id="post-451">
-				        <h2 class="postTitle">{$page.title}</h2>
-				        <div class="postBody clearfix">
-				            {include file=$content} 
-						</div>
-					    <div class="postBottom"></div>
+				{if $user instanceof User}
+					<div class="tool_panel">
 					</div>
-				</div><!-- END #mainContent -->
-			<div id="sidebar">
-		        <ul class="sideUL">            
-		            <li class="widget">
-						<h2 class="widgettitle">ODSTech Tools</h2>
-						<div class="widgetBody">
-							<ul>
-								<li><a href="/login" title="" class="ctitle">Affiliate Login</a></li>
-								<li><a href="" title="" class="ctitle">Affiliate Infomation</a></li>
-								<li><a href="" title="" class="ctitle">Merchant Login</a></li>
-								<li><a href="" title="" class="ctitle">Merchant Information</a></li>
-							</ul>
-     					</div>
- 						<div class="widgetBottom"></div>
-						
-						<br />
-						<br />
-						<h2 class="widgettitle">Latest Tools</h2>
-						<div class="widgetBody">
-							<ul>
-								<li><a href="" title="" class="ctitle">easyJet Holidays</a></li>
-								<li><a href="" title="" class="ctitle">LowCostHolidays</a></li>
-								<li><a href="" title="" class="ctitle">Some One else</a></li>
-								<li><a href="" title="" class="ctitle">Some One else</a></li>
-							</ul>
-     					</div>
-						<div class="widgetBottom"></div>
-					</li>
-		      	</ul>
-			</div><!-- END #sidebar --></div>
+				{/if}
+				<div class="navbar">
+					<ol>
+						<li><a {if $action == 'login'}class="selected" {/if}href="/login.html">login</a></li>
+						<li><a {if $action == 'home'}class="selected" {/if}href="/">home</a></li>
+						<li><a {if $action == 'feeds'}class="selected" {/if}href="/product-feeds.html">feeds</a></li>
+						<li><a {if $action == 'widgets'}class="selected" {/if}href="/widgets.html">widgets</a></li>
+						<li><a {if $action == 'opm'}class="selected" {/if}href="/affiliates-management.html">affiliate OPM</a></li>
+						<li><a {if $action == 'banners'}class="selected" {/if}href="/banner-design.html">banner design</a></li>
+						<li><a {if $action == 'contact'}class="selected" {/if}href="/contact-us.html">contact us</a></li>
+					</ol>
+				</div>
+				<div  id="main">
+					{include file=$content}
+					{if $action != 'login'}
+					<div id="social" class="clearfix">
+						<fieldset id="latest_news">
+							<legend>latest news</legend>
+							Coming soon...
+							
+							
+						</fieldset>
+						<fieldset id="twitter">
+							<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+							{literal}
+							<script>
+							new TWTR.Widget({
+							  version: 2,
+							  type: 'profile',
+							  rpp: 4,
+							  interval: 6000,
+							  width: 450,
+							  height: 250,
+							  theme: {
+							    shell: {
+							      background: '#0f2a3c',
+							      color: '#ffffff'
+							    },
+							    tweets: {
+							      background: '#000000',
+							      color: '#ffffff',
+							      links: '#607890'
+							    }
+							  },
+							  features: {
+							    scrollbar: false,
+							    loop: false,
+							    live: false,
+							    hashtags: true,
+							    timestamp: true,
+							    avatars: false,
+							    behavior: 'all'
+							  }
+							}).render().setUser('ODST_co_uk').start();
+							{/literal}
+							</script>
+						</fieldset>
+					</div>
+					{/if}
+				</div>
+								
+			</div>
 	    </div>
 	    <!-- END #content --> 
 		<div id="footer">

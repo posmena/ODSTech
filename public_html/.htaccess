@@ -52,8 +52,12 @@ RewriteBase /
 
 	RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 	RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
-	
-	RewriteRule ^login$ index.php?loc=login [QSA]
+	RewriteRule ^login.html$ index.php?loc=login [QSA]	
+	RewriteRule ^affiliates-management.html$ index.php?loc=opm [QSA]
+	RewriteRule ^banner-design.html$ index.php?loc=banners [QSA]
+	RewriteRule ^product-feeds.html$ index.php?loc=feeds [QSA]
+	RewriteRule ^contact-us.html$ index.php?loc=contact [QSA]
+	RewriteRule ^widgets.html$ index.php?loc=widgets [QSA]
         
         RewriteRule ^examplefeed$ index.php?loc=examplefeed [QSA]
 
