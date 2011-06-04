@@ -12,11 +12,13 @@ class core_admin_images extends core_default
 		$this->db = $db;
 		
 		if (true === array_key_exists('save_images', $qs)) {
-			foreach ($qs['caption'] as $imageid => $caption) {
-				$sql = sprintf('UPDATE ot_images SET alt=%s, href=%s WHERE id=%d', $this->db->queryParameter($caption),
-				                                                                   $this->db->queryParameter($qs['href'][$imageid]),
-				                                                                   $this->db->queryParameter($imageid, true));
-				$this->db->changeQuery($sql); 
+			if (true === array_key_exists('caption', $qs) && is_array($qs['caption']) === true) {
+				foreach ($qs['caption'] as $imageid => $caption) {
+					$sql = sprintf('UPDATE ot_images SET alt=%s, href=%s WHERE id=%d', $this->db->queryParameter($caption),
+					                                                                   $this->db->queryParameter($qs['href'][$imageid]),
+					                                                                   $this->db->queryParameter($imageid, true));
+					$this->db->changeQuery($sql); 
+				}
 			}
 			
 			$this->assignments['page']['feedback'] = 'Your changes have been saved.';
