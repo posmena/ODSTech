@@ -105,6 +105,21 @@ margin-left: 29px;
 padding-top: 20px;
 }
 
+#contentFlowWrapper {
+	padding-top: 20px;
+    width: 980px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+#contentFlow {
+	margin-left: 150px;
+}
+
+#contentFlow .caption {
+	color: #000000;
+}
+
 #content {
 	border: 0px solid red;
 }
@@ -114,10 +129,16 @@ padding-top: 20px;
 	width: 980px;
 }
 
+
 .inner .navbar {
 	margin-top: 30px;
 	width: 150px;
 	float: left;
+}
+
+.inner .navbar ol {
+	margin: 0px;
+	padding: 0px;
 }
 
 .inner .navbar ol li {
@@ -247,6 +268,68 @@ width: 280px;
 #social {
 	padding-top: 20px;
 }
+
+
+/*** logged in ***/
+
+#main_logged {
+	margin-top: 10px;
+	margin-left: 148px;
+	margin-right: 160px;
+	border: 2px solid black;
+	min-height: 300px;
+	padding: 10px;
+	
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.inner .tool_panel {
+	float: right;
+	width: 150px;
+}
+
+.inner .tool_panel h3 {
+	padding: 10px;
+	margin-top: 0px;
+	background-color: #ff6600;
+}
+
+.inner .tool_panel .navbar {
+	margin-top: 0px;
+	background-color: #ffffff;
+}
+.inner .tool_panel .navbar ol li:first-child a {
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+}
+
+.inner .tool_panel .navbar ol li:last-child a {
+border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+}
+
+
+.inner .tool_panel .navbar ol li a.selected {
+	border: 2px solid #0F2A3C;
+	background-color: #ffffff;
+}
+
+/* images */
+#list_images {
+width: 400px;
+}
+#list_images input {
+	float: right;
+}
+
+#list_images li {
+	margin: 10px;
+}
+
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }

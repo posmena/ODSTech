@@ -1,0 +1,224 @@
+
+
+
+/****************************************************************
+  Docking Boxes core CSS: YOU MUST NOT CHANGE OR OVERRIDE THESE 
+*****************************************************************/
+.dbx-clone {
+	position:absolute;
+	visibility:hidden;
+	}
+.dbx-clone, 
+.dbx-clone .dbx-handle-cursor {
+	cursor:move !important;
+	}
+.dbx-dummy {
+	display:block;
+	width:0;
+	height:0;
+	overflow:hidden;
+	margin:0 !important;
+	padding:0 !important;
+	}
+.dbx-group, .dbx-box, .dbx-handle {
+	position:relative;
+	display:block;
+	}
+
+
+
+/****************************************************************
+  avoid padding, margins or borders on dbx-box, 
+  to reduce visual discrepancies between it and the clone.  
+  overall, dbx-box is best left as visually unstyled as possible 
+*****************************************************************/
+.dbx-box {
+	margin:0;
+	padding:0;
+	border:none;
+	}
+
+
+
+/****************************************************************
+  otherwise, do what you like :) 
+*****************************************************************/
+
+
+
+
+/* group container(s) */
+#purple-outer {
+	border:1px solid #a382c0;
+	margin:0 10px 0 0;
+	float:left;
+	position:relative;
+	}
+.dbx-group {
+	clear:both;
+	width:150px;
+	background: #c5a4e0;
+	padding:0px;
+	}
+* html .dbx-group {
+	width:170px;
+	padding-bot\tom:0;
+	}
+
+
+#purple-outer2 {
+	border:1px solid #a382c0;
+	margin:0 0 0 10px;
+	float:right;
+	position:relative;
+	}
+	
+/* handles */
+.dbx-handle {
+	font:normal normal bold 1em tahoma,sans-serif;
+	text-align:center;
+	position:relative;
+	margin:0;
+	padding:16px 0 6px 0;
+	background:url(images/purple-handle.gif) no-repeat 0 0; 
+	color:#fff;
+	}
+* html .dbx-handle { 
+	width:150px; 
+	}
+
+	
+/* handle cursors are in a class of their own
+   so they only get applied if the script is supported */
+.dbx-handle-cursor {
+	cursor:move;
+	}
+	
+
+	
+	
+
+/* toggle images */
+.dbx-toggle {
+	display:block;
+	width:20px;
+	height:20px;
+	padding:0;
+	margin:0;
+	border:none;
+	background:url(images/purple-toggle.gif) no-repeat;
+	position:absolute;
+	top:14px;
+	right:3px;
+	border:none;
+	}
+	
+	
+.dbx-toggle-open {
+	background-position:0 0;
+	}
+.dbx-toggle-closed {
+	background-position:0 -20px;
+	}
+.dbx-toggle-hilite-open {
+	background-position:-20px 0;
+	}
+.dbx-toggle-hilite-closed {
+	background-position:-20px -20px;
+	}
+
+
+
+
+
+
+/* keyboard navigation tooltip */
+.dbx-tooltip 
+{
+	margin:36px 0 0 125px;
+	width:185px;
+	
+	display:block;
+	position:absolute;
+	border:1px solid InfoText;
+	background:InfoBackground;
+	color:InfoText;
+	font:small-caption;
+	font-weight:normal;
+	padding:2px 4px 3px 5px;
+	text-align:left;
+}
+
+
+
+
+
+
+
+/* inner content area */	
+.dbx-content {
+	margin:0;
+	padding:9px;
+	list-style-type:none;
+	background:url(images/purple-bottom.gif) no-repeat 0 100%;
+	}
+
+
+
+
+.dbx-content li {
+	width:130px;
+	margin:0;
+	padding:0 10px 1px 10px;
+	list-style-type:none;
+	font:normal normal normal 0.85em verdana,sans-serif;
+	background:url(images/purple-content.gif) #bca2cf repeat-y;
+	}
+
+.dbx-content a, .dbx-content a:visited {
+	color:#000;
+	text-decoration:none;
+	}
+
+.dbx-content a:hover, .dbx-content a:focus, .dbx-content a:active {
+	color:#306;
+	text-decoration:underline;
+	}
+
+
+
+
+
+/* toggle state of inner content area */
+.dbx-box-closed .dbx-content {
+	display:block;
+	height:10px;
+	padding:0;
+	overflow:hidden;
+	}
+.dbx-box-closed .dbx-content * {
+	display:none;
+	}
+
+
+
+
+
+/* additional clone styles */
+.dbx-clone {
+	opacity:0.8;
+	filter:alpha(opacity=80);
+	}
+
+
+
+
+
+
+
+/* hacks for IE6 */
+* html .dbx-tooltip {
+	font-weight:normal !important;
+	}
+	
+			

@@ -17,70 +17,23 @@
 			</div>
 		</div><!-- END #header -->
 		
-		<div id="contentFlow" class="ContentFlow">
-        <!-- should be place before flow so that contained images will be loaded first -->
-
-	        <div class="flow">
+		<div id="contentFlowWrapper">
+			<div id="contentFlow" class="ContentFlow">
+	        <!-- should be place before flow so that contained images will be loaded first -->
 	
-	            <div class="item">
-	                <img class="content" src="/pics/pic0.png"/>
-	                <div class="caption">pic0: some stripes</div>
-	            </div>
-	            <div class="item">
-	                <img class="content" src="/pics/pic1.png"/>
-	                <div class="caption">pic1: some stripes</div>
-	            </div>
-	            <div class="item">
-	                <img class="content" src="/pics/pic2.png"/>
-	                <div class="caption">pic2: some stripes</div>
-	            </div>
-	            <div class="item">
-	                <img class="content" src="/pics/pic1.png"/>
-	                <div class="caption">pic1: some stripes</div>
-	            </div>
-	
-	            <div class="item">
-	                <img class="content" src="/pics/pic0.png"/>
-	                <div class="caption">pic0: some stripes</div>
-	            </div>
-	            <div class="item">
-	                <img class="content" src="/pics/pic1.png"/>
-	                <div class="caption">pic1: some stripes</div>
-	            </div>
-	            <div class="item">
-	                <img class="content" src="/pics/pic2.png"/>
-	                <div class="caption">pic2: some stripes</div>
-	            </div>
-	            <div class="item">
-	                <img class="content" src="/pics/pic1.png"/>
-	                <div class="caption">pic1: some stripes</div>
-	            </div>
-	
-	            <div class="item">
-	                <img class="content" src="/pics/pic0.png"/>
-	                <div class="caption">pic0: some stripes</div>
-	            </div>
-	            <div class="item">
-	                <img class="content" src="/pics/pic1.png"/>
-	                <div class="caption">pic1: some stripes</div>
-	            </div>
-	            <div class="item">
-	                <img class="content" src="/pics/pic2.png"/>
-	                <div class="caption">pic2: some stripes</div>
-	            </div>
-	            <div class="item">
-	                <img class="content" src="/pics/pic1.png"/>
-	                <div class="caption">pic1: some stripes</div>
-	            </div>
-			</div>
-	        <div class="globalCaption"></div>
+		        <div class="flow">
+					{foreach from=$coverimages item="image"}
+		            <div class="item">
+		                <img class="content" src="{$image.url}"/>
+		                <div class="caption">{$image.alt}</div>
+		            </div>
+		            {/foreach}
+				</div>
+		        <div class="globalCaption"></div>
+		    </div>
 	    </div>
 		<div id="content" class="clearfix">
 			<div class="inner">
-				{if $user instanceof User}
-					<div class="tool_panel">
-					</div>
-				{/if}
 				<div class="navbar">
 					<ol>
 						<li><a {if $action == 'login'}class="selected" {/if}href="/login.html">login</a></li>

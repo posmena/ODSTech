@@ -1,6 +1,6 @@
 <?php
 
-class core_feeds
+class core_feeds extends core_default
 {
 	private $template = 'feeds.tpl.html';
 	private $assignments;

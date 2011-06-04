@@ -58,6 +58,9 @@ RewriteBase /
 	RewriteRule ^product-feeds.html$ index.php?loc=feeds [QSA]
 	RewriteRule ^contact-us.html$ index.php?loc=contact [QSA]
 	RewriteRule ^widgets.html$ index.php?loc=widgets [QSA]
+	RewriteRule ^dashboard.html$ index.php?loc=dashboard [QSA]
+        RewriteRule ^admin/images.html$ index.php?loc=admin_images [QSA]
+RewriteRule ^admin/image-upload.html$ index.php?loc=admin_image_upload [QSA]
         
         RewriteRule ^examplefeed$ index.php?loc=examplefeed [QSA]
 

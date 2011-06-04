@@ -1,6 +1,6 @@
 <?php
 
-class core_widgets
+class core_widgets extends core_default
 {
 	private $template = 'widgets.tpl.html';
 	private $assignments;

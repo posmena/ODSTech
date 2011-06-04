@@ -5,6 +5,10 @@ function __autoload($class_name)
 	if (false !== strpos($class_name, 'core')) {
 		$class_name = str_replace('core_', '', $class_name);
 		$include_file = '../_private/classes/core/class.' . $class_name . '.php';
+		if (false !== strpos($class_name, 'admin')) {
+			$class_name = str_replace('admin_', '', $class_name);
+			$include_file = '../_private/classes/core/admin/class.' . $class_name . '.php';
+		} 
 	} else {
 		$include_file = '../_private/classes/class.' . $class_name . '.php';
 	}

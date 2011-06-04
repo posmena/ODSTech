@@ -1,0 +1,22 @@
+<table width="100%">
+    <tr>
+        <th>Merchant Name</th>
+        <th>Network</th>
+        <th>Product Count</th>
+    </tr>
+    {foreach from=$cpa_merchants item="merchant"}
+        <tr id="group{$group.id}">
+            <td class="merchant_row">
+                <a href="{$merchant.display_url}" target="_blank">{$merchant.merchant_name}</a>
+                <br />
+                {$merchant.strapline}
+                <div class="description" style="display: none;">
+                {$merchant.description}
+                </div>
+            </td>
+            <td>{$merchant.network_name}</td>
+            <td>{$merchant.product|@count}</td>
+        </tr>
+    {/foreach}            
+</table>
+<script type="text/javascript" src="/dbx/control-cpa-settings-ajax.js"></script>

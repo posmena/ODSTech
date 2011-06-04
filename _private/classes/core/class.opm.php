@@ -1,6 +1,6 @@
 <?php
 
-class core_opm
+class core_opm extends core_default
 {
 	private $template = 'opm.tpl.html';
 	private $assignments;

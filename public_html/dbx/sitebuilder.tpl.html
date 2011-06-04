@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Sitebuilder - From Chopsmonster</title>
+    <link rel="stylesheet" href="/style.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/jquery.tablesorter.min.js"></script>
+     <!-- Docking boxes (dbx) by brothercake - http://www.brothercake.com/ -->
+    <script src="/dbx/dbx.js"></script>
+    <!-- dbx stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/dbx/dbx-core.css" media="screen, projection" />
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="wrapper" class="body">
+    <header id="banner" class="body">
+        <h1><a href="#">Sitebuilder!<br/> <strong>From the Chopsmonster. Coming <del>2012</del> <ins>2010</ins></strong></a></h1>
+        <nav>
+            <ul>
+                <li class="active"><a href="/">Home</a></li>
+                {if !$user}
+                <li><a href="#">About</a></li>
+                <li><a href="/manage">Members</a></li>
+                {else}
+                <li><a href="/logout">Logout</a></li>
+                {/if}
+            </ul>
+        </nav>
+    </header>
+    {include file=$content}
+    <footer id="contentinfo" class="body">
+        <p>2005-2010 <a href="#">Uber Template</a>.</p>
+    </footer>
+</div>
+</body>
+</html>

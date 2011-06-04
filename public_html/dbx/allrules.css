@@ -1,0 +1,253 @@
+
+
+
+/****************************************************************
+  docking boxes core CSS: YOU MUST NOT CHANGE OR OVERRIDE THESE 
+*****************************************************************/
+.dbx-clone 
+{
+	position:absolute;
+	visibility:hidden;
+}
+.dbx-clone, .dbx-clone .dbx-handle-cursor 
+{
+	cursor:move !important;
+}
+.dbx-dummy 
+{
+	display:block;
+	width:0;
+	height:0;
+	overflow:hidden;
+	margin:0 !important;
+	padding:0 !important;
+}
+.dbx-group, .dbx-box, .dbx-handle 
+{
+	position:relative;
+	display:block;
+}
+
+/****************************************************************
+  DO NOT ADD padding, margins or borders to dbx-box, 
+  to avoid layout discrepancies between it and the clone.  
+  dbx-box is best left as visually unstyled as possible 
+  (instead, have another element inside the box, and style that)
+*****************************************************************/
+.dbx-box 
+{
+	margin:0;
+	padding:0;
+	border:none;
+}
+
+/****************************************************************
+  otherwise, do what you like :) 
+*****************************************************************/
+
+
+
+
+
+/* group containers */
+.dbx-group 
+{
+
+}
+
+
+
+
+
+/* boxes */
+.dbx-box 
+{
+}
+	
+/* + boxes when open */
+.dbx-box-open 
+{
+}
+
+/* + boxes when closed */
+.dbx-box-closed 
+{
+}
+
+/* + boxes in their focus state [when handle/anchor has the keyboard focus] */
+.dbx-box-focus 
+{
+}
+
+/* + boxes in their hover state [when mouse is over handle/anchor] */
+.dbx-box-hover
+{
+}
+
+/* + boxes in their active state [when mouse or key is down on handle/anchor] */
+.dbx-box-active
+{
+}
+
+/* + target boxes [when identified as a target for swap or insertion, before movement occurs] */
+.dbx-box-target 
+{
+}
+
+
+
+
+
+
+
+/* + boxes that cannot be grabbed */
+.dbx-nograb
+{
+}
+
+
+
+
+
+
+
+
+
+/* inner content area */	
+.dbx-content 
+{
+}
+
+/* [inner content area when the box is open] */
+.dbx-box-open .dbx-content 
+{
+}
+
+/* [inner content area when the box is closed] */
+.dbx-box-closed .dbx-content 
+{
+}
+
+
+
+
+
+
+
+/* handles */
+.dbx-handle 
+{
+}
+
+/* + handle cursors */
+.dbx-handle-cursor 
+{
+}
+
+
+
+
+
+
+
+
+
+
+/* toggle links or buttons */
+.dbx-toggle, .dbx-toggle:visited 
+{
+}
+	
+/* + open */
+.dbx-toggle-open, .dbx-toggle-open:visited 
+{
+}
+
+/* + closed */
+.dbx-toggle-closed, .dbx-toggle-closed:visited 
+{
+}
+
+/* + open and highlighted */
+.dbx-toggle-hilite-open, .dbx-toggle-hilite-open:visited 
+{
+}
+
+/* + closed and highlighted */
+.dbx-toggle-hilite-closed, .dbx-toggle-hilite-closed:visited 
+{
+}
+
+
+
+
+
+
+/* keyboard navigation tooltip with CSS2 system colors */
+.dbx-tooltip 
+{
+	margin:100px 0 0 0;
+	width:120px;
+	
+	display:block;
+	position:absolute;
+	border:1px solid InfoText;
+	background:InfoBackground;
+	color:InfoText;
+	font:small-caption;
+	font-weight:normal;
+	padding:2px 4px 3px 5px;
+	text-align:left;
+}
+
+
+
+
+
+
+	
+	
+	
+/* + clone styles [a clone is a dbx-box with this additional class] */
+.dbx-clone 
+{
+}
+
+/* + additional drag clone styles [a drag clone is a dbx-clone with this additional class] */
+.dbx-dragclone 
+{
+}
+
+/* + additional animation clone styles [a animation clone is a dbx-clone with this additional class] */
+.dbx-aniclone 
+{
+}
+
+
+
+
+
+
+
+/* + additional dialog styles [a dialog is also a clone, but it has no content] */
+.dbx-dialog 
+{
+}
+
+/* + dialog that indicates position is not allowed */
+.dbx-dialog-no 
+{
+}
+
+/* + dialog that indicates position is allowed */
+.dbx-dialog-yes 
+{
+}
+
+
+
+
+
+
+
+	

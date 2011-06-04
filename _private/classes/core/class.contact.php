@@ -1,6 +1,6 @@
 <?php
 
-class core_contact
+class core_contact extends core_default
 {
 	private $template = 'contact.tpl.html';
 	private $assignments;

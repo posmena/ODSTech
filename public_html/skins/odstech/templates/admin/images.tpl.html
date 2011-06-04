@@ -1,0 +1,9 @@
+<ol id="list_images" class="dbx-group">
+{foreach from=$images item="image"}
+<li id="listcat{$image.id}" class="dbx-box"><input type="text" value="{$image.alt}" /><img class="dbx-handle" src="/{$image.url}" style="width: 100px;" /></li>
+{foreachelse}
+<li>There are no images at this time.</li>
+{/foreach}
+</ol>
+<input style="display: none;" id="list_sort" value="" />
+<script type="text/javascript" src="/dbx/control-image-list.js"></script>

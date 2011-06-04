@@ -1,6 +1,6 @@
 <?php
 
-class core_banners
+class core_banners extends core_default
 {
 	private $template = 'banners.tpl.html';
 	private $assignments;

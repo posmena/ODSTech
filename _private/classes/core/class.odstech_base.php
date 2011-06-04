@@ -4,6 +4,8 @@ class core_odstech_base
 {
 	private $assignments = '';
 	private $action = 'home';
+	private $user = null;
+	private $base = 'odstech.tpl.html';
 	
 	public function __construct()
 	{
@@ -18,6 +20,8 @@ class core_odstech_base
 
 		$this->db->connection("odstech");
 		$this->tplBase = new template('odstech');
+		
+		
 		//$this->global_minified_js = Minify_groupUri('sitebuilderjs');
 		//$this->global_minified_css = Minify_groupUri('sitebuildercss');
 		
@@ -32,15 +36,23 @@ class core_odstech_base
 				$loc               = new $classname($this->db, $this->qs);
 				$this->template    = $loc->getTemplate();
 				$this->assignments = $loc->getAssignments();
+				if (util::getSession('user') !== false) {
+					$this->user = util::getSession('user');
+					if ($loc->isHome() === false) {
+						$this->base = 'odstech_loggedin.tpl.html';
+					}
+				}
 			}
 		}
+		$images = new core_admin_images($this->db, $this->qs);
+		$this->assignments['coverimages'] = $images->getImages(); 
 	}
 	
 	public function draw($ajax = false)
 	{
 		if (is_array($this->assignments) === true && count($this->assignments) > 0) {
 			foreach ($this->assignments as $key => $assignment) {
-				$this->tplBase->assign($key, $assignment);	
+				$this->tplBase->assign($key, $assignment);
 			}
 		}
 		
@@ -58,7 +70,7 @@ class core_odstech_base
 		$this->tplBase->assign('domain', '');
 		$this->tplBase->assign('current_url', '');
 		$this->tplBase->assign('action', $this->action);
-
+		$this->tplBase->assign('user', $this->user);
 
 		if($ajax)
 		{
@@ -71,7 +83,7 @@ class core_odstech_base
 			//$output = $mhtml->minify($this->tplBase->fetch('sitebuilder.tpl.html'));
 			//$this->tplBase->assign('output', $output);
 			//$this->tplBase->display('minifiedhtml.tpl.html');
-			$this->tplBase->display('odstech.tpl.html');
+			$this->tplBase->display($this->base);
 		}
 	}
 }
