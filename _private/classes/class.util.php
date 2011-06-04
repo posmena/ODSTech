@@ -17,4 +17,8 @@ class util
 		
 		return $_SESSION[$key];
 	}
+	
+	function logout() {
+		session_destroy();
+	}
 }

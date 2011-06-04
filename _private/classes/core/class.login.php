@@ -7,6 +7,10 @@ class core_login extends core_default
 	
 	public function __construct($db, $qs) {
 		$this->assignments['page']['title'] = 'Login';
+		if (util::getSession('user')) {
+			util::redirect('/dashboard.html');
+		}
+		
 		if (true === array_key_exists('login', $qs)) {
 			$username = $qs['email'];
 			$password = $qs['password'];

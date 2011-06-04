@@ -11,18 +11,23 @@ class core_admin_images extends core_default
 	public function __construct($db, $qs) {
 		$this->db = $db;
 		
-		$dir = configuration::APPROOT.'uploads/images/';
-		
-		
-		
-		
+		if (true === array_key_exists('save_images', $qs)) {
+			foreach ($qs['caption'] as $imageid => $caption) {
+				$sql = sprintf('UPDATE ot_images SET alt=%s, href=%s WHERE id=%d', $this->db->queryParameter($caption),
+				                                                                   $this->db->queryParameter($qs['href'][$imageid]),
+				                                                                   $this->db->queryParameter($imageid, true));
+				$this->db->changeQuery($sql); 
+			}
+			
+			$this->assignments['page']['feedback'] = 'Your changes have been saved.';
+		}
+				
 		$this->assignments['page']['title'] = 'Images';
 		
 		$nav = array ('admin_images' => array('name' => 'list', 'url' => '/admin/images.html'),
 			          'admin_image_upload' => array('name' => 'upload', 'url' => '/admin/image-upload.html'));
 		
 		$this->assignments['navigation'] = $nav;
-		
 		$this->assignments['images'] = $this->getImages();
 		
 		
@@ -36,7 +41,7 @@ class core_admin_images extends core_default
 	}
 	
 	public function getImages() {
-		$sql = 'SELECT id, url, alt FROM ot_images ORDER BY sort';
+		$sql = 'SELECT id, url, alt, href FROM ot_images ORDER BY sort';
 		$result = $this->db->getQuery($sql);
 		return $result;
 	}
