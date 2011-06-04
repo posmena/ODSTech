@@ -11,6 +11,10 @@ class util
 	}
 	
 	function getSession($key) {
+		if (false === array_key_exists($key, $_SESSION)) {
+			return false;
+		}
+		
 		return $_SESSION[$key];
 	}
 }
