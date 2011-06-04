@@ -19,6 +19,6 @@ class util
 	}
 	
 	function logout() {
-		session_destroy();
+		session_unset();
 	}
 }
