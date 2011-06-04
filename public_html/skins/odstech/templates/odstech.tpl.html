@@ -6,7 +6,7 @@
 		<script language="JavaScript" type="text/javascript" src="/contentflow.js"></script> 
 		<script tyle="text/javascript">
 			{literal}
-	        var cf = new ContentFlow('contentFlow', {reflectionColor: "#ffffff", scaleFactor: 0.5});
+	        var cf = new ContentFlow('contentFlow', {reflectionColor: "#ffffff", scaleFactor: 1});
 	        {/literal}
 	    </script>
 	</head>
@@ -24,7 +24,7 @@
 		        <div class="flow">
 					{foreach from=$coverimages item="image"}
 		            <div class="item" href="{$image.href}">
-		                <img class="content" src="{$image.url}"/>
+		                <img class="content" src="{$image.url}" />
 		                <div class="caption">{$image.alt}</div>
 		            </div>
 		            {/foreach}

@@ -113,7 +113,7 @@ padding-top: 28px;
 #contentFlowWrapper {
 	padding-top: 20px;
     width: 980px;
-    height: 150px;
+    height: 250px;
     margin: 0 auto;
 }
 
@@ -305,6 +305,28 @@ width: 280px;
 	margin-top: 0px;
 	background-color: #ffffff;
 }
+
+.inner .tool_panel .navbar ol li {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	margin-top: 0px;
+}
+
+
+.inner .tool_panel .navbar ol li a{
+	margin: 0px;
+	padding: 0px;
+	background-color: #ffffff;
+	padding: 5px;
+	display: block;
+	padding-left: 5px;
+	border: 2px solid #0F2A3C;
+	border-top: 0px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
 .inner .tool_panel .navbar ol li:first-child a {
 	border-radius: 0px;
 	-moz-border-radius: 0px;
@@ -315,18 +337,6 @@ width: 280px;
 border-radius: 0px;
 	-moz-border-radius: 0px;
 	-webkit-border-radius: 0px;
-}
-
-.inner .tool_panel .navbar ol li a{
-	margin: 0px;
-	padding: 0px;
-	background-color: #ffffff;
-	padding: 5px;
-	display: block;
-	padding-left: 5px;
-	border: 2px solid #0F2A3C;
-	font-weight: bold;
-	text-decoration: none;
 }
 
 .inner .tool_panel .navbar ol li a.selected {
