@@ -23,7 +23,7 @@
 	
 		        <div class="flow">
 					{foreach from=$coverimages item="image"}
-		            <div class="item">
+		            <div class="item" href="{$image.href}">
 		                <img class="content" src="{$image.url}"/>
 		                <div class="caption">{$image.alt}</div>
 		            </div>
