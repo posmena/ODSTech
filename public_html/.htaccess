@@ -61,7 +61,8 @@ RewriteBase /
 	RewriteRule ^dashboard.html$ index.php?loc=dashboard [QSA]
         RewriteRule ^admin/images.html$ index.php?loc=admin_images [QSA]
 RewriteRule ^admin/image-upload.html$ index.php?loc=admin_image_upload [QSA]
-        
+RewriteRule ^logout.html$ index.php?loc=logout [QSA]
+
         RewriteRule ^examplefeed$ index.php?loc=examplefeed [QSA]
 
 #thanks to http://www.evolt.org/ultimate_htaccess_examples

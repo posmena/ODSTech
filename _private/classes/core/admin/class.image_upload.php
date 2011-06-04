@@ -22,7 +22,6 @@ class core_admin_image_upload extends core_admin_images
 				$target = $dir.$filename;
 
 				if ($file['tmp_name'] > '')	{
-					print_r($file);
 					if (!in_array(end(explode(".", strtolower($file['name']))), $allowedExtensions))
 					{
 						$this->assignments['page']['feedback'] = 'Sorry - you can only upload a jpg, gif or png files';

@@ -89,6 +89,11 @@ body {
 
 }
 
+.save_button {
+	width: 60px;
+	height: 28px;
+}
+
 #header {
 	background-color: #0F2A3C;
 	height: 100px;
@@ -293,7 +298,7 @@ width: 280px;
 .inner .tool_panel h3 {
 	padding: 10px;
 	margin-top: 0px;
-	background-color: #ff6600;
+	background-color: #0F2A3C;
 }
 
 .inner .tool_panel .navbar {
@@ -312,10 +317,21 @@ border-radius: 0px;
 	-webkit-border-radius: 0px;
 }
 
+.inner .tool_panel .navbar ol li a{
+	margin: 0px;
+	padding: 0px;
+	background-color: #ffffff;
+	padding: 5px;
+	display: block;
+	padding-left: 5px;
+	border: 2px solid #0F2A3C;
+	font-weight: bold;
+	text-decoration: none;
+}
 
 .inner .tool_panel .navbar ol li a.selected {
 	border: 2px solid #0F2A3C;
-	background-color: #ffffff;
+	background-color: #D5E6EE;
 }
 
 /* images */

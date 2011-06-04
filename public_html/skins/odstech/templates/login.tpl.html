@@ -1,3 +1,13 @@
+{literal}
+<script>
+  $(document).ready(function() {
+    if (!("autofocus" in document.createElement("input"))) {
+      $("#name").focus();
+    }
+  });
+</script>
+{/literal}
+
 {if $page.feedback}
 	<p class="feedback">
 		{$page.feedback}
@@ -16,7 +26,7 @@
 				<img src="images/odst_logo.png" />
 			</li>
 			<li>
-				<input id="name" name="email" class="text" type="text" placeholder="Username" />
+				<input id="name" name="email" class="text" type="text" placeholder="Username" autofocus />
 			</li>
 			<li>
 				 <input id="email" name="password" class="text" type="password" placeholder="Password" />

@@ -1,9 +1,16 @@
+<span class="feedbacl">{$page.feedback}</span>
+<form action="/admin/images.html" method="post">
 <ol id="list_images" class="dbx-group">
 {foreach from=$images item="image"}
-<li id="listcat{$image.id}" class="dbx-box"><input type="text" value="{$image.alt}" /><img class="dbx-handle" src="/{$image.url}" style="width: 100px;" /></li>
+<li id="listcat{$image.id}" class="dbx-box">
+		<input type="text" name="caption[{$image.id}]" value="{$image.alt}" />
+		<input type="url" name="href[{$image.id}]" value="{$image.href}" />
+		<img class="dbx-handle" src="/{$image.url}" style="width: 100px;" /></li>
 {foreachelse}
 <li>There are no images at this time.</li>
 {/foreach}
 </ol>
 <input style="display: none;" id="list_sort" value="" />
+<input class="save_button" type="image" src="/images/button-save.png" value="Save Changes" name="save_images" />
+</form>
 <script type="text/javascript" src="/dbx/control-image-list.js"></script>

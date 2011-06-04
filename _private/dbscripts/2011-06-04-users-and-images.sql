@@ -25,6 +25,7 @@ CREATE TABLE `ot_images` (
   `url` varchar(255) NOT NULL,
   `alt` varchar(255) NOT NULL DEFAULT 'A Caption...',
   `sort` int(11) NOT NULL,
+  `href` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
