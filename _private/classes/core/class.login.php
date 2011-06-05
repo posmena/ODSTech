@@ -7,8 +7,13 @@ class core_login extends core_default
 	
 	public function __construct($db, $qs) {
 		$this->assignments['page']['title'] = 'Login';
-		if (util::getSession('user')) {
-			util::redirect('/dashboard.html');
+		$redirect = '/admin/dashboard.html';
+		if ($user = util::getSession('user')) {
+			if (true === ctype_digit($user->getClientId())) {
+				$redirect = '/clients/'.$user->getClientId().'/dashboard';
+			}
+			
+			util::redirect($redirect);
 		}
 		
 		if (true === array_key_exists('login', $qs)) {
@@ -20,8 +25,12 @@ class core_login extends core_default
 				return false;
 			}
 			
+			if (true === ctype_digit($user->getClientId())) {
+				$redirect = '/clients/'.$user->getClientId().'/dashboard';
+			}
+			
 			util::setSession('user', $user);
-			util::redirect('/dashboard.html');			
+			util::redirect($redirect);			
 		}
 	}
 	

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
 	<head>
-		<link rel="stylesheet" href="style/style.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="/style/style.css" type="text/css" media="screen">
 		<title>{if $page.title}{$page.title} - {/if}Performance Marketing | ODST</title>
 		<script language="JavaScript" type="text/javascript" src="/contentflow.js"></script> 
 		<script tyle="text/javascript">
@@ -24,7 +24,7 @@
 		        <div class="flow">
 					{foreach from=$coverimages item="image"}
 		            <div class="item" href="{$image.href}">
-		                <img class="content" src="{$image.url}" />
+		                <img class="content" src="/{$image.url}" />
 		                <div class="caption">{$image.alt}</div>
 		            </div>
 		            {/foreach}

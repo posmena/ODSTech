@@ -1,0 +1,25 @@
+{if $feed !== false}
+<form>
+<ol>
+	<li>Feed ID: {$feed->id}</li>
+	<li>Feed Name: {$feed->name}</li>
+	<li>Products: {$feed->products}</li>
+</ol>
+</form>
+{elseif $feeds|count > 0}
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Products</th>
+		</thead>
+		<tbody>
+	
+	{foreach from=$feeds item="feed"}
+		<td><a href="/clients/{$client->getId()}/feeds/{$feed->id}">{$feed->name}</a></td>
+		<td>{$feed->products}</td>
+	{/foreach}
+		</tbody>
+	</table>
+{else}
+
+{/if}

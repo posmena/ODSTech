@@ -10,7 +10,10 @@
 		<script>
 		{literal}
 			$(document).ready(function(){
-				$('.tool_panel').accordion();
+				$(document).ready(function(){ 
+				    $('a.blank').attr('target', '_blank'); 
+				});
+				$(".tool_panel" ).accordion({ active: 0 });
 				$("input[type=file]").filestyle({ 
 				 image: "/images/button-browse.png",
 				     imageheight : 28,
@@ -27,17 +30,14 @@
 				<a href="/"><img src="/images/odst_logo.png" /></a>
 			</div>
 		</div><!-- END #header -->
-		
+	
 		<div id="content" class="clearfix">
 			<div class="inner">
-				<div class="tool_panel">
-					<h3><a href="">admin</a></h3>
-					<div class="navbar">
-						<ol>
-							<li><a {if $action == 'admin_images'}class="selected" {/if}href="/admin/images.html">images</a></li>
-							<li><a {if $action == 'logout'}class="selected" {/if}href="/logout.html">logout</a></li>
-					</div>
-				</div>
+				{if true === isset($client)}
+					{include file="clients/navigation.tpl.html}
+				{elseif $user->getUserclass() == 'adminuser'}
+					{include file="admin/navigation.tpl.html"}
+				{/if}
 
 				<div class="navbar">
 					<ol>
@@ -47,6 +47,7 @@
 					</ol>
 				</div>
 				<div  id="main_logged">
+					{include file='breadcrumb.tpl.html'}
 					{include file=$content}
 				</div>
 			</div>
