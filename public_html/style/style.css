@@ -92,6 +92,7 @@ body {
 .save_button {
 	width: 60px;
 	height: 28px;
+	float: right;
 }
 
 #header {
@@ -339,10 +340,16 @@ border-radius: 0px;
 	-webkit-border-radius: 0px;
 }
 
+.inner .tool_panel .navbar ol li a:hover{
+	color: #000000;
+}
+
 .inner .tool_panel .navbar ol li a.selected {
 	border: 2px solid #0F2A3C;
+	border-top: 0px;
 	background-color: #D5E6EE;
 }
+
 
 /* images */
 #list_images {

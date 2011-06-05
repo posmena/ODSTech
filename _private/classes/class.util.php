@@ -21,4 +21,15 @@ class util
 	function logout() {
 		session_unset();
 	}
+	
+	function array_to_object($array = array()) {
+	    if (!empty($array)) {
+	        $data = false;
+	        foreach ($array as $akey => $aval) {
+	            $data -> {$akey} = $aval;
+	        }
+	        return $data;
+	    }
+	    return false;
+	}
 }

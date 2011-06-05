@@ -58,9 +58,11 @@ RewriteBase /
 	RewriteRule ^product-feeds.html$ index.php?loc=feeds [QSA]
 	RewriteRule ^contact-us.html$ index.php?loc=contact [QSA]
 	RewriteRule ^widgets.html$ index.php?loc=widgets [QSA]
-	RewriteRule ^dashboard.html$ index.php?loc=dashboard [QSA]
-        RewriteRule ^admin/images.html$ index.php?loc=admin_images [QSA]
-RewriteRule ^admin/image-upload.html$ index.php?loc=admin_image_upload [QSA]
+      
+RewriteRule ^([admin]+/([a-z0-9\.\_]+)).html$ index.php?loc=admin_$2&usertype=admin
+RewriteRule ^([clients]+/([a-z0-9])+/([a-z0-9]+))$ index.php?loc=clients_$3&clientid=$2 [QSA]
+RewriteRule ^([clients]+/([a-z0-9])+/([a-z0-9]+)+/([0-9])+)$ index.php?loc=clients_$3&clientid=$2&feedid=$4 [QSA]
+
 RewriteRule ^logout.html$ index.php?loc=logout [QSA]
 
         RewriteRule ^examplefeed$ index.php?loc=examplefeed [QSA]

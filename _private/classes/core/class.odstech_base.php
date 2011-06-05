@@ -40,10 +40,28 @@ class core_odstech_base
 					$this->user = util::getSession('user');
 					if ($loc->isHome() === false) {
 						$this->base = 'odstech_loggedin.tpl.html';
+						$tools = new core_admin_tools($this->db, $this->qs);
+						if ($this->user->getUserclass() == 'adminuser') {
+							// Stuff if logged in as admin user
+							$this->assignments['clients'] = $tools->getClients();				
+						} elseif (true === array_key_exists('usertype', $this->qs) && $this->qs['usertype'] == 'admin') {
+							util::redirect('/');
+						}
+						
+						if (true === array_key_exists('clientid', $this->qs)) {
+							// do some auth check here...
+							$client = $tools->getClient($this->qs['clientid']);
+							$this->assignments['client'] = $client; 
+							$this->assignments['feeds'] = $client->getFeeds();
+							
+						}
 					}
+				} elseif($loc->isHome() === false) {
+					util::redirect('/');
 				}
 			}
 		}
+		
 		$images = new core_admin_images($this->db, $this->qs);
 		$this->assignments['coverimages'] = $images->getImages(); 
 	}

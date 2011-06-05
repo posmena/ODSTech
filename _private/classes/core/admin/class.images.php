@@ -27,7 +27,7 @@ class core_admin_images extends core_default
 		$this->assignments['page']['title'] = 'Images';
 		
 		$nav = array ('admin_images' => array('name' => 'list', 'url' => '/admin/images.html'),
-			          'admin_image_upload' => array('name' => 'upload', 'url' => '/admin/image-upload.html'));
+			          'admin_image_upload' => array('name' => 'upload', 'url' => '/admin/image_upload.html'));
 		
 		$this->assignments['navigation'] = $nav;
 		$this->assignments['images'] = $this->getImages();

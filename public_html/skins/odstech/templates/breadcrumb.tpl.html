@@ -1,0 +1,15 @@
+<div>
+{if isset($client)}
+	<a href="/clients/{$client->getId()}/dashboard">{$client->getName()}</a>
+{elseif $user->getUserclass() == 'adminuser'}
+	<a href="/admin/dashboard.html">Dashboard</a>
+{/if}
+
+{if isset($action)}
+	&nbsp;&gt;&nbsp;{$action}
+{/if}
+
+{if isset($breadcrumb_detail)}
+	&nbsp;&gt;&nbsp;{$breadcrumb_detail}
+{/if}
+</div>

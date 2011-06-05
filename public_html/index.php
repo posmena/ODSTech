@@ -8,6 +8,9 @@ function __autoload($class_name)
 		if (false !== strpos($class_name, 'admin')) {
 			$class_name = str_replace('admin_', '', $class_name);
 			$include_file = '../_private/classes/core/admin/class.' . $class_name . '.php';
+		} elseif (false !== strpos($class_name, 'clients')) {
+			$class_name = str_replace('clients_', '', $class_name);
+			$include_file = '../_private/classes/core/clients/class.' . $class_name . '.php';
 		} 
 	} else {
 		$include_file = '../_private/classes/class.' . $class_name . '.php';

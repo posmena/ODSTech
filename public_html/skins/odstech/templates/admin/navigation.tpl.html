@@ -1,0 +1,17 @@
+<div class="tool_panel">
+	<h3><a href="">admin</a></h3>
+	<div class="navbar">
+		<ol>
+			<li><a {if $action == 'admin_images'}class="selected" {/if}href="/admin/images.html">image slider</a></li>
+			<li><a {if $action == 'admin_cms'}class="selected" {/if}href="/admin/cms.html">cms</a></li>
+			<li><a {if $action == 'logout'}class="selected" {/if}href="/logout.html">logout</a></li>
+	</div>
+	
+	<h3><a href="">clients</a></h3>
+	<div class="navbar">
+		<ol>
+			{foreach from=$clients item="client"}
+			<li><a class="blank" href="/clients/{$client->getId()}/dashboard">{$client->getName()}</a></li>
+			{/foreach}
+	</div>
+</div>
