@@ -71,3 +71,7 @@ CREATE TABLE `ot_feeds` (
 --
 
 INSERT INTO `ot_feeds` VALUES(1, 'Packages', 1, 0);
+
+
+INSERT INTO `ot_users` VALUES(3, 'easyjet', '2d2e8c469f6aeb4494c5dd1dbd99dfe4', 'easyjet@odst.co.uk', 'EasyJet', 'Holidays', '', 'clientuser');
+ALTER TABLE  `pm_feeds` ADD  `client_id` INT NOT NULL
