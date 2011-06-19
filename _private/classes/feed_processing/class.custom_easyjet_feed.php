@@ -39,6 +39,13 @@ class custom_easyjet_feed extends network_base
 		$otFieldData = $db->getFields($sql);
 		
 		// need to enable but commented out for debugging
+		if (file_exists(str_replace('.zip', '.txt', $local_file))) {
+			unlink(str_replace('.zip', '.txt', $local_file));
+		}
+		
+		if (file_exists(str_replace('.zip', '.txt', $local_file).'.tmp')) {
+			unlink(str_replace('.zip', '.txt', $local_file).'.tmp');
+		}
 		echo 'Unzipping'."\n";
 		$local_file = 'files/feeds/easyJetHolidays_DDfeed';
 		$cmd = 'unzip '.$local_file.'.zip -d files/feeds';;
@@ -51,11 +58,10 @@ class custom_easyjet_feed extends network_base
 		$comma      = ',';
 		$i          = 0;
 		$timeStart  = time();
-		$cycle      = 0;
 		$values     = '';
+		$missed     = 0;
 		while ($data = fgetcsv($handle, null, $comma)) {
 			$i++;
-			$cycle++;
 			// check we split on the comma
 			if (count($data) == 1) {
 				$data = explode($comma, $data[0]);
@@ -85,6 +91,8 @@ class custom_easyjet_feed extends network_base
 			
 			if (array_key_exists($item['property_id'], $nwProperties) === false) {
 				// cannot process
+				//print 'Property ID ' . $item['property_id'] . ' missing'."\n";
+				print 'Missing Due to PropertyID: ' . $missed++ . "\n";
 				continue;
 			}
 
@@ -101,15 +109,22 @@ class custom_easyjet_feed extends network_base
 			$item['package_id'] = md5(serialize($item));
 			
   			$collection->save($item);
+			
+			if (false === array_key_exists('_id', $item)) {
+				print 'Error saving item: '.$i."\n";
+				break;
+			}
 			//echo 'Inserted document with ID: ' . $item['_id']."\n";
 			unset($data);
 			unset($key);
 			unset($field);
 			unset($item);
-			//if ($cycle == 100000) break;
+			//if ($i == 10000) break;
 		}
 		fclose($handle);
 		$timeEnd = time();
+		unlink($local_file);
+		unlink(str_replace('.zip', '.txt', $local_file));
 		echo 'Time taken to parse file ('.$i.' lines): ' . ($timeEnd-$timeStart) . 's'."\n";
 	}
 	
