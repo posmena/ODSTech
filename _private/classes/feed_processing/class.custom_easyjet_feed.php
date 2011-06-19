@@ -19,9 +19,11 @@ class custom_easyjet_feed extends network_base
 		// set up the indices
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1));
 		$collection->ensureIndex(array('out_destination_airport_code' =>  1));
+		$collection->ensureIndex(array('out_flight_departure_date' =>  1));
 		$collection->ensureIndex(array('cost' =>  1));
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1));
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'cost' =>  1));
+		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'out_flight_departure_date' =>  1, 'cost' =>  1));
 		
 		print_r($response);
 		$this->setFields();
@@ -92,7 +94,8 @@ class custom_easyjet_feed extends network_base
 			if (array_key_exists($item['property_id'], $nwProperties) === false) {
 				// cannot process
 				//print 'Property ID ' . $item['property_id'] . ' missing'."\n";
-				print 'Missing Due to PropertyID: ' . $missed++ . "\n";
+				//print 'Missing Due to PropertyID: ' . $missed++ . "\n";
+				$missed++;
 				continue;
 			}
 
@@ -119,13 +122,12 @@ class custom_easyjet_feed extends network_base
 			unset($key);
 			unset($field);
 			unset($item);
-			//if ($i == 10000) break;
+			//if ($i == 100000) break;
 		}
 		fclose($handle);
 		$timeEnd = time();
-		unlink($local_file);
-		unlink(str_replace('.zip', '.txt', $local_file));
 		echo 'Time taken to parse file ('.$i.' lines): ' . ($timeEnd-$timeStart) . 's'."\n";
+		echo 'There were ' . $missing . ' properties without a Property which we ignored'."\n";
 	}
 	
 	public function getName()
