@@ -130,7 +130,7 @@ class custom_easyjet_feed extends network_base
 		fclose($handle);
 		$timeEnd = time();
 		echo 'Time taken to parse file ('.$i.' lines): ' . ($timeEnd-$timeStart) . 's'."\n";
-		echo 'There were ' . $missed . ' properties without a Property which we ignored'."\n";
+		echo 'There were ' . $missed . ' packages without a Property which we ignored'."\n";
 	}
 	
 	public function getName()
