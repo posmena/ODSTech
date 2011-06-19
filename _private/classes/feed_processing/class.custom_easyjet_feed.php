@@ -21,9 +21,12 @@ class custom_easyjet_feed extends network_base
 		$collection->ensureIndex(array('out_destination_airport_code' =>  1));
 		$collection->ensureIndex(array('mongo_departure_date' =>  1));
 		$collection->ensureIndex(array('cost' =>  1));
+		$collection->ensureIndex(array('region' =>  1));
+		
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1));
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'cost' =>  1));
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'mongo_departure_date' =>  1, 'cost' =>  1));
+		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'mongo_departure_date' =>  1, 'cost' =>  1, 'region' => 1));
 		
 		print_r($response);
 		$this->setFields();
