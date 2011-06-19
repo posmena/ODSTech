@@ -1,9 +1,9 @@
 {if $feed !== false}
 <form>
 <ol>
-	<li>Feed ID: {$feed->id}</li>
-	<li>Feed Name: {$feed->name}</li>
-	<li>Products: {$feed->products}</li>
+	<li>Feed ID: {$feed.data->id}</li>
+	<li>Feed Name: {$feed.data->name}</li>
+	<li>Products: {$feed.data->products}</li>
 </ol>
 </form>
 {elseif $feeds|count > 0}

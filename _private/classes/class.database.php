@@ -291,6 +291,31 @@ class database extends configuration {
 
 		return $return_string;
 	}
+	
+	function getFields($dbQuery) {
+		$connection = $this->get_persistantConnection();
+
+		if($this->scriptDebugMode == true){
+                $exceptions = $this->exceptionHandler;
+                $exceptions->logException("Script Debug - " . $dbQuery);
+        }
+
+		if(!$dbResult = $connection->query($dbQuery)){
+			$exceptions = $this->exceptionHandler;
+			$exceptions->logException($connection->sqlstate . " - " . $connection->error . " - " . $dbQuery);
+
+			if($this->debugMode == true){
+				$this->debugKillConnection("MySQL Error: ".$connection->sqlstate . " - " . $connection->error . " - " . $dbQuery);
+			}
+
+			return false;
+		}
+		
+		while ($row = $dbResult->fetch_field()) {
+			$fields[$row->name] = $row->name;
+		}
+		return $fields;
+	}
 
 }
 ?>
