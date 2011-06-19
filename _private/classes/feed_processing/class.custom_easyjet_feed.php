@@ -19,11 +19,11 @@ class custom_easyjet_feed extends network_base
 		// set up the indices
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1));
 		$collection->ensureIndex(array('out_destination_airport_code' =>  1));
-		$collection->ensureIndex(array('out_flight_departure_date' =>  1));
+		$collection->ensureIndex(array('mongo_departure_date' =>  1));
 		$collection->ensureIndex(array('cost' =>  1));
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1));
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'cost' =>  1));
-		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'out_flight_departure_date' =>  1, 'cost' =>  1));
+		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'mongo_departure_date' =>  1, 'cost' =>  1));
 		
 		print_r($response);
 		$this->setFields();
@@ -127,7 +127,7 @@ class custom_easyjet_feed extends network_base
 		fclose($handle);
 		$timeEnd = time();
 		echo 'Time taken to parse file ('.$i.' lines): ' . ($timeEnd-$timeStart) . 's'."\n";
-		echo 'There were ' . $missing . ' properties without a Property which we ignored'."\n";
+		echo 'There were ' . $missed . ' properties without a Property which we ignored'."\n";
 	}
 	
 	public function getName()
