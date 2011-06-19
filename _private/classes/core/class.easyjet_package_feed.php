@@ -8,13 +8,16 @@ class core_easyjet_package_feed
 	private $isHome = false;
 	
 	public function __construct($db, $qs) {
-		$this->file = configuration::APPROOT . '_private/files/hostedfeeds/easyjet/packages.csv';
 		
-		if (array_key_exists('generate', $qs) || is_array($argv)) {
-			$this->generateFeed($db);
-		} elseif (true === file_exists($this->file)) {
+		if (false === array_key_exists('region', $qs)) {
+			print 'Region must be supplied';
+			exit;
+		}
+		$this->file = configuration::APPROOT . '_private/files/compressedfeeds/easyjet/region' . ucfirst($qs['region']) . '.csv.zip';
+		
+		if (true === file_exists($this->file)) {
 			header("Content-type: application/octet-stream");
-			header("Content-Disposition: attachment; filename=\"easyjet-packages.csv\"");
+			header("Content-Disposition: attachment; filename=\"easyjet-packages-" .$qs['region']. ".csv\"");
 			header("Content-type: application/force-download"); 
 		    header("Content-length: ".filesize($this->file)); 
 		    readfile($this->file);
@@ -24,7 +27,7 @@ class core_easyjet_package_feed
 			exit;
 		}
 	}
-	
+	/*
 	public function generateFeed($db)
 	{
 		echo 'Generating Feed...';
@@ -112,6 +115,8 @@ class core_easyjet_package_feed
 		}
 		
 	}
+	 * *
+	 */
 	
 	
 	public function getTemplate() {
