@@ -9,26 +9,44 @@ class custom_easyjet_feed extends network_base
 	public function __construct($local_file = null)
 	{
 		global $db;
+		$conn = new Mongo('localhost');
+		// access database
+		$mdb = $conn->odstech;
+		// access collection
+  		$collection = $mdb->packageschecksum;
+		$response = $collection->drop();
 		
+		// set up the indices
+		$collection->ensureIndex(array('out_departure_airport_code' =>  1));
+		$collection->ensureIndex(array('out_destination_airport_code' =>  1));
+		$collection->ensureIndex(array('cost' =>  1));
+		$collection->ensureIndex(array('out_departure_airport_code' =>  1), array('out_destination_airport_code' =>  1));
+		$collection->ensureIndex(array('out_departure_airport_code' =>  1), array('out_destination_airport_code' =>  1), array('cost' =>  1));
+		
+		print_r($response);
 		$this->setFields();
 		$fields = $this->getFields();
-		$delete = "DELETE FROM pm_custom_products_easyjet";
-		$db->changeQuery($delete);
 		
-		$insert = "INSERT INTO pm_custom_products_easyjet (id";
-		foreach ($fields as $field) {
-			if ($field != '') {
-				$insert .= ",".$field;
-			}	
+		$properties = $db->getQuery('SELECT p.*, pl.scrape_id FROM Property p INNER JOIN pm_scrape_property_lookup pl ON pl.odst_id=p.PropertyID');
+		foreach($properties as $property) {
+			$nwProperties[$property['scrape_id']] = $property;
 		}
-		$insert .= ') VALUES';
+		unset($properties);
+		print "Property Count: ". count($nwProperties)."\n";
 		
+		// Load ODST Property Table (and more if required);
+		$sql = 'SELECT * FROM Property LIMIT 0,1';
+		$otFieldData = $db->getFields($sql);
+		
+		/* need to enable but commented out for debugging
 		echo 'Unzipping'."\n";
 		$local_file = 'files/feeds/easyJetHolidays_DDfeed';
 		$cmd = 'unzip '.$local_file.'.zip -d files/feeds';;
 		exec($cmd);
 		print "Converting from binary\n";
 		$this->removeBOM($local_file.'.txt');
+		 */
+			 $local_file= str_replace('.zip', '', $local_file); 
 		print "Inserting into DB\n";
 		$handle     = fopen($local_file.'.txt', 'r');
 		$comma      = ',';
@@ -50,34 +68,46 @@ class custom_easyjet_feed extends network_base
 				continue;
 			}
 			
+			
 			$values .= "(''";
+			$item = array();
 			foreach ($fields as $key => $field) {
 				if ($field != '') {
-					switch($field) {
-						case 'property_id':
-							$values .= ",".$db->queryParameter($data[$key], true);
-							break;
-						default:
-							$values .= ",".$db->queryParameter($data[$key]);
+					if ($field == 'cost') {
+						$item[$field] = (int) $data[$key];
+					} else {
+						$item[$field] = $data[$key];
+					}
+					if (strstr($field, 'date')) {
+						$item['mongo_' . $field] = new MongoDate(strtotime($data[$key]));
 					}
 				}
 			}
-			$values .= "),"; 
-			//if ($cycle == 10000) {
-			if ($cycle == 10000) {
-				$values = substr_replace($values,'',-1);
-				$sql = $insert.$values;
-				if(false === $db->changeQuery($sql)) {
-					die("Error - see log\n\n".$sql);
-				}
-				unset($data);
-				unset($key);
-				unset($field);
-				$cycle = 0;
-				$values = '';
-				break;
-				
+			
+			if (array_key_exists($item['property_id'], $nwProperties) === false) {
+				// cannot process
+				continue;
 			}
+
+			foreach($otFieldData as $extra_field) {
+				$item[strtolower($extra_field)] = $nwProperties[$item['property_id']][$extra_field];
+			}
+			
+			$item['search_deeplink'] = 'http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=' . 
+										date('j/m/Y', strtotime($item['departure_date'])) . 
+										'&nights=' . $item['duration'] . 
+										'&adults=2&airport=' . $item['out_departure_airport_code'] . 
+										'&resort=' . $item['resortid'] .
+										'&property=' . $item['property_id'];
+			$item['package_id'] = md5(serialize($item));
+			
+  			$collection->save($item);
+			//echo 'Inserted document with ID: ' . $item['_id']."\n";
+			unset($data);
+			unset($key);
+			unset($field);
+			unset($item);
+			if ($cycle == 100000) break;
 		}
 		fclose($handle);
 		$timeEnd = time();
@@ -91,15 +121,6 @@ class custom_easyjet_feed extends network_base
 	
 	public function getFields()
 	{
-		return $this->fields;
-	}
-	
-	public function getPrefix()
-	{
-		return $this->prefix;
-	}
-	
-	public function setFields() {
 		$this->fields = array(
 							  'country',
 							  'region',
@@ -131,7 +152,17 @@ class custom_easyjet_feed extends network_base
 							  'ret_flight_departure_date',
 							  '',
 							  'ret_destination_airport_name',
-							  'ret_destination_airport_code');							  
+							  'ret_destination_airport_code');
+		return $this->fields;
+	}
+	
+	public function getPrefix()
+	{
+		return $this->prefix;
+	}
+	
+	public function setFields() {
+		//							  
 	}
 	
 	public function addFeed($feed)

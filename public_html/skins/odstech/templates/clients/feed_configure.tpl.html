@@ -1,0 +1,55 @@
+{if $feed !== false}
+<form action="/clients/{$client->getId()}/feedsettings/{$feed.data->id}" method="post">
+Base feed on:
+<select>
+	<option value="">Select Feed</option>
+	{foreach from=$mfeeds item="mfeed"}
+		<option value="{$mfeed->id}" {if $feed.data->master_feed_id == $mfeed.data->id}selected="selected"{/if}>{$mfeed.data->name}</option>
+	{/foreach}
+</select>
+<br />
+<br />
+<h3>Fields</h3>
+{foreach from=$feed.fields key="fieldid" item="fields"}
+	Field {$fieldid+1}
+	<select name="field[]">
+		{*custom field for easyjet (ot_master_feed_id 1)*}
+		{if $fields.name == 'url' && $feed.data->master_feed_id==1}
+			<option value="url">{$fields.name}</option>
+		{else}
+			<option value="">Select Field</option>
+			{foreach from=$mfeeds item="mfeed"}
+				{if $feed.data->master_feed_id == $mfeed.data->id}
+					{foreach from=$mfeed.fields key="fieldname" item="field"}
+						<option value="{$fieldname}"{if $fieldname === $fields.fieldname} selected="selected"{/if}>{$field}</option>
+					{/foreach}
+				{/if}
+			{/foreach}
+		{/if}
+	</select>
+	&nbsp;<input type="text" value="{$fields.name}" />
+	<br />
+{/foreach}
+<h3>Filters</h3>
+{foreach from=$feed.filters key="filterid" item="filter"}
+	{$filter.fieldname} :: {$filter.operand} :: {$filter.criteria}
+{/foreach}
+<input type="submit" name="savesettings" value="Save" />
+</form>
+{elseif $feeds|count > 0}
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Products</th>
+		</thead>
+		<tbody>
+	
+	{foreach from=$feeds item="feed"}
+		<td><a href="/clients/{$client->getId()}/feeds/{$feed->id}">{$feed->name}</a></td>
+		<td>{$feed->products}</td>
+	{/foreach}
+		</tbody>
+	</table>
+{else}
+
+{/if}
