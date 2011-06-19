@@ -38,15 +38,14 @@ class custom_easyjet_feed extends network_base
 		$sql = 'SELECT * FROM Property LIMIT 0,1';
 		$otFieldData = $db->getFields($sql);
 		
-		/* need to enable but commented out for debugging
+		// need to enable but commented out for debugging
 		echo 'Unzipping'."\n";
 		$local_file = 'files/feeds/easyJetHolidays_DDfeed';
 		$cmd = 'unzip '.$local_file.'.zip -d files/feeds';;
 		exec($cmd);
 		print "Converting from binary\n";
 		$this->removeBOM($local_file.'.txt');
-		 */
-			 $local_file= str_replace('.zip', '', $local_file); 
+		//	 $local_file= str_replace('.zip', '', $local_file); 
 		print "Inserting into DB\n";
 		$handle     = fopen($local_file.'.txt', 'r');
 		$comma      = ',';
@@ -107,7 +106,7 @@ class custom_easyjet_feed extends network_base
 			unset($key);
 			unset($field);
 			unset($item);
-			if ($cycle == 100000) break;
+			//if ($cycle == 100000) break;
 		}
 		fclose($handle);
 		$timeEnd = time();
