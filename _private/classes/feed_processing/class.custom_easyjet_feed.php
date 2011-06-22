@@ -22,6 +22,7 @@ class custom_easyjet_feed extends network_base
 		$collection->ensureIndex(array('mongo_departure_date' =>  1));
 		$collection->ensureIndex(array('cost' =>  1));
 		$collection->ensureIndex(array('region' =>  1));
+		$collection->ensureIndex(array('package_id' => 1) , array('unique' => true));
 		
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1));
 		$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'cost' =>  1));
@@ -115,7 +116,10 @@ class custom_easyjet_feed extends network_base
 										'&adults=2&airport=' . $item['out_departure_airport_code'] . 
 										'&resort=' . $item['resortid'] .
 										'&property=' . $item['property_id'];
+			$tempCost = $item['cost'];
+			unset($item['cost']);
 			$item['package_id'] = md5(serialize($item));
+			$item['cost'] = $tempCost;
 			
   			$collection->save($item);
 			
