@@ -9,22 +9,37 @@ class core_easyjet_package_feed
 	
 	public function __construct($db, $qs) {
 		
-		if (false === array_key_exists('region', $qs)) {
-			print 'Region must be supplied';
+		if (false === array_key_exists('region', $qs) && false === array_key_exists('propertylist')) {
+			print 'Region/Property must be supplied';
 			exit;
 		}
-		$this->file = configuration::APPROOT . '_private/files/compressedfeeds/easyjet/region' . ucfirst($qs['region']) . '.csv.zip';
-		
-		if (true === file_exists($this->file)) {
-			header("Content-type: application/octet-stream");
-			header("Content-Disposition: attachment; filename=\"easyjet-packages-" .$qs['region']. ".csv.zip\"");
-			header("Content-type: application/force-download"); 
-		    header("Content-length: ".filesize($this->file)); 
-		    readfile($this->file);
-			exit; 
+		if (false === array_key_exists('propertylist')) {
+			$this->file = configuration::APPROOT . '_private/files/compressedfeeds/easyjet/region' . ucfirst($qs['region']) . '.csv.zip';
+			
+			if (true === file_exists($this->file)) {
+				header("Content-type: application/octet-stream");
+				header("Content-Disposition: attachment; filename=\"easyjet-packages-" .$qs['region']. ".csv.zip\"");
+				header("Content-type: application/force-download"); 
+			    header("Content-length: ".filesize($this->file)); 
+			    readfile($this->file);
+				exit; 
+			} else {
+				print 'File does not exist';
+				exit;
+			}
 		} else {
-			print 'File does not exist';
-			exit;
+			$this->file = configuration::APPROOT . '_private/files/compressedfeeds/easyjet/propertiesfull.csv.zip';
+			if (true === file_exists($this->file)) {
+				header("Content-type: application/octet-stream");
+				header("Content-Disposition: attachment; filename=\"easyjet-properties.csv.zip\"");
+				header("Content-type: application/force-download"); 
+			    header("Content-length: ".filesize($this->file)); 
+			    readfile($this->file);
+				exit; 
+			} else {
+				print 'File does not exist';
+				exit;
+			}
 		}
 	}
 	/*

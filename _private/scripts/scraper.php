@@ -9,4 +9,4 @@ include 'classes/feed_processing/class.sitescraper.php';
 $db = new database;
 $db->connection('odstech');
 
-sitescraper::scrape('easyjet');
+sitescraper::scrape($argv[1], $argv[2], $argv[3]);

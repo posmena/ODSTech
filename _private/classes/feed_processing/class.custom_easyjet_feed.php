@@ -35,11 +35,14 @@ class custom_easyjet_feed extends network_base
 		print_r($response);
 		$this->setFields();
 		$fields = $this->getFields();
+		$properties = $mdb->properties_raw->find();
+		//$properties = $db->getQuery('SELECT p.*, pl.scrape_id FROM Property p INNER JOIN pm_scrape_property_lookup pl ON pl.odst_id=p.PropertyID');
 		
-		$properties = $db->getQuery('SELECT p.*, pl.scrape_id FROM Property p INNER JOIN pm_scrape_property_lookup pl ON pl.odst_id=p.PropertyID');
+		$nwProperties = array();
 		foreach($properties as $property) {
-			$nwProperties[$property['scrape_id']] = $property;
+			$nwProperties[$property['propertyid']] = $property;
 		}
+		
 		unset($properties);
 		print "Property Count: ". count($nwProperties)."\n";
 		
@@ -107,7 +110,7 @@ class custom_easyjet_feed extends network_base
 			}
 
 			foreach($otFieldData as $extra_field) {
-				$item[strtolower($extra_field)] = $nwProperties[$item['property_id']][$extra_field];
+				$item[strtolower($extra_field)] = $nwProperties[$item['property_id']][strtolower($extra_field)];
 			}
 			
 			$item['search_deeplink'] = 'http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=' . 
@@ -132,7 +135,7 @@ class custom_easyjet_feed extends network_base
 			unset($key);
 			unset($field);
 			unset($item);
-			//if ($i == 100000) break;
+			//if ($i == 10000) break;
 		}
 		fclose($handle);
 		$timeEnd = time();

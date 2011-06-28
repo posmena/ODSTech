@@ -4,7 +4,7 @@ include 'classes/feed_processing/class.feed_processor.php';
 
 class sitescraper
 {
-	function scrape($site) {
+	function scrape($site, $instance, $of) {
 		global $db;
 		
 		switch ($site) {
@@ -16,15 +16,20 @@ class sitescraper
 				}
 				*/
 				
-				$sql    = 'SELECT PropertyID FROM Property ORDER BY PropertyID ASC';
-				$result = $db->getQuery($sql);
-				foreach ($result as $url) {
-					$urls[$url['PropertyID']] = 'http://holidays.easyjet.com/Holiday.aspx?PropertyID=' . $url['PropertyID'];
+				$conn = new Mongo('localhost');
+				$mdb = $conn->odstech;
+				$collection = $mdb->properties_raw;
+				$count = $collection->find()->count();
+				$perInstance = ceil($count / $of);
+				$from = ($instance-1)*$perInstance;
+				$cursor = $collection->find()->skip($from)->limit($perInstance);
+				$scraped = $mdb->properties_scrape;
+				foreach ($cursor as $url) {
+					$urls[$url['propertyid']] = 'http://holidays.easyjet.com/Holiday.aspx?PropertyID=' . $url['propertyid'];
 				}
 				
 				$limit = count($urls);
 				$timeStart = time();
-				$sql = 'INSERT INTO pm_scrape_ejh_property (id, name, tagline, price) VALUES ';
 				$x = 0;
 				$i = 0;
 				$values   = '';
@@ -73,28 +78,14 @@ class sitescraper
 						continue;
 					}
 					
-					$values .= "(" . $PropertyId . "," . $db->queryParameter($name) . "," . $db->queryParameter($tag) . "," . str_replace(',','',$price) . "),";
+					$property['_id'] = $PropertyId;
+					$property['price']      = str_replace(',','',$price);
+					$property['name']       = $name;
+					
+					$scraped->save($property, array('_id' => $PropertyId));
+					
 					$timeTaken = time() - $timeStart;
-					if($x++ == 10) {
-						$values = substr($values,0,-1);
-						$qry = $sql . $values;
-						if($db->changeQuery($qry) === false) {
-							echo $qry;
-							print("\n\nerror\n\n");
-						}
-						$values = '';
-						echo $x . ' records inserted. Progress ' . $i . '/' . $limit . " (" . $timeTaken . "s)\n";
-						$x = 0;
-					} else {
-						echo 'Progress ' . $i . '/' . $limit . " - (" . $x	 . ") (" . $timeTaken . "s)\n";
-					}
-				}
-				
-				// clean up remainder
-				if ($x > 0) {
-					$values = substr($values,0,-1);
-					$qry = $sql . $values;
-					$db->changeQuery($qry);
+					echo 'Progress ' . $i . '/' . $limit . " - (" . $x	 . ") (" . $timeTaken . "s)\n";
 				}
 				
 				break;
