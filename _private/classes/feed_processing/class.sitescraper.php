@@ -10,12 +10,6 @@ class sitescraper
 		switch ($site) {
 			case 'easyjet': {
 				
-				/*
-				for ($i=0;$i<=$limit;$i++) {
-					$urls[] = 'http://holidays.easyjet.com/Holiday.aspx?PropertyID=' . $i;
-				}
-				*/
-				
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
 				$collection = $mdb->properties_raw;
