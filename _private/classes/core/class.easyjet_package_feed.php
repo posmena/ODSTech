@@ -13,7 +13,7 @@ class core_easyjet_package_feed
 			print 'Region/Property must be supplied';
 			exit;
 		}
-		if (false === array_key_exists('propertylist')) {
+		if (false === array_key_exists('propertylist', $qs)) {
 			$this->file = configuration::APPROOT . '_private/files/compressedfeeds/easyjet/region' . ucfirst($qs['region']) . '.csv.zip';
 			
 			if (true === file_exists($this->file)) {
@@ -33,7 +33,7 @@ class core_easyjet_package_feed
 				header("Content-type: application/octet-stream");
 				header("Content-Disposition: attachment; filename=\"easyjet-properties.csv.zip\"");
 				header("Content-type: application/force-download"); 
-			    header("Content-length: ".filesize($this->file)); 
+			    //header("Content-length: ".filesize($this->file)); 
 			    readfile($this->file);
 				exit; 
 			} else {
