@@ -5,7 +5,7 @@ class core_odstech_base
 	private $assignments = '';
 	private $action = 'home';
 	private $user = null;
-	private $base = 'odstech.tpl.html';
+	private $base = 'odstech_temp.tpl.html';
 	
 	public function __construct()
 	{
