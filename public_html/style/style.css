@@ -204,6 +204,10 @@ color: #607890;
 	
 }
 
+.login {
+margin-top: 45px;
+}
+
 /* fieldset shit */
 fieldset.form {
 	width: 600px;;    
@@ -369,6 +373,15 @@ width: 400px;
 	margin: 10px;
 }
 
+
+#footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   background:#0F2A3C;
+}
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }
