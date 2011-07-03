@@ -20,7 +20,7 @@ class core_easyjet_package_feed
 				header("Content-type: application/octet-stream");
 				header("Content-Disposition: attachment; filename=\"easyjet-packages-" .$qs['region']. ".csv.zip\"");
 				header("Content-type: application/force-download"); 
-			    header("Content-length: ".filesize($this->file)); 
+			    //header("Content-length: ".filesize($this->file)); 
 			    readfile($this->file);
 				exit; 
 			} else {
