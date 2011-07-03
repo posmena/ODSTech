@@ -211,7 +211,11 @@ fieldset.form {
 	padding: 0;    
 	border: 1px solid #0F2A3C;    
 	background-color: #0F2A3C;    
-	background-repeat: repeat-x;    
+	background-repeat: repeat-x;
+		border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	
 }
 
 fieldset.form .intro{
@@ -270,6 +274,8 @@ margin-top: 8px;
 float: right;
 width: 280px;
 }
+
+
 
 #social {
 	padding-top: 20px;
