@@ -42,9 +42,9 @@ class feed_processor
 				}
 				default:
 				{
-					$file = $path4feed.'feed'.$feed['id'];
+					$local_file = $path4feed.'feed'.$feed['id'];
 					$data = self::curl_get_file_contents($feed['url']);
-					$fp = fopen($file, 'w+');
+					$fp = fopen($local_file, 'w+');
 					fwrite($fp, $data);
 					fclose($fp);
 				}
@@ -97,6 +97,7 @@ class feed_processor
 		
 		$c = curl_init();
 		curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($c,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
 		
 		if ($limit !== null) {
 			$offset = 0;
