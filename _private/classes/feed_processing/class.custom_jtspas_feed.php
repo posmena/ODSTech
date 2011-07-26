@@ -106,7 +106,7 @@ class custom_jtspas_feed extends network_base
 						}
 					}
 
-					if (strstr($field, 'link')) {
+					if ($field == 'link') {
 						$item['deeplink'] = $data[$key];
 					}
 
