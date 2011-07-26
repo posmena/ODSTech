@@ -14,7 +14,7 @@ class core_jtspas_feed
 			exit;
 		}
 
-		$this->file = configuration::APPROOT . '_private/files/compressedfeeds/jtspas/'.ucfirst($qs['type']) . '.csv.zip';
+		$this->file = configuration::APPROOT . '_private/files/compressedfeeds/jtspas/'.strtolower($qs['type']) . '.csv.zip';
 		
 		if (true === file_exists($this->file)) {
 			header("Content-type: application/octet-stream");
