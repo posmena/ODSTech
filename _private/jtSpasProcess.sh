@@ -15,6 +15,9 @@ mongoexport -d odstech -c jtspas --csv -f 'id','title','deeplink','price','descr
 echo 'http://www.odst.co.uk/feeds/jtspas.zip?type=froogle' > jtspatype.log
 mongoexport -d odstech -c jtspas --csv -f 'id','title','link','price','description','condition','shipping','shipping_weight','gtin','brand','mpn','image_link','category','quantity','availability','expiration_date' -o files/hostedfeeds/jtspas/froogle.csv | mail -s "Froogle JtSpas Exported" tech@odst.co.uk < jtspatype.log
 
+echo 'http://www.odst.co.uk/feeds/jtspas.zip?type=nextag' > jtspatype.log
+mongoexport -d odstech -c jtspas --csv -f 'title','mpn','id','description','price','deeplink','image_link','nextag_category','category','availability','shipping','condition','shipping_weight','gtin','brand' -o files/hostedfeeds/jtspas/nextag.csv | mail -s "Nextag JtSpas Exported" tech@odst.co.uk < jtspatype.log
+
 
 ./zipFiles.sh
 

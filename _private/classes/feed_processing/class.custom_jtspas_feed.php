@@ -92,6 +92,7 @@ class custom_jtspas_feed extends network_base
 						$item['category'] = $data[$key];
 						$parts = explode(",", $data[$key]);
 						$item['webgains_category'] = end($parts);
+						$item['nextag_category'] = end($parts);
 					}
 					if (strstr($field, 'shipping')) {
 
