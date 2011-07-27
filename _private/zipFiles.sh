@@ -7,3 +7,8 @@ for i in $(ls -a files/hostedfeeds/jtspas | grep '.csv' | grep -v '.zip'); do
    zip -j "files/compressedfeeds/jtspas/$i.zip" "files/hostedfeeds/jtspas/$i"
    rm "files/hostedfeeds/jtspas/$i"
 done
+
+for i in $(ls -a files/hostedfeeds/forthill | grep '.csv' | grep -v '.zip'); do
+   zip -j "files/compressedfeeds/forthill/$i.zip" "files/hostedfeeds/forthill/$i"
+   rm "files/hostedfeeds/forthill/$i"
+done
