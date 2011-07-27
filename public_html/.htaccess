@@ -66,8 +66,8 @@ RewriteRule ^([clients]+/([a-z0-9])+/([a-z0-9]+)+/([0-9])+)$ index.php?loc=clien
 RewriteRule ^logout.html$ index.php?loc=logout [QSA]
 
         RewriteRule ^examplefeed$ index.php?loc=examplefeed [QSA]
-RewriteRule ^([feeds]+/jtspas+)$ index.php?loc=jtspas_feed [QSA]
 RewriteRule ^([feeds]+/jtspas.zip+)$ index.php?loc=jtspas_feed [QSA]
+RewriteRule ^([feeds]+/forthill.zip+)$ index.php?loc=forthill_feed [QSA]
 RewriteRule ^([feeds]+/easyjet+)$ index.php?loc=easyjet_package_feed [QSA]
 RewriteRule ^([feeds]+/easyjet.zip+)$ index.php?loc=easyjet_package_feed [QSA]
 
