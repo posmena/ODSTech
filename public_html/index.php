@@ -22,7 +22,7 @@ function __autoload($class_name)
 		echo 'There was an error importing the ' . $include_file . ' class.';	
 	}
 }
-die(print_r($_GET));
+
 Session_Start();
 $site = new core_odstech_base;
 $site->direct();
