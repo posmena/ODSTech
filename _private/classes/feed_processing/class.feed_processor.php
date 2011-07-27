@@ -43,10 +43,10 @@ class feed_processor
 				default:
 				{
 					$local_file = $path4feed.'feed'.$feed['id'];
-					//$data = self::curl_get_file_contents($feed['url']);
-					//$fp = fopen($local_file, 'w+');
-					//fwrite($fp, $data);
-					//fclose($fp);
+					$data = self::curl_get_file_contents($feed['url']);
+					$fp = fopen($local_file, 'w+');
+					fwrite($fp, $data);
+					fclose($fp);
 				}
 			}
 
