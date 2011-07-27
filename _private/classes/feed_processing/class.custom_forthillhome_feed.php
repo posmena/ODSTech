@@ -72,7 +72,13 @@ class custom_forthillhome_feed extends network_base
 						$item = array();
 						foreach ($fields as $key => $field) {
 							if ($field != '') {
+								
+
 								$item[strtolower($field)] = (string) $product->$field;
+								if ($field == 'ProductDescription') {
+									$html                     = (string) $product->$field;
+									$item[strtolower($field)] = htmlentities($html);
+								}
 								/*
 								if ($field == 'cost') {
 									$item[$field] = (int) $data[$key];
