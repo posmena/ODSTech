@@ -49,9 +49,12 @@ switch ($feed_id) {
 
 			$id   = 'jtspasni'.$data[2];
 			$item = array();
-			$item['price'] = $data[5];
-			$item['id']	   = $id;
-			$collection->save($item, array('id' => $id));
+			$items = $collection->find(array('id' => $id));
+			foreach ($items as $item)
+			{
+				$item['price'] = $data[5];
+				$collection->save($item, array('_id' => $item['_id']));
+			}
 		}
 	}
 }
