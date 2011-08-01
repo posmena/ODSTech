@@ -15,7 +15,7 @@ for region in 'Algarve' 'Amsterdam' 'Barcelona' 'Corfu' 'Crete' 'Cyprus' 'Egypt'
         mongorestore -d odstech -c tempfeed --drop dump/odstech/packageschecksum.bson
         somevar="files/hostedfeeds/easyjet/region"$region".csv"
         echo 'http://www.odst.co.uk/feeds/easyjet.zip?region='$region >> logs/region.log
-		mongoexport -d odstech -c tempfeed --csv -f package_id,name,country,region,search_deeplink,resort,duration,board,cost,currency,departure_date,rating,room_type,out_departure_airport_code,out_departure_airport_name,out_flight_departure_date,out_destination_airport_name,out_destination_airport_code,ret_departure_airport_code,ret_departure_airport_name,ret_flight_departure_date,ret_destination_airport_name,ret_destination_airport_code,image1url,image2url,image3url,description -o $somevar | mail -s "Region $region Exported" tech@odst.co.uk < region.log
+		mongoexport -d odstech -c tempfeed --csv -f package_id,name,country,region,search_deeplink,resort,duration,board,cost,currency,departure_date,rating,room_type,out_departure_airport_code,out_departure_airport_name,out_flight_departure_date,out_destination_airport_name,out_destination_airport_code,ret_departure_airport_code,ret_departure_airport_name,ret_flight_departure_date,ret_destination_airport_name,ret_destination_airport_code,image1url,image2url,image3url,description -o $somevar | mail -s "Region $region Exported" tech@odst.co.uk < logs/region.log
 
 ./zipFiles.sh
 done
