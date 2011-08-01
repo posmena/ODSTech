@@ -6,6 +6,8 @@ cd /var/www/odst-live/_private
 
 php scripts/processFeed.php 3 | mail -s 'JtSpas Processed' tech@odst.co.uk
 
+php scripts/temporaryData.php 3 | mail -s 'JtSpas Price Update Complete' tech@odst.co.uk
+
 echo 'http://www.odst.co.uk/feeds/jtspas.zip?type=all' > logs/jtspatype.log
 mongoexport -d odstech -c jtspas --csv -f 'id','title','deeplink','price','description','condition','shipping','shipping_weight','gtin','brand','mpn','image_link','category','quantity','availability','expiration_date','webgains_category','shipping_uk','shipping_cost_uk' -o files/hostedfeeds/jtspas/all.csv | mail -s "All JtSpas Exported" tech@odst.co.uk < logs/jtspatype.log
 
@@ -20,4 +22,3 @@ mongoexport -d odstech -c jtspas --csv -f 'title','mpn','id','description','pric
 
 
 ./zipFiles.sh
-
