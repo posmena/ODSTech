@@ -114,6 +114,8 @@ class custom_jtspas_feed extends network_base
 						$item['deeplink'] = $data[$key];
 					}
 
+					$item['warranty'] = 1;
+
 					$item[$field] = $data[$key];
 				}
 

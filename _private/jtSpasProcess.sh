@@ -20,5 +20,8 @@ mongoexport -d odstech -c jtspas --csv -f 'id','title','link','price','descripti
 echo 'http://www.odst.co.uk/feeds/jtspas.zip?type=nextag' > logs/jtspatype.log
 mongoexport -d odstech -c jtspas --csv -f 'title','mpn','id','description','price','deeplink','image_link','nextag_category','category','availability','shipping','condition','shipping','shipping_weight','shipping_uk','shipping_cost_uk','gtin','brand' -o files/hostedfeeds/jtspas/nextag.csv | mail -s "Nextag JtSpas Exported" tech@odst.co.uk < logs/jtspatype.log
 
+echo 'http://www.odst.co.uk/feeds/jtspas.zip?type=dooyoo' > logs/jtspatype.log
+mongoexport -d odstech -c jtspas --csv -f 'category','id','title','price','deeplink','description','image_link','warranty','shipping','shipping_weight','shipping_uk','shipping_cost_uk','availability','condition','gtin','brand' -o files/hostedfeeds/jtspas/dooyoo.csv | mail -s "Dooyoo JtSpas Exported" tech@odst.co.uk < logs/jtspatype.log
+
 
 ./zipFiles.sh

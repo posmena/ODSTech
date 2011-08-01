@@ -97,6 +97,8 @@ class custom_forthillhome_feed extends network_base
 						$item['imagethumbnail'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-1.jpg';
 						$item['imagelarge'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-2T.jpg';
 
+						$item['warranty'] = 1;
+
 						$collection->save($item);
 						if (false === array_key_exists('_id', $item)) {
 							print 'Error saving item: '.$i."\n";
