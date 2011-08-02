@@ -77,8 +77,10 @@ class custom_forthillhome_feed extends network_base
 								$item[strtolower($field)] = (string) $product->$field;
 								if ($field == 'ProductDescription') {
 									$html                     = (string) $product->$field;
-									$item[strtolower($field)] = htmlentities($html, ENT_QUOTES, 'UTF-8');
+									// $item[strtolower($field)] = htmlentities($html, ENT_QUOTES, 'UTF-8');
+									$item[strtolower($field)] = strip_tags($html);
 								}
+								
 								/*
 								if ($field == 'cost') {
 									$item[$field] = (int) $data[$key];
