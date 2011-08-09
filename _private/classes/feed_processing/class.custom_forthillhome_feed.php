@@ -97,10 +97,10 @@ class custom_forthillhome_feed extends network_base
 						$item['deeplink'] = 'http://www.forthillhome.co.uk/product-p/' . strtolower($item['productcode']) . '.htm';
 
 						
-						$item['nextag_deeplink'] = $item['deeplink'] . '&partner=nextag';
-						$item['google_deeplink'] = $item['deeplink'] . '&partner=googleshopping';
-						$item['webgains_deeplink'] = $item['deeplink'] . '&partner=webgains';
-						$item['dooyoo_deeplink'] = $item['deeplink'] . '&partner=leguide';
+						$item['nextag_deeplink'] = $item['deeplink'] . '?partner=nextag';
+						$item['google_deeplink'] = $item['deeplink'] . '?partner=googleshopping';
+						$item['webgains_deeplink'] = $item['deeplink'] . '?partner=webgains';
+						$item['dooyoo_deeplink'] = $item['deeplink'] . '?partner=leguide';
 
 
 						$item['imagethumbnail'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-1.jpg';
