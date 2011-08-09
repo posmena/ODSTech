@@ -112,6 +112,10 @@ class custom_jtspas_feed extends network_base
 
 					if ($field == 'link') {
 						$item['deeplink'] = $data[$key];
+						$item['nextag_deeplink'] = $item['deeplink'] . '&partner=nextag';
+						$item['google_deeplink'] = $item['deeplink'] . '&partner=googleshopping';
+						$item['webgains_deeplink'] = $item['deeplink'] . '&partner=webgains';
+						$item['dooyoo_deeplink'] = $item['deeplink'] . '&partner=leguide';
 					}
 
 					$item['warranty'] = 1;

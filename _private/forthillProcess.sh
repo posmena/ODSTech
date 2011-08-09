@@ -11,17 +11,17 @@ echo 'http://www.odst.co.uk/feeds/forthill.zip?type=all' > logs/forthill.log
 mongoexport -d odstech -c forthillhome --csv -f 'productcode','productid','productname','warehousecustom','productdescription','availability','freeshippingitem','google_product_type','productcondition','productmanufacturer','productfeatures','deeplink','imagethumbnail','imagelarge' -o files/hostedfeeds/forthill/all.csv | mail -s "All Forthill Exported" tech@odst.co.uk < logs/forthill.log
 
 echo 'http://www.odst.co.uk/feeds/forthill.zip?type=webgains' > logs/forthill.log
-mongoexport -d odstech -c forthillhome --csv -f 'productcode','productid','productname','warehousecustom','productdescription','availability','freeshippingitem','google_product_type','productcondition','productmanufacturer','productfeatures','deeplink','imagethumbnail','imagelarge' -o files/hostedfeeds/forthill/webgains.csv | mail -s "Webgains Forthill Exported" tech@odst.co.uk < logs/forthill.log
+mongoexport -d odstech -c forthillhome --csv -f 'productcode','productid','productname','warehousecustom','productdescription','availability','freeshippingitem','google_product_type','productcondition','productmanufacturer','productfeatures','deeplink','imagethumbnail','imagelarge','webgains_deeplink' -o files/hostedfeeds/forthill/webgains.csv | mail -s "Webgains Forthill Exported" tech@odst.co.uk < logs/forthill.log
 
 echo 'http://www.odst.co.uk/feeds/forthill.zip?type=froogle' > logs/forthill.log
-mongoexport -d odstech -c forthillhome --csv -f 'productcode','productid','productname','warehousecustom','productdescription','availability','freeshippingitem','google_product_type','productcondition','productmanufacturer','productfeatures','deeplink','imagethumbnail','imagelarge' -o files/hostedfeeds/forthill/froogle.csv | mail -s "Froogle Forthill Exported" tech@odst.co.uk < logs/forthill.log
+mongoexport -d odstech -c forthillhome --csv -f 'productcode','productid','productname','warehousecustom','productdescription','availability','freeshippingitem','google_product_type','productcondition','productmanufacturer','productfeatures','deeplink','imagethumbnail','imagelarge','google_deeplink' -o files/hostedfeeds/forthill/froogle.csv | mail -s "Froogle Forthill Exported" tech@odst.co.uk < logs/forthill.log
 
 
 echo 'http://www.odst.co.uk/feeds/forthill.zip?type=nextag' > logs/forthill.log
-mongoexport -d odstech -c forthillhome --csv -f 'productcode','productid','productname','warehousecustom','productdescription','availability','freeshippingitem','google_product_type','productcondition','productmanufacturer','productfeatures','deeplink','imagethumbnail','imagelarge' -o files/hostedfeeds/forthill/nextag.csv | mail -s "Nextag Forthill Exported" tech@odst.co.uk < logs/forthill.log
+mongoexport -d odstech -c forthillhome --csv -f 'productcode','productid','productname','warehousecustom','productdescription','availability','freeshippingitem','google_product_type','productcondition','productmanufacturer','productfeatures','deeplink','imagethumbnail','imagelarge','nextag_deeplink' -o files/hostedfeeds/forthill/nextag.csv | mail -s "Nextag Forthill Exported" tech@odst.co.uk < logs/forthill.log
 
 echo 'http://www.odst.co.uk/feeds/forthill.zip?type=dooyoo' > logs/forthill.log
-mongoexport -d odstech -c forthillhome --csv -f 'productcode','productid','productname','warehousecustom','productdescription','availability','freeshippingitem','google_product_type','productcondition','productmanufacturer','productfeatures','deeplink','imagethumbnail','imagelarge','warranty' -o files/hostedfeeds/forthill/dooyoo.csv | mail -s "Dooyoo Forthill Exported" tech@odst.co.uk < logs/forthill.log
+mongoexport -d odstech -c forthillhome --csv -f 'productcode','productid','productname','warehousecustom','productdescription','availability','freeshippingitem','google_product_type','productcondition','productmanufacturer','productfeatures','deeplink','imagethumbnail','imagelarge','warranty','dooyoo_deeplink' -o files/hostedfeeds/forthill/dooyoo.csv | mail -s "Dooyoo Forthill Exported" tech@odst.co.uk < logs/forthill.log
 
 
 ./zipFiles.sh
