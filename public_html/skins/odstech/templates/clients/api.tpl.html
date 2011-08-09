@@ -1,0 +1,46 @@
+<br />
+Region: <select id="regions">
+{foreach from=$client->getNavigation() item="region"}
+	<option value="/api/index.php?source=easyjet&type=properties&format=xml&rgion={$region}&limit=1">{$region}</option>
+{/foreach}
+</select>
+<br />
+<br />
+<strong>Example API URL:</strong>
+<br />
+<a id="example_url" href="/api/index.php?source=easyjet&type=properties&format=xml&rgion={$region}&limit=1">/api/index.php?source=easyjet&type=properties&format=xml&amp;rgion={$region}&limit=1</a>
+<br />
+<br />
+<textarea id="example_xml" name="example_xml" style="width: 500px; height: 300px;">
+m00
+</textarea>
+{literal}
+<link rel="stylesheet" href="/lib/codemirror.css"> 
+<script src="/lib/codemirror.js"></script> 
+<script src="/mode/xml/xml.js"></script> 
+<link rel="stylesheet" href="/style/codemirror.css"> 
+<script>
+	
+	$(document).ready(function(){
+		$(".tool_panel" ).accordion({ active: 1 });	
+	});
+</script>
+<script>
+$(document).ready(function(){
+	function loadXML()
+	{
+		$.get($('#example_url').attr('href') + '&preview&limit=1', function(data) {
+			$('#example_xml').attr('value', data);
+			//var editor = CodeMirror.fromTextArea(document.getElementById("example_xml"), {mode: {name: "xml", htmlMode: false}, });
+			$('#example_xml').css('width: 500px;');
+		});
+	}
+	loadXML();
+	$('#regions').change(function(){
+		$("#example_url").html($(this).val());
+		$("#example_url").attr('href', $(this).val());
+		loadXML();
+	});
+});
+</script>
+{/literal}
