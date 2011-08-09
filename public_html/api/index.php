@@ -37,8 +37,7 @@ switch ($_GET['source']) {
 					$properties = $collection->find($search);
 				}
 
-		  		
-		  		
+		  		$nwProperties = array();
 		  		foreach ($properties as $property) {
 		  			unset($property['_id']);
 
@@ -54,6 +53,7 @@ switch ($_GET['source']) {
 		  				
 			  			$sxe = new SimpleXMLElement('<properties></properties>');
 						$sxe->addAttribute('type', 'properties');
+						if(is_array($nwProperties) && count($nwProperties) > 0)
 		  				foreach ($nwProperties as $property) {
 		  					$xmlProp = $sxe->addChild('property');
 		  					foreach($property as $fieldname => $fieldvalue) {
