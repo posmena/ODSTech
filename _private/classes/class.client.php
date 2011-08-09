@@ -25,18 +25,20 @@ class client {
 		$sql = sprintf("SELECT id, name, master_feed_id FROM ot_feeds WHERE client_id=%d", $this->db->queryParameter($this->getId(), true));
 		$result = $this->db->getQuery($sql);
 		$feeds = array();
-		foreach ($result as $feed) {
-			$feeds[$feed['id']]['data'] = util::array_to_object($feed);
-			
-			// Fields
-			$sql = sprintf("SELECT fieldname, name FROM ot_feeds_fields WHERE ot_feed_id=%d", $this->db->queryParameter($feed['id'], true));
-			$result = $this->db->getQuery($sql);
-			$feeds[$feed['id']]['fields'] = util::array_to_object($result);
-			
-			// Filters
-			$sql = sprintf("SELECT fieldname, operand, criteria FROM ot_feeds_filters WHERE ot_feed_id=%d", $this->db->queryParameter($feed['id'], true));
-			$result = $this->db->getQuery($sql);
-			$feeds[$feed['id']]['filters'] = util::array_to_object($result);
+		if (count($result) > 0) {
+			foreach ($result as $feed) {
+				$feeds[$feed['id']]['data'] = util::array_to_object($feed);
+				
+				// Fields
+				$sql = sprintf("SELECT fieldname, name FROM ot_feeds_fields WHERE ot_feed_id=%d", $this->db->queryParameter($feed['id'], true));
+				$result = $this->db->getQuery($sql);
+				$feeds[$feed['id']]['fields'] = util::array_to_object($result);
+				
+				// Filters
+				$sql = sprintf("SELECT fieldname, operand, criteria FROM ot_feeds_filters WHERE ot_feed_id=%d", $this->db->queryParameter($feed['id'], true));
+				$result = $this->db->getQuery($sql);
+				$feeds[$feed['id']]['filters'] = util::array_to_object($result);
+			}
 		}
 		
 		$this->feeds = $feeds;
@@ -69,6 +71,11 @@ class client {
 		}
 		
 		$this->mfeeds = $feeds;
+	}
+
+	function getNavigation() {
+		$navigation = array('Algarve','Amsterdam','Barcelona','Corfu','Crete','Cyprus','Egypt','Fuerteventura','Halkidiki','Ibiza','Kos','Lanzarote','Lombardy','Madeira','Madrid','Majorca','Malta','Menorca','Morocco','Mykonos','Paris','Prague','Rhodes','Rome','Santorini','Tenerife','Turkey','Venice','Zante');
+		return $navigation;
 	}
 	
 	function getId() {

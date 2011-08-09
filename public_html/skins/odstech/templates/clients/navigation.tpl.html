@@ -1,14 +1,30 @@
+
 <div class="tool_panel">
 	<h3><a href="">feeds</a></h3>
+	<div class="navbar">	
+		<ol>
+			{if $client->getId()==1}
+				{foreach from=$client->getNavigation() item="property"}
+				<li><a href="/feeds/easyjet.zip?region={$property}" target="_blank">{$property}</a></li>
+				{/foreach}
+			{else}
+				{foreach from=$feeds item="feedo"}
+					{foreach from=$feedo key="key" item="feed"}
+						{if $key == 'data'}
+						<li><a {if $action == 'admin_images'}class="selected" {/if}href="/clients/{$client->getId()}/feeds/{$feed->id}">{$feed->name}</a></li>
+						{/if}
+					{/foreach}	
+				{/foreach}				
+			{/if}
+		</ol>
+
+	</div>
+
+
+	<h3><a href="">api</a></h3>
 	<div class="navbar">
 		<ol>
-			{foreach from=$feeds item="feedo"}
-				{foreach from=$feedo key="key" item="feed"}
-					{if $key == 'data'}
-					<li><a {if $action == 'admin_images'}class="selected" {/if}href="/clients/{$client->getId()}/feeds/{$feed->id}">{$feed->name}</a></li>
-					{/if}
-				{/foreach}
-			{/foreach}
+			<li><a href="/clients/{$client->getId()}/api?region=Algarve">Properties</a></li>
 		</ol>
 	</div>
 	
