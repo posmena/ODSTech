@@ -48,6 +48,7 @@ class client {
 		$sql = sprintf("SELECT id, name, ot_table FROM ot_client_master_feeds WHERE client_id=%d", $this->db->queryParameter($this->getId(), true));
 		$result = $this->db->getQuery($sql);
 		$feeds = array();
+		if (is_array($result) && count($result) > 0)
 		foreach ($result as $feed) {
 			$feeds[$feed['id']]['data'] = util::array_to_object($feed);
 			
