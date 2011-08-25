@@ -12,3 +12,8 @@ for i in $(ls -a files/hostedfeeds/forthill | grep '.csv' | grep -v '.zip'); do
    zip -j "files/compressedfeeds/forthill/$i.zip" "files/hostedfeeds/forthill/$i"
    rm "files/hostedfeeds/forthill/$i"
 done
+
+for i in $(ls -a files/hostedfeeds/chesca | grep '.csv' | grep -v '.zip'); do
+   zip -j "files/compressedfeeds/chesca/$i.zip" "files/hostedfeeds/chesca/$i"
+   rm "files/hostedfeeds/chesca/$i"
+done
