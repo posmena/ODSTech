@@ -8,6 +8,150 @@ class sitescraper
 		global $db;
 		
 		switch ($site) {
+			case 'chesca':
+			{
+				$conn = new Mongo('localhost');
+				$mdb = $conn->odstech;
+				$collection = $mdb->chesca_scrape;
+				$site = "http://chescadirect.co.uk";
+				$urls = array('jackets' => $site.'/departments/1-jackets-coats',
+							
+							  'trousers' => $site.'/departments/2-trousers',
+							  'skirts'   => $site.'/departments/3-skirts',
+							  'knitwear' => $site.'/departments/4-knitwear',
+							  'jerseys' => $site.'/departments/5-jerseys',
+							  'blouses' => $site.'/departments/6-blouses',
+							  'dresses' => $site.'/departments/7-dresses',
+							  'accessories' => $site.'/departments/8-accessories');
+				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>/siU";
+
+				foreach ($urls as $category => $url) {
+					$page = feed_processor::curl_get_file_contents($url);
+					if (preg_match_all($regexp, $page, $matches)) {
+						foreach($matches[0] as $product_url) {
+							if (false !== strpos($product_url, '&amp;page=')) {
+								$pages[] = $product_url;
+							}
+							
+							// page 1
+							if (false !== strpos($product_url,'href="/products')) {
+								$pUrls[$category][] = $product_url;
+							}
+						}
+						
+						// loop through all pages
+						foreach ($pages as $page) {
+							if (preg_match($regexp, $page, $matches)) {
+								$pageUrls[$category][] = $matches[2];
+							}
+						}
+						
+						$matches = '';
+						foreach($pageUrls[$category] as $url) {
+							//$url = html_entity_decode($url);
+							$page = feed_processor::curl_get_file_contents($site.$url);
+							if (preg_match_all($regexp, $page, $matches)) {
+								foreach($matches[0] as $product_url) {
+									// page x
+									if (false !== strpos($product_url,'href="/products')) {
+										$pUrls[$category][] = $product_url;
+									}
+								}
+							}	
+						}
+					}
+				}
+
+				if (true === is_array($pUrls) && count($pUrls) > 0) {
+					foreach ($pUrls as $categories => $cat) {
+						foreach ($cat as $pUrl) {
+							if (preg_match($regexp, $pUrl, $matches)) {
+								$url = $site.$matches[2];
+								$product = feed_processor::curl_get_file_contents($url);
+								$item = array();
+								try {
+									$start = strpos($product, "<div class='info'>");
+
+									if ($start === false) {
+										throw new Exception ('Name not found for ' . $url);
+									}
+
+									$end   = strpos($product,'</div>',$start) + 6;
+									$info  = substr($product,$start,$end-$start);
+
+									$start = strpos($info, '<h2>') + 4;
+									$end   = strpos($info, '</h2>', $start);
+									$name  = substr($info,$start,$end-$start);
+								
+									$start = strpos($info, "<p class='code'>") + 30;
+									$end   = strpos($info, '</p>', $start);
+									$code  = trim(substr($info,$start,$end-$start));
+									
+									$start = strpos($info, "<div class='price'>") + 20;
+									$end   = strpos($info, "</div>");
+									$price = str_replace('&pound;', '', trim(substr($info,$start,$end-$start)));
+									
+									$newPrice = strstr($price, "\n");
+									if (false !== $newPrice) {
+										$price = str_replace("\n", '', $newPrice);
+									}
+
+									$start = strpos($product, "<p class='description'>") + 23;
+									$end   = strpos($product, "</p>", $start);
+									$desc  = trim(substr($product,$start,$end-$start));
+
+									$start = strpos($product, "<div class='images'>");
+									$end   = strpos($product, "</a>", $start) + 4;
+									$image = trim(substr($product,$start,$end-$start));
+
+									if (preg_match($regexp, $image, $imgmatches)) {
+										$largeImage = $site.$imgmatches[2];
+										$thumbnail = str_replace('large', 'small', $largeImage);
+									}
+
+									if (preg_match('/<select\s[^>](.*)<\/select>/msU',$product,$sizes)) {
+										$option = $sizes[0];
+										if (preg_match_all('/<option\s[^>]*(.*)<\/option>/msU',$option,$size)) {
+											$itemSize = '';
+											foreach ($size[1] as $value) {
+												$itemSize .= str_replace('>','', strstr($value, '>')) . "|";
+											}
+										}
+									}
+
+									//print $name."\n";
+									//print $code."\n";
+									//print $categories."\n";
+									//print $price."\n";
+									//print $desc."\n";
+									//print $url."\n";
+									//print $largeImage."\n";
+									//print $thumbnail."\n";
+									//print $itemSize."\n";
+
+									$item['_id']         = $code;
+									$item['name']        = $name;
+									$item['product_id']  = $code;
+									$item['category']    = $categories;
+									$item['price']       = $price;
+									$item['description'] = $desc;
+									$item['deeplink']    = $url;
+									$item['largeimage']  = $largeImage;
+									$item['thumbnail']   = $thumbnail;
+									$item['sizes']       = $itemSize;
+
+									$collection->save($item, array('_id' => $code));
+									
+								} catch(Exception $ex) {
+									
+								}
+							}
+						}
+					}
+				}
+
+				break;
+			}
 			case 'easyjet': {
 				
 				$conn = new Mongo('localhost');
