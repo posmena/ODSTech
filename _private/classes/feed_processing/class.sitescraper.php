@@ -16,12 +16,12 @@ class sitescraper
 				$site = "http://chescadirect.co.uk";
 				$urls = array('jackets' => $site.'/departments/1-jackets-coats',
 							
-							  'trousers' => $site.'/departments/2-trousers',
-							  'skirts'   => $site.'/departments/3-skirts',
-							  'knitwear' => $site.'/departments/4-knitwear',
-							  'jerseys' => $site.'/departments/5-jerseys',
-							  'blouses' => $site.'/departments/6-blouses',
-							  'dresses' => $site.'/departments/7-dresses',
+							  'trousers'    => $site.'/departments/2-trousers',
+							  'skirts'      => $site.'/departments/3-skirts',
+							  'knitwear'    => $site.'/departments/4-knitwear',
+							  'jerseys'     => $site.'/departments/5-jerseys',
+							  'blouses'     => $site.'/departments/6-blouses',
+							  'dresses'     => $site.'/departments/7-dresses',
 							  'accessories' => $site.'/departments/8-accessories');
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>/siU";
 
@@ -67,6 +67,7 @@ class sitescraper
 						foreach ($cat as $pUrl) {
 							if (preg_match($regexp, $pUrl, $matches)) {
 								$url = $site.$matches[2];
+								$url = 'http://chescadirect.co.uk/products/97-champagne-panelled-skirt-limited-size-range-please-phone-0207-60-3434-before-ordering';
 								$product = feed_processor::curl_get_file_contents($url);
 								$item = array();
 								try {
@@ -90,9 +91,13 @@ class sitescraper
 									$start = strpos($info, "<div class='price'>") + 20;
 									$end   = strpos($info, "</div>");
 									$price = str_replace('&pound;', '', trim(substr($info,$start,$end-$start)));
-									
+									$oldPrice = $price;
 									$newPrice = strstr($price, "\n");
+
 									if (false !== $newPrice) {
+										$start = strpos($price, "<span class='old-price'>") + 24;
+										$end   = strpos($price, "</span>");
+										$oldPrice = str_replace('&pound;', '', trim(substr($price,$start,$end-$start)));
 										$price = str_replace("\n", '', $newPrice);
 									}
 
@@ -119,15 +124,13 @@ class sitescraper
 										}
 									}
 
-									//print $name."\n";
-									//print $code."\n";
-									//print $categories."\n";
-									//print $price."\n";
-									//print $desc."\n";
-									//print $url."\n";
-									//print $largeImage."\n";
-									//print $thumbnail."\n";
-									//print $itemSize."\n";
+									$start = strpos($product, "<span class='available'>") + 24;
+									$end   = strpos($product, "</span>", $start);
+									$stock = trim(substr($product,$start,$end-$start));
+									
+									if ($stock != 'IN STOCK') {			
+										$stock = 'OUT OF STOCK';
+									}
 
 									$item['_id']         = $code;
 									$item['name']        = $name;
@@ -139,6 +142,10 @@ class sitescraper
 									$item['largeimage']  = $largeImage;
 									$item['thumbnail']   = $thumbnail;
 									$item['sizes']       = $itemSize;
+									$item['stock']       = $stock;
+									$item['delivery_time'] = 'Standard delivery within 10-14 working days';
+									$item['delivery_cost'] = '£6.50';
+									$item['full_merchant_price'] = $oldPrice;
 
 									$collection->save($item, array('_id' => $code));
 									
