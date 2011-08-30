@@ -127,6 +127,15 @@ class sitescraper
 									$start = strpos($product, "<span class='available'>") + 24;
 									$end   = strpos($product, "</span>", $start);
 									$stock = trim(substr($product,$start,$end-$start));
+
+									$start = strpos($product, "<p class='composition'>") + 23;
+									$end   = strpos($product, "</p>", $start);
+									$material = trim(substr($product,$start,$end-$start));
+									$material = str_replace('Composition:','',$material);
+									$material = str_replace('<span>','',$material);
+									$material = str_replace('</span>','',$material);
+									$material = str_replace("\n",'',$material);
+
 									
 									if ($stock != 'IN STOCK') {			
 										$stock = 'OUT OF STOCK';
@@ -146,6 +155,7 @@ class sitescraper
 									$item['delivery_time'] = 'Standard delivery within 10-14 working days';
 									$item['delivery_cost'] = '£6.50';
 									$item['full_merchant_price'] = $oldPrice;
+									$item['material'] = $material;
 
 									$collection->save($item, array('_id' => $code));
 									
