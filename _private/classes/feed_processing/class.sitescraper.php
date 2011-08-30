@@ -142,20 +142,24 @@ class sitescraper
 									}
 
 									$item['_id']         = $code;
-									$item['name']        = $name;
-									$item['product_id']  = $code;
+									$item['title']        = $name;
+									$item['id']  = $code;
 									$item['category']    = $categories;
 									$item['price']       = $price;
 									$item['description'] = $desc;
-									$item['deeplink']    = $url;
-									$item['largeimage']  = $largeImage;
+									$item['link']    = $url;
+									$item['image_link']  = $largeImage;
 									$item['thumbnail']   = $thumbnail;
 									$item['sizes']       = $itemSize;
-									$item['stock']       = $stock;
+									$item['availability']       = $stock;
 									$item['delivery_time'] = 'Standard delivery within 10-14 working days';
 									$item['delivery_cost'] = '£6.50';
+									$item['shipping'] = $item['delivery_cost'];
 									$item['full_merchant_price'] = $oldPrice;
 									$item['material'] = $material;
+									$item['condition'] = "New";
+									$item['brand'] = 'Chesca';
+									$item['quantity'] = 1;
 
 									$collection->save($item, array('_id' => $code));
 									
