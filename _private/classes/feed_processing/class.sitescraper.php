@@ -67,7 +67,7 @@ class sitescraper
 						foreach ($cat as $pUrl) {
 							if (preg_match($regexp, $pUrl, $matches)) {
 								$url = $site.$matches[2];
-								$url = 'http://chescadirect.co.uk/products/97-champagne-panelled-skirt-limited-size-range-please-phone-0207-60-3434-before-ordering';
+								//$url = 'http://chescadirect.co.uk/products/97-champagne-panelled-skirt-limited-size-range-please-phone-0207-60-3434-before-ordering';
 								$product = feed_processor::curl_get_file_contents($url);
 								$item = array();
 								try {
