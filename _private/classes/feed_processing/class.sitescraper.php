@@ -15,7 +15,6 @@ class sitescraper
 				$collection = $mdb->chesca_scrape;
 				$site = "http://chescadirect.co.uk";
 				$urls = array('jackets' => $site.'/departments/1-jackets-coats',
-							
 							  'trousers'    => $site.'/departments/2-trousers',
 							  'skirts'      => $site.'/departments/3-skirts',
 							  'knitwear'    => $site.'/departments/4-knitwear',
@@ -27,6 +26,7 @@ class sitescraper
 
 				foreach ($urls as $category => $url) {
 					$page = feed_processor::curl_get_file_contents($url);
+					$pages = array();
 					if (preg_match_all($regexp, $page, $matches)) {
 						foreach($matches[0] as $product_url) {
 							if (false !== strpos($product_url, '&amp;page=')) {
@@ -153,7 +153,7 @@ class sitescraper
 									$item['sizes']       = $itemSize;
 									$item['availability']       = $stock;
 									$item['delivery_time'] = 'Standard delivery within 10-14 working days';
-									$item['delivery_cost'] = '£6.50';
+									$item['delivery_cost'] = '6.50';
 									$item['shipping'] = $item['delivery_cost'];
 									$item['full_merchant_price'] = $oldPrice;
 									$item['material'] = $material;
