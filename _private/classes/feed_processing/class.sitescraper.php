@@ -92,8 +92,6 @@ class sitescraper
 									$desc  = trim(str_replace('"', '', substr($product,$start,$end-$start)));
 
 
-
-
 									if (preg_match('/<select\s[^>](.*)<\/select>/msU',$product,$sizes)) {
 										$option = $sizes[0];
 										if (preg_match_all('/<option\s[^>]*(.*)<\/option>/msU',$option,$size)) {
