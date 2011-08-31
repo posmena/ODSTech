@@ -92,6 +92,8 @@ class sitescraper
 									$desc  = trim(str_replace('"', '', substr($product,$start,$end-$start)));
 
 
+
+
 									if (preg_match('/<select\s[^>](.*)<\/select>/msU',$product,$sizes)) {
 										$option = $sizes[0];
 										if (preg_match_all('/<option\s[^>]*(.*)<\/option>/msU',$option,$size)) {
@@ -102,17 +104,29 @@ class sitescraper
 										}
 									}
 
-									$start = strpos($product, "<strong>Fabric content: </strong>") + 33;
-									$end   = strpos($product, "<br />", $start);
-									$material = trim(substr($product,$start,$end-$start));
+									$start = strpos($product, "Fabric content:") + 15;
+									if ($start === false) {
+										$material = '';
+									} else {
+										$end   = strpos($product, "<br />", $start);
+										$material = trim(substr($product,$start,$end-$start));	
+									}
+									
+									$material = str_replace('<strong>','', $material);
+									$material = str_replace('</strong>','', $material);
+									$material = str_replace('&nbsp;',' ', $material);
+
+									if(strlen($material) > 300) {
+										$material = '';
+									}
 
 									$item['_id']         = $code;
-									$item['title']        = $name;
-									$item['id']  = $code;
+									$item['title']       = $name;
+									$item['id']          = $code;
 									$item['category']    = $categories;
 									$item['price']       = $price;
 									$item['description'] = $desc;
-									$item['link']    = $url;
+									$item['link']        = $url;
 									$item['image_link']  = $largeImage;
 									$item['thumbnail']   = $thumbnail;
 									$item['sizes']       = $itemSize;
