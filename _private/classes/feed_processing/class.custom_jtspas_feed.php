@@ -88,6 +88,10 @@ class custom_jtspas_feed extends network_base
 			$item = array();
 			foreach ($fields as $key => $field) {
 				if ($field != '') {
+					if (strstr($field, 'image_link')) {
+						print_r($data);
+					}
+
 					if (strstr($field, 'product_type')) {
 						$item['category'] = $data[$key];
 						$parts            = explode(",", $data[$key]);
@@ -124,6 +128,9 @@ class custom_jtspas_feed extends network_base
 				}
 
 			}
+
+			print_r($item);
+			die();
 						
   			$collection->save($item);
 			
@@ -162,8 +169,15 @@ class custom_jtspas_feed extends network_base
 							  'gtin',
 							  'brand',
 							  'mpn',
+							  'item_group_id',
+							  'colour',
+							  'material',
+							  'pattern',
+							  'size',
 							  'image_link',
+							  'additional_image_link',
 							  'product_type',
+							  'google_product_category',
 							  'quantity',
 							  'availability',
 							  'expiration_date');
