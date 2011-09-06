@@ -128,9 +128,6 @@ class custom_jtspas_feed extends network_base
 				}
 
 			}
-
-			print_r($item);
-			die();
 						
   			$collection->save($item);
 			
