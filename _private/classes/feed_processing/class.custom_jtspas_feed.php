@@ -88,9 +88,6 @@ class custom_jtspas_feed extends network_base
 			$item = array();
 			foreach ($fields as $key => $field) {
 				if ($field != '') {
-					if (strstr($field, 'image_link')) {
-						print_r($data);
-					}
 
 					if (strstr($field, 'product_type')) {
 						$item['category'] = $data[$key];
