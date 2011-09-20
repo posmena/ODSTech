@@ -289,7 +289,7 @@ class sitescraper
 									$item['id']  = $code;
 									$item['category']    = $categories;
 									$item['price']       = $price;
-									$item['description'] = $desc;
+									$item['description'] = str_replace("class='info'>", '', $desc);
 									$item['link']    = $url;
 									$item['image_link']  = $largeImage;
 									$item['thumbnail']   = $thumbnail;
