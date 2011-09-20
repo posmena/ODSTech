@@ -223,8 +223,8 @@ class sitescraper
 									$end   = strpos($product,'</div>',$start) + 6;
 									$info  = substr($product,$start,$end-$start);
 
-									$start = strpos($info, '<h2>') + 4;
-									$end   = strpos($info, '</h2>', $start);
+									$start = strpos($info, '<h1>') + 4;
+									$end   = strpos($info, '</h1>', $start);
 									$name  = substr($info,$start,$end-$start);
 								
 									$start = strpos($info, "<p class='code'>") + 30;
@@ -289,7 +289,7 @@ class sitescraper
 									$item['id']  = $code;
 									$item['category']    = $categories;
 									$item['price']       = $price;
-									$item['description'] = str_replace("class='info'>", '', $desc);
+									$item['description'] = $desc;
 									$item['link']    = $url;
 									$item['image_link']  = $largeImage;
 									$item['thumbnail']   = $thumbnail;
