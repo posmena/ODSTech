@@ -14,7 +14,7 @@ class custom_forthillhome_feed extends network_base
 		$mdb = $conn->odstech;
 		// access collection
   		$collection = $mdb->forthillhome;
-		$response = $collection->drop();
+		//$response = $collection->drop();
 		
 		// set up the indices
 		//$collection->ensureIndex(array('out_departure_airport_code' =>  1));
