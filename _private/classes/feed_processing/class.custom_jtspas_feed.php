@@ -127,7 +127,8 @@ class custom_jtspas_feed extends network_base
 				}
 
 			}
-						
+			
+			$item['_id'] = $item['id'];
   			$collection->save($item);
 			
 			if (false === array_key_exists('_id', $item)) {

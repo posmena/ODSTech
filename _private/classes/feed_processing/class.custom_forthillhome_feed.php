@@ -94,6 +94,7 @@ class custom_forthillhome_feed extends network_base
 							}
 						}
 						
+						$item['_id'] = strtolower($item['productcode']);
 						$item['deeplink'] = 'http://www.forthillhome.co.uk/product-p/' . strtolower($item['productcode']) . '.htm';
 
 						$item['nextag_deeplink'] = $item['deeplink'] . '?utm_source=Nextag&utm_medium=cost-per-click';
@@ -107,6 +108,9 @@ class custom_forthillhome_feed extends network_base
 						$item['imagelarge'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-2T.jpg';
 
 						$item['warranty'] = 1;
+
+						print_r($item);
+						die();
 
 						$collection->save($item);
 						if (false === array_key_exists('_id', $item)) {
