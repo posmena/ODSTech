@@ -111,6 +111,7 @@ class feed_processor
 		curl_setopt($c, CURLOPT_URL, $url);
 		curl_setopt($c, CURLOPT_CONNECTTIMEOUT, 5000);
 		curl_setopt($c, CURLOPT_TIMEOUT, 10000);
+
 		$contents = curl_exec($c);
 		curl_close($c);
 

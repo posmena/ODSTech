@@ -2,7 +2,7 @@
 
 class errors{
 
-	var $logfilename = "ipma_errors.log";
+	var $logfilename = "odst_errors.log";
 	
 	function logException($error, $alertUser = false)
 	{

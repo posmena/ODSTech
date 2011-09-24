@@ -1,45 +1,9 @@
 <?php
 
-class core_chesca_feed
+class core_chesca_feed extends core_feed_downloader
 {
-	private $template = 'n/a';
-	private $assignments;
-	private $file = '';
-	private $isHome = false;
-	
 	public function __construct($db, $qs) {
-		
-		if (false === array_key_exists('type', $qs)) {
-			print 'Type must be supplied';
-			exit;
-		}
-
-		$this->file = configuration::APPROOT . '_private/files/compressedfeeds/chesca/'.strtolower($qs['type']) . '.csv.zip';
-		
-		if (true === file_exists($this->file)) {
-			header("Content-type: application/octet-stream");
-			header("Content-Disposition: attachment; filename=\"chesca-" .$qs['type']. ".csv.zip\"");
-			header("Content-type: application/force-download"); 
-		    //header("Content-length: ".filesize($this->file)); 
-		    readfile($this->file);
-			exit; 
-		} else {
-			print 'File does not exist';
-			exit;
-		}
-
-	}
-
-	
-	
-	public function getTemplate() {
-		return $this->template;
-	}
-	public function getAssignments() {
-		return $this->assignments;
+		parent::__construct($db, $qs, 'chesca');
 	}
 	
-	public function isHome() {
-		return $this->isHome;
-	}
 }
