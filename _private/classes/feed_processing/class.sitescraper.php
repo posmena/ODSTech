@@ -304,6 +304,10 @@ class sitescraper
 									$item['brand'] = 'Chesca';
 									$item['quantity'] = 1;
 
+									$item['product_type']    = $categories;
+									$item['size']       = $itemSize;
+
+
 									$collection->save($item, array('_id' => $code));
 									
 								} catch(Exception $ex) {
