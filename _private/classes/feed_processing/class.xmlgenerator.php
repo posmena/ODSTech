@@ -30,13 +30,13 @@ class ODSTech_xmlgenerator
 			
 			$xmlContent .= '<product>';
 			foreach ($headers as $key => $heading) {
-				if ($heading == 'product_type' || $heading == 'description') {
+				if ($heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time') {
 					$content = htmlentities($data[$key]);
 				} else {
 					$content = $data[$key];
 				}
 				
-				$xmlContent .= '<' . $heading . '>' . $content . '</' . $heading . '>' . "\n";	
+				$xmlContent .= '<g:' . $heading . '>' . $content . '</' . $heading . '>' . "\n";	
 				
 			}
 			$xmlContent .= '</product>';
