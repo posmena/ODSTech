@@ -41,6 +41,7 @@ class core_feed_downloader
 
 				break;
 			}
+			case 'froogle':
 			case 'xml':
 			{
 				$this->file = configuration::APPROOT . '_private/files/hostedfeeds/' . $this->feedName. '/'.strtolower($qs['type']) . '.xml';
