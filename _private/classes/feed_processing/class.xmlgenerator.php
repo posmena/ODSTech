@@ -36,7 +36,9 @@ class ODSTech_xmlgenerator
 			$xmlContent .= '<item>';
 			foreach ($headers as $key => $heading) {
 				if ($heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time') {
-					$content = '<![CDATA[' .htmlentities($data[$key]) . ']]>';
+					$content = '<![CDATA[' .htmlentities(utf8_encode($data[$key]), ENT_QUOTES, "UTF-8") . ']]>';
+				} elseif ($heading == 'shipping') {
+					$content = '<g:price>' . $content . '</g:price>';
 				} else {
 					$content = $data[$key];
 				}
@@ -46,6 +48,7 @@ class ODSTech_xmlgenerator
 			}
 			$xmlContent .= '</item>';
 		}
+
 		$xmlContent .= '</channel>';
 		$xmlContent .= '</rss>';
 		

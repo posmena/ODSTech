@@ -1,6 +1,7 @@
 <?php
 
 include 'classes/class.configuration.php';
+include 'classes/class.errors.php';
 include 'classes/feed_processing/class.xmlgenerator.php';
 
 if (array_key_exists(1, $argv)) {
