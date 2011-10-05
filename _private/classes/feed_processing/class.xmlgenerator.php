@@ -36,7 +36,11 @@ class ODSTech_xmlgenerator
 			$xmlContent .= '<item>';
 			foreach ($headers as $key => $heading) {
 				if ($heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time') {
-					$content = '<![CDATA[' .htmlentities(utf8_encode($data[$key]), ENT_QUOTES, "UTF-8") . ']]>';
+					$tData = $data[$key];
+					if ($heading == 'title') {
+						$tData .= " Chesca Womens";
+					}
+					$content = '<![CDATA[' .htmlentities(utf8_encode($tData), ENT_QUOTES, "UTF-8") . ']]>';
 				} elseif ($heading == 'shipping') {
 					$content = '<g:price>' . $data[$key] . '</g:price>';
 				} else {
