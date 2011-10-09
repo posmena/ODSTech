@@ -109,6 +109,17 @@ class custom_forthillhome_feed extends network_base
 
 						$item['warranty'] = 1;
 
+						$item['id'] = $item['productcode'];
+						$item['title'] = $item['productname'];
+						$item['link'] = $item['deeplink'];
+						$item['price'] = $item['warehousecustom'];
+						$item['description'] = $item['productdescription'];
+						$item['condition'] = $item['productcondition'];
+						$item['image_link'] = $item['imagelarge'];
+						$item['category'] = $item['google_product_type'];
+						$item['quantity'] = 1;
+						$item['availability'] = 'In Stock';
+
 
 						$collection->save($item);
 						if (false === array_key_exists('_id', $item)) {

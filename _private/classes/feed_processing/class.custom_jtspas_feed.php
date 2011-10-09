@@ -122,6 +122,7 @@ class custom_jtspas_feed extends network_base
 					}
 
 					$item['warranty'] = 1;
+					$item['availability'] = 'In Stock';
 
 					$item[$field] = $data[$key];
 				}
