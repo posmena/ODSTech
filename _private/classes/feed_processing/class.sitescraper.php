@@ -107,6 +107,8 @@ class sitescraper
 
 									}
 
+									$price = str_replace('</span>', '', $price);
+
 									if ($price > 150) {
 										$delivery = '0';
 									}
