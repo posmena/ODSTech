@@ -31,6 +31,7 @@ class sitescraper
 							  'sale > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/ss11-sale/jersey-wear.aspx',
 							  'sale > tops'                         => 'http://www.damselinadress.co.uk/shop/ss11-sale/tops.aspx',
 							  'sale > accessories'                  => 'http://www.damselinadress.co.uk/shop/ss11-sale/accessories.aspx');
+				//$urls = array('dresses > any occasion'              => 'http://www.damselinadress.co.uk/shop/dresses.aspx?i=32&px=0&ob=1&vbs=309&vbb=0&vbc=0&vbp=0');
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>/siU";
 				
 				foreach ($urls as $category => $url) {
@@ -55,7 +56,8 @@ class sitescraper
 						foreach ($cat as $pUrl) {
 							if (preg_match($regexp, $pUrl, $matches)) {
 								$url = str_replace("'", '', $matches[2]);
-								//$url = 'http://chescadirect.co.uk/products/97-champagne-panelled-skirt-limited-size-range-please-phone-0207-60-3434-before-ordering';
+								//$url = 'http://www.damselinadress.co.uk/shop/ss11-sale/tailoring/otis-jacket-pink.aspx';
+								//$url = 'http://www.damselinadress.co.uk/shop/dresses/day-dresses/azurit-womens-dress-blue.aspx';
 								$product = feed_processor::curl_get_file_contents($url);
 								$item = array();
 								try {
@@ -85,9 +87,25 @@ class sitescraper
 									$stock = trim(str_replace('<strong>Stock availability:</strong><br />', '', substr($product,$start,$end-$start)));
 									
 									$oldPrice = '';
+
 									$start = strpos($product, "<span class='pricelarge'>") + 27;
-									$end   = strpos($product, "</span>", $start);
-									$price = substr($product, $start,$end-$start);
+									$end   = strpos($product, "</span>", $start) + 7;
+									$price = str_replace('&pound;', '', trim(substr($product,$start,$end-$start)));
+									
+									
+									$newPrice = strstr($price, "strike");
+										
+									if (false !== $newPrice) {
+										$start = strpos($price, "trike>") + 8;
+										$end   = strpos($price, "</strike>", $start);
+										$oldPrice = substr($price,$start,$end-$start);
+
+										$start = strpos($price, "<span class='sale'>") + 21;
+										$end   = strpos($price, "</span>", $start);
+										$newPrice = substr($price,$start,$end-$start);
+										$price = $newPrice;
+
+									}
 
 									if ($price > 150) {
 										$delivery = '0';
@@ -151,6 +169,7 @@ class sitescraper
 									$item['condition'] = "New";
 									$item['brand'] = 'Damsel in a Dress';
 									$item['quantity'] = 1;
+
 
 									$collection->save($item, array('_id' => $code));
 									
