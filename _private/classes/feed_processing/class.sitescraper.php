@@ -24,7 +24,13 @@ class sitescraper
 							  'skirts & trousers > womens trousers' => 'http://www.damselinadress.co.uk/shop/skirts-and-trousers.aspx?i=32&px=0&ob=1&vbs=297&vbb=0&vbc=0&vbp=0',
 							  'tops > blouses & shirts'             => 'http://www.damselinadress.co.uk/shop/tops.aspx?i=32&px=0&ob=1&vbs=293&vbb=0&vbc=0&vbp=0',
 							  'tops > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/tops.aspx?i=32&px=0&ob=1&vbs=295&vbb=0&vbc=0&vbp=0',
-							  'tops > shrugs'                       => 'http://www.damselinadress.co.uk/shop/tops.aspx?i=32&px=0&ob=1&vbs=294&vbb=0&vbc=0&vbp=0');
+							  'tops > shrugs'                       => 'http://www.damselinadress.co.uk/shop/tops.aspx?i=32&px=0&ob=1&vbs=294&vbb=0&vbc=0&vbp=0',
+							  'sale > dresses'                      => 'http://www.damselinadress.co.uk/shop/ss11-sale/dresses.aspx',
+							  'sale > shrugs'                       => 'http://www.damselinadress.co.uk/shop/ss11-sale/shrugs.aspx',
+							  'sale > tailoring'                    => 'http://www.damselinadress.co.uk/shop/ss11-sale/tailoring.aspx',
+							  'sale > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/ss11-sale/jersey-wear.aspx',
+							  'sale > tops'                         => 'http://www.damselinadress.co.uk/shop/ss11-sale/tops.aspx',
+							  'sale > accessories'                  => 'http://www.damselinadress.co.uk/shop/ss11-sale/accessories.aspx');
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>/siU";
 				
 				foreach ($urls as $category => $url) {
@@ -116,6 +122,14 @@ class sitescraper
 
 									if(strlen($material) > 300) {
 										$material = '';
+									}
+
+									if (false === isset($name) || $name == '') {
+										continue;
+									}
+
+									if (false === isset($code) || $code == '') {
+										continue;
 									}
 
 									$item['_id']         = $code;

@@ -25,11 +25,25 @@ class core_feed_downloader
 		switch ($format) {
 			case 'csv':
 			{
+				$ext = '.csv.zip';
 				$this->file = configuration::APPROOT . '_private/files/compressedfeeds/'. $this->feedName .'/'.strtolower($qs['type']) . '.csv.zip';
+
+				if (isset($qs['unzipped'])){
+					$ext = '.csv';
+					$expandedPath = configuration::APPROOT . '_private/files/inflated/' . $feedName . '/';
+
+					if (false === file_exists($this->file)) {
+						throw new Exception ('File: ' . $filepath . ' does not exist');
+					}
+
+					shell_exec('unzip -jo ' . $this->file . ' -d ' . $expandedPath);
+
+					$this->file = $expandedPath . '/' . strtolower($qs['type']) . '.csv';
+				}
 
 				if (true === file_exists($this->file)) {
 					header("Content-type: application/octet-stream");
-					header("Content-Disposition: attachment; filename=\"" . $this->feedName . "-" .$qs['type']. ".csv.zip\"");
+					header("Content-Disposition: attachment; filename=\"" . $this->feedName . "-" .$qs['type']. "" . $ext . "\"");
 					header("Content-type: application/force-download"); 
 				    //header("Content-length: ".filesize($this->file)); 
 				    readfile($this->file);
