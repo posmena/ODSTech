@@ -298,6 +298,14 @@ class sitescraper
 										$stock = 'OUT OF STOCK';
 									}
 
+									if (false === isset($name) || $name == '') {
+										continue;
+									}
+
+									if (false === isset($code) || $code == '') {
+										continue;
+									}
+
 									$item['_id']         = $code;
 									$item['title']        = $name;
 									$item['id']  = $code;
@@ -320,7 +328,6 @@ class sitescraper
 
 									$item['product_type']    = $categories;
 									$item['size']       = $itemSize;
-
 
 									$collection->save($item, array('_id' => $code));
 									
