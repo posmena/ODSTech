@@ -10,14 +10,14 @@ if (array_key_exists(1, $argv)) {
 	exit;
 }
 
-$temp_files = array(3 => 'scripts/data/jtspasextra2_5ProductAll.csv');
+$temp_files = array(3 => 'scripts/data/jtspas_rrp.csv');
 
 switch ($feed_id) {
 	case 3:
 	{
 		if (time() > strtotime('Friday 5th August 2011')) {
-			print 'Expired.';
-			exit;
+			//print 'Expired.';
+			//exit;
 		}
 
 		$conn = new Mongo('localhost');
@@ -32,6 +32,7 @@ switch ($feed_id) {
 		$i = 0;
 
 		while ($data = fgetcsv($handle, null, $comma)) {
+			
 			$i++;
 			if($i == 1) {
 				continue;
@@ -47,12 +48,14 @@ switch ($feed_id) {
 				continue;
 			}
 
-			$id   = 'jtspasni'.$data[2];
+			$id   = $data[0];
 			$item = array();
 			$items = $collection->find(array('id' => $id));
+
 			foreach ($items as $item)
 			{
-				$item['price'] = $data[5];
+				$item['rrp'] = $data[18];
+				//echo $item['rrp']."\n";
 				$collection->save($item, array('_id' => $item['_id']));
 			}
 		}
