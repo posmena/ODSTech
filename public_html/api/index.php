@@ -5,8 +5,8 @@ if (false === isset($_GET['user']) || false === isset($_GET['pass']) || false ==
 	exit;
 }
 
-$email    = mysql_real_escape_string(stripslashes($_GET['user']));
-$password = mysql_real_escape_string(stripslashes($_GET['pass']));
+$email    = stripslashes($_GET['user']);
+$password = stripslashes($_GET['pass']);
 
 $conn = new Mongo();
 $db   = $conn->odstech;
@@ -84,8 +84,6 @@ switch ($_GET['source']) {
 		  				print $stuff;
 		  			}
 		  		}
-		  		
-
 			}
 		}
 	}	
