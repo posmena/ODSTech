@@ -72,7 +72,11 @@ class core_odstech_base
 			foreach ($this->assignments as $key => $assignment) {
 				$this->tplBase->assign($key, $assignment);
 			}
+			if (true === isset($this->assignments['action'])) {
+				$this->action = $this->assignments['action'];
+			}
 		}
+		
 		
 		$sql = "SELECT 
 		CONCAT('http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=' , DAY(raw.departure_date) , '/' , MONTH(raw.departure_date) , '/', YEAR(raw.departure_date) , '&nights=', raw.duration, '&adults=2&airport=', out_departure_airport_code, '&resort=', p.ResortID) as 'url',
@@ -82,7 +86,9 @@ class core_odstech_base
 		LIMIT 0,10";
 		
 		$result = $this->db->getQuery($sql);
+
 		$this->tplBase->assign('example', $result);
+		
 		
 		$this->tplBase->assign('content', $this->template);
 		$this->tplBase->assign('domain', '');
@@ -101,6 +107,10 @@ class core_odstech_base
 			//$output = $mhtml->minify($this->tplBase->fetch('sitebuilder.tpl.html'));
 			//$this->tplBase->assign('output', $output);
 			//$this->tplBase->display('minifiedhtml.tpl.html');
+			if ($this->template == 'signup.tpl.html') {
+				$this->base = $this->template;
+			}
+			
 			$this->tplBase->display($this->base);
 		}
 	}
