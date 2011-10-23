@@ -71,7 +71,8 @@ switch ($_GET['source']) {
 		  				foreach ($nwProperties as $property) {
 		  					$xmlProp = $sxe->addChild('property');
 		  					foreach($property as $fieldname => $fieldvalue) {
-		  						$xmlProp->addChild($fieldname, htmlspecialchars($fieldvalue));
+		  						$innit = mb_convert_encoding($fieldvalue, 'UTF-8', mb_detect_encoding($fieldvalue));
+		  						$xmlProp->addChild($fieldname, htmlspecialchars($innit, ENT_NOQUOTES, 'UTF-8'));
 
 		  					}
 		  				}
@@ -88,3 +89,16 @@ switch ($_GET['source']) {
 		}
 	}	
 }
+
+function umlaute($text){ 
+    $returnvalue=""; 
+    for($i=0;$i<strlen($text);$i++){ 
+        $teil=hexdec(rawurlencode(substr($text, $i, 1))); 
+        if($teil<32||$teil>1114111){ 
+            $returnvalue.=substr($text, $i, 1); 
+        }else{ 
+            $returnvalue.="&#".$teil.";"; 
+        } 
+    } 
+    return $returnvalue; 
+} 
