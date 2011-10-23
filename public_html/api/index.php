@@ -1,5 +1,19 @@
 <?php
 
+if (false === isset($_GET['user']) || false === isset($_GET['pass']) || false === isset($_GET['source'])) {
+	print 'You are not authorised to use this service.';
+	exit;
+}
+
+$email    = mysql_real_escape_string(stripslashes($_GET['user']));
+$password = mysql_real_escape_string(stripslashes($_GET['pass']));
+
+$conn = new Mongo();
+$db   = $conn->odstech;
+// access collection
+
+$validUser = (bool) $db->ot_users->find(array('username' => $email, 'password' => md5($password)))->count();
+
 
 switch ($_GET['source']) {
 	default:
@@ -48,7 +62,7 @@ switch ($_GET['source']) {
 		  			case 'xml':
 		  			{	
 		  				if (false === array_key_exists('preview', $_GET)) {
-		  					header('Content-type: text/xml');		  					
+		  					header('Content-type: application/xml');		  					
 		  				}
 		  				
 			  			$sxe = new SimpleXMLElement('<properties></properties>');

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+	<head>
+		<link rel="stylesheet" href="/style/style.css" type="text/css" media="screen">
+		<title>{if $page.title}{$page.title} - {/if}Performance Marketing | ODST</title>
+		<script language="JavaScript" type="text/javascript" src="/contentflow.js"></script> 
+		<script tyle="text/javascript">
+			{literal}
+	        var cf = new ContentFlow('contentFlow', {reflectionColor: "#ffffff", scaleFactor: 1});
+	        {/literal}
+	    </script>
+	</head>
+	<body class="">
+		<div id="header">
+			<div class="innerHeader">
+				<a href="/"><img src="/images/odst_logo.png" /></a>
+			</div>
+		</div><!-- END #header -->
+		
+		
+	    </div>
+		<div id="content" class="clearfix">
+			<div class="feedback" style="margin: auto; width: 600px;">
+				&nbsp;
+				{foreach from=$error item="err"}
+					{$err}
+				{/foreach}
+
+			</div>
+			<div class="signup">
+				{if $signup_complete == false}
+				<form method="post" action="/signup.html">
+					<fieldset class="form">
+						<ol>
+							<h1 style="color: #ffffff;">
+								Signup
+							</h1>
+							<br />
+							<li>
+								<label class="text" style="color: #ffffff;">email address</label>
+								<input id="name" name="user[email]" class="text" type="text" placeholder="email address" autofocus value="{$post.email}"/>
+							</li>
+							<li>
+								<label class="text" style="color: #ffffff;">password</label>
+								 <input id="pass" name="user[password]" class="text" type="password" placeholder="" />
+							</li>
+							<li>
+								<label class="text" style="color: #ffffff;">confirm password</label>
+								 <input id="pass2" name="user[password2]" class="text" type="password" placeholder="" />
+							</li>
+							<li>
+								<label class="text" style="color: #ffffff;">first name</label>
+								 <input id="fname" name="user[fname]" class="text" type="text" placeholder="" value="{$post.fname}"/>
+							</li>
+							<li>
+								<label class="text" style="color: #ffffff;">surname</label>
+								 <input id="sname" name="user[sname]" class="text" type="text" placeholder="" value="{$post.sname}"/>
+							</li>
+							<li>
+								<textarea rows="10" style="width: 250px;">
+The Site
+www.odst.co.uk will be known as the ‘Site’ in these terms and conditions. ODST Limited, including any subsidiaries and affiliates is known as the Site Owner, ("we" or "us" or "our") in these terms and conditions. We provide the information contained on the Site to visitors ("you" or "your") subject to these terms and conditions set out below, the privacy policy and any other relevant notices (together, the “Terms). 
+2. Information on the Site
+
+2.1 While every effort is made to update the information contained on this website, we do not make any representations or warranties as to the accuracy, completeness or reliability of information, opinions, data and/or content contained on the Site (together "Information") and shall not be bound in any manner by any Information.  
+2.2 We reserve the right to change or discontinue without notice any aspect of this website. You rely on the information contained on the Site at your own risk.  
+3. Trade Marks
+
+Nothing contained on the Site should be construed as granting any licence or right to use any of the registered or unregistered trade marks, names, logos and service marks (collectively "Trade Marks") displayed on this website owned by us or any third party, without express prior written permission. 
+4. External Links
+
+4.1 All external links provided on the Site are not controlled by us and we make no representation regarding their content. Use of external links is at your own risk and you must refer to any external websites terms and conditions of use.  
+4.2 It is forbidden to create hypertext links to the Site without our express prior written permission, but we’re happy to consider link requests. 
+
+5. Public Forums and submissions
+
+We are not responsible for any material submitted to the public areas by you anywhere on the Site. We reserve the right to remove any material submitted or posted by you without notice, if we believe that you have or are likely to: 
+a) abuse, harass, stalk, defame threaten or otherwise violate the rights of other users/third parties;
+
+b) publish, post or disseminate any defamatory, obscene, indecent or unlawful material, threatening;
+
+c) post or upload files that contain viruses, corrupted files or anything that may damage the Site and/or a third party's computer systems;
+
+d) violate the Trade Marks any copyright, trade mark, or other applicable or rights of us or any third party; and
+
+e) submit material that is intended to solicit business, be sexually related, racially offensive, profane, pornographic or violates any applicable law. 
+6. Warranties
+
+6.1 We make no express or implied warranties, representations or guarantees regarding the Site, or any personal information or material and information transmitted by you.
+
+ 
+
+6.2 We make no warranty or representation that information on the Site is appropriate for use in any jurisdiction outside of England and Wales. By accessing and interacting with the Site, you warrant and represent that you are legally entitled to do so. 
+
+7. Your indemnity
+
+You hereby agree to indemnify us against any loss, liability, damage or expense of whatever nature, which we or any third party may suffer, which is caused by or attributable to, whether directly or indirectly, your use of the Site. 
+8. Disclaimer of Liability
+
+8.1 We will not be responsible for any direct, indirect or consequential liability for any loss, liability, damage, personal injury or expense whatsoever suffered by you or any third party as a result of directly or indirectly to the Site, any products advertised for sale on the Site or any Information. For the avoidance of doubt, we will not liable to you in any manner whatsoever if any internet tool provided to you by ODST breaks or fails to work in any way.
+
+ 
+
+8.2 We shall not be liable in any way to you or to any other person or corporation whatsoever for any direct, indirect or consequential loss, liability, damage, personal injury or expense of any nature whatsoever arising from any delays, inaccuracies, omissions or non-performance or for any actions taken. 
+9. General
+
+9.1 These Terms constitute the sole record of the agreement between you and us in relation to your use of the Site.  
+
+9.2 We may modify the Terms at any time. By visiting the Site you are bound to the current version of the Terms and you shall be responsible for reviewing the Terms each time you visit the Site. 
+
+9.3 Where any conflict or contradiction appears between the provisions of the Terms and any other relevant terms and conditions, policies or notices, these Terms apply. 
+9.4 No extension of time agreed with us will constitute a waiver of any of our existing or future rights. 
+9.5 We shall be entitled to assign and delegate all or any of our rights and obligations to any third party. 
+9.6 All provisions of these Terms are severable from one another. If any provision becomes unenforceable, void or unlawful in any jurisdiction, the remaining provisions of the Terms shall remain in full force and effect. 
+
+9.7 These Terms are governed by the laws of England and Wales, without giving effect to any principles of conflict of law. You hereby consent to the exclusive jurisdiction of the English courts in respect of any disputes arising in connection with the Site.
+
+ 
+
+9.8 Please email support@odst.co.uk with any questions, comments, errors or omissions regarding the Site, or in relation to the way in which we are handling your personal information.
+</textarea>
+							</li>
+							<li>
+								<label class="text" style="color: #ffffff;">accept t&cs</label>
+								 <input id="sname" name="user[agree]" class="text" type="checkbox" placeholder="" />
+							</li>
+							<li>
+								<input class="submit" name="create" type="submit" value="Create Account" />
+							</li>
+							<li>
+								<br />
+								<br />
+							</li>
+
+						</ol>
+					</fieldset>
+				</form>
+				{else}
+					You are now signed up!
+				{/if}
+			</div>
+
+	    </div>
+	    <!-- END #content --> 
+		<div id="footer">
+				<!--- -->
+		</div><!-- END #footer --> 
+	</body>
+</html>
