@@ -43,7 +43,7 @@ class core_signup extends core_default
 				$mdb  = $conn->odstech;
 				$collection = $mdb->ot_users;
 
-				$userExists = (bool) $db->ot_users->find(array('username' => $user['email']))->count();
+				$userExists = (bool) $mdb->ot_users->find(array('username' => $user['email']))->count();
 
 				if (true === $userExists) {
 					$this->assignments['error'][] = 'Username already exists. ';	
