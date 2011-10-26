@@ -38,7 +38,10 @@ class ODSTech_xmlgenerator
 				if ($heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time') {
 					$tData = $data[$key];
 					if ($heading == 'title') {
-						$tData .= " Chesca Womens";
+						if ($name == 'chesca') {
+							$tData .= " Chesca Womens";	
+						}
+						
 					}
 					$content = '<![CDATA[' .htmlentities(utf8_encode($tData), ENT_QUOTES, "UTF-8") . ']]>';
 				} elseif ($heading == 'shipping') {
