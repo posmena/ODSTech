@@ -12,6 +12,7 @@ mongoexport -d odstech -c chesca_scrape --csv -f 'id','title','link','price','ca
 echo 'http://www.odst.co.uk/feeds/chesca.zip?type=froogle' > logs/chesca.log
 mongoexport -d odstech -c chesca_scrape --csv -f 'id','title','link','price','condition','shipping','brand','image_link','product_type','availability','description' -o files/hostedfeeds/chesca/froogle.csv | mail -s "Froogle Chesca Exported" tech@odst.co.uk < logs/chesca.log
 
+
 ./zipFiles.sh
 
 php scripts/xmlGenerator.php chesca froogle | mail -s "Google XML Chesca Exported";
