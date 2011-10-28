@@ -1,0 +1,14 @@
+column,ot_field
+ProductCode,productid
+ProductID,unmapped
+ProductName,productname
+WarehouseCustom,price
+ProductDescription,description
+Availability,availability
+FreeShippingItem,unmapped
+Google_Product_Type,google_product_category
+ProductCondition,condition
+ProductManufacturer,manufacturer
+ProductFeatures,features
+UPC_code,unmapped
+ProductKeywords,unmapped
