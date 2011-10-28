@@ -8,9 +8,9 @@ for i in $(ls -a files/hostedfeeds/jtspas | grep '.csv' | grep -v '.zip'); do
    rm "files/hostedfeeds/jtspas/$i"
 done
 
-for i in $(ls -a files/hostedfeeds/forthill | grep '.csv' | grep -v '.zip'); do
-   zip -j "files/compressedfeeds/forthill/$i.zip" "files/hostedfeeds/forthill/$i"
-   rm "files/hostedfeeds/forthill/$i"
+for i in $(ls -a files/hostedfeeds/forthillhome | grep '.csv' | grep -v '.zip'); do
+   zip -j "files/compressedfeeds/forthillhome/$i.zip" "files/hostedfeeds/forthill/$i"
+   rm "files/hostedfeeds/forthillhome/$i"
 done
 
 for i in $(ls -a files/hostedfeeds/chesca | grep '.csv' | grep -v '.zip'); do
