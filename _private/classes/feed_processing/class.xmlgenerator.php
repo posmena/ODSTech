@@ -54,6 +54,11 @@ class ODSTech_xmlgenerator
 					$heading = 'deeplink';
 					$content = '<![CDATA[' . htmlspecialchars($content) . ']]>';
 				}
+
+				if (false !== stristr($heading, 'image_thumbnail')) {
+					$heading = 'image_link';
+					$content = '<![CDATA[' . $content . ']]>';
+				}
 				
 				$xmlContent .= '<g:' . $heading . '>' . $content . '</g:' . $heading . '>' . "\n";	
 				
