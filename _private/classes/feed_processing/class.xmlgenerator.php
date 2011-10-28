@@ -49,6 +49,10 @@ class ODSTech_xmlgenerator
 				} else {
 					$content = $data[$key];
 				}
+
+				if ($heading == 'google_deeplink') {
+					$heading = 'deeplink';
+				}
 				
 				$xmlContent .= '<g:' . $heading . '>' . $content . '</g:' . $heading . '>' . "\n";	
 				
