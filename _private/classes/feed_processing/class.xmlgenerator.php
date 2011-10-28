@@ -52,7 +52,7 @@ class ODSTech_xmlgenerator
 
 				if (false !== stristr($heading, 'deeplink')) {
 					$heading = 'deeplink';
-					$content = htmlspecialchars($content);
+					$content = '<![CDATA[' . htmlspecialchars($content) . ']]>';
 				}
 				
 				$xmlContent .= '<g:' . $heading . '>' . $content . '</g:' . $heading . '>' . "\n";	
