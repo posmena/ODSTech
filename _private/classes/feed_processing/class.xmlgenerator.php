@@ -71,5 +71,6 @@ class ODSTech_xmlgenerator
 		$handle = fopen($xmlPath, 'w+');
 		fwrite($handle, $xmlDoc);
 		fclose($handle);
+		echo $i . ' products processed.'."\n";
 	}
 }
