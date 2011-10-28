@@ -43,8 +43,9 @@ class core_admin_images extends core_default
 	}
 	
 	public function getImages() {
-		$sql = 'SELECT id, url, alt, href FROM ot_images ORDER BY sort';
-		$result = $this->db->getQuery($sql);
+		//$sql = 'SELECT id, url, alt, href FROM ot_images ORDER BY sort';
+		//$result = $this->db->getQuery($sql);
+		$result = '';
 		return $result;
 	}
 	

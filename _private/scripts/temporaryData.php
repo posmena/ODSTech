@@ -13,7 +13,7 @@ if (array_key_exists(1, $argv)) {
 $temp_files = array(3 => 'scripts/data/jtspas_rrp.csv');
 
 switch ($feed_id) {
-	case 3:
+	case 'jtspas':
 	{
 		if (time() > strtotime('Friday 5th August 2011')) {
 			//print 'Expired.';
@@ -24,7 +24,7 @@ switch ($feed_id) {
 		// access database
 		$mdb = $conn->odstech;
 		// access collection
-  		$collection = $mdb->jtspas;
+  		$collection = $mdb->live_jtspas;
 
 		$local_file = $temp_files[3];
 		$handle     = fopen($local_file, 'r');
@@ -50,7 +50,7 @@ switch ($feed_id) {
 
 			$id   = $data[0];
 			$item = array();
-			$items = $collection->find(array('id' => $id));
+			$items = $collection->find(array('productid' => $id));
 
 			foreach ($items as $item)
 			{

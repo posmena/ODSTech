@@ -9,7 +9,13 @@ class core_odstech_base
 	
 	public function __construct()
 	{
-		$this->db = new database;
+		//$this->db = new database;
+		$conn = new Mongo('localhost');
+		// access database
+		$this->db = $conn->odstech;
+		// access collection
+  		//$collection = $this->db->odstbase;
+		
 		//$this->ms = new membership($this->db);
 		//$this->fn = new sitebuilder_functions($this->db);
 		$this->qs = $_GET;
@@ -18,7 +24,7 @@ class core_odstech_base
 			$this->qs[$key] = $value;
 		}
 
-		$this->db->connection("odstech");
+		//$this->db->connection("odstech");
 		$this->tplBase = new template('odstech');
 		
 		
@@ -77,7 +83,7 @@ class core_odstech_base
 			}
 		}
 		
-		
+		/*
 		$sql = "SELECT 
 		CONCAT('http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=' , DAY(raw.departure_date) , '/' , MONTH(raw.departure_date) , '/', YEAR(raw.departure_date) , '&nights=', raw.duration, '&adults=2&airport=', out_departure_airport_code, '&resort=', p.ResortID) as 'url',
 		p.*, raw.*  FROM pm_custom_products_easyjet raw
@@ -88,7 +94,7 @@ class core_odstech_base
 		$result = $this->db->getQuery($sql);
 
 		$this->tplBase->assign('example', $result);
-		
+		*/
 		
 		$this->tplBase->assign('content', $this->template);
 		$this->tplBase->assign('domain', '');

@@ -2,27 +2,28 @@
 
 class feed_processor
 {
-	public static function process_feed($feed_id)
+	public static function process_feed($feed_id, $full)
 	{
 		global $db;
+
+		$collection = $db->ot_feeds;
+		$cursor = $collection->find(array('client' => $feed_id));
+		foreach ($cursor as $item) {
+			$feeds[] = $item;
+		}
 		
-		$sql="SELECT f.id, f.name, f.url, f.connection, f.username, f.password, f.filename, COALESCE(n.class_name, f.class_name) as class_name
-				FROM pm_feeds f
-				LEFT JOIN pm_networks n ON n.id=f.network_id
-			  	WHERE f.id=".$feed_id." ORDER BY f.name ASC";
-		$feeds = $db->getQuery($sql);
 		$path4feed = 'files/feeds/';
 		foreach($feeds as $feed)
 		{
-			print "Processing feed ". $feed['name']."\n";
+			print "Processing feed ". $feed['feedname']."\n";
+
 			switch ($feed['connection']) {
 				case 'ftp':
 				{
 					echo "Downloading via FTP...\n";
 					$server_file = $feed['filename'];
-					//$local_file = $path4feed.'feed'.$feed['id'].'.'.substr(strrchr($server_file,'.'),1);
-					$local_file = $path4feed.$feed['filename'];
-					
+					$local_file  = $path4feed.$feed['filename'];
+					/*
 					// set up basic connection
 					$conn_id = ftp_connect($feed['url']);
 					
@@ -30,6 +31,7 @@ class feed_processor
 					$login_result = ftp_login($conn_id, $feed['username'], $feed['password']);
 					
 					print $login_result;
+					
 					// try to download $server_file and save to $local_file
 					if (ftp_get($conn_id, $local_file, $server_file, FTP_BINARY)) {
 					    echo "Successfully written to $local_file\n";
@@ -38,22 +40,26 @@ class feed_processor
 					}
 					// close the connection
 					ftp_close($conn_id);
+					*/
 					break;
 				}
 				default:
 				{
-					$local_file = $path4feed.'feed'.$feed['id'];
+					$local_file = $path4feed.'feed'.$feed_id;
+					/*
 					$data = self::curl_get_file_contents($feed['url']);
 					$fp = fopen($local_file, 'w+');
 					fwrite($fp, $data);
 					fclose($fp);
+					*/
 				}
 			}
 
 			// determine network
-			if (true === class_exists($feed['class_name'])) {
-				if (false === strpos($feed['class_name'], 'custom')) {
-					$network = new $feed['class_name'];
+			if (true === class_exists($feed['classname'])) {
+				/*
+				if (false === strpos($feed['classname'], 'custom')) {
+					$network = new $feed['classname'];
 					$products = $network->parse_xml($file, $feed_id);
 	
 					// categorise
@@ -65,9 +71,11 @@ class feed_processor
 					if ($products !== false) {
 						print $products." products inserted.\nDone.\n";
 					}
-				} else {
+				} else 
+				*/
+				{
 					// custom feeds will handle their own shizzle.
-					$network = new $feed['class_name']($local_file);
+					$network = new $feed['classname']($local_file, $full);
 				}
 			} else {
 				print 'Class '.$feed['class_name'].' dunt exist\n';

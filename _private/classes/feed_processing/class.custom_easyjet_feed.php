@@ -6,7 +6,7 @@ class custom_easyjet_feed extends network_base
 	private $fields = array();
 	private $prefix;
 	
-	public function __construct($local_file = null)
+	public function __construct($local_file = null, $full = false)
 	{
 		global $db;
 		$conn = new Mongo('localhost');
@@ -48,7 +48,9 @@ class custom_easyjet_feed extends network_base
 		
 		// Load ODST Property Table (and more if required);
 		$sql = 'SELECT * FROM Property LIMIT 0,1';
-		$otFieldData = $db->getFields($sql);
+		$sdb = new database;
+		$sdb->connection("odstech");
+		$otFieldData = $sdb->getFields($sql);
 		
 		// need to enable but commented out for debugging
 		if (file_exists(str_replace('.zip', '.txt', $local_file))) {
@@ -123,6 +125,7 @@ class custom_easyjet_feed extends network_base
 			unset($item['cost']);
 			$item['package_id'] = md5(serialize($item));
 			$item['cost'] = $tempCost;
+			$item['_id'] = $item['package_id'];
 			
   			$collection->save($item);
 			

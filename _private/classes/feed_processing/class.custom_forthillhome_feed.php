@@ -3,10 +3,29 @@
 class custom_forthillhome_feed extends network_base
 {
 	private $name = 'Custom -Forthill Home';
+	public $feedid = 'forthillhome';
 	private $fields = array();
 	private $prefix;
+	public $custom = array();
+
+	public function __construct($local_file = null, $full = false)
+	{
+		global $db;
+
+		$this->xml_call($local_file, $full);
+	}
+
+	public function doCustomEdits($data, $key, $field)
+	{
+		if ($field == 'productid') {
+			$productId = $this->xmlMapping['productid'];
+			$this->custom['deeplink'] = 'http://www.forthillhome.co.uk/product-p/' . strtoupper($data->$productId) . '.htm';
+			$this->custom['image_thumbnail'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($data->$productId) . '-1.jpg';
+			$this->custom['image_large'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($data->$productId) . '-2T.jpg';
+		}	
+	}
 	
-	public function __construct($local_file = null)
+	public function meh($local_file = null, $full = false)
 	{
 		global $db;
 		$conn = new Mongo('localhost');
@@ -16,31 +35,12 @@ class custom_forthillhome_feed extends network_base
   		$collection = $mdb->forthillhome;
 		//$response = $collection->drop();
 		
-		// set up the indices
-		//$collection->ensureIndex(array('out_departure_airport_code' =>  1));
-		//$collection->ensureIndex(array('out_destination_airport_code' =>  1));
-		//$collection->ensureIndex(array('mongo_departure_date' =>  1));
-		//$collection->ensureIndex(array('cost' =>  1));
-		//$collection->ensureIndex(array('region' =>  1));
-		//$collection->ensureIndex(array('package_id' => 1) , array('unique' => true));
-		
-		//$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1));
-		//$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'cost' =>  1));
-		//$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'mongo_departure_date' =>  1, 'cost' =>  1));
-		//$collection->ensureIndex(array('out_departure_airport_code' =>  1, 'out_destination_airport_code' =>  1, 'mongo_departure_date' =>  1, 'cost' =>  1, 'region' => 1));
-		
-		// search widget
-		
-		
-		print_r($response);
 		$this->setFields();
 		$fields = $this->getFields();
 		//$properties = $mdb->properties_raw->find();
 		//$properties = $db->getQuery('SELECT p.*, pl.scrape_id FROM Property p INNER JOIN pm_scrape_property_lookup pl ON pl.odst_id=p.PropertyID');
 
 		
-		
-		$local_file = 'files/feeds/feed2';
 		$timeStart  = time();
 
 		print "Inserting into DB\n";
@@ -94,14 +94,6 @@ class custom_forthillhome_feed extends network_base
 							}
 						}
 						
-						$item['_id'] = strtolower($item['productid']);
-						$item['deeplink'] = 'http://www.forthillhome.co.uk/product-p/' . strtolower($item['productcode']) . '.htm';
-
-						$item['nextag_deeplink'] = $item['deeplink'] . '?utm_source=Nextag&utm_medium=cost-per-click';
-						$item['google_deeplink'] = $item['deeplink'] . '?utm_source=googlebase&utm_medium=Free_clicks';
-						$item['webgains_deeplink'] = $item['deeplink'] . '?utm_source=google&utm_medium=CPA';
-                        $item['dooyoo_deeplink'] = $item['deeplink'] . '?utm_source=leguide&utm_medium=cost-per-impression';
-
 
 
 						$item['imagethumbnail'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-1.jpg';
@@ -147,6 +139,7 @@ class custom_forthillhome_feed extends network_base
 		return $this->name;
 	}
 	
+	/*
 	public function getFields()
 	{
 		$this->fields = array(
@@ -163,70 +156,9 @@ class custom_forthillhome_feed extends network_base
 							  'ProductFeatures');
 		return $this->fields;
 	}
-	
-	public function getPrefix()
-	{
-		return $this->prefix;
-	}
-	
-	public function setFields() {
-		//							  
-	}
-	
-	public function addFeed($feed)
-	{
-		// @TODO
-		//INSERT INTO `pm_feeds` VALUES(1, 'EasyJet Holidays', 'ftp.lowcostbeds.co.uk', 0, 0, '0', 'ftp', 'lowcostbeds.co.uk_easyjet', 'e4syj3t123', 'easyJetHolidays_DDfeed.zip', 'custom_easyjet_feed');
-	}
+	*/
 	
 
-	
-	public static function removeBOM($filename)
-	{
-		if (is_file($filename)) 
-		{
-			$handle = fopen($filename, "r+b");
-		}
-		else
-		{
-			print 'File does not exist';
-			exit;
-		}
-		$bom2 = bin2hex(fread($handle, 2));//BOM can be 2 or 3 bytes
-		rewind($handle);
-		$bom3 = bin2hex(fread($handle, 3));
-		if($bom3 == 'efbbbf') //UTF-8. could possibly use iconv for this as well, but leaving in place for backwards compatibility
-		{
-			$cmd = "tail -c +4 ".escapeshellcmd($filename)." > ".escapeshellcmd($filename).".tmp";
-			exec($cmd);
-			
-			// remove old file and rename the temp file
-			unlink($filename);
-			$cmd = "mv ".escapeshellcmd($filename).".tmp ".escapeshellcmd($filename);
-			exec($cmd);
-        }
-		elseif($bom2 == 'fffe' || $bom2 == 'feff') // UTF-16
-		{
-			$cmd = "iconv -f UTF-16 -t UTF-8 ".escapeshellcmd($filename)." > ".escapeshellcmd($filename).'.tmp';
-			exec($cmd);
-			
-			// remove old file and rename the temp file
-			unlink($filename);
-			$cmd = "mv ".escapeshellcmd($filename).".tmp ".escapeshellcmd($filename);
-			exec($cmd);
-        }
-		elseif($bom3 == '0000feff' || $bom2 == 'fffe0000') // UTF-32
-		{
-			$cmd = "iconv -f UTF-32 -t UTF-8 ".escapeshellcmd($filename)." > ".escapeshellcmd($filename).'.tmp';
-			exec($cmd);
-			
-			// remove old file and rename the temp file
-			unlink($filename);
-			$cmd = "mv ".escapeshellcmd($filename).".tmp ".escapeshellcmd($filename);
-			exec($cmd);
-        }
-        fclose($handle);
-	}
 }
 
 /*

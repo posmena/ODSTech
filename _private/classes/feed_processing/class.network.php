@@ -2,7 +2,7 @@
 
 interface network
 {
-	public function __construct($local_file = null);
+	public function __construct($local_file = null, $full = false);
 	public function getFields();
 	public function getName();
 	public function getPrefix();

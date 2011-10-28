@@ -22,6 +22,7 @@ class client {
 	}
 	
 	function setFeeds() {
+		/*
 		$sql = sprintf("SELECT id, name, master_feed_id FROM ot_feeds WHERE client_id=%d", $this->db->queryParameter($this->getId(), true));
 		$result = $this->db->getQuery($sql);
 		$feeds = array();
@@ -40,11 +41,13 @@ class client {
 				$feeds[$feed['id']]['filters'] = util::array_to_object($result);
 			}
 		}
+		*/
 		
 		$this->feeds = $feeds;
 	}
 	
 	function setMasterFeeds() {
+		/*
 		$sql = sprintf("SELECT id, name, ot_table FROM ot_client_master_feeds WHERE client_id=%d", $this->db->queryParameter($this->getId(), true));
 		$result = $this->db->getQuery($sql);
 		$feeds = array();
@@ -72,6 +75,7 @@ class client {
 		}
 		
 		$this->mfeeds = $feeds;
+		*/
 	}
 
 	function getNavigation() {

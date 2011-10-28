@@ -4,7 +4,7 @@ cd /var/www/odst-live/_private
 # export regions
 #db.packageschecksum.distinct('region')
 
-php scripts/processFeed.php 1 | mail -s 'Packages Updated' tech@odst.co.uk
+php scripts/processFeed.php easyjet | mail -s 'Packages Updated' tech@odst.co.uk
 
 # export regions
 #db.packageschecksum.distinct('region')

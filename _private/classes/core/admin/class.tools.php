@@ -10,12 +10,17 @@ class core_admin_tools
 	}
 	
 	public function getClients() {
-		$sql = sprintf('SELECT id, name
-						FROM ot_clients');
-		$results = $this->db->getQuery($sql);
-		
-		foreach ($results as $client) {
-			$clients[$client['id']] = new client($this->db, $client);
+		//$sql = sprintf('SELECT id, name
+		//				FROM ot_clients');
+		//$results = $this->db->getQuery($sql);
+		$clients = array();
+		$collection = $this->db->ot_clients;
+		$results = $collection->find();
+		if (count($results) > 0) {
+			foreach ($results as $client) {
+				print_r($client->_id);
+				//$clients[$client['_id']] = new client($this->db, $client);
+			}
 		}
 		
 		return $clients;
