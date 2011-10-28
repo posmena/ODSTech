@@ -28,4 +28,4 @@ mongoexport -d odstech -c live_forthillhome --csv -f 'productid','productname','
 
 ./zipFiles.sh
 
-php scripts/xmlGenerator.php chesca froogle | mail -s "Google XML Forthill Exported"
+php scripts/xmlGenerator.php forthillhome froogle | mail -s "Google XML Forthill Exported"

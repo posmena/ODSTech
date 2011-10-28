@@ -22,4 +22,4 @@ mongoexport -d odstech -c live_jtspas --csv -f 'title','mpn','id','description',
 
 ./zipFiles.sh
 
-php scripts/xmlGenerator.php chesca froogle | mail -s "Google XML JtSpas Exported"
+php scripts/xmlGenerator.php jtspas froogle | mail -s "Google XML JtSpas Exported"
