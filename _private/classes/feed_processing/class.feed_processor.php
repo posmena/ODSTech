@@ -23,7 +23,6 @@ class feed_processor
 					echo "Downloading via FTP...\n";
 					$server_file = $feed['filename'];
 					$local_file  = $path4feed.$feed['filename'];
-					/*
 					// set up basic connection
 					$conn_id = ftp_connect($feed['url']);
 					
@@ -40,18 +39,17 @@ class feed_processor
 					}
 					// close the connection
 					ftp_close($conn_id);
-					*/
 					break;
 				}
 				default:
 				{
 					$local_file = $path4feed.'feed'.$feed_id;
-					/*
+					
 					$data = self::curl_get_file_contents($feed['url']);
 					$fp = fopen($local_file, 'w+');
 					fwrite($fp, $data);
 					fclose($fp);
-					*/
+					
 				}
 			}
 

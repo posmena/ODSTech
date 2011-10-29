@@ -18,8 +18,12 @@ for i in $(ls -a files/hostedfeeds/chesca | grep '.csv' | grep -v '.zip'); do
    rm "files/hostedfeeds/chesca/$i"
 done
 
-
 for i in $(ls -a files/hostedfeeds/damsel | grep '.csv' | grep -v '.zip'); do
    zip -j "files/compressedfeeds/damsel/$i.zip" "files/hostedfeeds/damsel/$i"
    rm "files/hostedfeeds/damsel/$i"
+done
+
+for i in $(ls -a files/hostedfeeds/easylife | grep '.csv' | grep -v '.zip'); do
+   zip -j "files/compressedfeeds/easylife/$i.zip" "files/hostedfeeds/easylife/$i"
+   rm "files/hostedfeeds/easylife/$i"
 done

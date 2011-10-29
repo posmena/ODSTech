@@ -1,0 +1,11 @@
+column,ot_field
+title,productname
+id,productid
+description,description
+link,deeplink
+image_link,image_link
+brand,brand
+manufacturer,manufacturer
+product_type,category
+c:availability:string,availability
+price,price

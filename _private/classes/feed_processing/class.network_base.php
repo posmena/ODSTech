@@ -237,11 +237,11 @@ class network_base implements network
 				$fic->drop();
 
 				foreach ($data as $key => $fieldname) {
-					if ($key == 0)
-					{
-						$fieldname = 'id';
+					if ($key == 0) {
+						if (get_called_class() == 'custom_jtspas_feed') {
+							$fieldname = 'id';
+						}	
 					}
-
 
 					$fieldname = trim($fieldname);
 					$mField['id']        = $key;
@@ -263,34 +263,40 @@ class network_base implements network
 			$this->custom = array();
 			foreach ($fields['standard'] as $key => $field) {
 				if ($field != '') {
+					$isUTF8 = mb_detect_encoding($data[$key], 'UTF-8', true); // false
+					if (false === $isUTF8) {
+						$data[$key] = mb_convert_encoding($data[$key], "UTF-8");
+					}
 					$item[$field] = $data[$key];
 					$this->doCustomEdits($data, $key, $field);
 				}
 			}
 
-			foreach ($fields['extra'] as $otField => $categories) {
-				foreach($categories as $categoryName => $contents) {
-					switch ($contents['type']) {
-						case "new": 
-						{
-							$item[$categoryName] = $contents['value'];
-							break;
-						}
-						case "custom":
-						{
-							$item[$categoryName] = $this->custom[$contents['value']];
-							break;
-						}
-						case "copy":
-						{
-							$item[$categoryName] = $item[$otField];
-							break;
-						}
-						default:
-						case 'append':
-						{
-							$item[$categoryName] = $item[$otField] . $contents['value'];
-							break;
+			if (true === isset($fields['extra']) && count($fields['extra']) > 0) {
+				foreach ($fields['extra'] as $otField => $categories) {
+					foreach($categories as $categoryName => $contents) {
+						switch ($contents['type']) {
+							case "new": 
+							{
+								$item[$categoryName] = $contents['value'];
+								break;
+							}
+							case "custom":
+							{
+								$item[$categoryName] = $this->custom[$contents['value']];
+								break;
+							}
+							case "copy":
+							{
+								$item[$categoryName] = $item[$otField];
+								break;
+							}
+							default:
+							case 'append':
+							{
+								$item[$categoryName] = $item[$otField] . $contents['value'];
+								break;
+							}
 						}
 					}
 				}
