@@ -12,3 +12,4 @@ fieldname,ot_field,type,value
 "link","deeplink","copy",""
 "title","productname","copy",""
 "category","google_product_category","copy",""
+"description","","custom","description"
