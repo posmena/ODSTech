@@ -25,7 +25,8 @@ class custom_forthillhome_feed extends network_base
 		}	
 
 		if ($field == 'description') {
-			$this->custom['deeplink'] = strip_tags($data[$key]);
+			$description = $this->xmlMapping['description'];
+			$this->custom['deeplink'] = strip_tags($data->$description);
 		}
 	}
 	
