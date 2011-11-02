@@ -14,7 +14,7 @@ echo 'http://www.odst.co.uk/feeds/jtspas.zip?type=webgains' > logs/jtspatype.log
 mongoexport -d odstech -c live_jtspas --csv -f 'id','title','deeplink','price','description','condition','gtin','brand','mpn','image_link','quantity','availability','expiration_date','webgains_category','shipping','shipping_weight','shipping_uk','shipping_cost_uk','webgains_deeplink' -o files/hostedfeeds/jtspas/webgains.csv | mail -s "Webgains JtSpas Exported" tech@odst.co.uk < logs/jtspatype.log
 
 echo 'http://www.odst.co.uk/feeds/jtspas.zip?type=froogle' > logs/jtspatype.log
-mongoexport -d odstech -c live_jtspas --csv -f 'id','title','link','price','description','condition','shipping','shipping_weight','gtin','brand','mpn','image_link','category','quantity','availability','expiration_date','google_deeplink' -o files/hostedfeeds/jtspas/froogle.csv | mail -s "Froogle JtSpas Exported" tech@odst.co.uk < logs/jtspatype.log
+mongoexport -d odstech -c live_jtspas --csv -f 'id','title','link','price','description','condition','shipping_cost_uk','shipping_weight','gtin','brand','mpn','image_link','category','quantity','availability','expiration_date','google_deeplink' -o files/hostedfeeds/jtspas/froogle.csv | mail -s "Froogle JtSpas Exported" tech@odst.co.uk < logs/jtspatype.log
 
 echo 'http://www.odst.co.uk/feeds/jtspas.zip?type=nextag' > logs/jtspatype.log
 mongoexport -d odstech -c live_jtspas --csv -f 'title','mpn','id','description','price','deeplink','image_link','nextag_category','category','availability','condition','shipping','shipping_weight','shipping_uk','shipping_cost_uk','gtin','brand','nextag_deeplink','rrp' -o files/hostedfeeds/jtspas/nextag.csv | mail -s "Nextag JtSpas Exported" tech@odst.co.uk < logs/jtspatype.log
