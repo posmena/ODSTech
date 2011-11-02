@@ -34,6 +34,7 @@ class ODSTech_xmlgenerator
 			}
 			
 			$xmlContent .= '<item>';
+			$shipping = false;
 			foreach ($headers as $key => $heading) {
 				if ($heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time') {
 					$tData = $data[$key];
@@ -47,6 +48,7 @@ class ODSTech_xmlgenerator
 				} elseif ($heading == 'shipping' || $heading == 'shipping_cost_uk') {
 					$heading = 'shipping';
 					$content = '<g:price>' . $data[$key] . '</g:price>';
+					$shipping = true;
 				} else {
 					$content = $data[$key];
 				}
@@ -62,6 +64,9 @@ class ODSTech_xmlgenerator
 				}
 				
 				$xmlContent .= '<g:' . $heading . '>' . $content . '</g:' . $heading . '>' . "\n";	
+				if (false === $shipping) {
+					$xmlContent .= '<g:shipping><g:price>0.00</g:price></g:shipping>';
+				}
 				
 			}
 			$xmlContent .= '</item>';
