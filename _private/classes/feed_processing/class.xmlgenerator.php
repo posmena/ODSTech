@@ -64,11 +64,12 @@ class ODSTech_xmlgenerator
 				}
 				
 				$xmlContent .= '<g:' . $heading . '>' . $content . '</g:' . $heading . '>' . "\n";	
-				if (false === $shipping) {
-					$xmlContent .= '<g:shipping><g:price>0.00</g:price></g:shipping>';
-				}
+				
 				
 			}
+			if (false === $shipping) {
+					$xmlContent .= '<g:shipping><g:price>0.00</g:price></g:shipping>';
+				}
 			$xmlContent .= '</item>';
 		}
 
