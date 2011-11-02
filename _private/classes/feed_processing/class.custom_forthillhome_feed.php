@@ -22,12 +22,9 @@ class custom_forthillhome_feed extends network_base
 			$this->custom['deeplink'] = 'http://www.forthillhome.co.uk/product-p/' . strtoupper($data->$productId) . '.htm';
 			$this->custom['image_thumbnail'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($data->$productId) . '-1.jpg';
 			$this->custom['image_large'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($data->$productId) . '-2T.jpg';
-		}	
-
-		if ($field == 'description') {
 			$description = $this->xmlMapping['description'];
-			$this->custom['deeplink'] = strip_tags($data->$description);
-		}
+			$this->custom['description'] = strip_tags($data->$description);
+		}	
 	}
 	
 	public function meh($local_file = null, $full = false)
