@@ -48,7 +48,7 @@ class sitescraper
 					$product['description'] = strip_tags($desc);
 
 					if (false !== stristr($img, 'PUBLIC')) {
-						$collection->remove(array('id' => new MongoId($product['_id'])), true);
+						$collection->remove(array('_id' => new MongoId($product['_id'])), true);
 						$removed++;
 						continue;
 					}
