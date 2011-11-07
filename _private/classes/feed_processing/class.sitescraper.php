@@ -15,6 +15,8 @@ class sitescraper
 				$collection = $mdb->ot_easylife;
 				$products = $collection->find();
 				$url = 'http://www.easylifegroup.com/';
+				$removed = 0;
+				$added = 0;
 				foreach ($products as $product) {
 					
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
@@ -45,6 +47,12 @@ class sitescraper
 					$product['image_link'] = $url.$img;
 					$product['description'] = $desc;
 
+					if (false !== stristr($img, 'PUBLIC')) {
+						$collection->remove(array('id' => new MongoId($product['_id'])), true);
+						$removed++;
+						continue;
+					}
+
 					foreach($product as $key => $field) {
 						$isUTF8 = mb_detect_encoding($field, 'UTF-8', true);
 						if (false === $isUTF8) {
@@ -54,8 +62,12 @@ class sitescraper
 
 					$collection->save($product);
 					unset($product);
+					$added++;
 
+					echo "\nadded: " . $added . ", removed: " . $removed . "\n";
 				}
+
+
 
 				break;
 			}
