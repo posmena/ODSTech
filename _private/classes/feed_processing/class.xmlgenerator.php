@@ -36,7 +36,7 @@ class ODSTech_xmlgenerator
 			$xmlContent .= '<item>';
 			$shipping = false;
 			foreach ($headers as $key => $heading) {
-				if ($heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time' || $heading == 'category') {
+				if ($heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time' || $heading == 'category' || $heading == 'mpn') {
 					$tData = $data[$key];
 					if ($heading == 'title') {
 						if ($name == 'chesca') {
