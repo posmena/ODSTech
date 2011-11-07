@@ -8,6 +8,57 @@ class sitescraper
 		global $db;
 		
 		switch ($site) {
+			case 'easylife':
+			{
+				$conn = new Mongo('localhost');
+				$mdb = $conn->odstech;
+				$collection = $mdb->ot_easylife;
+				$products = $collection->find();
+				$url = 'http://www.easylifegroup.com/';
+				foreach ($products as $product) {
+					
+					$page = feed_processor::curl_get_file_contents($product['deeplink']);
+					$start = strpos($page, "<div class=\"stretchy\" id=\"obj773\"");
+					$end   = strpos($page, "</div>", $start);
+					$trash = trim(substr($page,$start,$end-$start));
+
+					$start = stripos($trash, "<ul>");
+					$end   = stripos($trash, "</ul>", $start) + 5;
+					$desc = trim(substr($trash,$start,$end-$start));
+					
+					$start = stripos($page, '<img emssteve="False"');
+					$end   = stripos($page, "/>", $start) + 4;
+					$img = trim(substr($page,$start,$end-$start));
+					$start = stripos($img, 'emssrc=') + 8;
+					$end   = stripos($img, '"', $start);
+					$img = trim(substr($img,$start,$end-$start));
+					
+					$start = strpos($page, 'id="obj1203"') + 20;
+					$end   = strpos($page, "</a>", $start)+4;
+					$cat   = trim(substr($page,$start,$end-$start));
+					
+					$start = strpos($cat, '">') + 2;
+					$end   = strpos($cat, "</a>", $start);
+					$cat   = trim(substr($cat,$start,$end-$start));
+
+					$product['category'] = $cat;
+					$product['image_link'] = $url.$img;
+					$product['description'] = $desc;
+
+					foreach($product as $key => $field) {
+						$isUTF8 = mb_detect_encoding($field, 'UTF-8', true);
+						if (false === $isUTF8) {
+							$product[$key] = mb_convert_encoding($field, "UTF-8");
+						}
+					}
+
+					$collection->save($product);
+					unset($product);
+
+				}
+
+				break;
+			}
 			case 'damsel':
 			{
 				$conn = new Mongo('localhost');
