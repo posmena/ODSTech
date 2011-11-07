@@ -62,6 +62,11 @@ class ODSTech_xmlgenerator
 					$heading = 'image_link';
 					$content = '<![CDATA[' . $content . ']]>';
 				}
+
+				if (false !== stristr($heading, 'link')) {
+					$content = '<![CDATA[' . $content . ']]>';
+				}
+
 				
 				$xmlContent .= '<g:' . $heading . '>' . $content . '</g:' . $heading . '>' . "\n";	
 				
