@@ -11,5 +11,5 @@ fieldname,ot_field,type,value
 "shipping_uk","","custom","shipping_uk"
 "shipping_cost_uk","","custom","shipping_cost_uk"
 "id","productid","copy",""
-"link","deeplink","copy",""
+"link","google_deeplink","copy",""
 "title","productname","copy",""
