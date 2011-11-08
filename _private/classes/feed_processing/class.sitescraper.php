@@ -48,12 +48,8 @@ class sitescraper
 					$product['description'] = strip_tags($desc);
 
 					if (false !== stristr($img, 'PUBLIC')) {
-						print_r($product);
-						$deleted = $collection->remove(array('productid' => $product['productid']), true);
-						print_r($product['_id']);
-						var_dump($deleted);
-						die();
 
+						$deleted = $collection->remove(array('productid' => $product['productid']), true);
 						$removed++;
 						continue;
 					} else {
