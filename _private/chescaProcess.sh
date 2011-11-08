@@ -15,4 +15,4 @@ mongoexport -d odstech -c chesca_scrape --csv -f 'id','title','link','price','co
 
 ./zipFiles.sh
 
-php scripts/xmlGenerator.php chesca froogle | mail -s "Google XML Chesca Exported";
+php scripts/xmlGenerator.php chesca froogle | mail -s "Google XML Chesca Exported" tech@odst.co.uk

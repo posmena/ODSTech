@@ -27,4 +27,4 @@ mongoexport -d odstech -c live_jtspas --csv -f 'id','title','price','description
 
 ./zipFiles.sh
 
-php scripts/xmlGenerator.php jtspas froogle | mail -s "Google XML JtSpas Exported"
+php scripts/xmlGenerator.php jtspas froogle | mail -s "Google XML JtSpas Exported" tech@odst.co.uk
