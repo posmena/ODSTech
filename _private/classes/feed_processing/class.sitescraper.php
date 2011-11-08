@@ -48,24 +48,21 @@ class sitescraper
 					$product['description'] = strip_tags($desc);
 
 					if (false !== stristr($img, 'PUBLIC')) {
-
-						$deleted = $collection->remove(array('productid' => $product['productid']), true);
+						$collection->remove(array('productid' => $product['productid']), true);
 						$removed++;
 						continue;
-					} else {
-						foreach($product as $key => $field) {
-							$isUTF8 = mb_detect_encoding($field, 'UTF-8', true);
-							if (false === $isUTF8) {
-								$product[$key] = mb_convert_encoding($field, "UTF-8");
-							}
-						}
-
-						$collection->save($product);
-						unset($product);
-						$added++;	
 					}
 
-					
+					foreach($product as $key => $field) {
+						$isUTF8 = mb_detect_encoding($field, 'UTF-8', true);
+						if (false === $isUTF8) {
+							$product[$key] = mb_convert_encoding($field, "UTF-8");
+						}
+					}
+
+					$collection->save($product);
+					unset($product);
+					$added++;	
 
 					echo "\nadded: " . $added . ", removed: " . $removed . "\n";
 				}
