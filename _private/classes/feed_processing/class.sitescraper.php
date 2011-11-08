@@ -45,7 +45,8 @@ class sitescraper
 
 					$product['category'] = $cat;
 					$product['image_link'] = $url.$img;
-					$product['description'] = strip_tags($desc);
+					$desc = str_replace("\n", '. ', strip_tags($desc));
+					$product['description'] = substr($desc, 2, strlen($desc));
 
 					if (false !== stristr($img, 'PUBLIC')) {
 						$collection->remove(array('productid' => $product['productid']), true);
