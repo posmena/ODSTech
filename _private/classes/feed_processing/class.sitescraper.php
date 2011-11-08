@@ -48,21 +48,28 @@ class sitescraper
 					$product['description'] = strip_tags($desc);
 
 					if (false !== stristr($img, 'PUBLIC')) {
-						$collection->remove(array('_id' => new MongoId($product['_id'])), true);
+						print_r($product);
+						$deleted = $collection->remove(array('productid' => $product['productid']), true);
+						print_r($product['_id']);
+						var_dump($deleted);
+						die();
+
 						$removed++;
 						continue;
-					}
-
-					foreach($product as $key => $field) {
-						$isUTF8 = mb_detect_encoding($field, 'UTF-8', true);
-						if (false === $isUTF8) {
-							$product[$key] = mb_convert_encoding($field, "UTF-8");
+					} else {
+						foreach($product as $key => $field) {
+							$isUTF8 = mb_detect_encoding($field, 'UTF-8', true);
+							if (false === $isUTF8) {
+								$product[$key] = mb_convert_encoding($field, "UTF-8");
+							}
 						}
+
+						$collection->save($product);
+						unset($product);
+						$added++;	
 					}
 
-					$collection->save($product);
-					unset($product);
-					$added++;
+					
 
 					echo "\nadded: " . $added . ", removed: " . $removed . "\n";
 				}
