@@ -1,0 +1,37 @@
+#easyjet h2, #easyjet div.main section.column h2 {
+	font-size: 18px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+#easyjet div.header {
+	border: 1px solid red;
+	height: 61px;
+	background: url('/images/plugin/easyjet_banner.png');
+}
+
+#easyjet div.main {
+}
+
+#easyjet div.main section.column {
+	width: 310px;
+	float: left;
+	padding: 10px;
+	text-align: justify;
+}
+
+#easyjet div.main section.column h2, #easyjet div.main section.column img {
+	text-align: center;
+	display: block;
+	margin: auto;
+}
+
+#easyjet div.main section.right_column {
+	margin-left: 20px;
+}
+
+#easyjet h2, #easyjet div.main section.column h2 {
+	font-size: 18px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}

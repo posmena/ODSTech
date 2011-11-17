@@ -279,7 +279,11 @@ float: right;
 width: 280px;
 }
 
-
+.plugindownload {
+	margin: auto;
+	width: 680px;
+	padding-left: 0px;
+}
 
 #social {
 	padding-top: 20px;
