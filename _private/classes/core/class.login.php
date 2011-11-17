@@ -8,6 +8,7 @@ class core_login extends core_default
 	public function __construct($db, $qs) {
 		$this->assignments['page']['title'] = 'Login';
 		$redirect = '/admin/dashboard.html';
+		/*
 		if ($user = util::getSession('user')) {
 			if (true === ctype_digit($user->getClientId())) {
 				$redirect = '/clients/'.$user->getClientId().'/dashboard';
@@ -15,15 +16,18 @@ class core_login extends core_default
 			
 			util::redirect($redirect);
 		}
-		
+		*/
 		if (true === array_key_exists('login', $qs)) {
+			/*
 			$username = $qs['email'];
 			$password = $qs['password'];
 			$user = new user($db, $username, $password);
 			if ($user->login() === false) {
-				$this->assignments['page']['feedback'] = 'Sorry, we cannot log you in at this time.';
+				*/
+				$this->assignments['page']['feedback'] = 'Login to this site is currently disabled.';
 				return false;
-			}
+
+			//}
 			
 			if (true === ctype_digit($user->getClientId())) {
 				$redirect = '/clients/'.$user->getClientId().'/dashboard';
