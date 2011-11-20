@@ -60,6 +60,7 @@ RewriteBase /
 	RewriteRule ^widgets.html$ index.php?loc=widgets [QSA]
 	RewriteRule ^signup.html$ index.php?loc=signup [QSA]
 	RewriteRule ^wordpress+/plugin+/([a-z]+).html$ index.php?loc=downloadplugin&client=$1 [QSA]
+	RewriteRule ^legal+/privacy_policy.html$ index.php?loc=privacypolicy [QSA]
       
 RewriteRule ^([admin]+/([a-z0-9\.\_]+)).html$ index.php?loc=admin_$2&usertype=admin [QSA]
 RewriteRule ^([clients]+/([a-z0-9])+/([a-z0-9]+))$ index.php?loc=clients_$3&clientid=$2 [QSA]
