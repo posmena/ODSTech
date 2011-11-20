@@ -24,7 +24,7 @@ class core_login extends core_default
 			$user = new user($db, $username, $password);
 			if ($user->login() === false) {
 				*/
-				$this->assignments['page']['feedback'] = 'Login to this site is currently disabled.';
+				$this->assignments['page']['feedback'] = 'You credentials are not authorised to login here.';
 				return false;
 
 			//}

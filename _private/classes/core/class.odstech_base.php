@@ -113,7 +113,7 @@ class core_odstech_base
 			//$output = $mhtml->minify($this->tplBase->fetch('sitebuilder.tpl.html'));
 			//$this->tplBase->assign('output', $output);
 			//$this->tplBase->display('minifiedhtml.tpl.html');
-			if ($this->template == 'signup.tpl.html' || $this->template == 'downloadplugin.tpl.html') {
+			if ($this->template == 'signup.tpl.html') {
 				$this->base = $this->template;
 			}
 			

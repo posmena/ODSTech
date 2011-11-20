@@ -9,6 +9,21 @@
 	        var cf = new ContentFlow('contentFlow', {reflectionColor: "#ffffff", scaleFactor: 1});
 	        {/literal}
 	    </script>
+	    {literal}
+	    <script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-9315501-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+		{/literal}
 	</head>
 	<body class="">
 		<div id="header">
@@ -135,6 +150,10 @@ You hereby agree to indemnify us against any loss, liability, damage or expense 
 						</ol>
 					</fieldset>
 				</form>
+				<br />
+				<br />
+
+				<br />
 				{else}
 					You are now signed up!
 				{/if}
@@ -143,7 +162,9 @@ You hereby agree to indemnify us against any loss, liability, damage or expense 
 	    </div>
 	    <!-- END #content --> 
 		<div id="footer">
-				<!--- -->
+			<div class="content">
+				<a rel="nofollow" href="/legal/privacy_policy.html">privacy policy</a>
+			</div>
 		</div><!-- END #footer --> 
 	</body>
 </html>

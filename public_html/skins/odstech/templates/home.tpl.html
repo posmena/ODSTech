@@ -1,19 +1,119 @@
-ODST is a full service agency with more than 15 years online experience. ODST’s team have been the driving force behind
-a wide range of internet services, website and technologies & have been key players in taking the digital industry forward.
-<br /><br />
-ODST have come from a broad background of companies, from online Sports equipment Retails, Affiliate Networks, Media Agencies and Publisher sites, which now feeds through to our team. With the diverse mix of talents, ODST have the knowledge, the contacts & the experience you need to succeed.
-<br />
-Our Services Include:<br /><br />
+<script>
+	{literal}
+	$('document').ready(function(){
+		$('#login_tile h2').click(function(){
+			$('#login_tile form').submit();
+		});
 
-Affiliate Programme Management<br />
-Media Planning and Buying<br />
-Banner Production<br />
-Product Feed Creation<br /><br />
-Our mission is simple, to deliver the best possible service, at a great price.<br />
-Get in contact today by emailing us at info@odst.co.uk
+		$('.tile').hover(function(){
+			if ($(this).attr('id') != 'shake_tile' && $(this).attr('id') != 'login_tile' && $(this).attr('id') != 'twitter_tile'&& $(this).attr('id') != 'odst_tile') {
+				$(this).addClass('tile_hover');	
+			}
+			
+			},
+			function(){
+				$(this).removeClass('tile_hover');
+		})
 
-<!--
-{foreach from=$example item='package'}
-<a href="{$package.url}">Holiday</a><br />
-{/foreach}
--->
+		$('#email, #name').keypress(function(event) {
+			if ( event.which == 13 ) {
+				$('#login_tile form').submit();
+			}
+		});
+	});
+	{/literal}
+</script>
+
+<div class="tiles clearfix">
+	<div id="login_tile" class="tile">
+		<form action="/login.html" method="post">
+			<fieldset class="form">
+				<ol>
+					<li>
+						<input id="name" name="email" class="text" type="text" placeholder="Username" autofocus />
+					</li>
+					<li>
+						 <input id="email" name="password" class="text" type="password" placeholder="Password" />
+					</li>
+					<input class="submit" name="login" type="hidden" value="Login" />
+				</ol>
+			</fieldset>
+		</form>
+		<h2 style="cursor: pointer;">login</h2>
+	</div>
+
+	<div id="odst_tile" class="tile">
+		<div class="text">
+		<h3 style="color: #FFFFFF; font-size: 14px;">Outsourced Digital Services &amp; Technology</h3>
+		<br />
+		with ODST's easy to use tools you can be sure that your site will maximise it's potential revenue growth with targetted advertising.  
+		</div>
+		<h2>ODST</h2>
+	</div>
+
+	<div id="wordpress_tile" class="tile">
+		<a href="/images/ODST-wordpress.pdf"><h3 style="color: #FFFFFF; font-size: 14px;">ODST's WordPress plugin:</h3><br />transform your products<br/>into eye-catching<br />contextual widgets.</a>
+		<h2>WordPress</h2>
+	</div>
+
+	<div id="feeds_tile" class="tile">
+		<a href="/images/ODST-feeds.pdf">feed creation presentation</a>
+		<h2>feeds</h2>
+	</div>
+
+	<div id="facebook_tile" class="tile">
+		<a href="http://www.facebook.com/pages/ODST_co_uk/116457125039404">'like' our twitter page? then tweet us on facebook...</a>
+		<h2>facebook</h2>
+	</div>
+
+	<div id="twitter_tile" class="twitter_tile">
+	<h2>@twitter #epicfail :(</h2>
+		{literal}
+		<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+		<script>
+		new TWTR.Widget({
+		  version: 2,
+		  type: 'profile',
+		  rpp: 4,
+		  interval: 30000,
+		  width: 258,
+		  height: 320,
+		  theme: {
+		    shell: {
+		      background: '#333333',
+		      color: '#ffffff'
+		    },
+		    tweets: {
+		      background: '#333333',
+		      color: '#ffffff',
+		      links: '#cccccc'
+		    }
+		  },
+		  features: {
+		    scrollbar: false,
+		    loop: false,
+		    live: false,
+		    behavior: 'all'
+		  }
+		}).render().setUser('ODST_co_uk').start();
+		</script>
+		{/literal}
+
+	</div>
+
+	<div id="client_tile" class="tile">
+		<a href="/wordpress/plugin/easyjetholidays.html">see how the webgains easyJet holidays WordPress<br />plugin can monetise your travel site</a>
+		<h2>client</h2>
+	</div>
+
+	<div id="register_tile" class="tile">
+		<a href="/signup.html">affiliate account registration</a>
+		<h2>register</h2>
+	</div>
+
+	<div id="shake_tile" class="tile">
+		<h2>by ODST ltd. <a rel="nofollow" href="http://youtu.be/1Nkw_UQhq6M?t=33s" target="_blank">shake 'n' bake!</a></h2>
+	</div>
+
+	
+</div>

@@ -15,6 +15,7 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  color: #0F2A3C;
 }
 
 article, aside, details, figcaption, figure,
@@ -89,6 +90,8 @@ body {
 
 }
 
+
+
 .save_button {
 	width: 60px;
 	height: 28px;
@@ -98,6 +101,7 @@ body {
 #header {
 	background-color: #0F2A3C;
 	height: 100px;
+	width: 100%;
 }
 
 #header .innerHeader {
@@ -127,6 +131,8 @@ padding-top: 28px;
 }
 
 #content {
+	max-width: 680px;
+	margin: auto;
 	border: 0px solid red;
 }
 
@@ -242,7 +248,7 @@ fieldset.form ol {
 	list-style: none;  
 }  
 fieldset.form li {  
-	padding-bottom: 1em;  
+	padding-bottom: 0.5em;  
 	text-align: left;
 }  
 
@@ -279,9 +285,8 @@ float: right;
 width: 280px;
 }
 
-.plugindownload {
+.plugindownload, .privacypolicy {
 	margin: auto;
-	width: 680px;
 	padding-left: 0px;
 }
 
@@ -289,6 +294,152 @@ width: 280px;
 	padding-top: 20px;
 }
 
+/*********** privacy *****************/
+
+.privacypolicy h2 {
+	font-size: 24px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+/***********************************/
+
+.tiles {
+	margin-top: 20px;
+	width: 680px;
+	position: relative;
+	height: 600px;
+}
+
+.tile, .twitter_tile {
+	position: absolute;
+	border: 1px solid #333333;
+	height: 100px;
+	width: 100px;
+	background: url('/images/tilebg.png');
+	background-repeat: none;
+	border-radius: 5px;
+	-moz-border-radius:  5px;
+	-webkit-border-radius: 5px;
+	color: #FFFFFF;
+	text-align: left;
+}
+
+.tile_hover {
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
+	cursor: pointer;
+}
+
+.tile h2, .twitter_tile h2 {
+	font-size: 24px;
+	font-weight: bold;
+	color: #FFFFFF;
+	position:absolute;bottom:0;right:0;
+	padding: 5px;
+}
+
+.tile a, .tile div.text {
+	display: block;
+	height: 100%;
+	margin-top: 10px;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight: bold;
+	margin-left: 10px;;
+}
+
+#odst_tile {
+	width: 400px;
+	height: 150px;
+	background-position: 0px 0px;
+	
+
+}
+
+#twitter_tile {
+	height: 320px;
+	width: 258px;
+	top: 160px;
+	border: transparent;
+}
+
+#login_tile {
+	width: 268px;
+	left: 410px;
+
+}
+
+#login_tile fieldset.form {
+	background: transparent;
+	width: 258px;
+	border: 0px;
+}
+#login_tile fieldset.form input {
+	width: 230px;
+}
+#feeds_tile {
+	top: 160px;
+	left: 268px;
+	width: 132px;
+	
+}
+
+
+#wordpress_tile {
+	top: 110px;
+	left: 411px;
+	width: 267px;
+	height: 150px;
+
+}
+
+#client_tile {
+	top: 270px;
+	left: 268px;
+	width: 410px;
+
+}
+
+#facebook_tile {
+	top: 380px;
+	left: 268px;
+	width: 250px;
+}
+
+#register_tile {
+	top: 380px;
+	left: 528px;
+	width: 150px;
+}
+
+#shake_tile {
+	top: 490px;
+	left: 268px;
+	height: 50px;
+	width: 410px;
+	background: #FFFFFF;
+	border: transparent;
+}
+
+#shake_tile a{
+	display: inline;
+}
+
+#shake_tile h2, #shake_tile h2 a, #shake_tile h2 a:link {
+	color: #0F2A3C;
+	padding: 0px;
+	text-decoration: none;
+}
+
+#shake_tile h2 a:hover {
+	text-decoration: underline;
+}
+
+
+
+
+/**************************
 
 /*** logged in ***/
 
@@ -379,12 +530,24 @@ width: 400px;
 
 
 #footer {
+	z-index: 9999;
    position:fixed;
    left:0px;
    bottom:0px;
    height:30px;
    width:100%;
    background:#0F2A3C;
+}
+
+#footer .content {
+	font-size: 11px;
+	width: 680px;
+	margin: auto;
+	text-align: left;
+	margin-top: 8px;
+}
+#footer .content a {
+	color: #CCCCCC;
 }
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
