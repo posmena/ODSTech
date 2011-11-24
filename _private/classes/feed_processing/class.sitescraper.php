@@ -20,6 +20,10 @@ class sitescraper
 				foreach ($products as $product) {
 					
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
+					$start = strpos($page, '<meta name="description" content="') + 34;
+					$end   = strpos($page, '" />', $start);
+					$metadesc = trim(substr($page,$start,$end-$start));
+
 					$start = strpos($page, "<div class=\"stretchy\" id=\"obj773\"");
 					$end   = strpos($page, "</div>", $start);
 					$trash = trim(substr($page,$start,$end-$start));
@@ -50,7 +54,7 @@ class sitescraper
 						$desc = substr($desc, 2, strlen($desc));	
 					}
 					
-					$product['description'] = $desc;
+					$product['description'] = $metadesc . '. ' . $desc;
 
 					if (false !== stristr($img, 'PUBLIC')) {
 						$collection->remove(array('productid' => $product['productid']), true);
