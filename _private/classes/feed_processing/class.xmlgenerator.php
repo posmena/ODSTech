@@ -67,7 +67,8 @@ class ODSTech_xmlgenerator
 					$content = '<![CDATA[' . $content . ']]>';
 				}
 
-				
+				$content = str_replace('<![CDATA[<![CDATA[', '<![CDATA[', $content);
+				$content = str_replace(']]>]]>', ']]>', $content);
 				$xmlContent .= '<g:' . $heading . '>' . $content . '</g:' . $heading . '>' . "\n";	
 				
 				
