@@ -54,7 +54,8 @@ switch ($feed_id) {
 
 			foreach ($items as $item)
 			{
-				$item['rrp'] = $data[18];
+				$item['rrp']   = $data[2];
+				$item['price'] = $data[1];
 				//echo $item['rrp']."\n";
 				$collection->save($item, array('_id' => $item['_id']));
 			}
