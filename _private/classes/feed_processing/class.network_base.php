@@ -344,6 +344,9 @@ class network_base implements network
 					}
 					*/
 					$live_item['price'] = $item['price'];
+					if (get_called_class() == 'custom_jtspas_feed') {
+						$live_item['shipping_cost_uk'] = $item['shipping_cost_uk'];
+					}
 					$fc->save($live_item);
 					unset($live_item);
 				}
