@@ -13,3 +13,5 @@ fieldname,ot_field,type,value
 "title","productname","copy",""
 "category","google_product_category","copy",""
 "description","","custom","description"
+"brand","brand","new","Forthill Home"
+"mpn","productid","copy",""
