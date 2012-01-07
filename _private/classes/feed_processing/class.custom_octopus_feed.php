@@ -14,4 +14,8 @@ class custom_octopus_feed extends network_base
 
 		$this->csv_call($local_file, $full);
 	}
+
+	public function doCustomEdits($data, $key, $field) {
+		// ...
+	}
 }
