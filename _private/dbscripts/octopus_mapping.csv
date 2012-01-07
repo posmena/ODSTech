@@ -16,3 +16,10 @@ facilities,facilities
 property_rating,rating
 review,review
 additionalproductdetails,extra_info
+program_id,unmapped
+program_name,unmapped
+category_id,unmapped
+category_path,unmapped
+merchant_category,unmapped
+last_updated,unmapped
+currency,unmapped
