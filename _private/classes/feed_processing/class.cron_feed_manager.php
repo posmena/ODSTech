@@ -16,6 +16,7 @@ include 'classes/feed_processing/class.custom_easyjet_feed.php';
 include 'classes/feed_processing/class.custom_forthillhome_feed.php';
 include 'classes/feed_processing/class.custom_jtspas_feed.php';
 include 'classes/feed_processing/class.custom_easylife_feed.php';
+include 'classes/feed_processing/class.custom_octopus_feed.php';
 
 class ODSTech_FeedManager extends feed_processor
 {
