@@ -22,6 +22,51 @@ switch ($_GET['source']) {
 		break;
 	}
 
+	case 'octopus':
+	{
+		$conn = new Mongo('localhost');
+		// access database
+		$mdb = $conn->odstech;
+		// access collection
+  		$collection = $mdb->live_octopus;
+
+  		$hols = $collection->find();
+
+  		$nwHols = array();
+  		foreach ($hols as $hol) {
+  			unset($hol['_id']);
+  			$nwHols[] = $hol;
+  		}
+
+  		switch ($_GET['format']) {
+  			case 'xml':
+  			{	
+  				if (false === array_key_exists('preview', $_GET)) {
+  					header('Content-type: application/xml');		  					
+  				}
+
+  				$sxe = new SimpleXMLElement('<holidays></holidays>');
+				$sxe->addAttribute('type', 'holidays');
+
+				if(is_array($nwHols) && count($nwHols) > 0)
+  				foreach ($nwHols as $hol) {
+  					$xmlProp = $sxe->addChild('hol');
+  					foreach($hol as $fieldname => $fieldvalue) {
+  						$innit = mb_convert_encoding($fieldvalue, 'UTF-8', mb_detect_encoding($fieldvalue));
+  						$xmlProp->addChild($fieldname, htmlspecialchars($innit, ENT_NOQUOTES, 'UTF-8'));
+  					}
+  				}
+  				print $sxe->asXML();
+  				break;
+	  		}
+	  		default:
+	  		{
+	  			$stuff = json_encode($nwHols);
+				print $stuff;
+	  		}
+	  	}
+	}
+
 	case 'easyjet':
 	{
 		switch($_GET['type']) {
