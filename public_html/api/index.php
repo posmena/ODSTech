@@ -30,7 +30,7 @@ switch ($_GET['source']) {
 		// access collection
   		$collection = $mdb->live_octopus;
 
-  		$hols = $collection->find();
+  		$hols = $collection->find(array(), array('unmapped' => false));
 
   		$nwHols = array();
   		foreach ($hols as $hol) {
