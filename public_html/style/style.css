@@ -316,7 +316,7 @@ width: 280px;
 	border: 1px solid #333333;
 	height: 100px;
 	width: 100px;
-	background: url('/images/tilebg.png');
+	background: #0F2A3C;
 	background-repeat: none;
 	border-radius: 5px;
 	-moz-border-radius:  5px;
@@ -382,7 +382,7 @@ width: 280px;
 	top: 160px;
 	left: 268px;
 	width: 132px;
-	
+	background-color: #085394;
 }
 
 
@@ -391,6 +391,7 @@ width: 280px;
 	left: 411px;
 	width: 267px;
 	height: 150px;
+	background-color: #2B78E4;
 
 }
 
@@ -398,6 +399,7 @@ width: 280px;
 	top: 270px;
 	left: 268px;
 	width: 410px;
+	background-color: #351C75;
 
 }
 
@@ -405,12 +407,14 @@ width: 280px;
 	top: 380px;
 	left: 268px;
 	width: 250px;
+	background-color: #385998;
 }
 
 #register_tile {
 	top: 380px;
 	left: 528px;
 	width: 150px;
+	background-color: #38761D;
 }
 
 #shake_tile {
