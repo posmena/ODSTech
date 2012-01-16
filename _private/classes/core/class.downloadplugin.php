@@ -6,7 +6,7 @@ class core_downloadplugin extends core_default
 	private $assignments;
 	
 	public function __construct($db, $qs) {
-		$allowedClients = array ('easyjetholidays');
+		$allowedClients = array ('easyjetholidays','octopustravel');
 
 		if (false === in_array($qs['client'], $allowedClients)) {
 			$this->assignments['clienttpl'] = 'plugindownload/notyet.tpl.html';
