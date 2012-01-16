@@ -1,0 +1,38 @@
+#easyjet div.header {
+	border: 0px solid red;
+	height: 61px;
+	background: url('/images/plugin/octopus_banner.png');
+}
+
+#easyjet div.main {
+}
+
+#easyjet div.main section.column {
+	width: 310px;
+	float: left;
+	padding: 10px;
+	text-align: left;
+}
+
+
+#easyjet div.main section.right_column {
+	margin-left: 20px;
+}
+
+#easyjet h2, #easyjet div.main section.column h2 {
+	font-size: 24px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+#easyjet div.main section.column h2.top {
+	text-align: left;
+	margin-left: 0;
+}
+
+
+#easyjet div.main section.column h2.top, #easyjet div.main section.column img {
+	text-align: center;
+	display: block;
+	margin: auto;
+}
