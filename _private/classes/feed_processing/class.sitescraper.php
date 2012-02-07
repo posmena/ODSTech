@@ -1,6 +1,6 @@
 <?php
 
-include '../classes/feed_processing/class.feed_processor.php';
+include 'classes/feed_processing/class.feed_processor.php';
 
 class sitescraper
 {
