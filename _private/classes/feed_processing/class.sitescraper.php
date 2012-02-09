@@ -85,7 +85,8 @@ class sitescraper
 			{
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
-				$collection = $mdb->damsel_scrape;
+				$collection = $mdb->damsel_scrape;				
+													
 				$site = "http://www.damselinadress.co.uk";
 				$urls = array('dresses > any occasion'              => 'http://www.damselinadress.co.uk/shop/dresses.aspx?i=32&px=0&ob=1&vbs=309&vbb=0&vbc=0&vbp=0',
 							  'dresses > day dresses'               => 'http://www.damselinadress.co.uk/shop/dresses.aspx?i=32&px=0&ob=1&vbs=57&vbb=0&vbc=0&vbp=0',
@@ -252,7 +253,10 @@ class sitescraper
 									$item['quantity'] = 1;
 
 
-									$collection->save($item);
+									$existing = $collection->findOne(array('title' => $name));
+									if( !$existing ) {
+										$collection->save($item);
+									}
 									
 								} catch(Exception $ex) {
 									
