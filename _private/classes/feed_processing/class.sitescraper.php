@@ -156,8 +156,7 @@ class sitescraper
 									$start = strpos($product, "<h1>") +4;
 									$end   = strpos($product,'</h1>',$start);
 									$name  = trim(substr($product,$start,$end-$start));
-																	
-								
+																							
 									$start = strpos($product, '<div id="skucode">') + 18;
 									$end   = strpos($product, '</div>', $start);
 									$code  = trim(str_replace('<strong>Product code:</strong><br />', '', (substr($product,$start,$end-$start))));
@@ -228,11 +227,11 @@ class sitescraper
 										continue;
 									}
 
-									if (false === isset($code) || $code == '') {
-										continue;
-									}
+									//if (false === isset($code) || $code == '') {
+									//	continue;
+									//}
 
-									$item['_id']         = $code;
+									//$item['_id']         = $code;
 									$item['title']       = $name;
 									$item['id']          = $code;
 									$item['category']    = $categories;
@@ -253,7 +252,7 @@ class sitescraper
 									$item['quantity'] = 1;
 
 
-									$collection->save($item, array('_id' => $code));
+									$collection->save($item);
 									
 								} catch(Exception $ex) {
 									
