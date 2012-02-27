@@ -11,8 +11,7 @@ class custom_forthillhome_feed extends network_base
 	public function __construct($local_file = null, $full = false)
 	{
 		global $db;
-
-		$this->xml_call($local_file, $full);
+		$this->meh($local_file, $full);
 	}
 
 	public function doCustomEdits($data, $key, $field)
@@ -34,11 +33,12 @@ class custom_forthillhome_feed extends network_base
 		// access database
 		$mdb = $conn->odstech;
 		// access collection
-  		$collection = $mdb->forthillhome;
-		//$response = $collection->drop();
+  		$collection = $mdb->live_forthillhome;
+		$response = $collection->drop();
 		
-		$this->setFields();
+		//$this->setFields();.
 		$fields = $this->getFields();
+		
 		//$properties = $mdb->properties_raw->find();
 		//$properties = $db->getQuery('SELECT p.*, pl.scrape_id FROM Property p INNER JOIN pm_scrape_property_lookup pl ON pl.odst_id=p.PropertyID');
 
@@ -46,8 +46,11 @@ class custom_forthillhome_feed extends network_base
 		$timeStart  = time();
 
 		print "Inserting into DB\n";
-		$reader = new XMLReader();
+		print($local_file);
+	
+	$reader = new XMLReader();
 		$reader->open($local_file);
+		
 		
 		$comma      = ',';
 		$i          = 0;
@@ -77,6 +80,7 @@ class custom_forthillhome_feed extends network_base
 								
 
 								$item[strtolower($field)] = (string) $product->$field;
+								
 								if ($field == 'ProductDescription') {
 									$html                     = (string) $product->$field;
 									// $item[strtolower($field)] = htmlentities($html, ENT_QUOTES, 'UTF-8');
@@ -106,7 +110,15 @@ class custom_forthillhome_feed extends network_base
 						$item['id'] = $item['productcode'];
 						$item['title'] = $item['productname'];
 						$item['link'] = $item['deeplink'];
-						$item['price'] = $item['warehousecustom'];
+						
+						
+						if( $item['warehousebin'] != "1" && $item['warehousebin'] != "")  {
+						$item['price'] = $item['warehousebin'];						
+						}
+							else	{						
+						$item['price'] = $item['warehousecustom'];						
+						}
+						
 						$item['description'] = $item['productdescription'];
 						$item['condition'] = $item['productcondition'];
 						$item['image_link'] = $item['imagelarge'];
@@ -141,7 +153,7 @@ class custom_forthillhome_feed extends network_base
 		return $this->name;
 	}
 	
-	/*
+	
 	public function getFields()
 	{
 		$this->fields = array(
@@ -149,6 +161,7 @@ class custom_forthillhome_feed extends network_base
 							  'ProductID',
 							  'ProductName',
 							  'WarehouseCustom',
+							  'WarehouseBin',							  
 							  'ProductDescription',
 							  'Availability',
 							  'FreeShippingItem',
@@ -158,7 +171,7 @@ class custom_forthillhome_feed extends network_base
 							  'ProductFeatures');
 		return $this->fields;
 	}
-	*/
+	
 	
 
 }
