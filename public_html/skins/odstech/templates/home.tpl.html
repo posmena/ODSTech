@@ -20,6 +20,47 @@
 				$('#login_tile form').submit();
 			}
 		});
+		
+		$('.flip-list').not(".exclude").liveTile({ 
+    backImages:[
+                 { 
+                     src:'/images/clientlogos/client1.jpg',        // path to image
+                     alt:'EasyJet Holidays',            // alt text for image           
+                     href:'http://odst.co.uk/wordpress/plugin/easyjetholidays.html',// href attribute if 'a' tag present
+                 },
+                 { 
+                     src:'/images/clientlogos/client2.jpg',        // path to image
+                     alt:'Forthill Home',            // alt text for image           
+
+                 },
+                 { 
+                     src:'/images/clientlogos/client3.jpg',        // path to image
+                     alt:'JT Spas',            // alt text for image           
+
+                 },
+                 { 
+                     src:'/images/clientlogos/client4.jpg',        // path to image
+                     alt:'Damsel In A Dress',            // alt text for image           
+
+                 },
+                 { 
+                     src:'/images/clientlogos/client5.jpg',        // path to image
+                     alt:'Chesca',            // alt text for image           
+
+                 },
+                 { 
+                     src:'/images/clientlogos/client6.jpg',        // path to image
+                     alt:'Easy Life',            // alt text for image           
+
+                 },
+                 { 
+                     src:'/images/clientlogos/client7.jpg',        // path to image
+                     alt:'Octopus.com',            // alt text for image           
+                     href:'http://odst.co.uk/wordpress/plugin/octopustravel.html',// href attribute if 'a' tag present
+                 }
+                ] 
+	});
+	
 	});
 	{/literal}
 </script>
@@ -156,50 +197,3 @@
 
 	
 </div>
-
-<!-- Javascript to activat the live tile -->
-<script type="text/javascript">
-{literal}
-	$(document).ready( function(){
-    $('.flip-list').not(".exclude").liveTile({ 
-    backImages:[
-                 { 
-                     src:'/images/clientlogos/client1.jpg',        // path to image
-                     alt:'EasyJet Holidays',            // alt text for image           
-                     href:'http://odst.co.uk/wordpress/plugin/easyjetholidays.html',// href attribute if 'a' tag present
-                 },
-                 { 
-                     src:'/images/clientlogos/client2.jpg',        // path to image
-                     alt:'Forthill Home',            // alt text for image           
-
-                 },
-                 { 
-                     src:'/images/clientlogos/client3.jpg',        // path to image
-                     alt:'JT Spas',            // alt text for image           
-
-                 },
-                 { 
-                     src:'/images/clientlogos/client4.jpg',        // path to image
-                     alt:'Damsel In A Dress',            // alt text for image           
-
-                 },
-                 { 
-                     src:'/images/clientlogos/client5.jpg',        // path to image
-                     alt:'Chesca',            // alt text for image           
-
-                 },
-                 { 
-                     src:'/images/clientlogos/client6.jpg',        // path to image
-                     alt:'Easy Life',            // alt text for image           
-
-                 },
-                 { 
-                     src:'/images/clientlogos/client7.jpg',        // path to image
-                     alt:'Octopus.com',            // alt text for image           
-                     href:'http://odst.co.uk/wordpress/plugin/octopustravel.html',// href attribute if 'a' tag present
-                 }
-                ] 
-	});
-	});
-	{/literal}
-</script>
