@@ -101,10 +101,49 @@
 
 	</div>
 
-	<div id="client_tile" class="tile">
-		<a href="/wordpress/plugin/easyjetholidays.html">see how the webgains easyJet holidays WordPress<br />plugin can monetise your travel site</a>
-		<h2>client</h2>
+		<div id="client_tile" class="tile">
+		<div id="tiles">
+    <div class="purple list-tile" id="purple">
+        <ul class="flip-list fourTiles" data-mode="flip-list" data-stops="50%,100%,0px" data-stack="true" data-delay="4250">
+            <li>
+                <div class="flip-front"></div>
+                <div class="flip-back"><a href="#"><img src="/images/clientlogos/1pixel.gif" alt="." /></a></div>
+            </li>
+            <li data-direction="horizontal">
+                <div class="flip-front"></div>
+                <div class="flip-back"><a href="#"><img src="/images/clientlogos/1pixel.gif" alt="." /></a></div>
+            </li>
+            <li>
+                <div class="flip-front"></div>
+                <div class="flip-back"><a href="#"><img src="/images/clientlogos/1pixel.gif" alt="." /></a></div>
+            </li>
+            <li data-direction="horizontal">
+                <div class="flip-front"></div>
+                <div class="flip-back"><a href="#"><img src="/images/clientlogos/1pixel.gif" alt="." /></a></div>
+            </li>
+            <li>
+                <div class="flip-front"></div>
+                <div class="flip-back"><a href="#"><img src="/images/clientlogos/1pixel.gif" alt="." /></a></div>
+            </li>
+            <li>
+                <div class="flip-front"></div>
+                <div class="flip-back"><a href="#"><img src="/images/clientlogos/1pixel.gif" alt="." /></a></div>
+            </li>
+            <li>
+                <div class="flip-front"></div>
+                <div class="flip-back"><a href="#"><img src="/images/clientlogos/1pixel.gif" alt="." /></a></div>
+            </li>
+            <li class="exclude">
+            <h2>clients</h2>
+            </li>
+            
+        </ul>
+       
+        
+    </div>
+    </div>
 	</div>
+	
 
 	<div id="register_tile" class="tile">
 		<a href="/signup.html">affiliate account registration</a>
@@ -117,3 +156,49 @@
 
 	
 </div>
+
+<!-- Javascript to activat the live tile -->
+<script type="text/javascript">
+	$(document).ready( function(){
+    $('.flip-list').not(".exclude").liveTile({ 
+    backImages:[
+                 { 
+                     src:'/images/clientlogos/client1.jpg',        // path to image
+                     alt:'EasyJet Holidays',            // alt text for image           
+                     href:'http://odst.co.uk/wordpress/plugin/easyjetholidays.html',// href attribute if 'a' tag present
+                 },
+                 { 
+                     src:'/images/clientlogos/client2.jpg',        // path to image
+                     alt:'Forthill Home',            // alt text for image           
+
+                 },
+                 { 
+                     src:'/images/clientlogos/client3.jpg',        // path to image
+                     alt:'JT Spas',            // alt text for image           
+
+                 },
+                 { 
+                     src:'/images/clientlogos/client4.jpg',        // path to image
+                     alt:'Damsel In A Dress',            // alt text for image           
+
+                 },
+                 { 
+                     src:'/images/clientlogos/client5.jpg',        // path to image
+                     alt:'Chesca',            // alt text for image           
+
+                 },
+                 { 
+                     src:'/images/clientlogos/client6.jpg',        // path to image
+                     alt:'Easy Life',            // alt text for image           
+
+                 },
+                 { 
+                     src:'/images/clientlogos/client7.jpg',        // path to image
+                     alt:'Octopus.com',            // alt text for image           
+                     href:'http://odst.co.uk/wordpress/plugin/octopustravel.html',// href attribute if 'a' tag present
+                 }
+                ] 
+	});
+	});
+	
+</script>
