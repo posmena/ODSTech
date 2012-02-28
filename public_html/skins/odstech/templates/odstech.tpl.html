@@ -11,6 +11,7 @@
 	    </script>
 	</head>
 	<body class="">
+
 		<div id="header">
 			<div class="innerHeader">
 				<a href="/"><img src="/images/odst_logo.png" /></a>
@@ -22,6 +23,7 @@
 	        <!-- should be place before flow so that contained images will be loaded first -->
 	
 		        <div class="flow">
+
 					{foreach from=$coverimages item="image"}
 		            <div class="item" href="{$image.href}">
 		                <img class="content" src="/{$image.url}" />
@@ -31,6 +33,7 @@
 				</div>
 		        <div class="globalCaption"></div>
 		    </div>
+
 	    </div>
 		<div id="content" class="clearfix">
 			<div class="inner">
@@ -39,6 +42,7 @@
 						<li><a {if $action == 'login'}class="selected" {/if}href="/login.html">login</a></li>
 						<li><a {if $action == 'home'}class="selected" {/if}href="/">home</a></li>
 						<li><a {if $action == 'feeds'}class="selected" {/if}href="/product-feeds.html">feeds</a></li>
+
 						<li><a {if $action == 'widgets'}class="selected" {/if}href="/widgets.html">widgets</a></li>
 						<li><a {if $action == 'opm'}class="selected" {/if}href="/affiliates-management.html">affiliate OPM</a></li>
 						<li><a {if $action == 'banners'}class="selected" {/if}href="/banner-design.html">banner design</a></li>
@@ -46,6 +50,7 @@
 					</ol>
 				</div>
 				<div  id="main">
+
 					{include file=$content}
 					{if $action != 'login'}
 					<div id="social" class="clearfix">
@@ -89,6 +94,7 @@
 							}).render().setUser('ODST_co_uk').start();
 							{/literal}
 							</script>
+
 						</fieldset>
 					</div>
 					{/if}
@@ -101,6 +107,7 @@
 			<div class="inner"> 
 			<!--img src="images/img_footer_tropper.jpg" width="657" height="182" alt="" /--> 
 			</div>
+
 		</div><!-- END #footer --> 
 	</body>
 </html>
