@@ -104,7 +104,7 @@ class custom_forthillhome_feed extends network_base
 
 						$item['imagethumbnail'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-1.jpg';
 						$item['imagelarge'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-2T.jpg';
-
+						$item['deeplink'] = 'http://www.forthillhome.co.uk/product-p/' . strtoupper($item['productcode']) . '.htm';
 						$item['warranty'] = 1;
 
 						$item['id'] = $item['productcode'];
@@ -119,6 +119,7 @@ class custom_forthillhome_feed extends network_base
 						$item['price'] = $item['warehousecustom'];						
 						}
 						
+						$item['productdescription'] = strip_tags($item['productdescription']);
 						$item['description'] = $item['productdescription'];
 						$item['condition'] = $item['productcondition'];
 						$item['image_link'] = $item['imagelarge'];
