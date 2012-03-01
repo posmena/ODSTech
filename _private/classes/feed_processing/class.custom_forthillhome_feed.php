@@ -110,8 +110,16 @@ class custom_forthillhome_feed extends network_base
 						$item['id'] = $item['productcode'];
 						$item['title'] = $item['productname'];
 						$item['link'] = $item['deeplink'];
-						$item['shipping'] =  '35';
 						
+						if( $item['freeshippingitem'] == "Y")
+							{
+							$item['shipping'] =  '0';							
+							}
+						else
+							{
+							$item['shipping'] =  '35';							
+							}
+							
 						if( $item['warehousebin'] != "1" && $item['warehousebin'] != "")  {
 						$item['price'] = $item['warehousebin'];						
 						}
