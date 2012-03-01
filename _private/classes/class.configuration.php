@@ -2,7 +2,7 @@
 
 class configuration{
 
-        const APPROOT = 'C:\\Users\\EK\\ODSTech\\ODSTech\\public_html\\';
+        const APPROOT = '/var/www/odst-live/';
         // system settings
         public $debugMode = false;
         public $scriptDebugMode = false;
