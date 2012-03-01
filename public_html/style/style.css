@@ -308,7 +308,7 @@ width: 280px;
 	margin-top: 20px;
 	width: 680px;
 	position: relative;
-	height: 600px;
+	height: 640px;
 }
 
 .tile, .twitter_tile {
@@ -411,17 +411,17 @@ width: 280px;
 }
 
 #register_tile {
-	top: 380px;
+	top: 500px;
 	left: 528px;
 	width: 150px;
 	background-color: #38761D;
 }
 
 #shake_tile {
-	top: 490px;
-	left: 268px;
+	top: 510px;
+	left: 275px;
 	height: 50px;
-	width: 410px;
+	width: 210px;
 	background: #FFFFFF;
 	border: transparent;
 }
