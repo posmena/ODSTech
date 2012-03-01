@@ -31,6 +31,23 @@ class sitescraper
 					$end   = stripos($trash, "</ul>", $start) + 5;
 					$desc = trim(substr($trash,$start,$end-$start));
 					
+					$start = stripos($page, '<div style="text-align:left" class="emsc19">') + 44;
+					$end = stripos($page, '</div>',$start);
+					$desc1 = trim(substr($page,$start,$end-$start));
+					
+					$start = stripos($page, '<ul>', $end) + 4;
+					$end = stripos($page, '</ul>', $start);
+					$desc2 = trim(substr($page,$start,$end-$start));
+					$desc2 = str_replace('<li>','',$desc2);
+					$desc2 = str_replace('</li>','',$desc2);					
+					
+					$desc2 = str_replace('<br>',"\n",$desc2);
+					$desc2 = str_replace('<BR>',"\n",$desc2);
+					$desc2 = str_replace('<BR\>',"\n",$desc2);
+					
+					$desc2 = strip_tags($desc2);
+					
+					
 					$start = stripos($page, '<img emssteve="False"');
 					$end   = stripos($page, "/>", $start) + 4;
 					$img = trim(substr($page,$start,$end-$start));
@@ -67,7 +84,7 @@ class sitescraper
 						$desc = substr($desc, 2, strlen($desc));	
 					}
 					
-					$product['description'] = $metadesc . '. ' . $desc;
+					$product['description'] = $desc1 . "\n" . $desc2; //$metadesc . '. ' . $desc;
 
 					if (false !== stristr($img, 'PUBLIC')) {
 						$collection->remove(array('productid' => $product['productid']), true);
@@ -83,6 +100,12 @@ class sitescraper
 						}
 					}
 
+					$product['id'] = $product['productid'];
+					$product['title'] = $product['productname'];
+					$product['product_type'] = $product['category'];
+					$product['condition'] = "New";
+					$product['gtin'] = $product['productid'];
+					
 					$collection->save($product);
 					unset($product);
 					$added++;	
@@ -171,7 +194,9 @@ class sitescraper
 									$start = strpos($product, "<h1>") +4;
 									$end   = strpos($product,'</h1>',$start);
 									$name  = trim(substr($product,$start,$end-$start));
-																							
+									
+																
+																						
 									$start = strpos($product, '<div id="skucode">') + 18;
 									$end   = strpos($product, '</div>', $start);
 									$code  = trim(str_replace('<strong>Product code:</strong><br />', '', (substr($product,$start,$end-$start))));
@@ -249,8 +274,11 @@ class sitescraper
 									//$item['_id']         = $code;
 									$item['title']       = $name;
 									$item['id']          = $code;
+									$item['gtin']        = $code;
 									$item['category']    = $categories;
+									$item['product_type']= $categories;
 									$item['price']       = $price;
+									$item['condition']   = "New";
 									$item['description'] = $desc;
 									$item['link']        = $url;
 									$item['image_link']  = $largeImage;
@@ -538,3 +566,4 @@ class sitescraper
 		}
 	}
 }
+
