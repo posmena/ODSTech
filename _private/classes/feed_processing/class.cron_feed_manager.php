@@ -26,7 +26,6 @@ class ODSTech_FeedManager extends feed_processor
 		//if ($feed_id === null || $feed_id < 1 || ctype_digit($feed_id) === false) {
 		//	throw new Exception ('Usage: processFeed.php feed_id full verbose');
 		//}
-		
 		self::process_feed($feed_id, $full);
 	}
 	

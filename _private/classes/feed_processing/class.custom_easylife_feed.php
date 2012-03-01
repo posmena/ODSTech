@@ -11,7 +11,7 @@ class custom_easylife_feed extends network_base
 	public function __construct($local_file = null, $full = false)
 	{
 		global $db;
-
+        
 		$this->csv_call($local_file, $full);
 	}
 	

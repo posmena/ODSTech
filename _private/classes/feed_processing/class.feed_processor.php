@@ -44,7 +44,7 @@ class feed_processor
 				default:
 				{
 					$local_file = $path4feed.'feed'.$feed_id;
-					
+					print($feed['url']);
 					$data = self::curl_get_file_contents($feed['url']);
 					$fp = fopen($local_file, 'w+');
 					fwrite($fp, $data);
@@ -72,8 +72,10 @@ class feed_processor
 				} else 
 				*/
 				{
+					print("HERE");
 					// custom feeds will handle their own shizzle.
 					$network = new $feed['classname']($local_file, $full);
+					
 				}
 			} else {
 				print 'Class '.$feed['class_name'].' dunt exist\n';

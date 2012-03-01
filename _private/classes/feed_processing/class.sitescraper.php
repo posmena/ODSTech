@@ -18,7 +18,6 @@ class sitescraper
 				$removed = 0;
 				$added = 0;
 				foreach ($products as $product) {
-					
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
 					$start = strpos($page, '<meta name="description" content="') + 34;
 					$end   = strpos($page, '" />', $start);
@@ -39,6 +38,16 @@ class sitescraper
 					$end   = stripos($img, '"', $start);
 					$img = trim(substr($img,$start,$end-$start));
 					
+					$start = stripos($page, 'showbigimage778(');
+					$img2 = '';
+					
+					if( $start > 0 ) 
+						{
+						$start = stripos($page, 'showbigimage778(', $start+16) + 16;
+						$end   = stripos($page, ",", $start);
+						$img2 = 'EMSImage'. trim(substr($page,$start,$end-$start)) . '-298-298' ;								
+						}
+						
 					$start = strpos($page, 'id="obj1203"') + 20;
 					$end   = strpos($page, "</a>", $start)+4;
 					$cat   = trim(substr($page,$start,$end-$start));
@@ -49,6 +58,10 @@ class sitescraper
 
 					$product['category'] = $cat;
 					$product['image_link'] = $url.$img;
+					if( '' != $url) {
+						$product['image_link2'] = $url.$img2;
+					}
+						
 					$desc = str_replace("\n", '. ', strip_tags($desc));
 					if (strlen($desc) > 2) {
 						$desc = substr($desc, 2, strlen($desc));	
@@ -85,7 +98,8 @@ class sitescraper
 			{
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
-				$collection = $mdb->damsel_scrape;				
+				$collection = $mdb->damsel_scrape;
+				
 													
 				$site = "http://www.damselinadress.co.uk";
 				$urls = array('dresses > any occasion'              => 'http://www.damselinadress.co.uk/shop/dresses.aspx?i=32&px=0&ob=1&vbs=309&vbb=0&vbc=0&vbp=0',
