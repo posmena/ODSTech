@@ -19,6 +19,8 @@ class sitescraper
 				$added = 0;
 				foreach ($products as $product) {
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
+					
+					echo($product['deeplink']);
 					$start = strpos($page, '<meta name="description" content="') + 34;
 					$end   = strpos($page, '" />', $start);
 					$metadesc = trim(substr($page,$start,$end-$start));
@@ -31,23 +33,20 @@ class sitescraper
 					$end   = stripos($trash, "</ul>", $start) + 5;
 					$desc = trim(substr($trash,$start,$end-$start));
 					
-					$start = stripos($page, '<div style="text-align:left" class="emsc19">') + 44;
+					$start = stripos($page, 'class="emsc19"') + 15;
+					$start = stripos($page, '>',$start) + 1;					
 					$end = stripos($page, '</div>',$start);
 					$desc1 = trim(substr($page,$start,$end-$start));
 					
-					$start = stripos($page, '<ul>', $end) + 4;
-					$end = stripos($page, '</ul>', $start);
-					$desc2 = trim(substr($page,$start,$end-$start));
-					$desc2 = str_replace('<li>','',$desc2);
-					$desc2 = str_replace('</li>','',$desc2);					
+					//echo($desc1);
 					
-					$desc2 = str_replace('<br>'," ",$desc2);
-					$desc2 = str_replace('<BR>'," ",$desc2);
-					$desc2 = str_replace('<BR\>'," ",$desc2);
+					$start = stripos($page, '<ul>') + 4;
+					$end = stripos($page, '</ul>', $start);
+				
+					$desc2 = trim(substr($page,$start,$end-$start));
 					
 					$desc2 = strip_tags($desc2);
-					
-					
+						
 					$start = stripos($page, '<img emssteve="False"');
 					$end   = stripos($page, "/>", $start) + 4;
 					$img = trim(substr($page,$start,$end-$start));
