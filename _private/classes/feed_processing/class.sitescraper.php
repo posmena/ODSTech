@@ -41,9 +41,9 @@ class sitescraper
 					$desc2 = str_replace('<li>','',$desc2);
 					$desc2 = str_replace('</li>','',$desc2);					
 					
-					$desc2 = str_replace('<br>',"\n",$desc2);
-					$desc2 = str_replace('<BR>',"\n",$desc2);
-					$desc2 = str_replace('<BR\>',"\n",$desc2);
+					$desc2 = str_replace('<br>'," ",$desc2);
+					$desc2 = str_replace('<BR>'," ",$desc2);
+					$desc2 = str_replace('<BR\>'," ",$desc2);
 					
 					$desc2 = strip_tags($desc2);
 					
@@ -84,7 +84,7 @@ class sitescraper
 						$desc = substr($desc, 2, strlen($desc));	
 					}
 					
-					$product['description'] = $desc1 . "\n" . $desc2; //$metadesc . '. ' . $desc;
+					$product['description'] = $desc1 . " " . $desc2; //$metadesc . '. ' . $desc;
 
 					if (false !== stristr($img, 'PUBLIC')) {
 						$collection->remove(array('productid' => $product['productid']), true);
