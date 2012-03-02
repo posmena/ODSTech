@@ -35,9 +35,10 @@ class sitescraper
 					
 					$desc1 = ""
 					
-					$start = stripos($page, 'class="emsc19"') + 15;
-					if( $start )
+					$start = stripos($page, 'class="emsc19"');
+					if( $start !== FALSE )
 						{
+						$start = $start + 15;
 						$start = stripos($page, '>',$start) + 1;					
 						$end = stripos($page, '</div>',$start);
 						$desc1 = trim(substr($page,$start,$end-$start));
@@ -49,13 +50,14 @@ class sitescraper
 						
 					//echo($desc1);
 					
-					$start = stripos($page, '<ul>') + 4;
-					$end = stripos($page, '</ul>', $start);
+					$start = stripos($page, '<ul>');
 					
 					$desc2 = "";
 					
-					if( $start )
+					if( $start !== FALSE)
 						{
+						$start = $start + 4;
+						$end = stripos($page, '</ul>', $start+4);					
 						$desc2 = trim(substr($page,$start,$end-$start));					
 						$desc2 = strip_tags($desc2);
 						}
