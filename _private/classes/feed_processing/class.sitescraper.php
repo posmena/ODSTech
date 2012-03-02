@@ -42,10 +42,14 @@ class sitescraper
 					
 					$start = stripos($page, '<ul>') + 4;
 					$end = stripos($page, '</ul>', $start);
-				
-					$desc2 = trim(substr($page,$start,$end-$start));
 					
-					$desc2 = strip_tags($desc2);
+					$desc2 = "";
+					
+					if( $start > 1 )
+						{
+						$desc2 = trim(substr($page,$start,$end-$start));					
+						$desc2 = strip_tags($desc2);
+						}
 						
 					$start = stripos($page, '<img emssteve="False"');
 					$end   = stripos($page, "/>", $start) + 4;
