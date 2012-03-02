@@ -37,7 +37,7 @@ class ODSTech_xmlgenerator
 			$shipping = false;
 			foreach ($headers as $key => $heading) {
 				if ($heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time' || $heading == 'category' || $heading == 'mpn') {
-					$tData = $data[$key];
+					$tData = htmlspecialchars($data[$key]);
 					if ($heading == 'title') {
 						if ($name == 'chesca') {
 							$tData .= " Chesca Womens";	
@@ -50,7 +50,7 @@ class ODSTech_xmlgenerator
 					$content = '<g:price>' . $data[$key] . '</g:price>';
 					$shipping = true;
 				} else {
-					$content = $data[$key];
+					$content = htmlspecialchars($data[$key]);
 				}
 
 				if (false !== stristr($heading, 'deeplink')) {
