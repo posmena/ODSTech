@@ -33,11 +33,20 @@ class sitescraper
 					$end   = stripos($trash, "</ul>", $start) + 5;
 					$desc = trim(substr($trash,$start,$end-$start));
 					
-					$start = stripos($page, 'class="emsc19"') + 15;
-					$start = stripos($page, '>',$start) + 1;					
-					$end = stripos($page, '</div>',$start);
-					$desc1 = trim(substr($page,$start,$end-$start));
+					$desc1 = ""
 					
+					$start = stripos($page, 'class="emsc19"') + 15;
+					if( $start > 1 )
+						{
+						$start = stripos($page, '>',$start) + 1;					
+						$end = stripos($page, '</div>',$start);
+						$desc1 = trim(substr($page,$start,$end-$start));
+						}
+					else
+						{
+						$desc1 = $desc;
+						}
+						
 					//echo($desc1);
 					
 					$start = stripos($page, '<ul>') + 4;
