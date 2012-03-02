@@ -119,6 +119,7 @@ class sitescraper
 					$product['product_type'] = $product['category'];
 					$product['condition'] = "New";
 					$product['gtin'] = $product['productid'];
+					$product['brand'] = "";
 					
 					$collection->save($product);
 					unset($product);
