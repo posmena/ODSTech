@@ -98,7 +98,7 @@ class sitescraper
 						$desc = substr($desc, 2, strlen($desc));	
 					}
 					
-					$product['description'] = $desc1 . " " . $desc2; //$metadesc . '. ' . $desc;
+					$product['description'] = str_replace("\"","'",$desc1 . " " . $desc2); //$metadesc . '. ' . $desc;
 
 					if (false !== stristr($img, 'PUBLIC')) {
 						$collection->remove(array('productid' => $product['productid']), true);
