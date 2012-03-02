@@ -36,7 +36,7 @@ class sitescraper
 					$desc1 = ""
 					
 					$start = stripos($page, 'class="emsc19"') + 15;
-					if( $start > 1 )
+					if( $start )
 						{
 						$start = stripos($page, '>',$start) + 1;					
 						$end = stripos($page, '</div>',$start);
@@ -54,7 +54,7 @@ class sitescraper
 					
 					$desc2 = "";
 					
-					if( $start > 1 )
+					if( $start )
 						{
 						$desc2 = trim(substr($page,$start,$end-$start));					
 						$desc2 = strip_tags($desc2);
