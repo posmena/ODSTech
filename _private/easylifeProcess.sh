@@ -4,7 +4,7 @@ cd /var/www/odst-live/_private
 # export regions
 #db.packageschecksum.distinct('region')
 
-#php scripts/processFeed.php easylife | mail -s 'EasyLife Processed' tech@odst.co.uk
+php scripts/processFeed.php easylife | mail -s 'EasyLife Processed' tech@odst.co.uk
 
 php scripts/scraper.php easylife
 

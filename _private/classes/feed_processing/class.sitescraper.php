@@ -89,7 +89,7 @@ class sitescraper
 
 					$product['category'] = $cat;
 					$product['image_link'] = $url.$img;
-					if( '' != $url) {
+					if( '' != $img2) {
 						$product['image_link2'] = $url.$img2;
 					}
 						
@@ -119,7 +119,6 @@ class sitescraper
 					$product['product_type'] = $product['category'];
 					$product['condition'] = "New";
 					$product['gtin'] = $product['productid'];
-					$product['brand'] = "";
 					
 					$collection->save($product);
 					unset($product);
