@@ -21,121 +21,125 @@ class sitescraper
 				
 				foreach ($products as $product) {
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
+					$img = "";
 					
-					print($product['deeplink']);
-					$start = strpos($page, '<meta name="description" content="') + 34;
-					$end   = strpos($page, '" />', $start);
-					$metadesc = trim(substr($page,$start,$end-$start));
+					if( strpos($page,'EMSImage1252') !== FALSE )
+						{
+						print($product['deeplink']);
+						$start = strpos($page, '<meta name="description" content="') + 34;
+						$end   = strpos($page, '" />', $start);
+						$metadesc = trim(substr($page,$start,$end-$start));
 
-					$start = strpos($page, "<div class=\"stretchy\" id=\"obj773\"");
-					$end   = strpos($page, "</div>", $start);
-					$trash = trim(substr($page,$start,$end-$start));
+						$start = strpos($page, "<div class=\"stretchy\" id=\"obj773\"");
+						$end   = strpos($page, "</div>", $start);
+						$trash = trim(substr($page,$start,$end-$start));
 
-					$start = stripos($trash, "<ul>");
-					$end   = stripos($trash, "</ul>", $start) + 5;
-					$desc = trim(substr($trash,$start,$end-$start));
-					
-					$desc1 = "";
-					
-					$start = stripos($page, 'class="emsc19"');
-					if( $start !== FALSE )
-						{
-						$start = $start + 15;
-						$start = stripos($page, '>',$start) + 1;					
-						$end = stripos($page, '</div>',$start);
-						$desc1 = trim(substr($page,$start,$end-$start));
-						}
-					else
-						{
-						$desc1 = $desc;
-						}
+						$start = stripos($trash, "<ul>");
+						$end   = stripos($trash, "</ul>", $start) + 5;
+						$desc = trim(substr($trash,$start,$end-$start));
 						
-					//echo($desc1);
-					
-					$start = stripos($page, '<ul>');
-					
-					$desc2 = "";
-					
-					if( $start !== FALSE)
-						{
-						$start = $start + 4;
-						$end = stripos($page, '</ul>', $start);					
-						$desc2 = trim(substr($page,$start,$end-$start));					
-						$desc2 = strip_tags($desc2);
-						$desc2 = str_replace('\\n','\\r\\n',$desc2);
-						}
+						$desc1 = "";
 						
-					//print("\n");
-					$start = stripos($page, '<img emssteve="False"');
-					//print($start ."\n");
-					$end   = stripos($page, "/>", $start) + 4;
-					$img = trim(substr($page,$start,$end-$start));
-					//print($img);
-					$start = stripos($img, 'emssrc=') + 8;
-					//print($start ."\n");
-					$end   = stripos($img, '"', $start);
-					$img = trim(substr($img,$start,$end-$start));
-					//print($img);
-					$start = stripos($img,"-");
-					//print($start ."\n");
-					$img = substr($img,0,$start);
-					print($img);
-										
-					$img2 = '';
-					$img3 = '';
-					$start = stripos($page, 'javascript:showbigimage778(');
-					
-					if( $start > 0 ) 
-						{
-						$start = stripos($page, 'javascript:showbigimage778(', $start+27) + 27;
-						$end   = stripos($page, ",", $start);
-						$img2 = 'EMSImage'. trim(substr($page,$start,$end-$start)) ;								
-											
-						$start = stripos($page, 'javascript:showbigimage778(',$end);
-							
-						if( $start > 0) 
+						$start = stripos($page, 'class="emsc19"');
+						if( $start !== FALSE )
 							{
-							$start = $start + 27;
+							$start = $start + 15;
+							$start = stripos($page, '>',$start) + 1;					
+							$end = stripos($page, '</div>',$start);
+							$desc1 = trim(substr($page,$start,$end-$start));
+							}
+						else
+							{
+							$desc1 = $desc;
+							}
+							
+						//echo($desc1);
+						
+						$start = stripos($page, '<ul>');
+						
+						$desc2 = "";
+						
+						if( $start !== FALSE)
+							{
+							$start = $start + 4;
+							$end = stripos($page, '</ul>', $start);					
+							$desc2 = trim(substr($page,$start,$end-$start));					
+							$desc2 = strip_tags($desc2);
+							$desc2 = str_replace('\\n','\\r\\n',$desc2);
+							}
+							
+						//print("\n");
+						$start = stripos($page, '<img emssteve="False"');
+						//print($start ."\n");
+						$end   = stripos($page, "/>", $start) + 4;
+						$img = trim(substr($page,$start,$end-$start));
+						//print($img);
+						$start = stripos($img, 'emssrc=') + 8;
+						//print($start ."\n");
+						$end   = stripos($img, '"', $start);
+						$img = trim(substr($img,$start,$end-$start));
+						//print($img);
+						$start = stripos($img,"-");
+						//print($start ."\n");
+						$img = substr($img,0,$start);
+						print($img);
+											
+						$img2 = '';
+						$img3 = '';
+						$start = stripos($page, 'javascript:showbigimage778(');
+						
+						if( $start > 0 ) 
+							{
+							$start = stripos($page, 'javascript:showbigimage778(', $start+27) + 27;
 							$end   = stripos($page, ",", $start);
-							$img3 = 'EMSImage'. trim(substr($page,$start,$end-$start)) ;								
-							}					
+							$img2 = 'EMSImage'. trim(substr($page,$start,$end-$start)) ;								
+												
+							$start = stripos($page, 'javascript:showbigimage778(',$end);
+								
+							if( $start > 0) 
+								{
+								$start = $start + 27;
+								$end   = stripos($page, ",", $start);
+								$img3 = 'EMSImage'. trim(substr($page,$start,$end-$start)) ;								
+								}					
+							
+							}
 						
-						}
-					
-					
-					$start = strpos($page, 'id="obj1203"');
-					if( $start )
-						{
-						$start = $start  + 20;						
-						$end   = strpos($page, "</a>", $start)+4;
-						$cat   = trim(substr($page,$start,$end-$start));
 						
-						$start = strpos($cat, '">') ;
+						$start = strpos($page, 'id="obj1203"');
 						if( $start )
 							{
-							$start = $start + 2;
-							$end   = strpos($cat, "</a>", $start);
-							$cat   = trim(substr($cat,$start,$end-$start));
-							}
-					}
-	
-					$product['category'] = $cat;
-					$product['image_link'] = $url.$img;
-					if( '' != $img2) {
-						$product['image_link2'] = $url.$img2;
+							$start = $start  + 20;						
+							$end   = strpos($page, "</a>", $start)+4;
+							$cat   = trim(substr($page,$start,$end-$start));
+							
+							$start = strpos($cat, '">') ;
+							if( $start )
+								{
+								$start = $start + 2;
+								$end   = strpos($cat, "</a>", $start);
+								$cat   = trim(substr($cat,$start,$end-$start));
+								}
+						}
+		
+						$product['category'] = $cat;
+						$product['image_link'] = $url.$img;
+						if( '' != $img2) {
+							$product['image_link2'] = $url.$img2;
+						}
+						
+						if( '' != $img3) {
+							$product['image_link3'] = $url.$img3;
+						}
+											
+						$desc = str_replace("\n", '. ', strip_tags($desc));
+						if (strlen($desc) > 2) {
+							$desc = substr($desc, 2, strlen($desc));	
+						}
+						
+						$product['description'] = str_replace("\"","'",$desc1 . " " . $desc2); //$metadesc . '. ' . $desc;
 					}
 					
-					if( '' != $img3) {
-						$product['image_link3'] = $url.$img3;
-					}
-										
-					$desc = str_replace("\n", '. ', strip_tags($desc));
-					if (strlen($desc) > 2) {
-						$desc = substr($desc, 2, strlen($desc));	
-					}
-					
-					$product['description'] = str_replace("\"","'",$desc1 . " " . $desc2); //$metadesc . '. ' . $desc;
-
 					if ("" == $img) {
 						$collection->remove(array('productid' => $product['productid']), true);
 						unset($product);
