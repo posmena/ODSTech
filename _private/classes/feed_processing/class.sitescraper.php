@@ -112,14 +112,17 @@ class sitescraper
 							{
 							$start = $start  + 20;						
 							$end   = strpos($page, "</a>", $start)+4;
-							$cat   = trim(substr($page,$start,$end-$start));
-							
-							$start = strpos($cat, '">') ;
-							if( $start  > 0)
+							if( $end !== FALSE )
 								{
-								$start = $start + 2;
-								$end   = strpos($cat, "</a>", $start);
-								$cat   = trim(substr($cat,$start,$end-$start));
+								$cat   = trim(substr($page,$start,$end-$start));
+								
+								$start = strpos($cat, '">') ;
+								if( $start  !== FALSE)
+									{
+									$start = $start + 2;
+									$end   = strpos($cat, "</a>", $start);
+									$cat   = trim(substr($cat,$start,$end-$start));
+									}
 								}
 						}
 		
