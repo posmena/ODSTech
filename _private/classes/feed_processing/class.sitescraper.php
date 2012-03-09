@@ -125,7 +125,11 @@ class sitescraper
 									}
 								}
 						}
-		
+						if( strlen($cat) > 150 )
+							{
+							$cat = "";
+							}
+							
 						$product['category'] = $cat;
 						$product['image_link'] = $url.$img;
 						if( '' != $img2) {
