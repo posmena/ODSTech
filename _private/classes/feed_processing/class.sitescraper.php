@@ -13,7 +13,9 @@ class sitescraper
 			{
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
-				$collection = $mdb->ot_easylife;
+				$collection = $mdb->live_easylife;
+				$otcollection = $mdb->ot_easylife;
+				$otcollection->drop();
 				$products = $collection->find();
 				$url = 'http://www.easylifegroup.com/';
 				$removed = 0;
@@ -159,7 +161,7 @@ class sitescraper
 					$product['condition'] = "New";
 					$product['gtin'] = $product['productid'];
 					
-					$collection->save($product);
+					$otcollection->save($product);
 					unset($product);
 					$added++;	
 
