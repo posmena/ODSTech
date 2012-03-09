@@ -23,8 +23,7 @@ class sitescraper
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
 					$img = "";
 					
-					if( strpos($page,'EMSImage1252') !== FALSE )
-						{
+					
 						print($product['deeplink']);
 						$start = strpos($page, '<meta name="description" content="') + 34;
 						$end   = strpos($page, '" />', $start);
@@ -105,16 +104,16 @@ class sitescraper
 							
 							}
 						
-						
+						$cat = "";
 						$start = strpos($page, 'id="obj1203"');
-						if( $start )
+						if( $start > 0 )
 							{
 							$start = $start  + 20;						
 							$end   = strpos($page, "</a>", $start)+4;
 							$cat   = trim(substr($page,$start,$end-$start));
 							
 							$start = strpos($cat, '">') ;
-							if( $start )
+							if( $start  > 0)
 								{
 								$start = $start + 2;
 								$end   = strpos($cat, "</a>", $start);
@@ -138,7 +137,7 @@ class sitescraper
 						}
 						
 						$product['description'] = str_replace("\"","'",$desc1 . " " . $desc2); //$metadesc . '. ' . $desc;
-					}
+					
 					
 					if ("" == $img) {
 						$collection->remove(array('productid' => $product['productid']), true);
