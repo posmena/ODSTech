@@ -164,7 +164,7 @@ class sitescraper
 
 					$product['id'] = $product['productid'];
 					$product['title'] = $product['productname'];
-					$product['product_type'] = $product['category'];
+					//$product['product_type'] = $product['category'];
 					$product['condition'] = "New";
 					$product['gtin'] = $product['productid'];
 					
