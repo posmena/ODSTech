@@ -160,7 +160,7 @@ class sitescraper
 					$product['condition'] = "New";
 					$product['gtin'] = $product['productid'];
 					
-					$newcollection->save($product);
+					$collection->save($product);
 					unset($product);
 					$added++;	
 
