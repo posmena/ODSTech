@@ -7,6 +7,7 @@ class sitescraper
 	function scrape($site, $instance, $of) {
 		global $db;
 		
+				
 		switch ($site) {
 			case 'easylife':
 			{
@@ -17,10 +18,11 @@ class sitescraper
 				$url = 'http://www.easylifegroup.com/';
 				$removed = 0;
 				$added = 0;
+				
 				foreach ($products as $product) {
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
 					
-					echo($product['deeplink']);
+					print($product['deeplink']);
 					$start = strpos($page, '<meta name="description" content="') + 34;
 					$end   = strpos($page, '" />', $start);
 					$metadesc = trim(substr($page,$start,$end-$start));
@@ -57,42 +59,76 @@ class sitescraper
 					if( $start !== FALSE)
 						{
 						$start = $start + 4;
-						$end = stripos($page, '</ul>', $start+4);					
+						$end = stripos($page, '</ul>', $start);					
 						$desc2 = trim(substr($page,$start,$end-$start));					
 						$desc2 = strip_tags($desc2);
+						$desc2 = str_replace('\\n','\\r\\n',$desc2);
 						}
 						
+					//print("\n");
 					$start = stripos($page, '<img emssteve="False"');
+					//print($start ."\n");
 					$end   = stripos($page, "/>", $start) + 4;
 					$img = trim(substr($page,$start,$end-$start));
+					//print($img);
 					$start = stripos($img, 'emssrc=') + 8;
+					//print($start ."\n");
 					$end   = stripos($img, '"', $start);
 					$img = trim(substr($img,$start,$end-$start));
-					
-					$start = stripos($page, 'showbigimage778(');
+					//print($img);
+					$start = stripos($img,"-");
+					//print($start ."\n");
+					$img = substr($img,0,$start);
+					print($img);
+										
 					$img2 = '';
+					$img3 = '';
+					$start = stripos($page, 'javascript:showbigimage778(');
 					
 					if( $start > 0 ) 
 						{
-						$start = stripos($page, 'showbigimage778(', $start+16) + 16;
+						$start = stripos($page, 'javascript:showbigimage778(', $start+27) + 27;
 						$end   = stripos($page, ",", $start);
-						$img2 = 'EMSImage'. trim(substr($page,$start,$end-$start)) . '-298-298' ;								
-						}
+						$img2 = 'EMSImage'. trim(substr($page,$start,$end-$start)) ;								
+											
+						$start = stripos($page, 'javascript:showbigimage778(',$end);
+							
+						if( $start > 0) 
+							{
+							$start = $start + 27;
+							$end   = stripos($page, ",", $start);
+							$img3 = 'EMSImage'. trim(substr($page,$start,$end-$start)) ;								
+							}					
 						
-					$start = strpos($page, 'id="obj1203"') + 20;
-					$end   = strpos($page, "</a>", $start)+4;
-					$cat   = trim(substr($page,$start,$end-$start));
+						}
 					
-					$start = strpos($cat, '">') + 2;
-					$end   = strpos($cat, "</a>", $start);
-					$cat   = trim(substr($cat,$start,$end-$start));
-
+					
+					$start = strpos($page, 'id="obj1203"');
+					if( $start )
+						{
+						$start = $start  + 20;						
+						$end   = strpos($page, "</a>", $start)+4;
+						$cat   = trim(substr($page,$start,$end-$start));
+						
+						$start = strpos($cat, '">') ;
+						if( $start )
+							{
+							$start = $start + 2;
+							$end   = strpos($cat, "</a>", $start);
+							$cat   = trim(substr($cat,$start,$end-$start));
+							}
+					}
+	
 					$product['category'] = $cat;
 					$product['image_link'] = $url.$img;
 					if( '' != $img2) {
 						$product['image_link2'] = $url.$img2;
 					}
-						
+					
+					if( '' != $img3) {
+						$product['image_link3'] = $url.$img3;
+					}
+										
 					$desc = str_replace("\n", '. ', strip_tags($desc));
 					if (strlen($desc) > 2) {
 						$desc = substr($desc, 2, strlen($desc));	
@@ -100,7 +136,7 @@ class sitescraper
 					
 					$product['description'] = str_replace("\"","'",$desc1 . " " . $desc2); //$metadesc . '. ' . $desc;
 
-					if (false !== stristr($img, 'PUBLIC')) {
+					if ("" == $img) {
 						$collection->remove(array('productid' => $product['productid']), true);
 						unset($product);
 						$removed++;
@@ -120,7 +156,7 @@ class sitescraper
 					$product['condition'] = "New";
 					$product['gtin'] = $product['productid'];
 					
-					$collection->save($product);
+					$newcollection->save($product);
 					unset($product);
 					$added++;	
 
