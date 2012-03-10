@@ -54,7 +54,7 @@ class sitescraper
 							$desc1 = $desc;
 							}
 							
-						//echo($desc1);
+						echo($desc1);
 						
 						$start = stripos($page, '<ul>');
 						
@@ -65,11 +65,13 @@ class sitescraper
 							$start = $start + 4;
 							$end = stripos($page, '</ul>', $start);					
 							$desc2 = trim(substr($page,$start,$end-$start));					
-							$desc2 = strip_tags($desc2);
-							$desc2 = str_replace('\\n','\\r\\n',$desc2);
+					//		$desc2 = strip_tags($desc2);
+					//		$desc2 = str_replace('\n','\r\n',$desc2);
 							}
 							
-						//print("\n");
+						print("\n");
+						print($desc2);
+						
 						$start = stripos($page, '<img emssteve="False"');
 						//print($start ."\n");
 						$end   = stripos($page, "/>", $start) + 4;
@@ -141,12 +143,14 @@ class sitescraper
 						}
 											
 						$desc = str_replace("\n", '. ', strip_tags($desc));
+						$desc1 = str_replace("\n", '. ', strip_tags($desc1));
+						$desc2 = str_replace("\n", '. ', strip_tags($desc2));
 						if (strlen($desc) > 2) {
 							$desc = substr($desc, 2, strlen($desc));	
 						}
-						
+						print("\n");
 						$product['description'] = str_replace("\"","'",$desc1 . " " . $desc2); //$metadesc . '. ' . $desc;
-					
+					print($product['description']);
 					
 					if ("" == $img) {
 						$collection->remove(array('productid' => $product['productid']), true);
