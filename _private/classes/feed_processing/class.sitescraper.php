@@ -25,7 +25,8 @@ class sitescraper
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
 					$img = "";
 					
-					
+					if( stripos($page,'EMSImage1252') !== FALSE )
+					{
 						print($product['deeplink']);
 						$start = strpos($page, '<meta name="description" content="') + 34;
 						$end   = strpos($page, '" />', $start);
@@ -53,9 +54,7 @@ class sitescraper
 							{
 							$desc1 = $desc;
 							}
-							
-						echo($desc1);
-						
+												
 						$start = stripos($page, '<ul>');
 						
 						$desc2 = "";
@@ -68,10 +67,7 @@ class sitescraper
 					//		$desc2 = strip_tags($desc2);
 					//		$desc2 = str_replace('\n','\r\n',$desc2);
 							}
-							
-						print("\n");
-						print($desc2);
-						
+													
 						$start = stripos($page, '<img emssteve="False"');
 						//print($start ."\n");
 						$end   = stripos($page, "/>", $start) + 4;
@@ -85,7 +81,6 @@ class sitescraper
 						$start = stripos($img,"-");
 						//print($start ."\n");
 						$img = substr($img,0,$start);
-						print($img);
 											
 						$img2 = '';
 						$img3 = '';
@@ -148,9 +143,9 @@ class sitescraper
 						if (strlen($desc) > 2) {
 							$desc = substr($desc, 2, strlen($desc));	
 						}
-						print("\n");
+						
 						$product['description'] = str_replace("\"","'",$desc1 . " " . $desc2); //$metadesc . '. ' . $desc;
-					print($product['description']);
+					
 					
 					if ("" == $img) {
 						$collection->remove(array('productid' => $product['productid']), true);
@@ -173,10 +168,17 @@ class sitescraper
 					$product['gtin'] = $product['productid'];
 					
 					$otcollection->save($product);
+					//echo "\nAdded: " . $product['deeplink'];
 					unset($product);
 					$added++;	
 
 					echo "\nadded: " . $added . ", removed: " . $removed . "\n";
+					}
+					else
+					{
+					//echo "\nSkipped: " . $product['deeplink'];
+					}
+					
 				}
 
 
