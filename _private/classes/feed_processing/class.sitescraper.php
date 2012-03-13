@@ -16,23 +16,21 @@ class sitescraper
 				$products = $collection->find();
 				foreach ($products as $product) {
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);					
-					print($product['deeplink'] . "\n");					
 					$start = stripos($page,'Browse by Manufacturers</a>');
-					print($start . "\n");
 					$brand = "Forthill";
 					if( $start !== FALSE ){
 						$start = stripos($page,'<a',$start+10);		
-						$start = stripos($page,'>',$start+5)+1;		
-						if( $start !== FALSE ) {							
+						if( $start !== FALSE ){
+							$start = stripos($page,'>',$start+5)+1;		
+							if( $start !== FALSE ) {							
 								$end = stripos($page,'</a',$start);
-							$brand = trim(substr($page,$start,$end-$start));
+								$brand = trim(substr($page,$start,$end-$start));
+							}
 						}
 					}
-					print($brand . "\n");
 					$product['brand'] = $brand;
 					$collection->save($product);
-					unset($product);
-					
+					unset($product);					
 				}
 				
 				break;

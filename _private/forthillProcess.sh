@@ -4,8 +4,9 @@ cd /var/www/odst-live/_private
 # export regions
 #db.packageschecksum.distinct('region')
 
-php scripts/processFeed.php forthillhome
-php scripts/scraper.php forthillhome | mail -s 'Forthill Processed' tech@odst.co.uk
+php scripts/processFeed.php forthillhome  | mail -s 'Forthill Processed' tech@odst.co.uk
+
+php scripts/scraper.php forthillhome | mail -s 'Forthill Brands Scraped' tech@odst.co.uk
 
 echo 'http://www.odst.co.uk/feeds/forthill.zip?type=all' > logs/forthill.log
 mongoexport -d odstech -c live_forthillhome --csv -f 'productid','productname','price','shipping','description','availability','category','condition','manufacturer','features','deeplink','image_thumbnail','image_large','google_product_type','nextag_deeplink','dooyoo_deeplink','google_deeplink' -o files/hostedfeeds/forthillhome/all.csv | mail -s "Forthill All Exported" tech@odst.co.uk < logs/forthill.log
