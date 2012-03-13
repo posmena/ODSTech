@@ -16,6 +16,7 @@ class sitescraper
 				$products = $collection->find();
 				foreach ($products as $product) {
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
+					print($product['deeplink'] . "\n");
 					$start = stripos($page,'Browse by Manufacturers</a>');
 					$brand = "";
 					if( $start !== FALSE ){
