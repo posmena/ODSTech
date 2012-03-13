@@ -109,7 +109,6 @@ class custom_forthillhome_feed extends network_base
 
 						$item['id'] = $item['productcode'];
 						$item['mpn'] = $item['upc_code'];
-						//$item['brand'] = "Forthill";
 						
 						$item['title'] = $item['productname'];
 						$item['link'] = $item['deeplink'];
@@ -180,7 +179,8 @@ class custom_forthillhome_feed extends network_base
 							  'Google_Product_Type',
 							  'ProductCondition',
 							  'ProductManufacturer',
-							  'ProductFeatures');
+							  'ProductFeatures',
+							  'UPC_Code');
 		return $this->fields;
 	}
 	
