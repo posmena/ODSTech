@@ -116,9 +116,10 @@ class feed_processor
 			curl_setopt($c, CURLOPT_HTTPHEADER, array("Range: bytes=$a-$b") );
 		}
 		
+		curl_setopt($c, CURLOPT_FOLLOWLOCATION, true);
 		curl_setopt($c, CURLOPT_URL, $url);
-		curl_setopt($c, CURLOPT_CONNECTTIMEOUT, 5000);
-		curl_setopt($c, CURLOPT_TIMEOUT, 10000);
+		curl_setopt($c, CURLOPT_CONNECTTIMEOUT, 15000);
+		curl_setopt($c, CURLOPT_TIMEOUT, 110000);
 
 		$contents = curl_exec($c);
 		curl_close($c);
