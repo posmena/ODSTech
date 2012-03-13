@@ -6,9 +6,36 @@ class sitescraper
 {
 	function scrape($site, $instance, $of) {
 		global $db;
-		
-				
+						
 		switch ($site) {
+		case 'forthillhome':
+			{
+				$conn = new Mongo('localhost');
+				$mdb = $conn->odstech;
+				$collection = $mdb->live_forthillhome;
+				$products = $collection->find();
+				foreach ($products as $product) {
+					$page = feed_processor::curl_get_file_contents($product['deeplink']);
+					$start = stripos($page,'Browse by Manufacturers</a>');
+					$brand = "";
+					if( $start !== FALSE ){
+						if( $start !== FALSE ) {
+							$start = stripos($page,'>',$start+50)+1;
+				
+								$end = stripos($page,'</a',$start);
+							$brand = trim(substr($page,$start,$end-$start));
+						}
+					}
+					
+					$product['brand'] = $brand;
+					$collection->save($product);
+					unset($product);
+					
+				}
+				
+				break;
+			}
+			
 			case 'easylife':
 			{
 				$conn = new Mongo('localhost');

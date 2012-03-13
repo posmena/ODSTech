@@ -108,6 +108,9 @@ class custom_forthillhome_feed extends network_base
 						$item['warranty'] = 1;
 
 						$item['id'] = $item['productcode'];
+						$item['mpn'] = $item['upc_code'];
+						//$item['brand'] = "Forthill";
+						
 						$item['title'] = $item['productname'];
 						$item['link'] = $item['deeplink'];
 						
