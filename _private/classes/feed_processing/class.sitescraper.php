@@ -19,14 +19,13 @@ class sitescraper
 					$start = stripos($page,'Browse by Manufacturers</a>');
 					$brand = "";
 					if( $start !== FALSE ){
-						if( $start !== FALSE ) {
-							$start = stripos($page,'>',$start+50)+1;
-				
+						$start = stripos($page,'>',$start+50)+1;		
+						if( $start !== FALSE ) {							
 								$end = stripos($page,'</a',$start);
 							$brand = trim(substr($page,$start,$end-$start));
 						}
 					}
-					
+					print($brand . "\n");
 					$product['brand'] = $brand;
 					$collection->save($product);
 					unset($product);
