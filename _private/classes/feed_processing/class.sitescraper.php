@@ -14,12 +14,12 @@ class sitescraper
 				$mdb = $conn->odstech;
 				$collection = $mdb->live_forthillhome;
 				$products = $collection->find();
-				//foreach ($products as $product) {
-					$page = feed_processor::curl_get_file_contents("http://www.forthillhome.co.uk/product-p/AB218.htm");					
+				foreach ($products as $product) {
+					$page = feed_processor::curl_get_file_contents($product['deeplink']);					
 					print($product['deeplink'] . "\n");					
 					$start = stripos($page,'Browse by Manufacturers</a>');
 					print($start . "\n");
-					$brand = "";
+					$brand = "Forthill";
 					if( $start !== FALSE ){
 						$start = stripos($page,'<a',$start+10);		
 						$start = stripos($page,'>',$start+5)+1;		
@@ -33,7 +33,7 @@ class sitescraper
 					$collection->save($product);
 					unset($product);
 					
-				//}
+				}
 				
 				break;
 			}
