@@ -4,7 +4,7 @@ cd /var/www/odst-live/_private
 # export regions
 #db.packageschecksum.distinct('region')
 
-php scripts/processFeed.php easylife | mail -s 'EasyLife Processed' tech@odst.co.uk
+php scripts/processFeed.php easylife
 
 php scripts/scraper.php easylife
 
@@ -13,7 +13,5 @@ mongoexport -d odstech -c ot_easylife --csv -f 'productid','productname','deepli
 
 echo 'http://www.odst.co.uk/feeds/easylife.zip?type=custom' > logs/easylife.log
 mongoexport -d odstech -c ot_easylife --csv -f 'id','title','deeplink','brand','price','image_link','image_link2','image_link3','product_type','availability','description','condition','gtin' -o files/hostedfeeds/easylife/custom.csv | mail -s "Easylife Custom Exported" tech@odst.co.uk < logs/easylife.log
-
-echo \xEF\xBB\xBF|cat - files/hostedfeeds/easylife/custom.csv > files/hostedfeeds/easylife/customtemp.csv && mv files/hostedfeeds/easylife/customtemp.csv files/hostedfeeds/easylife/custom.csv
 
 ./zipFiles.sh
