@@ -166,9 +166,7 @@ class sitescraper
 						$desc = str_replace("\n", '. ', strip_tags(html_entity_decode($desc,ENT_QUOTES,'UTF-8')));
 						$desc1 = str_replace("\n", '. ', strip_tags(html_entity_decode($desc1,ENT_QUOTES,'UTF-8')));
 						$desc2 = str_replace("\n", '. ', strip_tags(html_entity_decode($desc2,ENT_QUOTES,'UTF-8')));
-						
-						print($desc2);
-						
+												
 						if (strlen($desc) > 2) {
 							$desc = substr($desc, 2, strlen($desc));	
 						}
