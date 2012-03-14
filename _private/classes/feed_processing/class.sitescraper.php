@@ -89,6 +89,9 @@ class sitescraper
 							{
 							$start = $start + 4;
 							$end = stripos($page, '</ul>', $start);					
+							
+							$end2 = stripos($page, '<TABLE', $start);					 
+							if( $end2 && $end2 < $end) { $end = $end2; }
 							$desc2 = trim(substr($page,$start,$end-$start));					
 					//		$desc2 = strip_tags($desc2);
 					//		$desc2 = str_replace('\n','\r\n',$desc2);
