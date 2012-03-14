@@ -1,5 +1,4 @@
 <?php
-
 include 'classes/feed_processing/class.feed_processor.php';
 
 class sitescraper
@@ -164,9 +163,10 @@ class sitescraper
 							$product['image_link3'] = $url.$img3;
 						}
 											
-						$desc = str_replace("\n", '. ', strip_tags($desc));
-						$desc1 = str_replace("\n", '. ', strip_tags($desc1));
-						$desc2 = str_replace("\n", '. ', strip_tags($desc2));
+						$desc = str_replace("\n", '. ', html_entity_decode(strip_tags($desc)));
+						$desc1 = str_replace("\n", '. ', html_entity_decode(strip_tags($desc1)));
+						$desc2 = str_replace("\n", '. ', html_entity_decode(strip_tags($desc2)));
+						
 						if (strlen($desc) > 2) {
 							$desc = substr($desc, 2, strlen($desc));	
 						}
