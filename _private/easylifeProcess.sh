@@ -14,8 +14,8 @@ mongoexport -d odstech -c ot_easylife --csv -f 'productid','productname','deepli
 echo 'http://www.odst.co.uk/feeds/easylife.zip?type=custom' > logs/easylife.log
 mongoexport -d odstech -c ot_easylife --csv -f 'id','title','deeplink','brand','price','image_link','image_link2','image_link3','product_type','availability','description','condition','gtin' -o files/hostedfeeds/easylife/custom.csv | mail -s "Easylife Custom Exported" tech@odst.co.uk < logs/easylife.log
 
-php /scripts/addbom.php files/hostedfeeds/easylife/afuture.csv
+php scripts/addbom.php files/hostedfeeds/easylife/afuture.csv
 
-php /scripts/addbom.php files/hostedfeeds/easylife/custom.csv
+php scripts/addbom.php files/hostedfeeds/easylife/custom.csv
 
 ./zipFiles.sh
