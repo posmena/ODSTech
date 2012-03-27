@@ -7,6 +7,145 @@ class sitescraper
 		global $db;
 						
 		switch ($site) {
+		case 'stylepiques':
+			{
+				$conn = new Mongo('localhost');
+				$mdb = $conn->odstech;
+				$collection = $mdb->live_stylepiques;
+				
+				// need to check on site if these are the current categories
+				
+				$urls = array('Denim'              => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=10',
+							  'Dresses'               => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=1',
+							  'Jackets'           => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=7',
+							  'Knitwear'            => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=8',
+							  'Playsuits'      => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=9',
+							  'Shoes'    => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=6',
+							  'Shorts'   => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=5',
+							  'Skirts' => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=3',
+							  'Tops'				=> 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=2',
+							  'Trousers'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=4'
+							  );
+							  
+					$regexp = "/<a href=\"shop(.*)\">(.*)<\/a>/siU";
+				
+				
+					foreach ($urls as $category => $url) {
+					$page = feed_processor::curl_get_file_contents($url);
+					
+					$start = strpos($page, '<div class="clothingRight">');
+					$end   = strpos($page, '<div class="clothingBottom">', $start);
+					$promos  = substr($page,$start,$end-$start);
+									
+					if (preg_match_all($regexp, $promos, $matches)) {
+						foreach($matches[1] as $key =>  $product_url) {
+							//if ($key % 2) {
+								$pUrls[$category][] = 'http://stylepiques.com/shop' . $product_url;
+							//}
+						}						
+					}
+					
+				}
+				if (true === is_array($pUrls) && count($pUrls) > 0) {
+					foreach ($pUrls as $categories => $cat) {
+						print ($categories ."\n");
+						foreach ($cat as $pUrl) {
+								print($pUrl ."\n");
+								
+								$product = feed_processor::curl_get_file_contents($pUrl);
+								$item = array();
+								
+								$item['link']  = $pUrl;
+								
+								$item['productcode'] = str_replace("http://stylepiques.com/shop/product/","",$pUrl); // get last directory
+								$item['_id']  = $item['productcode'];
+								$item['id']  = $item['productcode'];
+								$item['category'] = $categories;
+								$item['condition'] = 'New';
+								
+								$regexp = "/<div class=\"productDataProdName\">(.*)<\/div>/siU" ;
+																
+								if( preg_match($regexp, $product, $arr) ) {								
+									$item['title'] = (trim($arr[1]));
+									}
+								
+								$regexp = "/<div class=\"productDataBrandName\">(.*)<\/div>/siU" ;
+								if( preg_match($regexp, $product, $arr) )
+									{
+									$item['brand'] = trim(str_replace("by","",$arr[1])) ;
+									}
+															
+								
+								$regexp = "/<div class=\"productDataPrice\">(.*)<\/div>/siU" ;
+								if( preg_match($regexp, $product, $arr ) )
+									{									
+									$item['price'] = trim(str_replace("&pound;","",$arr[1])) ;
+									$item['original_price']	= $item['price'];
+																	
+									$regexp = "/<span class=\"old-price\">(.*)<\/span>/siU" ;
+									if( preg_match($regexp, $product, $arr ) )
+										{
+											$regexp = "/<span class=\"new-price\">(.*)<\/span>/siU" ;	
+											$item['original_price']	= trim(str_replace("&pound;","",$arr[1])) ;										
+											if( preg_match($regexp, $product, $arr ) )
+												{
+												$item['price'] = trim(str_replace("NOW","",str_replace("&pound;","",$arr[1])));
+												}
+										}
+								
+									
+									}
+									
+								$item['delivery_cost'] = 0;
+								$item['delivery_time'] = "6 working days";
+																
+								$regexp = "/<div id=\"tab1\" class=\"tab_content\">(.*)<\/div>/siU";
+								if( preg_match($regexp, $product, $arr) )
+									{
+									$arr[1] = str_replace("’","'",$arr[1]);
+									$arr[1] = str_replace("–","-",$arr[1]);
+									
+									$item['description'] = trim(utf8_encode(strip_tags($arr[1])));
+									}
+								
+								$regexp = "/<div id=\"tab3\" class=\"tab_content\">(.*)<\/div>/siU";
+								if( preg_match($regexp, $product, $arr) )
+									{
+									$item['sizes'] = trim(utf8_encode(strip_tags($arr[1])));
+									}
+								
+								
+								$regexp = "/<img rel=\'(.*);/siU";
+								if (preg_match_all($regexp, $product, $matches)) {
+								
+									$i=0;
+									foreach($matches[1] as $key =>  $img_url) {
+										$i++;
+										if( $i > 1 )
+											{
+											$item['image_link' . $i] = "http://stylepiques.com/" . $img_url; 
+											}
+										else
+											{
+											$item['image_link'] = "http://stylepiques.com/" . $img_url; 
+											}
+									}
+									
+								}
+								
+								
+								$item['availability'] = "In stock";
+								
+								print_r($item);
+								$collection->save($item);
+								
+						}
+					}
+					}
+	
+			break;
+			}
+			
 		case 'forthillhome':
 			{
 				$conn = new Mongo('localhost');
