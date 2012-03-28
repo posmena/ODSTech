@@ -15,16 +15,16 @@ class sitescraper
 				
 				// need to check on site if these are the current categories
 				
-				$urls = array('Denim'              => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=10',
-							  'Dresses'               => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=1',
-							  'Jackets'           => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=7',
-							  'Knitwear'            => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=8',
-							  'Playsuits'      => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=9',
-							  'Shoes'    => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=6',
-							  'Shorts'   => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=5',
-							  'Skirts' => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=3',
-							  'Tops'				=> 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=2',
-							  'Trousers'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=4'
+				$urls = array('Women\'s Denim'              => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=10',
+							  'Women\'s Dresses'               => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=1',
+							  'Women\'s Jackets'           => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=7',
+							  'Women\'s Knitwear'            => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=8',
+							  'Women\'s Playsuits'      => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=9',
+							  'Women\'s Shoes'    => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=6',
+							  'Women\'s Shorts'   => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=5',
+							  'Women\'s Skirts' => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=3',
+							  'Women\'s Tops'				=> 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=2',
+							  'Women\'s Trousers'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=4'
 							  );
 							  
 					$regexp = "/<a href=\"shop(.*)\">(.*)<\/a>/siU";
