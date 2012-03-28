@@ -104,8 +104,11 @@ class sitescraper
 									{
 									$arr[1] = str_replace("’","'",$arr[1]);
 									$arr[1] = str_replace("–","-",$arr[1]);
+									$arr[1] = str_replace("\r\n"," ",$arr[1]);
+									$arr[1] = str_replace("  "," ",$arr[1]);
 									
 									$item['description'] = trim(utf8_encode(strip_tags($arr[1])));
+									
 									}
 								
 								$regexp = "/<div id=\"tab3\" class=\"tab_content\">(.*)<\/div>/siU";
