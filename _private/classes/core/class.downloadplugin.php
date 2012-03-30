@@ -15,12 +15,26 @@ class core_downloadplugin extends core_default
 		}
 		 
 		$this->assignments['client'] = $qs['client'];
+		
 		$this->assignments['page']['title'] = 'Download Plugin';
+			
+			
+		switch ($this->assignments['client']) {
+			case 'easyjetholidays':
+			{
+				$this->assignments['page']['title'] = 'easyJet Holidays Wordpress plugin download';
+				break;
+			}
+			case 'octopustravel'
+			{
+				$this->assignments['page']['title'] = 'Octopus Travel Wordpress plugin download';
+				break;
+			}
+		
+		}
+		
 		$this->assignments['error'] = array();
-		
-	
-		
-
+				
 	}
 	
 	public function getTemplate() {
