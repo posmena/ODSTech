@@ -14,10 +14,8 @@ class core_downloadplugin extends core_default
 			$this->assignments['clienttpl'] = 'plugindownload/'. $qs['client'] . '.tpl.html';
 		}
 		 
-		$this->assignments['client'] = $qs['client'];
-		
-		$this->assignments['page']['title'] = 'Download Plugin';
-			
+		$this->assignments['client'] = $qs['client'];		
+		$this->assignments['page']['title'] = 'Download Plugin';			
 			
 		switch ($this->assignments['client']) {
 			case 'easyjetholidays':
@@ -25,7 +23,7 @@ class core_downloadplugin extends core_default
 				$this->assignments['page']['title'] = 'easyJet Holidays Wordpress plugin download';
 				break;
 			}
-			case 'octopustravel'
+			case 'octopustravel':
 			{
 				$this->assignments['page']['title'] = 'Octopus Travel Wordpress plugin download';
 				break;
