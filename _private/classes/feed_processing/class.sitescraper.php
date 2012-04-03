@@ -362,24 +362,25 @@ class sitescraper
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
 				$collection = $mdb->damsel_scrape;
-				
+				$collection->drop();
 													
 				$site = "http://www.damselinadress.co.uk";
-				$urls = array('dresses > any occasion'              => 'http://www.damselinadress.co.uk/shop/dresses.aspx?i=32&px=0&ob=1&vbs=309&vbb=0&vbc=0&vbp=0',
-							  'dresses > day dresses'               => 'http://www.damselinadress.co.uk/shop/dresses.aspx?i=32&px=0&ob=1&vbs=57&vbb=0&vbc=0&vbp=0',
-							  'dresses > evening dresses'           => 'http://www.damselinadress.co.uk/shop/dresses.aspx?i=32&px=0&ob=1&vbs=287&vbb=0&vbc=0&vbp=0',
-							  'dresses > wedding attire'            => 'http://www.damselinadress.co.uk/shop/dresses.aspx?i=32&px=0&ob=1&vbs=402&vbb=0&vbc=0&vbp=0',
-							  'coats & jackets > womens coats'      => 'http://www.damselinadress.co.uk/shop/coats-and-jackets.aspx?i=32&px=0&ob=1&vbs=300&vbb=0&vbc=0&vbp=0',
-							  'coats & jackets > womens jackets'    => 'http://www.damselinadress.co.uk/shop/coats-and-jackets.aspx?i=32&px=0&ob=1&vbs=301&vbb=0&vbc=0&vbp=0',
-							  'skirts & trousers > womens skirts'   => 'http://www.damselinadress.co.uk/shop/skirts-and-trousers.aspx?i=32&px=0&ob=1&vbs=298&vbb=0&vbc=0&vbp=0',
-							  'skirts & trousers > womens trousers' => 'http://www.damselinadress.co.uk/shop/skirts-and-trousers.aspx?i=32&px=0&ob=1&vbs=297&vbb=0&vbc=0&vbp=0',
+				$urls = array('dresses > day dresses'               => 'http://www.damselinadress.co.uk/shop/dresses/day-dresses.aspx',
+							  'dresses > occasion wear'             => 'http://www.damselinadress.co.uk/shop/dresses/any-occasion.aspx',
+							  'dresses > evening dresses'           => 'http://www.damselinadress.co.uk/shop/dresses/evening-dresses.aspx',
+							  'dresses > wedding attire'            => 'http://www.damselinadress.co.uk/shop/dresses/wedding-attire.aspx',
+							  'skirts & trousers > womens skirts'   => 'http://www.damselinadress.co.uk/shop/skirts-and-trousers/skirts.aspx',
+							  'skirts & trousers > womens trousers' => 'http://www.damselinadress.co.uk/shop/skirts-and-trousers/trousers.aspx',
+							  'coats & jackets > womens jackets'    => 'http://www.damselinadress.co.uk/shop/coats-and-jackets/jackets.aspx',
 							  'tailoring > work wear'				=> 'http://www.damselinadress.co.uk/shop/tailoring/work-wear.aspx',
-							  'tops > blouses & shirts'             => 'http://www.damselinadress.co.uk/shop/tops.aspx?i=32&px=0&ob=1&vbs=293&vbb=0&vbc=0&vbp=0',
-							  'tops > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/tops.aspx?i=32&px=0&ob=1&vbs=295&vbb=0&vbc=0&vbp=0',
+							  'tops > shrugs'                       => 'http://www.damselinadress.co.uk/shop/tops/shrugs.aspx',
+							  'tops > blouses & shirts'             => 'http://www.damselinadress.co.uk/shop/tops/blouses-and-shirts.aspx',
+							  'tops > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/tops/jersey-wear.aspx',
 							  'tops > cardigans'					=> 'http://www.damselinadress.co.uk/shop/tops/cardigans.aspx',
-							  'tops > shrugs'                       => 'http://www.damselinadress.co.uk/shop/tops.aspx?i=32&px=0&ob=1&vbs=294&vbb=0&vbc=0&vbp=0',
+							  'tops > tunics'						=> 'http://www.damselinadress.co.uk/shop/tops/tunics.aspx',
 							  'accessories > scarves'				=> 'http://www.damselinadress.co.uk/shop/accessories/scarves.aspx',
-							  'sale > dresses'                      => 'http://www.damselinadress.co.uk/shop/aw11-sale/dresses.aspx?i=32&px=32&ob=3&vbb=0&vbc=0&vbp=0',
+							  'wedding > bride'                     => 'http://www.damselinadress.co.uk/shop/wedding/bride.aspx',
+							  'wedding > mother of the bride'		=> 'http://www.damselinadress.co.uk/shop/aw11-sale/dresses.aspx?i=32&px=0&ob=3&vbb=0&vbc=0&vbp=0',
 							  'sale > dresses'						=> 'http://www.damselinadress.co.uk/shop/aw11-sale/dresses.aspx?i=32&px=0&ob=3&vbb=0&vbc=0&vbp=0',
 							  'sale > jackets'						=> 'http://www.damselinadress.co.uk/shop/aw11-sale/jackets.aspx',
 							  'sale > coats'						=> 'http://www.damselinadress.co.uk/shop/aw11-sale/coats.aspx',
@@ -387,7 +388,7 @@ class sitescraper
 							  'sale > trousers'						=> 'http://www.damselinadress.co.uk/shop/aw11-sale/trousers.aspx',
 							  'sale > blouses & shirts'				=> 'http://www.damselinadress.co.uk/shop/aw11-sale/blouses-and-shirts.aspx',
 							  'sale > shrugs'                       => 'http://www.damselinadress.co.uk/shop/aw11-sale/shrugs.aspx',
-							  'sale > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/aw11-sale/jersey-wear.aspx',
+							  'sale > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/aw11-sale/jersey-wear.aspx'
 							  );
 				//$urls = array('dresses > any occasion'              => 'http://www.damselinadress.co.uk/shop/dresses.aspx?i=32&px=0&ob=1&vbs=309&vbb=0&vbc=0&vbp=0');
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>/siU";
