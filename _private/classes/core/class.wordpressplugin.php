@@ -2,7 +2,7 @@
 
 class core_wordpressplugin extends core_default
 {
-	private $template = 'wordpresspugin.tpl.html';
+	private $template = 'wordpressplugin.tpl.html';
 	private $assignments;
 	
 	public function __construct($db, $qs) {
