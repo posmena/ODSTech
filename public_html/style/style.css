@@ -304,6 +304,44 @@ width: 280px;
 
 /***********************************/
 
+/*********** content page *****************/
+
+.pagecontent h2 {
+	font-size: 24px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+#pagecontent div.main section.column {
+	width: 310px;
+	float: left;
+	padding: 10px;
+	text-align: left;
+}
+
+
+#pagecontent div.main section.right_column {
+	margin-left: 20px;
+}
+
+#pagecontent h2, #pagecontent div.main section.column h2 {
+	font-size: 24px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+#pagecontent div.main section.column h2.top {
+	text-align: left;
+	margin-left: 0;
+}
+
+
+#pagecontent div.main section.column h2.top, #pagecontent div.main section.column img {
+	text-align: center;
+	display: block;
+	margin: auto;
+}
+/***********************************/
+
 .tiles {
 	margin-top: 20px;
 	width: 680px;
