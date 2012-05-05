@@ -72,7 +72,8 @@
                     </Request>';
              $requestXml = simplexml_load_string($requestXmlString);
             
-            
+            echo( $requestXml );
+			
              // make the actual request
              $curl = curl_init($this->apiUrl);
              curl_setopt($curl, CURLOPT_POST, 1);
@@ -80,6 +81,8 @@
              curl_setopt($curl, CURLOPT_POSTFIELDS, 'data=' . urlencode($requestXml->asXML()));
              $curlResult = curl_exec($curl);
             
+			echo($curlResult);
+			
              // process the response
              if (empty($curlResult)) {
 
