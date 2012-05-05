@@ -7,44 +7,44 @@ and open the template in the editor.
     // facebook app authentication details
     $appId = '180360922086647';
     $appSecret = '46deae6d38f1738a3ac684119732da71';
-    $canvasUrl = 'http://apps.facebook.com/odsthotelsearch/';
-    
+    $canvasUrl = 'http://odst.co.uk/facebook/apps/octopus/z';
+    $dialogUrl = "";
+	
     // pull out the session code / request
     session_start();
     $authCode = $_REQUEST["code"];
     if(empty($authCode)) {
         $_SESSION['state'] = md5(uniqid(rand(), TRUE)); //CSRF protection
         $dialogUrl = "http://www.facebook.com/dialog/oauth?client_id=" . $appId . "&redirect_uri=" . urlencode($canvasUrl) . "&state=" . $_SESSION['state'];
-        echo("<script> top.location.href='" . $dialogUrl . "'</script>");
+        echo("<html><head><script> top.location.href='" . $dialogUrl . "'</script></head></html>");
+			else
+			{
+			 // security check
+		$user = null;
+		if($_REQUEST['state'] == $_SESSION['state']) {
+			$token_url = "https://graph.facebook.com/oauth/access_token?client_id=" . $appId . "&redirect_uri=" . urlencode($canvasUrl) . "&client_secret=" . $appSecret . "&code=" . $authCode;
+
+			// get the response
+			$response = file_get_contents($token_url);
+			$params = null;
+			parse_str($response, $params);
+
+			// pull out user etc ...
+			$graphUrl = "https://graph.facebook.com/me?access_token=" . $params['access_token'];
+			$user = json_decode(file_get_contents($graphUrl));
+		}
+		else {
+			
+			// not authorized, just give up now!
+			redirect('notAuthorized.php');
+			}
+		}
 		
     }
 
-    // security check
-    $user = null;
-	$state = $_REQUEST['state'];
-	if( empty($state) )
-		{
-		header( 'Location: /notAuthorized.php?e=1' ) ;
-		}
-    if($state == $_SESSION['state']) {
-        $token_url = "https://graph.facebook.com/oauth/access_token?client_id=" . $appId . "&redirect_uri=" . urlencode($canvasUrl) . "&client_secret=" . $appSecret . "&code=" . $authCode;
-
-        // get the response
-        $response = file_get_contents($token_url);
-        $params = null;
-        parse_str($response, $params);
-
-        // pull out user etc ...
-        $graphUrl = "https://graph.facebook.com/me?access_token=" . $params['access_token'];
-        $user = json_decode(file_get_contents($graphUrl));
-    }
-    else {
-        
-        // not authorized, just give up now!
-		  header( 'Location: /notAuthorized.php?e=2' ) ;
-        //redirect('notAuthorized.php');
-    }
+   
     
+	if( $dialogUrl == "" ) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -125,3 +125,4 @@ and open the template in the editor.
         </div>
     </body>
 </html>
+<?php } ?>
