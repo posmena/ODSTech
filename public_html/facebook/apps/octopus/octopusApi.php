@@ -44,7 +44,7 @@
                
              // pick up response
              $responseXml = $this->performRequest('<SearchCityRequest CountryCode="GB">
-      <CityName/><![CDATA[' . $text . ']]></CityName>
+      <CityName><![CDATA[' . $text . ']]></CityName>
     </SearchCityRequest>');
 
                          
