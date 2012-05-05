@@ -7,7 +7,7 @@ and open the template in the editor.
     // facebook app authentication details
     $appId = '180360922086647';
     $appSecret = '46deae6d38f1738a3ac684119732da71';
-    $canvasUrl = 'http://odst.co.uk/facebook/apps/octopus/';
+    $canvasUrl = 'http://apps.facebook.com/odsthotelsearch/';
     
     // pull out the session code / request
     session_start();
