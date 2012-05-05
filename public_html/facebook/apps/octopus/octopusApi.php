@@ -48,11 +48,16 @@
     </SearchCityRequest>');
 
                          
+						 $xml = simplexml_load_string($responseXml);
+						 
+						 foreach ($xml->ResponseDetails->SearchCityResponse->CityDetails->City as $city) {
+							$thecity = new OctopusCity($city['Code'], $city);
+							echo($city);
+							$cities[] = $thecity;
+						 }
+						 return $cities;
              // return dummy results
-             return array(
-                 new OctopusCity(123, 'Malaga, Spain'),
-                 new OctopusCity(234, 'Somwhere, England')
-             ); 
+            
          }
  
          /* performs a request */
@@ -70,9 +75,6 @@
 						<RequestDetails>' . $subRequestXml . '
 						</RequestDetails>
                     </Request>';
-           
-            
-            echo( $requestXmlString );
 			
              // make the actual request
              $curl = curl_init($this->apiUrl);
@@ -81,8 +83,7 @@
              curl_setopt($curl, CURLOPT_POSTFIELDS, $requestXmlString);
 			 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
              $curlResult = curl_exec($curl);
-            
-			echo($curlResult);
+           
 			
              // process the response
              if (empty($curlResult)) {
