@@ -515,8 +515,8 @@ class sitescraper
 
 									//$item['_id']         = $code;
 									$item['title']       = $name;
-									$item['id']          = $item['_id'];
-									$item['gtin']        = $item['_id'];
+									//$item['id']          = $item['_id'];
+									//$item['gtin']        = $item['_id'];
 									$item['category']    = $categories;
 									$item['product_type']= $categories;
 									$item['price']       = $price;
@@ -546,9 +546,17 @@ class sitescraper
 							}
 						}
 					}
+
 					
-					// remove all records that were not updated
 					$collection->remove(array("updated" => false));
+					
+					$products = $collection->find();
+					foreach ($products as $product) {
+						$product['id']          = $product['_id'];
+						$product['gtin']        = $product['_id'];
+						collection->save($product);
+					}
+					
 				}
 
 				break;
