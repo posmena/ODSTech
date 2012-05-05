@@ -56,6 +56,8 @@
 							$cities[$i] = $thecity;
 							$i = $i +1	;
 						 }
+						 
+						 print_r($cities);
 						 return $cities;
              // return dummy results
             
