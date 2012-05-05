@@ -49,11 +49,12 @@
 
                          
 						 $xml = simplexml_load_string($responseXml);
-						 
+						 $i = 0;
 						 foreach ($xml->ResponseDetails->SearchCityResponse->CityDetails->City as $city) {
 							$thecity = new OctopusCity($city['Code'], $city);
-							echo($city['Code']);
-							$cities[] = $thecity;
+							
+							$cities[$i] = $thecity;
+							$i = $i +1	;
 						 }
 						 return $cities;
              // return dummy results
