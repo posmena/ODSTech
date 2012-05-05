@@ -16,6 +16,7 @@ and open the template in the editor.
         $_SESSION['state'] = md5(uniqid(rand(), TRUE)); //CSRF protection
         $dialogUrl = "http://www.facebook.com/dialog/oauth?client_id=" . $appId . "&redirect_uri=" . urlencode($canvasUrl) . "&state=" . $_SESSION['state'];
         echo("<script> top.location.href='" . $dialogUrl . "'</script>");
+		die();
     }
 
     // security check
