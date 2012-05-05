@@ -80,7 +80,6 @@
              curl_setopt($curl, CURLOPT_HTTPHEADER, Array("Content-Type: text/xml")); 
              curl_setopt($curl, CURLOPT_POSTFIELDS, $requestXmlString);
 			 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-			 curl_setopt($curl, CURLOPT_MUTE, 1);
              $curlResult = curl_exec($curl);
             
 			echo($curlResult);
