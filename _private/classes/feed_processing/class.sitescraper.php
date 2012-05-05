@@ -554,7 +554,7 @@ class sitescraper
 					foreach ($products as $product) {
 						$product['id']          = $product['_id'];
 						$product['gtin']        = $product['_id'];
-						collection->save($product);
+						$collection->save($product);
 					}
 					
 				}
