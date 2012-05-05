@@ -51,7 +51,7 @@
 						 $xml = simplexml_load_string($responseXml);
 						 $i = 0;
 						 foreach ($xml->ResponseDetails->SearchCityResponse->CityDetails->City as $city) {
-							$thecity = new OctopusCity($city['Code'], $city);
+							$thecity = new OctopusCity((string) $city['Code'], (string) $city);
 							
 							$cities[$i] = $thecity;
 							$i = $i +1	;
