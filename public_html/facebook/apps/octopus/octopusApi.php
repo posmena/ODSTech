@@ -43,14 +43,10 @@
          public function getCitySuggestions($text) {
                
              // pick up response
-             $responseXml = $this->performRequest(simplexml_load_string(
-                     '<RequestDetails>
-    <SearchCityRequest CountryCode="GB">
-      <CityName/>
-      <CityCode/>
-    </SearchCityRequest>
-  </RequestDetails>'
-                     ));
+             $responseXml = $this->performRequest('<SearchCityRequest CountryCode="GB">
+      <CityName/><![CDATA[' . $text . ']]></CityName>
+    </SearchCityRequest>'
+                     );
                          
              // return dummy results
              return array(
@@ -71,9 +67,11 @@
                                 <RequestMode>SYNCHRONOUS</RequestMode>
                             </RequestorPreferences>
                         </Source>
+						<RequestDetails>' . $subRequestXml . '
+						</RequestDetails>
                     </Request>';
              $requestXml = simplexml_load_string($requestXmlString);
-             $requestXml->addChild($subRequestXml);
+            
             
              // make the actual request
              $curl = curl_init($this->apiUrl);
