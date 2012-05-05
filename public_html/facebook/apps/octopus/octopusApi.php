@@ -92,7 +92,7 @@
              } else {
 
                  // give back an exception
-                 return simplexml_load_string($curlResult);
+                 return ($curlResult);
              }
              
              // close the handle
