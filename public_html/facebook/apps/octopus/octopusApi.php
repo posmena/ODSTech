@@ -60,7 +60,7 @@
              
              // build the request XML
              $requestXmlString =
-                    '<xml version="1.0" encoding="UTF-8"?><Request>
+                    '<Request>
                         <Source>
                             <RequestorID Client="' . $this->apiBrand . '" EMailAddress="' . $this->apiKey . '" Password="' . $this->apiPass . '"/>
                             <RequestorPreferences Language="en" Currency="GBP" Country="GB">
