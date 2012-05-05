@@ -52,7 +52,7 @@
              return array(
                  new OctopusCity(123, 'Malaga, Spain'),
                  new OctopusCity(234, 'Somwhere, England')
-             );
+             ); 
          }
  
          /* performs a request */
