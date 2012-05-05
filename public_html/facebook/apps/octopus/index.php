@@ -12,7 +12,7 @@ and open the template in the editor.
 	
     // pull out the session code / request
     session_start();
-    if( isset($_REQUEST['code'])
+    if( isset($_REQUEST['code']))
 		{
 		$authCode = $_REQUEST['code'];
 		}
