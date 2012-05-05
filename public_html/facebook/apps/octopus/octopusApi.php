@@ -46,6 +46,7 @@
              $responseXml = $this->performRequest('<SearchCityRequest CountryCode="GB">
       <CityName/><![CDATA[' . $text . ']]></CityName>
     </SearchCityRequest>');
+
                          
              // return dummy results
              return array(
