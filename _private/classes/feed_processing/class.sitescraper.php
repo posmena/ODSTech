@@ -362,7 +362,8 @@ class sitescraper
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
 				$collection = $mdb->damsel_scrape;
-				$collection->drop();
+			
+			    $collection->update(array("updated" => false)); 
 													
 				$site = "http://www.damselinadress.co.uk";
 				$urls = array('dresses > day dresses'               => 'http://www.damselinadress.co.uk/shop/dresses/day-dresses.aspx',
@@ -514,8 +515,8 @@ class sitescraper
 
 									//$item['_id']         = $code;
 									$item['title']       = $name;
-									$item['id']          = $code;
-									$item['gtin']        = $code;
+									$item['id']          = $item['_id'];
+									$item['gtin']        = $item['_id'];
 									$item['category']    = $categories;
 									$item['product_type']= $categories;
 									$item['price']       = $price;
@@ -534,19 +535,20 @@ class sitescraper
 									$item['condition'] = "New";
 									$item['brand'] = 'Damsel in a Dress';
 									$item['quantity'] = 1;
+									$item['updated'] = true;
 
-
-									$existing = $collection->findOne(array('title' => $name));
-									if( !$existing ) {
-										$collection->save($item);
-									}
+									$existing = $collection->update(array('title' => $name),$item,array("upsert" :true));
+									
 									
 								} catch(Exception $ex) {
-									
+									print $ex;
 								}
 							}
 						}
 					}
+					
+					// remove all records that were not updated
+					$collection->remove(array("updated":false));
 				}
 
 				break;
