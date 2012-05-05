@@ -363,7 +363,7 @@ class sitescraper
 				$mdb = $conn->odstech;
 				$collection = $mdb->damsel_scrape;
 			
-			    $collection->update(array("_id" : array("exists" => true)),array("updated" => false),array("multi" => true)); 
+			    $collection->update(array("_id" => array("exists" => true)),array("updated" => false),array("multi" => true)); 
 													
 				$site = "http://www.damselinadress.co.uk";
 				$urls = array('dresses > day dresses'               => 'http://www.damselinadress.co.uk/shop/dresses/day-dresses.aspx',
