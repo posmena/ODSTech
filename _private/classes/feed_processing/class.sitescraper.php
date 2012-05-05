@@ -363,7 +363,7 @@ class sitescraper
 				$mdb = $conn->odstech;
 				$collection = $mdb->damsel_scrape;
 			
-			    $collection->update(array("updated" => false)); 
+			    $collection->update(array("_id" : array("exists" => true)),array("updated" => false),array("multi" => true)); 
 													
 				$site = "http://www.damselinadress.co.uk";
 				$urls = array('dresses > day dresses'               => 'http://www.damselinadress.co.uk/shop/dresses/day-dresses.aspx',
@@ -537,7 +537,7 @@ class sitescraper
 									$item['quantity'] = 1;
 									$item['updated'] = true;
 
-									$existing = $collection->update(array('title' => $name),$item,array("upsert" :true));
+									$existing = $collection->update(array('title' => $name), $item, array("upsert" => true));
 									
 									
 								} catch(Exception $ex) {
@@ -548,7 +548,7 @@ class sitescraper
 					}
 					
 					// remove all records that were not updated
-					$collection->remove(array("updated":false));
+					$collection->remove(array("updated" => false));
 				}
 
 				break;
