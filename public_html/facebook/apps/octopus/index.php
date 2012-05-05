@@ -16,12 +16,17 @@ and open the template in the editor.
         $_SESSION['state'] = md5(uniqid(rand(), TRUE)); //CSRF protection
         $dialogUrl = "http://www.facebook.com/dialog/oauth?client_id=" . $appId . "&redirect_uri=" . urlencode($canvasUrl) . "&state=" . $_SESSION['state'];
         echo("<script> top.location.href='" . $dialogUrl . "'</script>");
-		die();
+		
     }
 
     // security check
     $user = null;
-    if($_REQUEST['state'] == $_SESSION['state']) {
+	$state = $_REQUEST['state'];
+	if( empty($state) )
+		{
+		header( 'Location: /notAuthorized.php?e=1' ) ;
+		}
+    if($state == $_SESSION['state']) {
         $token_url = "https://graph.facebook.com/oauth/access_token?client_id=" . $appId . "&redirect_uri=" . urlencode($canvasUrl) . "&client_secret=" . $appSecret . "&code=" . $authCode;
 
         // get the response
@@ -36,7 +41,8 @@ and open the template in the editor.
     else {
         
         // not authorized, just give up now!
-        redirect('notAuthorized.php');
+		  header( 'Location: /notAuthorized.php?e=2' ) ;
+        //redirect('notAuthorized.php');
     }
     
 ?>
