@@ -552,8 +552,8 @@ class sitescraper
 					
 					$products = $collection->find();
 					foreach ($products as $product) {
-						$product['id']          = $product['_id'];
-						$product['gtin']        = $product['_id'];
+						$product['id']          = (string)$product['_id'];
+						$product['gtin']        = (string)$product['_id'];
 						$collection->save($product);
 					}
 					
