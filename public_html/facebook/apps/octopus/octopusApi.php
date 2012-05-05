@@ -52,7 +52,7 @@
 						 
 						 foreach ($xml->ResponseDetails->SearchCityResponse->CityDetails->City as $city) {
 							$thecity = new OctopusCity($city['Code'], $city);
-							echo($city);
+							echo($city['Code']);
 							$cities[] = $thecity;
 						 }
 						 return $cities;
