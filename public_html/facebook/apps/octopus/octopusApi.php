@@ -60,7 +60,7 @@
              
              // build the request XML
              $requestXmlString =
-                    '<Request>
+                    '<xml version="1.0" encoding="UTF-8"?><Request>
                         <Source>
                             <RequestorID Client="' . $this->apiBrand . '" EMailAddress="' . $this->apiKey . '" Password="' . $this->apiPass . '"/>
                             <RequestorPreferences Language="en" Currency="GBP" Country="GB">
@@ -72,13 +72,13 @@
                     </Request>';
              $requestXml = simplexml_load_string($requestXmlString);
             
-            echo( $requestXml );
+            echo( $requestXmlString );
 			
              // make the actual request
              $curl = curl_init($this->apiUrl);
              curl_setopt($curl, CURLOPT_POST, 1);
              curl_setopt($curl, CURLOPT_HTTPHEADER, Array("Content-Type: application/xml")); 
-             curl_setopt($curl, CURLOPT_POSTFIELDS, 'data=' . urlencode($requestXml->asXML()));
+             curl_setopt($curl, CURLOPT_POSTFIELDS, $requestXmlString);
              $curlResult = curl_exec($curl);
             
 			echo($curlResult);
