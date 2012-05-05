@@ -47,7 +47,7 @@ and open the template in the editor.
 		else {
 			
 			// not authorized, just give up now!
-			redirect('notAuthorized.php');
+			header( 'Location: /notAuthorized.php' ) ;
 			}
 		}
 		
