@@ -70,15 +70,17 @@
 						<RequestDetails>' . $subRequestXml . '
 						</RequestDetails>
                     </Request>';
-             $requestXml = simplexml_load_string($requestXmlString);
+           
             
             echo( $requestXmlString );
 			
              // make the actual request
              $curl = curl_init($this->apiUrl);
              curl_setopt($curl, CURLOPT_POST, 1);
-             curl_setopt($curl, CURLOPT_HTTPHEADER, Array("Content-Type: application/xml")); 
+             curl_setopt($curl, CURLOPT_HTTPHEADER, Array("Content-Type: text/xml")); 
              curl_setopt($curl, CURLOPT_POSTFIELDS, $requestXmlString);
+			 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			 curl_setopt($curl, CURLOPT_MUTE, 1);
              $curlResult = curl_exec($curl);
             
 			echo($curlResult);
