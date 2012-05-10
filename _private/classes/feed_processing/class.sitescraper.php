@@ -69,13 +69,13 @@ class sitescraper
 								$item['category'] = $categories;
 								$item['condition'] = 'New';
 								
-								$regexp = "/<div class=\"productDataProdName\">(.*)<\/div>/siU" ;
+								$regexp = "/<h1 class=\"name\">(.*)<\/h1>/siU" ;
 																
 								if( preg_match($regexp, $product, $arr) ) {								
 									$item['title'] = (trim($arr[1]));
 									}
 								
-								$regexp = "/<div class=\"productDataBrandName\">(.*)<\/div>/siU" ;
+								$regexp = "/<div class=\"brand\">(.*)<\/div>/siU" ;
 								if( preg_match($regexp, $product, $arr) )
 									{
 									$item['brand'] = trim(str_replace("by","",$arr[1])) ;
@@ -105,7 +105,7 @@ class sitescraper
 								$item['delivery_cost'] = 0;
 								$item['delivery_time'] = "6 working days";
 																
-								$regexp = "/<div id=\"tab1\" class=\"tab_content\">(.*)<\/div>/siU";
+								$regexp = "/<div class=\"description\">(.*)<\/div>/siU";
 								if( preg_match($regexp, $product, $arr) )
 									{
 									$arr[1] = str_replace("’","'",$arr[1]);
@@ -117,11 +117,11 @@ class sitescraper
 									
 									}
 								
-								$regexp = "/<div id=\"tab3\" class=\"tab_content\">(.*)<\/div>/siU";
-								if( preg_match($regexp, $product, $arr) )
-									{
-									$item['sizes'] = trim(utf8_encode(strip_tags($arr[1])));
-									}
+								//$regexp = "/<div id=\"tab3\" class=\"tab_content\">(.*)<\/div>/siU";
+								//if( preg_match($regexp, $product, $arr) )
+									//{
+									//$item['sizes'] = trim(utf8_encode(strip_tags($arr[1])));
+									//}
 								
 								
 								$regexp = "/<img rel=\'(.*);/siU";
