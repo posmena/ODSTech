@@ -124,7 +124,7 @@ class sitescraper
 								$regexp = "/<ul id=\"mainSizes\">(.*)<\/ul>/siU";
 								if( preg_match($regexp, $product, $arr) )
 									{
-									$ul = arr[1];
+									$ul = $arr[1];
 									print $ul;
 									$regexp = "/<li.*class=\"[^o].*>(.*)<\/li>/siU";
 									if( preg_match_all($regexp, $ul, $matches) )
