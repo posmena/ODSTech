@@ -16,21 +16,21 @@ class sitescraper
 				
 				// need to check on site if these are the current categories
 				
-				$urls = array('Women\'s Jeans'              => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=10',
-							  'Women\'s Dresses'               => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=1',
-							  'Women\'s Jackets'           => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=7',
-							  'Women\'s Knitwear'            => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=8',
-							  'Women\'s Playsuits'      => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=9',
-							  'Women\'s Shoes'    => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=6',
-							  'Women\'s Shorts'   => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=5',
-							  'Women\'s Skirts' => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=3',
-							  'Women\'s Tops'				=> 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=2',
-							  'Women\'s Trousers'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=4',
-							  'Women\'s Bags'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=16',
-							  'Women\'s Belts'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=15',
-							  'Women\'s Hats'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=13',
-							  'Women\'s Jewellery'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=11',
-							  'Women\'s Accesories'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=14'
+				$urls = array('Women\'s Jeans'              => 'http://www.stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=10',
+							  'Women\'s Dresses'               => 'http://www.stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=1',
+							  'Women\'s Jackets'           => 'http://www.stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=7',
+							  'Women\'s Knitwear'            => 'http://www.stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=8',
+							  'Women\'s Playsuits'      => 'http://www.stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=9',
+							  'Women\'s Shoes'    => 'http://www.stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=6',
+							  'Women\'s Shorts'   => 'http://www.stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=5',
+							  'Women\'s Skirts' => 'http://www.stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=3',
+							  'Women\'s Tops'				=> 'http://www.stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=2',
+							  'Women\'s Trousers'             => 'http://www.stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=4',
+							  'Women\'s Bags'             => 'http://www.stylepiques.com/shop/search?accessories=true&q=&sort=&perpage=&tags=&price=&categories[]=16',
+							  'Women\'s Belts'             => 'http://www.stylepiques.com/shop/search?accessories=true&q=&sort=&perpage=&tags=&price=&categories[]=15',
+							  'Women\'s Hats'             => 'http://www.stylepiques.com/shop/search?accessories=true&q=&sort=&perpage=&tags=&price=&categories[]=13',
+							  'Women\'s Jewellery'             => 'http://www.stylepiques.com/shop/search?accessories=true&q=&sort=&perpage=&tags=&price=&categories[]=11',
+							  'Women\'s Accesories'             => 'http://www.stylepiques.com/shop/search?accessories=true&q=&sort=&perpage=&tags=&price=&categories[]=14'
 							  );
 							  
 					$regexp = "/<a href=\"shop(.*)\">(.*)<\/a>/siU";
