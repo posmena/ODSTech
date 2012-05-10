@@ -27,8 +27,8 @@ class sitescraper
 							  'Women\'s Tops'				=> 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=2',
 							  'Women\'s Trousers'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=4',
 							  'Women\'s Bags'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=16',
-							  'Women\'s Belts'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=15'
-							  'Women\'s Hats'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=13'
+							  'Women\'s Belts'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=15',
+							  'Women\'s Hats'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=13',
 							  'Women\'s Jewellery'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=11',
 							  'Women\'s Accesories'             => 'http://stylepiques.com/shop/search?q=&sort=&perpage=100&tags=&categories[]=14'
 							  );
