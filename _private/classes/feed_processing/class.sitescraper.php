@@ -126,7 +126,7 @@ class sitescraper
 									{
 									$ul = $arr[1];
 									print $ul;
-									$regexp = "/<li.*class=\"[^o].*>(.*)<\/li>/siU";
+									$regexp = "/<li.*class=[\"\'][^o].*>(.*)<\/li>/siU";
 									if( preg_match_all($regexp, $ul, $matches) )
 										{
 										print("MATCH\n");
