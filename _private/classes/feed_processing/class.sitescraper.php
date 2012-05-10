@@ -39,14 +39,14 @@ class sitescraper
 					foreach ($urls as $category => $url) {
 					$page = feed_processor::curl_get_file_contents($url);
 					
-					$start = strpos($page, '<div class="clothingRight">');
-					$end   = strpos($page, '<div class="clothingBottom">', $start);
+					$start = strpos($page, '<div class="products">');
+					$end   = strpos($page, '<div class="clear">', $start);
 					$promos  = substr($page,$start,$end-$start);
 									
 					if (preg_match_all($regexp, $promos, $matches)) {
 						foreach($matches[1] as $key =>  $product_url) {
 							//if ($key % 2) {
-								$pUrls[$category][] = 'http://stylepiques.com/shop' . $product_url;
+								$pUrls[$category][] = 'http://www.stylepiques.com/shop' . $product_url;
 							//}
 						}						
 					}
@@ -63,7 +63,7 @@ class sitescraper
 								
 								$item['link']  = $pUrl;
 								
-								$item['productcode'] = str_replace("http://stylepiques.com/shop/product/","",$pUrl); // get last directory
+								$item['productcode'] = str_replace("http://www.stylepiques.com/shop/product/","",$pUrl); // get last directory
 								$item['_id']  = $item['productcode'];
 								$item['id']  = $item['productcode'];
 								$item['category'] = $categories;
