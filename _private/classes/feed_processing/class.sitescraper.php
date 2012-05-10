@@ -119,13 +119,23 @@ class sitescraper
 									$item['description'] = trim(utf8_encode(strip_tags($arr[1])));
 									
 									}
+									
 								
-								//$regexp = "/<div id=\"tab3\" class=\"tab_content\">(.*)<\/div>/siU";
-								//if( preg_match($regexp, $product, $arr) )
-									//{
-									//$item['sizes'] = trim(utf8_encode(strip_tags($arr[1])));
-									//}
-								
+								$regexp = "/<ul id=\"mainSizes\">(.*)<\/ul>/siU";
+								if( preg_match($regexp, $product, $arr) )
+									{
+									$ul = arr[1];
+									print $ul;
+									$regexp = "/<li.*class=\"[^o].*>(.*)<\/li>/siU";
+									if( preg_match_all($regexp, $ul, $matches) )
+										{
+										
+											foreach($matches[1] as $key =>  $size) {
+											
+												$item['sizes'] .= trim(utf8_encode(strip_tags($size))) . " ";
+											}
+										}
+									}
 								
 								$regexp = "/<img rel=\'(.*);/siU";
 								if (preg_match_all($regexp, $product, $matches)) {
