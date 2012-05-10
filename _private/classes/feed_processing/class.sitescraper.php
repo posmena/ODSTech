@@ -59,6 +59,8 @@ class sitescraper
 								print($pUrl ."\n");
 								
 								$product = feed_processor::curl_get_file_contents($pUrl);
+								$product = substr($product,strpos($product,"<div class=\"productTabs\">"));
+								
 								$item = array();
 								
 								$item['link']  = $pUrl;
@@ -78,7 +80,7 @@ class sitescraper
 								$regexp = "/<div class=\"brand\">(.*)<\/div>/siU" ;
 								if( preg_match($regexp, $product, $arr) )
 									{
-									$item['brand'] = trim(str_replace("by","",$arr[1])) ;
+									$item['brand'] = trim(str_replace("By","",$arr[1])) ;
 									}
 															
 								
@@ -104,7 +106,8 @@ class sitescraper
 									
 								$item['delivery_cost'] = 0;
 								$item['delivery_time'] = "6 working days";
-																
+															
+													
 								$regexp = "/<div class=\"description\">(.*)<\/div>/siU";
 								if( preg_match($regexp, $product, $arr) )
 									{
