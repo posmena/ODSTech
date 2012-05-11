@@ -125,14 +125,10 @@ class sitescraper
 								if( preg_match($regexp, $product, $arr) )
 									{
 									$ul = $arr[1];
-									print $ul;
+									
 									$regexp = "/<li.*class=[\"\'][^o].*>(.*)<\/li>/siU";
 									if( preg_match_all($regexp, $ul, $matches) )
 										{
-										print("MATCH\n");
-										print_r($matches[1]);
-										print("MATCH\n");
-										print_r($matches[2]);
 										
 											foreach($matches[1] as $key =>  $size) {
 											
