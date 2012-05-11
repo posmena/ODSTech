@@ -84,9 +84,11 @@ class sitescraper
 									}
 															
 								
-								$regexp = "/<div class=\"productDataPrice\">(.*)<\/div>/siU" ;
+								$regexp = "/<div class=\"price\">(.*)<\/div>/siU" ;
 								if( preg_match($regexp, $product, $arr ) )
 									{									
+									$item['price'] = trim(str_replace("£","",$arr[1])) ;
+									$item['price'] = trim(str_replace("Price:","",$arr[1])) ;
 									$item['price'] = trim(str_replace("&pound;","",$arr[1])) ;
 									$item['original_price']	= $item['price'];
 																	
