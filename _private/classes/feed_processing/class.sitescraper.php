@@ -145,11 +145,11 @@ class sitescraper
 										$i++;
 										if( $i > 1 )
 											{
-											$item['image_link' . $i] = "http://stylepiques.com/" . $img_url; 
+											$item['image_link' . $i] = "http://www.stylepiques.com/" . $img_url; 
 											}
 										else
 											{
-											$item['image_link'] = "http://stylepiques.com/" . $img_url; 
+											$item['image_link'] = "http://www.stylepiques.com/" . $img_url; 
 											}
 									}
 									
