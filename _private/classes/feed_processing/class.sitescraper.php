@@ -59,7 +59,7 @@ class sitescraper
 								print($pUrl ."\n");
 								
 								$product = feed_processor::curl_get_file_contents($pUrl);
-								$product = substr($product,strpos($product,"<div class=\"productTabs\">"));
+								$product = substr($product,strpos($product,"<section id=\"product\">"));
 								
 								$item = array();
 								
