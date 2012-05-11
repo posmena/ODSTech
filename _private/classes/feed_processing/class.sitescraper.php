@@ -88,11 +88,12 @@ class sitescraper
 								if( preg_match($regexp, $product, $arr ) )
 									{			
 									$price = $arr[1];
-									$item['price'] = trim(str_replace("£","",$price)) ;
-									$item['price'] = trim(str_replace("Price:","",$price)) ;
-									$item['price'] = trim(str_replace("&pound;","",$price)) ;
-									$item['original_price']	= $item['price'];
-																	
+									$price = trim(str_replace("£","",$price)) ;
+									$price = trim(str_replace("Price:","",$price)) ;
+									$price = trim(str_replace("&pound;","",$price)) ;
+									$item['original_price']	= $price;
+									$item['price']	= $price;
+									
 									$regexp = "/<span class=\"old-price\">(.*)<\/span>/siU" ;
 									if( preg_match($regexp, $product, $arr ) )
 										{
