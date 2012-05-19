@@ -71,6 +71,7 @@
 
 <div class="tiles clearfix">
 	<div id="login_tile" class="tile">
+	{if !$page.loggedin}
 		<form action="/login.html" method="post">
 			<fieldset class="form">
 				<ol>
@@ -84,7 +85,23 @@
 				</ol>
 			</fieldset>
 		</form>
+	
 		<h2 style="cursor: pointer;">login</h2>
+		{else}
+		<form action="/logout.html" method="post">
+			<fieldset class="form">
+				<ol>
+					<li style="color:#ffffff;font-size:24px">
+						Welcome Back!
+					</li>
+					<input class="submit" name="login" type="hidden" value="Logout" />
+				</ol>
+			</fieldset>
+		</form>
+	
+		<h2 style="cursor: pointer;">logout</h2>
+		{/if}
+		
 	</div>
 
 	<div id="odst_tile" class="tile">
