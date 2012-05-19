@@ -53,6 +53,7 @@ ReWriteRule ^jquery$ http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.mi
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 RewriteRule ^login.html$ index.php?loc=login [QSA]	
+RewriteRule ^forgottenpassword.html$ index.php?loc=forgottenpassword [QSA]	
 RewriteRule ^affiliates-management.html$ index.php?loc=opm [QSA]
 RewriteRule ^banner-design.html$ index.php?loc=banners [QSA]
 RewriteRule ^product-feeds.html$ index.php?loc=feeds [QSA]
