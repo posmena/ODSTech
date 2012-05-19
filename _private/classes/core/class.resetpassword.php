@@ -10,6 +10,7 @@ class core_resetpassword extends core_default
 		$this->assignments['page']['showform'] = true;	
 		$this->assignments['page']['email'] = $qs['e'];	
 		$this->assignments['page']['chk'] = $qs['chk'];	
+		$this->assignments['page']['feedback'] = "Enter your new password";
 		
 		$redirect = '/';
 		
