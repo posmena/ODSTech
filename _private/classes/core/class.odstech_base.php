@@ -26,7 +26,11 @@ class core_odstech_base
 
 		//$this->db->connection("odstech");
 		$this->tplBase = new template('odstech');
-		$this->user = util::getSession('user');
+		if( false !== util::getSession('user') )
+			{
+			$this->user = util::getSession('user');
+			echo("1");
+			}
 		
 		//$this->global_minified_js = Minify_groupUri('sitebuilderjs');
 		//$this->global_minified_css = Minify_groupUri('sitebuildercss');
