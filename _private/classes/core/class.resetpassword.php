@@ -2,7 +2,7 @@
 
 class core_resetpassword extends core_default
 {
-	private $template = 'forgottenpassword.tpl.html';
+	private $template = 'resetpassword.tpl.html';
 	private $assignments;
 	
 	public function __construct($db, $qs) {
