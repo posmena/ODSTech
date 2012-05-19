@@ -19,6 +19,8 @@ class user {
 	}
 	
 	function login() {
+	
+	/*
 		$sql = sprintf('SELECT u.email, u.userclass, cu.clientid
                         FROM ot_users u
                         LEFT JOIN ot_client_users cu ON cu.userid = u.id
@@ -32,7 +34,14 @@ class user {
 		}
 		
 		$obj = array_to_object($result[0]);
+		*/
+		$obj = $this->db->ot_users->findOne(array('username' => $this->username, 'password' => md5($this->password)));
 		
+		if( $obj != null )
+			{
+			return false;
+			}
+			
 		$this->setUser($obj);
 		
 		return true;
