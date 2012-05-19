@@ -14,10 +14,12 @@ $db   = $conn->odstech;
 
 $validUser = (bool) $db->ot_users->find(array('username' => $email, 'password' => md5($password)))->count();
 
-if (false === isset($_GET['user']) || false === isset($_GET['pass']) || false === isset($_GET['source'])) {
+if( false == $validUser )
+{
 	print 'You are not authorised to use this service.';
 	exit;
 }
+
 
 switch ($_GET['source']) {
 	default:
