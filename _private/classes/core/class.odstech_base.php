@@ -100,6 +100,9 @@ class core_odstech_base
 		$this->tplBase->assign('domain', '');
 		$this->tplBase->assign('current_url', '');
 		$this->tplBase->assign('action', $this->action);
+		echo('here');
+		echo($this->user == null);
+		
 		$this->tplBase->assign('user', $this->user);
 
 		if($ajax)
