@@ -16,7 +16,7 @@ class core_resetpassword extends core_default
 			return;
 		}
 		
-		$username = $qs['email'];
+		$username = $qs['e'];
 		$chk = crypt($username,"kajhsgd737tgyus");
 		
 		if ($chk != $qs['chk']) {
