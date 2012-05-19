@@ -29,7 +29,6 @@ class core_odstech_base
 		if( false !== util::getSession('user') )
 			{
 			$this->user = util::getSession('user');
-			echo("1");
 			}
 		
 		//$this->global_minified_js = Minify_groupUri('sitebuilderjs');
