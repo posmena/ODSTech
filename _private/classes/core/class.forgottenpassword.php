@@ -18,7 +18,7 @@ class core_forgottenpassword extends core_default
 			$message .= "To reset your password please go to http://odst.co.uk/resetpassword.html?e=$username&chk=$check";
 			$message .= "\n\nThank you\n\nODST Support";
 			
-			$headers .= 'From: ODST Support <support@odst.co.uk>'.$eol;
+			$headers .= 'From: ODST Support <support@odst.co.uk>';
 			mail($username, 'ODST Password Reset', $message, $headers);
 			
 			$this->assignments['page']['feedback'] = 'An email has been sent with a link to reset your password';
