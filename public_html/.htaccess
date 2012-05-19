@@ -65,7 +65,7 @@ RewriteRule ^wordpress+/plugin+/([a-z]+).html$ index.php?loc=downloadplugin&clie
 RewriteRule ^legal+/privacy_policy.html$ index.php?loc=privacypolicy [QSA]
 RewriteRule ^legal+/terms_and_conditions.html$ index.php?loc=tandc [QSA]
 RewriteRule ^wordpressplugin.html$ index.php?loc=wordpressplugin [QSA]
-RewriteRule ^downloads+/ODSTP20.zip$ index.php?loc=odstp20_download [QSA]
+RewriteRule ^downloads+/ODSTP20.html$ index.php?loc=odstp20_download [QSA]
             
 RewriteRule ^([admin]+/([a-z0-9\.\_]+)).html$ index.php?loc=admin_$2&usertype=admin [QSA]
 RewriteRule ^([clients]+/([a-z0-9])+/([a-z0-9]+))$ index.php?loc=clients_$3&clientid=$2 [QSA]
