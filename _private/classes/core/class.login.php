@@ -42,14 +42,14 @@ class core_login extends core_default
 				return true;
 			}
 			
-			// CLIENT STUFF?
+			/*CLIENT STUFF?
 			if (true === ctype_digit($user->getClientId())) {
 				$redirect = '/clients/'.$user->getClientId().'/dashboard';
 			}
 			
 			util::setSession('user', $user);
 			util::redirect($redirect);			
-		
+			*/
 	}
 	
 	public function getTemplate() {
