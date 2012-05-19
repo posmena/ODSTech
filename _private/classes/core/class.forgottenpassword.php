@@ -7,7 +7,7 @@ class core_forgottenpassword extends core_default
 	
 	public function __construct($db, $qs) {
 		$this->assignments['page']['title'] = 'Forgotten Password';
-	
+		$this->assignments['page']['showform'] = true;	
 		
 		if (true === array_key_exists('sendemail', $qs)) {
 			
@@ -21,7 +21,7 @@ class core_forgottenpassword extends core_default
 			mail($username, 'ODST Password Reset', $message);
 			
 			$this->assignments['page']['feedback'] = 'An email has been sent with a link to reset your password';
-						
+			$this->assignments['page']['showform'] = false;		
 		}
 	}
 	

@@ -30,7 +30,7 @@ class core_resetpassword extends core_default
 		$mdb  = $conn->odstech;
 		$collection = $mdb->ot_users;
 
-		$userExists = (bool) $mdb->ot_users->find(array('username' => $user['email']))->count();
+		$userExists = (bool) $mdb->ot_users->find(array('username' => $qs['e']))->count();
 		
 		if( false == $userExists )
 			{
@@ -40,10 +40,21 @@ class core_resetpassword extends core_default
 			}
 		
 		if (true === array_key_exists('changepassword', $qs)) {
+			if (false === isset($qs['password']) || false === isset($qs['password2']) )
+				{
+					$this->assignments['page']['feedback'] = 'Enter a new password.';
+					return;
+				}
 			
+			if ($qs['password'] != $qs['password2'] )
+				{
+					$this->assignments['page']['feedback'] = 'Your passwords do not match';
+					return;
+				}
+					
 			// update password in db
-			$u = $mdb->ot_users->findOne(array('username' => $user['email']));
-			$u['password']  = md5($user['password']);
+			$u = $mdb->ot_users->findOne(array('username' => $qs['e']));
+			$u['password']  = md5($qs['password']);
 			$collection->save($u);
 			
 			$this->assignments['page']['feedback'] = 'Your password has been changed.';
