@@ -7,7 +7,16 @@ class core_login extends core_default
 	
 	public function __construct($db, $qs) {
 		$this->assignments['page']['title'] = 'Login';
+		
 		$redirect = '/admin/dashboard.html';
+		if( isset($qs['url']) )
+				{
+				$redirect = $qs['url'];
+				}
+				
+		$this->assignments['page']['redirect'] = $redirect;
+		$this->assignments['page']['title'] = 'Login';
+		
 		/*
 		if ($user = util::getSession('user')) {
 			if (true === ctype_digit($user->getClientId())) {
@@ -26,15 +35,6 @@ class core_login extends core_default
 				
 				$this->assignments['page']['feedback'] = 'Incorrect user name or password.';
 				return false;
-				}
-			else
-				{
-				$redirect = "/";
-				
-				if( isset($qs['url']) )
-					{
-					$redirect = $qs['url'];
-					}
 				}
 				
 				util::setSession('user', $user);
