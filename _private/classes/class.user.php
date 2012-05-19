@@ -37,7 +37,7 @@ class user {
 		*/
 		$obj = $this->db->ot_users->findOne(array('username' => $this->username, 'password' => md5($this->password)));
 		
-		if( $obj != null )
+		if( $obj == null )
 			{
 			return false;
 			}
@@ -49,8 +49,8 @@ class user {
 	
 	function setUser($user) {
 		$this->email = $user->email;
-		$this->userclass = $user->userclass;
-		$this->clientid = $user->clientid;
+		//$this->userclass = $user->userclass;
+		//$this->clientid = $user->clientid;
 	}
 	
 	function getEmail() {
