@@ -15,7 +15,7 @@ class core_forgottenpassword extends core_default
 			$username = $qs['email'];
 			$check = crypt($username,"kajhsgd737tgyus");
 			
-			$message = "You are receiving this email becuase a password reset was requested for this email address\n\n";
+			$message = "You are receiving this email because a password reset was requested for this email address\n\n";
 			$message .= "To reset your password please go to http://odst.co.uk/resetpassword.html?e=$username&chk=$check";
 			$message .= "\n\nThank you\n\nODST Support";
 			
