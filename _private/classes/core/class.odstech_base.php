@@ -26,7 +26,7 @@ class core_odstech_base
 
 		//$this->db->connection("odstech");
 		$this->tplBase = new template('odstech');
-		
+		$this->user = util::getSession('user');
 		
 		//$this->global_minified_js = Minify_groupUri('sitebuilderjs');
 		//$this->global_minified_css = Minify_groupUri('sitebuildercss');
@@ -99,7 +99,9 @@ class core_odstech_base
 		$this->tplBase->assign('content', $this->template);
 		$this->tplBase->assign('domain', '');
 		$this->tplBase->assign('current_url', '');
-		$this->tplBase->assign('action', $this->action);		
+		$this->tplBase->assign('action', $this->action);
+		echo('here');
+		echo($this->user == null);
 		
 		$this->tplBase->assign('user', $this->user);
 
