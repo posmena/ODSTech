@@ -26,6 +26,7 @@ class core_login extends core_default
 				
 				$this->assignments['page']['feedback'] = 'Incorrect user name or password.';
 				return false;
+				}
 			else
 				{
 				$redirect = "/";
@@ -37,7 +38,8 @@ class core_login extends core_default
 				}
 				
 				util::setSession('user', $user);
-				util::redirect($redirect);		
+				util::redirect($redirect);	
+				return true;
 			}
 			
 			// CLIENT STUFF?
