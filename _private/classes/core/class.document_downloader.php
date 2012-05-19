@@ -8,8 +8,14 @@ class core_document_downloader
 	private $isHome = false;
 	private $documentName = 'blank';
 	
-	public function __construct($db, $qs, $documentName = 'blank') {
+	public function __construct($db, $qs, $documentName = 'blank', $secure = true) {
 		
+		$user = util::getSession('user');
+		if( $secure && $user == null )
+			{
+			util::redirect('/login.html?url=/downloads/' . $documentName  );	
+			}
+			
 		$this->documentName = $documentName;
 		
 				$this->file = configuration::APPROOT . '_private/files/downloads/'. $this->documentName;
