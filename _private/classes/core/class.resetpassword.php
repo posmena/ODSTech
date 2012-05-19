@@ -8,6 +8,9 @@ class core_resetpassword extends core_default
 	public function __construct($db, $qs) {
 		$this->assignments['page']['title'] = 'Reset Password';
 		$this->assignments['page']['showform'] = true;	
+		$this->assignments['page']['email'] = $qs['e'];	
+		$this->assignments['page']['chk'] = $qs['chk'];	
+		
 		$redirect = '/';
 		
 		if (false === isset($qs['e']) || false === isset($qs['chk'])) {
