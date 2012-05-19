@@ -18,6 +18,13 @@
 <form action="/login.html?url={$page.redirect}" method="post">
 	<fieldset class="form">
 		<ol>
+		<h1 style="color:#ffffff">Login</h1><br>
+		{if $page.redirect}
+	<p class="feedback" style="text-align: center">
+		You must be logged in to access this page.
+	</p>
+	{/if}
+		<br>
 			<li>
 				<input id="name" name="email" class="text" type="text" placeholder="Username" autofocus />
 			</li>
@@ -27,6 +34,8 @@
 			<li>
 				<input class="submit" name="login" type="submit" value="Login" />
 			</li>
+			<br><br>
+			<a href="/forgottenpassword.html">Forgotten Password?</a>
 		</ol>
 	</fieldset>
 </form>
