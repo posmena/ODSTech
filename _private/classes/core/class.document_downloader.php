@@ -16,7 +16,7 @@ class core_document_downloader
 
 				if (true === file_exists($this->file)) {
 					header("Content-type: application/octet-stream");
-					header("Content-Disposition: attachment; filename=\"" . $this->feedName . "-" .$qs['type']. "" . $ext . "\"");
+					header("Content-Disposition: attachment; filename=\"" . $this->documentName . "\"");
 					header("Content-type: application/force-download"); 
 				    //header("Content-length: ".filesize($this->file)); 
 				    readfile($this->file);
