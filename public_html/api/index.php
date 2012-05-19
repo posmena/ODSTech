@@ -14,6 +14,10 @@ $db   = $conn->odstech;
 
 $validUser = (bool) $db->ot_users->find(array('username' => $email, 'password' => md5($password)))->count();
 
+if (false === isset($_GET['user']) || false === isset($_GET['pass']) || false === isset($_GET['source'])) {
+	print 'You are not authorised to use this service.';
+	exit;
+}
 
 switch ($_GET['source']) {
 	default:
@@ -21,7 +25,13 @@ switch ($_GET['source']) {
 		echo 'Please supply a source.';
 		break;
 	}
-
+	
+	case 'p20':
+	{
+		print 'ok';
+		break;
+	}
+	
 	case 'octopus':
 	{
 		$conn = new Mongo('localhost');
