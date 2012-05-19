@@ -49,7 +49,7 @@ class core_login extends core_default
 			
 			util::setSession('user', $user);
 			util::redirect($redirect);			
-		}
+		
 	}
 	
 	public function getTemplate() {
