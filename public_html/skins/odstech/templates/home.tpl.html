@@ -71,7 +71,7 @@
 
 <div class="tiles clearfix">
 	<div id="login_tile" class="tile">
-	{if !$user}
+	{if !isset($user)}
 		<form action="/login.html" method="post">
 			<fieldset class="form">
 				<ol>
