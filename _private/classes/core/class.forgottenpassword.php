@@ -8,6 +8,7 @@ class core_forgottenpassword extends core_default
 	public function __construct($db, $qs) {
 		$this->assignments['page']['title'] = 'Forgotten Password';
 		$this->assignments['page']['showform'] = true;	
+		$this->assignments['page']['feedback'] = "Enter your email address and we will send you a link for resetting your password";
 		
 		if (true === array_key_exists('sendemail', $qs)) {
 			
