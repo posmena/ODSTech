@@ -166,7 +166,7 @@ class custom_forthillhome_feed extends network_base
 			}
 		}
 		
-		$collection->drop( array( "updated" => false ) );  
+		$collection->remove( array( "updated" => false ) );  
 		
 		$timeEnd = time();
 		echo 'Time taken to parse file ('.$i.' lines): ' . ($timeEnd-$timeStart) . 's'."\n";
