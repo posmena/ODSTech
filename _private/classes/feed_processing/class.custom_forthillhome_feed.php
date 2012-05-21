@@ -148,6 +148,10 @@ class custom_forthillhome_feed extends network_base
 							$item['brand'] = $existingitem['brand'];
 							$item['_id'] = $existingitem['_id'];
 							}
+						else
+							{
+							$item['brand'] = "";
+							}
 							
 						$collection->save($item);
 						if (false === array_key_exists('_id', $item)) {
