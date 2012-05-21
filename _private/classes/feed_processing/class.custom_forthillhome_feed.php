@@ -34,7 +34,7 @@ class custom_forthillhome_feed extends network_base
 		$mdb = $conn->odstech;
 		// access collection
   		$collection = $mdb->live_forthillhome;
-		
+		$collection->update( array( "_id" => array( $exists => true ) ), array( $set => array("updated" => false ) ), false, true);  
 		
 		//$this->setFields();.
 		$fields = $this->getFields();
@@ -67,11 +67,7 @@ class custom_forthillhome_feed extends network_base
 					// We only care if the element is a product
 					if ($reader->localName == 'Products')
 					{
-						if( $i == 0 )
-							{
-							$collection->drop();
-							}
-							
+					
 						$node = $reader->expand();
 						$dom = new DomDocument();
 						$domNode = $dom->importNode($node,true);
@@ -79,7 +75,14 @@ class custom_forthillhome_feed extends network_base
 						$product = simplexml_import_dom($domNode);
 						
 
-						$item = array();
+						
+						
+						$item = $collection->findOne(array("deeplink" => 'http://www.forthillhome.co.uk/product-p/' . strtoupper($item['productcode']) . '.htm';
+						if( null == $item) 
+							{
+							$item = array();
+							}
+						
 						foreach ($fields as $key => $field) {
 							if ($field != '') {
 								
@@ -106,7 +109,7 @@ class custom_forthillhome_feed extends network_base
 						}
 						
 
-
+						$item['updated'] = true;
 						$item['imagethumbnail'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-1.jpg';
 						$item['imagelarge'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-2T.jpg';
 						$item['deeplink'] = 'http://www.forthillhome.co.uk/product-p/' . strtoupper($item['productcode']) . '.htm';
@@ -159,7 +162,9 @@ class custom_forthillhome_feed extends network_base
 				}
 			}
 		}
-
+		
+		$collection->drop( array( "updated" => false ) );  
+		
 		$timeEnd = time();
 		echo 'Time taken to parse file ('.$i.' lines): ' . ($timeEnd-$timeStart) . 's'."\n";
 	}
