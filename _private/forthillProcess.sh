@@ -5,7 +5,7 @@ cd /var/www/odst-live/_private
 #db.packageschecksum.distinct('region')
 
 echo 'started'
-php scripts/processFeed.php forthillhome verbose  | mail -s 'Forthill Processed' tech@odst.co.uk
+#php scripts/processFeed.php forthillhome verbose  | mail -s 'Forthill Processed' tech@odst.co.uk
 
 echo 'downloaded feed'
 
