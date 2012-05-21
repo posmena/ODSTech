@@ -165,8 +165,12 @@ class custom_forthillhome_feed extends network_base
 				}
 			}
 		}
-		
-		$collection->remove( array( "updated" => false ) );  
+		if( $i > 100 )
+			{
+				//only removed if feed downloaded 
+				$collection->remove( array( "updated" => false ) ); 
+			}
+		 
 		
 		$timeEnd = time();
 		echo 'Time taken to parse file ('.$i.' lines): ' . ($timeEnd-$timeStart) . 's'."\n";
