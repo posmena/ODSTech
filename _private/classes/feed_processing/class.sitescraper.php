@@ -174,6 +174,7 @@ class sitescraper
 			
 		case 'forthillhome':
 			{
+				echo '<pre>Starting';
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
 				$collection = $mdb->live_forthillhome;
@@ -181,6 +182,7 @@ class sitescraper
 				foreach ($products as $product) {
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);					
 					$start = stripos($page,'Browse by Manufacturers</a>');
+					echo($product['deeplink']);
 					$brand = "Forthill";
 					if( $start !== FALSE ){
 						$start = stripos($page,'<a',$start+10);		
@@ -196,7 +198,7 @@ class sitescraper
 					$collection->save($product);
 					unset($product);					
 				}
-				
+				echo 'finished</pre>';
 				break;
 			}
 			
