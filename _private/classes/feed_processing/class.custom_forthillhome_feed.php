@@ -49,7 +49,7 @@ class custom_forthillhome_feed extends network_base
 		print($local_file);
 	
 		$reader = new XMLReader();
-		$reader->open($local_file);
+		$reader->open($local_file,"utf-8");
 		
 		
 		$comma      = ',';
