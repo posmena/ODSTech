@@ -34,8 +34,8 @@ class custom_forthillhome_feed extends network_base
 		$mdb = $conn->odstech;
 		// access collection
   		$collection = $mdb->live_forthillhome;
-		$collection->update( array( "_id" => array( $exists => true ) ), array( $set => array("updated" => false ) ), false, true);  
-		
+		$collection->update( array( "_id" => array("exists" => true)),array("updated" => false),array("multi" => true));
+					 
 		//$this->setFields();.
 		$fields = $this->getFields();
 		
