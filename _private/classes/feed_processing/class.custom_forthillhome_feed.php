@@ -34,7 +34,7 @@ class custom_forthillhome_feed extends network_base
 		$mdb = $conn->odstech;
 		// access collection
   		$collection = $mdb->live_forthillhome;
-		$response = $collection->drop();
+		
 		
 		//$this->setFields();.
 		$fields = $this->getFields();
@@ -48,7 +48,7 @@ class custom_forthillhome_feed extends network_base
 		print "Inserting into DB\n";
 		print($local_file);
 	
-	$reader = new XMLReader();
+		$reader = new XMLReader();
 		$reader->open($local_file);
 		
 		
@@ -67,6 +67,11 @@ class custom_forthillhome_feed extends network_base
 					// We only care if the element is a product
 					if ($reader->localName == 'Products')
 					{
+						if( $i == 0 )
+							{
+							$collection->drop();
+							}
+							
 						$node = $reader->expand();
 						$dom = new DomDocument();
 						$domNode = $dom->importNode($node,true);
