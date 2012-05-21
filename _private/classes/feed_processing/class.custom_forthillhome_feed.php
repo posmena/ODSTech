@@ -76,12 +76,8 @@ class custom_forthillhome_feed extends network_base
 						
 
 						
+						$item = array();
 						
-						$item = $collection->findOne(array("deeplink" => 'http://www.forthillhome.co.uk/product-p/' . strtoupper($item['productcode']) . '.htm';
-						if( null == $item) 
-							{
-							$item = array();
-							}
 						
 						foreach ($fields as $key => $field) {
 							if ($field != '') {
@@ -108,6 +104,7 @@ class custom_forthillhome_feed extends network_base
 							}
 						}
 						
+					
 
 						$item['updated'] = true;
 						$item['imagethumbnail'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-1.jpg';
@@ -145,7 +142,13 @@ class custom_forthillhome_feed extends network_base
 						$item['quantity'] = 1;
 						$item['availability'] = 'In Stock';
 
-
+						$existingitem = $collection->findOne(array("id" => $item['productcode']));
+						if( null != $existingitem) 
+							{
+							$item['brand'] = $existingitem['brand'];
+							$item['_id'] = $existingitem['_id'];
+							}
+							
 						$collection->save($item);
 						if (false === array_key_exists('_id', $item)) {
 							print 'Error saving item: '.$i."\n";
