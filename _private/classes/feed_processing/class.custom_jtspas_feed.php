@@ -27,11 +27,13 @@ class custom_jtspas_feed extends network_base
 			
 			foreach($products as $product)
 				{
-				$product['description'] = str_replace("\xC3", "", $product['description']);
-				$product['description'] = str_replace("\x82", "", $product['description']);
+				// convert back to original encoding
+				$theData = mb_convert_encoding($item['description'],'UTF-8','ISO-8859-1');
 				
-				$product['description'] = strip_tags($product['description']);
-				
+				$theData = strip_tags($theData);
+				// convert to html entities
+				$theData = htmlentities($theData);
+				$item['description'] = $theData;
 				$collection->save($product);
 				}
 			}
