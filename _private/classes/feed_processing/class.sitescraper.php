@@ -181,8 +181,9 @@ class sitescraper
 				$products = $collection->find(array("brand" => null));
 				$products->immortal();
 				foreach ($products as $product) {
-					$page = feed_processor::curl_get_file_contents($product['deeplink']);					
-					$start = stripos($page,'Browse by Manufacturers</a>');
+					$page = feed_processor::curl_get_file_contents($product['deeplink']);		
+					$start = stripos($page,'Browse for more products in the same category as this item');					
+					$start = stripos($page,'Browse by Manufacturers</a>',$start);
 					echo($product['deeplink']);
 					$brand = "Forthill";
 					if( $start !== FALSE ){
