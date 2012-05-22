@@ -20,7 +20,7 @@ echo 'http://www.odst.co.uk/feeds/forthill.zip?type=webgains' > logs/forthill.lo
 mongoexport -d odstech -c live_forthillhome --csv -f 'productid','productname','price','shipping','description','availability','category','condition','manufacturer','features','deeplink','image_thumbnail','image_large','webgains_deeplink' -o files/hostedfeeds/forthillhome/webgains.csv | mail -s "Forthill Webgains Exported" tech@odst.co.uk < logs/forthill.log
 
 echo 'http://www.odst.co.uk/feeds/forthill.zip?type=froogle' > logs/forthill.log
-mongoexport -d odstech -c live_forthillhome --csv -f 'id','title','link','price','shipping','description','condition','image_thumbnail','category','quantity','availability','google_deeplink','google_product_type','brand','mpn' -o files/hostedfeeds/forthillhome/froogle.csv | mail -s "Forthill Froogle Exported" tech@odst.co.uk < logs/forthill.log
+mongoexport -d odstech -c live_forthillhome --csv -f 'id','title','link','price','shipping','description','condition','image_thumbnail','category','quantity','availability','google_product_type','brand','mpn' -o files/hostedfeeds/forthillhome/froogle.csv | mail -s "Forthill Froogle Exported" tech@odst.co.uk < logs/forthill.log
 
 echo 'http://www.odst.co.uk/feeds/forthill.zip?type=nextag' > logs/forthill.log
 mongoexport -d odstech -c live_forthillhome --csv -f 'productid','productname','price','shipping','description','availability','category','condition','manufacturer','features','deeplink','image_thumbnail','image_large','nextag_deeplink' -o files/hostedfeeds/forthillhome/nextag.csv | mail -s "Forthill Nextag Exported" tech@odst.co.uk < logs/forthill.log

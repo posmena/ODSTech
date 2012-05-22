@@ -199,11 +199,13 @@ class custom_forthillhome_feed extends network_base
 				
 				// tidy up
 				$collection->remove( array( "description" => "" ) ); 
+				$collection->remove( array( "description" => null ) ); 
 				$collection->remove( array( "deeplink" => "" ) ); 
 				$collection->remove( array( "title" => "" ) ); 
 				$collection->remove( array( "price" => "" ) ); 
 					
 				$collection->udpate( array( "condition" => "" ), array ( "condition" => "New"), array("multi" => true) ); 
+				$collection->udpate( array( "condition" => null ), array ( "condition" => "New"), array("multi" => true) );
 			}
 		 
 		

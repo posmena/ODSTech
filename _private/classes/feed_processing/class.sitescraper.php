@@ -179,6 +179,7 @@ class sitescraper
 				$mdb = $conn->odstech;
 				$collection = $mdb->live_forthillhome;
 				$products = $collection->find(array("brand" => null));
+				$products->immortal();
 				foreach ($products as $product) {
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);					
 					$start = stripos($page,'Browse by Manufacturers</a>');
