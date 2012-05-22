@@ -13,24 +13,7 @@ class custom_forthillhome_feed extends network_base
 		global $db;
 		$this->meh($local_file, $full);
 		
-		global $db;
-		$conn = new Mongo('localhost');
-		// access database
-		$mdb = $conn->odstech;
-		// access collection
-  		$collection = $mdb->live_forthillhome;
-		
-		$products = $collection->find();
-		
-		foreach($products as $product)
-			{
-			$product['productdescription'] = str_replace("\xC3", "", $product['productdescription']);
-			$product['productdescription'] = str_replace("\x82", "", $product['productdescription']);
-			
-			$product['productdescription'] = strip_tags($product['productdescription']);
-			$product['description'] = $product['productdescription'];
-			$collection->save($product);
-			}
+	
 			
 		
 	}

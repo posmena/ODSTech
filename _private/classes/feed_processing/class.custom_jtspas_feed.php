@@ -13,6 +13,25 @@ class custom_jtspas_feed extends network_base
 		global $db;
 
 		$this->csv_call($local_file, $full);
+		
+		$conn = new Mongo('localhost');
+		// access database
+		$mdb = $conn->odstech;
+		// access collection
+  		$collection = $mdb->live_jtspas;
+		
+		$products = $collection->find();
+		
+		foreach($products as $product)
+			{
+			$product['description'] = str_replace("\xC3", "", $product['description']);
+			$product['description'] = str_replace("\x82", "", $product['description']);
+			
+			$product['description'] = strip_tags($product['description']);
+			
+			$collection->save($product);
+			}
+			
 	}
 
 	public function doCustomEdits($data, $key, $field)
