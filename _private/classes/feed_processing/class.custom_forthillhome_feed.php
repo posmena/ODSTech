@@ -11,8 +11,14 @@ class custom_forthillhome_feed extends network_base
 	public function __construct($local_file = null, $full = false)
 	{
 		global $db;
-		$this->meh($local_file, $full);
-		
+			if( filesize($local_file) > 50000 )
+			{
+			$this->meh($local_file, $full);
+			}
+			else
+			{
+			mail("support@odst.co.uk","Forthill Home Error","Unable to download file from server");
+			}
 	
 			
 		
