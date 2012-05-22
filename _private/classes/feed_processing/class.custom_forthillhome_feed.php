@@ -134,14 +134,10 @@ class custom_forthillhome_feed extends network_base
 						$item['price'] = $item['warehousecustom'];						
 						}
 						
-						$item['productdescription'] = preg_replace('/[^(\x20-\x7F)]*/','', $item['productdescription']);
+						//$item['productdescription'] = preg_replace('/[^(\x20-\x7F)]*/','', $item['productdescription']);
 						
-						$item['productdescription'] = str_replace("®","",$item['productdescription']);
-						$item['productdescription'] = str_replace("â€™","'",$item['productdescription']);
-						$item['productdescription'] = str_replace("Â","",$item['productdescription']);
-						$item['productdescription'] = str_replace("â","",$item['productdescription']);
-						$item['productdescription'] = str_replace("™","",$item['productdescription']);
-						$item['productdescription'] = str_replace("€","",$item['productdescription']);
+						$item['productdescription'] = str_replace("\xC3", "", $item['productdescription']);
+						$item['productdescription'] = str_replace("\x82", "", $item['productdescription']);
 						
 						$item['productdescription'] = strip_tags($item['productdescription']);
 						$item['description'] = $item['productdescription'];
