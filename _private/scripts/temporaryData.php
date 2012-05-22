@@ -24,7 +24,7 @@ switch ($feed_id) {
 		// access database
 		$mdb = $conn->odstech;
 		// access collection
-  		$collection = $mdb->live_jtspas;
+  		$collection = $mdb->dump_jtspas;
 
 		$local_file = $temp_files[3];
 		$handle     = fopen($local_file, 'r');

@@ -146,11 +146,18 @@ class custom_forthillhome_feed extends network_base
 						
 						//$item['productdescription'] = preg_replace('/[^(\x20-\x7F)]*/','', $item['productdescription']);
 						
-						$item['productdescription'] = str_replace("\xC3", "", $item['productdescription']);
-						$item['productdescription'] = str_replace("\x82", "", $item['productdescription']);
+						// convert back to original encoding
+						$theData = mb_convert_encoding($item['productdescription'],'UTF-8','ISO-8859-1');
 						
-						$item['productdescription'] = strip_tags($item['productdescription']);
-						$item['description'] = $item['productdescription'];
+						$theData = strip_tags($theData);
+						// convert to html entities
+						$theData = htmlentities($theData);
+						
+						//$item['productdescription'] = str_replace("\xC3", "", $item['productdescription']);
+						//$item['productdescription'] = str_replace("\x82", "", $item['productdescription']);
+						
+						$item['productdescription'] = $theData;
+						$item['description'] =  $theData;
 						$item['condition'] = $item['productcondition'];
 						$item['image_link'] = $item['imagelarge'];
 						$item['category'] = $item['google_product_type'];

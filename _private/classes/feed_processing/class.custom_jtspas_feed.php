@@ -14,14 +14,15 @@ class custom_jtspas_feed extends network_base
 
 		if( filesize($local_file) > 50000 )
 			{
+			echo("Processing file\n");
 			$this->csv_call($local_file, $full);
 			
-			
+			echo("Cleaning up\n");
 			$conn = new Mongo('localhost');
 			// access database
 			$mdb = $conn->odstech;
 			// access collection
-			$collection = $mdb->live_jtspas;
+			$collection = $mdb->dump_jtspas;
 			
 			$products = $collection->find();
 			
