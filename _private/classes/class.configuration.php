@@ -2,8 +2,9 @@
 
 class configuration{
 
-        const APPROOT = '/var/www/odst-live/';
-        // system settings
+         //const APPROOT = 'C:\\Users\\Mike\\Documents\\ODST\\ODSTech\\public_html\\';
+		  const APPROOT = '/var/www/odst-live/';
+       // system settings
         public $debugMode = false;
         public $scriptDebugMode = false;
 
@@ -37,15 +38,15 @@ class configuration{
         }
 
         public function getWebgainsUser(){
-                return 'sales@posmena.co.uk';
+                return 'odst';
         }
 
         public function getWebgainsPass(){
-                return 'B0bD3v0s';
+                return 'sailing1';
         }
 
         public function getWebgainsCampaign(){
-                return 45503;
+                return 106558;
         }
 
         public function getAwinUser(){
