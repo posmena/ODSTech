@@ -1,5 +1,4 @@
 <?php
-require 'classes/class.util.php';
 
 class feed_processor
 {
