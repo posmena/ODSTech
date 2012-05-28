@@ -35,7 +35,7 @@ Deny from wise-guys.nl
 Deny from .ru
 
 <FilesMatch "\.(jpg|jpeg|gif|png|swf|css)$">
-   Header set Cache-Control "max-age=31556926"
+   #Header set Cache-Control "max-age=31556926"
 </FilesMatch>
 
 <FilesMatch "\.(htm|html|css|js|php)$">
@@ -66,6 +66,8 @@ RewriteRule ^legal+/privacy_policy.html$ index.php?loc=privacypolicy [QSA]
 RewriteRule ^legal+/terms_and_conditions.html$ index.php?loc=tandc [QSA]
 RewriteRule ^wordpressplugin.html$ index.php?loc=wordpressplugin [QSA]
 RewriteRule ^downloads+/ODSTP20.zip$ index.php?loc=odstp20_download [QSA]
+RewriteRule ^p20+/home.html$ index.php?loc=p20_home [QSA]
+RewriteRule ^p20+/([a-z0-9].*)$ index.php?loc=p20_client&client=$1 [QSA]
             
 RewriteRule ^([admin]+/([a-z0-9\.\_]+)).html$ index.php?loc=admin_$2&usertype=admin [QSA]
 RewriteRule ^([clients]+/([a-z0-9])+/([a-z0-9]+))$ index.php?loc=clients_$3&clientid=$2 [QSA]

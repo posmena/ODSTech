@@ -12,6 +12,10 @@ function __autoload($class_name)
 			$class_name = str_replace('clients_', '', $class_name);
 			$include_file = '../_private/classes/core/clients/class.' . $class_name . '.php';
 		} 
+		elseif (false !== strpos($class_name, 'p20')) {
+			$class_name = str_replace('p20_', '', $class_name);
+			$include_file = '../_private/classes/core/p20/class.' . $class_name . '.php';
+		}
 	} else {
 		$include_file = '../_private/classes/class.' . $class_name . '.php';
 	}
@@ -24,9 +28,18 @@ function __autoload($class_name)
 }
 
 Session_Start();
+
+$ajax_request = false;
+if( isset($_SERVER["HTTP_AJAX_REQUEST"]) )
+	{
+	$ajax_request = true;
+	}
+	
 $site = new core_odstech_base;
-$site->direct();
-$site->draw();
+$site->direct($ajax_request);
+
+//echo($ajax_request);
+$site->draw($ajax_request);
 /*
 http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=16-Jul-2011&nights=7&adults=2&airport=LGW&resort=455
 http://holidays.easyjet.com/dl.aspx?mode=FlightPlusHotel&depdate=16-Jul-2011&nights=1&adults=2&airport=27&resort=346&property=1283

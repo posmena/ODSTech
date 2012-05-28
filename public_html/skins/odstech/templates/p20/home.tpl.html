@@ -1,0 +1,50 @@
+{literal}
+
+<script>
+function submitForm(sel,cb) {
+    var form = $(sel);
+    $.ajax({
+        type: "POST",
+        url: form.action ? form.action : document.URL,
+        data: $(form).serialize(),
+        dataType: "text",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Ajax-Request", "true");
+        },
+        success: function(response) {
+		    cb(response);
+        }
+		
+    });
+    return false;
+}
+
+function cb(response)
+{
+$("#demo_div").html(response)
+}
+
+</script>
+{/literal}
+
+<h1 style="margin:20px 0;font-size:22px">ODST P20 Content Units</h1>
+	<form name=demo_form method="post" action="/p20/home.html">
+		
+		<h2>Merchant Directory</h2>
+		
+		<ul class="tiled">
+		{foreach from=$feeds item=feed }
+		<li>
+		<div class="logo"><img src="/images/clientlogos/{$feed.logo}"/></div>
+		<div class="name"><a href="{$feed.client}">{$feed.feedname}</a></div>
+		<div class="description">{$feed.short_description}</div>
+		<div class="count">Product count: {$feed.product_count}</div>
+		<div class="link"><a href="{$feed.client}">Get content units</a> >></div>
+		 </li>
+		{/foreach}
+		</ul>
+		<div id="demo_div">
+		
+		</div>
+		
+	</form>	

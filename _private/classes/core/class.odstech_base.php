@@ -36,14 +36,18 @@ class core_odstech_base
 		
 	}
 	
-	public function direct() {
+	public function direct($ajax = false) {
 		$this->template = 'home.tpl.html';
 		if (array_key_exists('loc', $this->qs) === true) {
+			
 			$classname      = 'core_'.$this->qs['loc'];
+					
 			$this->action   = $this->qs['loc'];
 			if(class_exists($classname) === true) {
-				$loc               = new $classname($this->db, $this->qs);
+				$loc               = new $classname($this->db, $this->qs,$ajax);
 				$this->template    = $loc->getTemplate();
+				
+				
 				$this->assignments = $loc->getAssignments();
 				if (util::getSession('user') !== false) {
 					$this->user = util::getSession('user');
@@ -107,6 +111,8 @@ class core_odstech_base
 		
 		$this->tplBase->assign('user', $this->user);
 
+		
+
 		if($ajax)
 		{
 			$this->tplBase->display($this->template);
@@ -123,6 +129,7 @@ class core_odstech_base
 			}
 			
 			$this->tplBase->display($this->base);
+			
 		}
 	}
 }

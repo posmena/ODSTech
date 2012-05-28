@@ -134,6 +134,7 @@ padding-top: 28px;
 	max-width: 680px;
 	margin: auto;
 	border: 0px solid red;
+	padding-bottom:50px;
 }
 
 .inner {
@@ -603,6 +604,53 @@ width: 400px;
 #footer .content a {
 	color: #CCCCCC;
 }
+
+
+ul.tiled 
+{
+margin-top:20px;
+}
+
+ul.tiled li
+{
+  display: inline;
+    float: left;
+    height: 150px;
+    list-style: none outside none;
+    margin-top: 20px;
+    padding: 10px;
+    width: 190px;
+}
+
+ul.tiled li div.logo
+{
+height:31px;
+}
+
+ul.tiled li div.description
+{
+overflow:hidden;
+height:50px
+}
+
+ul.tiled li div.name
+{
+font-weight: bold;
+    margin-bottom: 5px;
+}
+
+ul.tiled li div.link
+{
+font-size:12px;
+margin-top:5px;
+}
+
+ul.tiled li div.count
+{
+font-weight: bold;
+    margin-top: 5px;
+}
+
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }
