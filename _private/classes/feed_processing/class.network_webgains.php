@@ -1,5 +1,8 @@
 <?php
-include 'class.feed_processor.php';
+
+if (class_exists('feed_processor') === false) {
+	include 'classes/feed_processing/class.feed_processor.php';
+}
 
 class network_webgains extends network_base
 {

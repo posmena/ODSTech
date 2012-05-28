@@ -1,5 +1,9 @@
 <?php
 
+if (class_exists('util') === false) {
+	include '../class.util.php';
+}
+
 class feed_processor
 {
 	public static function process_feed($feed_id, $full)
