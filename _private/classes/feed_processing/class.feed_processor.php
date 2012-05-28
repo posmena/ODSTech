@@ -1,7 +1,7 @@
 <?php
 
 if (class_exists('util') === false) {
-	include '../class.util.php';
+	include 'classes/feed_processing/class.util.php';
 }
 
 class feed_processor
