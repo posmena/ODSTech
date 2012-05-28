@@ -7,7 +7,7 @@ set_time_limit(0);
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 
-$feeds = $db->ot_feeds->find( {"active" => true } );
+$feeds = $db->ot_feeds->find( array("active" => true ) );
 $feeds->immortal();
 
 $i=0;
@@ -28,6 +28,7 @@ if( true )//$db->p20_products->findOne(array("feed_id" => $feed['client'])) == n
 return;
  
 // TODO - use a merge map reduce after each feed is updated so counts are correct as soon as possible
+
 /*
 $db->p20_products->mapReduce( array( 
   'map' => '
@@ -35,7 +36,7 @@ $db->p20_products->mapReduce( array(
 		emit(this.feed_id, {count:1});
 	}' 
 ,'reduce' => '
-function (key, values) {cc
+function (key, values) {
     var result = {count:0};
     values.forEach(function (value) {result.count += value.count;});
     return result;
