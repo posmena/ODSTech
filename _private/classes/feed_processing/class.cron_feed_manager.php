@@ -8,7 +8,7 @@ include 'classes/class.database.php';
 // network files
 include 'classes/feed_processing/class.network.php';
 include 'classes/feed_processing/class.network_base.php';
-//include 'classes/feed_processing/class.network_webgains.php';
+include 'classes/feed_processing/class.network_webgains.php';
 //include 'classes/feed_processing/class.network_affiliate_window.php';
 
 // custom feeds
@@ -17,6 +17,7 @@ include 'classes/feed_processing/class.custom_forthillhome_feed.php';
 include 'classes/feed_processing/class.custom_jtspas_feed.php';
 include 'classes/feed_processing/class.custom_easylife_feed.php';
 include 'classes/feed_processing/class.custom_octopus_feed.php';
+include 'classes/feed_processing/class.webgains_feed.php';
 
 class ODSTech_FeedManager extends feed_processor
 {
@@ -26,7 +27,7 @@ class ODSTech_FeedManager extends feed_processor
 		//if ($feed_id === null || $feed_id < 1 || ctype_digit($feed_id) === false) {
 		//	throw new Exception ('Usage: processFeed.php feed_id full verbose');
 		//}
-		self::process_feed($feed_id, $full);
+		return self::process_feed($feed_id, $full);
 	}
 	
 

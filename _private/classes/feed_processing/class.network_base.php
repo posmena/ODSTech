@@ -4,7 +4,7 @@ class network_base implements network
 {
 	private $mapping = array();
 	public $xmlMapping = array();
-	function __construct($local_file = null, $full = false)
+	function __construct($local_file = null, $full = false, $feed_id = null)
 	{
 	}
 

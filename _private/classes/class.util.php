@@ -32,4 +32,22 @@ class util
 	    }
 	    return false;
 	}
+	
+	function unzip($file)  {
+		//the basic unzip operation
+		$zip = new ZipArchive;
+		 $res = $zip->open($file);
+		 if ($res === TRUE) {
+			for($i = 0; $i < $zip->numFiles; $i++) {
+             $entry = $zip->getNameIndex($i);
+			 $zip->extractTo(dirname($file).'/');
+			 $zip->close();
+			 return dirname($file).'/'. $entry;
+			 echo($entry);
+			 }
+		 } else {
+			 echo "failed to unzip" . $file;
+			 return false;
+		 }
+	}
 }

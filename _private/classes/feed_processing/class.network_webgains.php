@@ -1,4 +1,5 @@
 <?php
+include 'class.feed_processor.php';
 
 class network_webgains extends network_base
 {
@@ -6,7 +7,7 @@ class network_webgains extends network_base
 	private static $fields = array();
 	private static $prefix;
 	
-	public function __construct($local_file = null)
+	public function __construct($local_file = null, $full = null)
 	{
 		self::$fields = array(0 => array(
 									'id'   => 'id',
@@ -42,11 +43,14 @@ class network_webgains extends network_base
 	function updateFeedList($network_id)
 	{
 		global $db, $config;
+		$i = 0;
+		
 		$url       = 'http://ws.webgains.com/aws.php';
 		$user      = $config->getWebgainsUser();
 		$pass      = $config->getWebgainsPass();
 		$campaign  = $config->getWebgainsCampaign();
 	
+		
 		$client    = new SoapClient($url);
 		$merchants = $client->getProgramsWithMembershipStatus($user, $pass, $campaign);
 		foreach($merchants as $merchant)
@@ -117,48 +121,59 @@ class network_webgains extends network_base
 				$current_merchant['strapline'] = $merchant->programShortDescription;
 				$current_merchant['logo'] = 'http://www.webgains.com/logos/showlogo.html?program_id='.$merchant->programID;
 				$merchant_list[] = $current_merchant;
+				
+				$feed = array();
+				$feed['name'] = $merchant->programName;
+				$feed['merchant_ref'] = $merchant->programID;
+				$feed['short_description'] = $merchant->programShortDescription ;
+				$feed['program_url'] = $merchant->programURL ;
+				$feed['feed_id'] = strtolower(preg_replace("/[^a-zA-Z0-9]/", "", $feed['name']));
+				$feed['client_logo'] = $feed['feed_id'] . '.gif';	
+		
+				$imageurl = 'http://www.webgains.com/logos/showlogo.html?program_id=' . $merchant->programID;
+				$image = feed_processor::curl_get_file_contents($imageurl);
+				
+				$hn = fopen( $feed['client_logo'] , 'w+');
+				fwrite($hn, configuration::APPROOT .'/images/clientlogos/' . $image);
+				fclose($hn);
+			
+				$i++;
+				
+				$this->addFeed($feed);
 			}
 		}
 
-		$i=0;
-		//echo count($merchant_list);
-		$sql = "INSERT INTO pm_programs (id, network_id, country_id, name, merchant_ref, logo) VALUES ";
-		foreach($merchant_list as $key => $merchant)
-		{
-			$values = sprintf("('', %d, %d, '%s', '%s', '%s'),",
-					$merchant['network_id'],
-					$merchant['country_id'],
-					str_replace("'", "\'", $merchant['name']),
-					$merchant['id'],
-					$merchant['logo']
-				);
-			//print $values."\n";
-			$sql .= $values;
-			$i++;
-		}
-		$sql = substr_replace($sql,";",-1);
-		$delete = "DELETE FROM pm_programs WHERE network_id=".$network_id;
-		$db->changeQuery($delete);
-		$db->changeQuery($sql);
-
-		$sql = "UPDATE pm_networks SET last_update=".time()." WHERE class_name='".get_class($this)."'";
-		$db->changeQuery($sql);
-
+		
 		$output = "Updated Webgains.\n";
-		$output .= $i." webgains merchants inserted.\n";
+		$output .= $i." webgains feeds inserted.\n";
 		print $output;
 	}
 
 	public function addFeed($feed)
 	{
 		global $db;		
+		global $config;	
 		
-		$feed_url = 'http://content.webgains.com/affiliates/datafeed.html?action=download&campaign='.$db->getWebgainsCampaign().'&username='.$db->getWebgainsUser().'&password='.$db->getWebgainsPass().'&format=xml&zipformat=none&fields=extended&programs='.$feed->merchant_ref.'&allowedtags=&categories=all';
-		$sql = "INSERT INTO pm_feeds (id, name, url, network_id, merchant_ref)
-				VALUES ('','".$feed->name."','".$feed_url."',".$feed->network_id.",'".$feed->merchant_ref."')";
-		$db->changeQuery($sql);
+		$collection = $db->ot_feeds;
+		$feeditem = array();
 		
-		return $feed->name.' added!';
+		
+		$feeditem = $collection->findOne(array('client' => $feed['feed_id']));
+		
+		$feed_url = 'http://content.webgains.com/affiliates/datafeed.html?action=download&campaign='.$config->getWebgainsCampaign().'&username='.$config->getWebgainsUser().'&password='.$config->getWebgainsPass().'&format=xml&zipformat=zip&fields=extended&programs='.$feed['merchant_ref'].'&allowedtags=&categories=all';
+		
+		$feeditem['feedname'] = $feed['name'];
+		$feeditem['url'] = $feed_url;
+		$feeditem['connection'] = 'http';
+		$feeditem['classname'] = 'webgains_feed';  // class is called when feed is processed
+		$feeditem['client'] = $feed['feed_id'];
+		$feeditem['zipped'] = true;
+		$feeditem['short_description'] = $feed['short_description'];
+		$feeditem['program_url'] = $feed['program_url'];
+		$feeditem['logo'] = $feed['client_logo'];
+		$collection->save($feeditem);
+		
+		return $feed['name'].' added!';
 		
 	}
 	

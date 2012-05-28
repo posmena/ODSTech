@@ -1,11 +1,13 @@
 <?php
+require 'classes/class.util.php';
 
 class feed_processor
 {
 	public static function process_feed($feed_id, $full)
 	{
 		global $db;
-
+		$count = 0;
+		
 		$collection = $db->ot_feeds;
 		$cursor = $collection->find(array('client' => $feed_id));
 		foreach ($cursor as $item) {
@@ -46,41 +48,43 @@ class feed_processor
 					$local_file = $path4feed.'feed'.$feed_id;
 					print("Downloading from html:" . $feed['url']."\n");
 					$data = self::curl_get_file_contents($feed['url']);
+					print("Finished downloading");
 					$fp = fopen($local_file, 'w+');
 					fwrite($fp, $data);
 					fclose($fp);
 					
+					// if need to unzip then unzip
+					if( true === $feed['zipped'] )
+						{
+						print("Unzip");
+							$unzipped = util::unzip($local_file);
+							print("UNZIPEED");
+							
+							if( $unzipped !== false )
+								{
+								$local_file = $unzipped;
+												
+							}
+						}
 				}
 			}
 
 			// determine network
 			if (true === class_exists($feed['classname'])) {
-				/*
-				if (false === strpos($feed['classname'], 'custom')) {
-					$network = new $feed['classname'];
-					$products = $network->parse_xml($file, $feed_id);
-	
-					// categorise
-					// this doesn't look right, but i've been drinking beer...
-					self::categorise();
-		
-					$sql = 'UPDATE pm_feeds af SET af.products=(SELECT count(ap.id) FROM pm_products ap WHERE ap.feed_id=af.id) WHERE af.id='.$feed_id;
-					$db->changeQuery($sql);
-					if ($products !== false) {
-						print $products." products inserted.\nDone.\n";
-					}
-				} else 
-				*/
 				{
 					print("\nHERE\n");
 					// custom feeds will handle their own shizzle.
-					$network = new $feed['classname']($local_file, $full);
+					
+					$network = new $feed['classname']($local_file, $full, $feed_id);
+					$count = $network->num_products;
 					
 				}
 			} else {
-				print 'Class '.$feed['class_name'].' dunt exist\n';
+				print 'Class '.$feed['classname'].' dunt exist\n';
 			}
 		}
+		
+		return $count;
 	}
 
 	function categorise()
