@@ -211,7 +211,7 @@ $("div.odst_p20").each(function(){
 		<select id="cu_style" name="style">
 			<option value="">Default</option>
 			{foreach from=$feed.styles item=style}
-			<option value="{$style}">{$style}</option>
+			<option value="{$style|lower}">{$style}</option>
 			{/foreach}
 		</select></p>
 		
