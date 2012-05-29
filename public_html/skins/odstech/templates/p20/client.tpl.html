@@ -144,7 +144,10 @@ clone = $('#' + divid).clone();
 clone.children().remove();
 clone.removeAttr('style');
 clone.removeAttr('id');
-$('#code').html(clone.outerHTML().replace("<","&lt;").replace(">","&gt;"));
+
+var str = clone.outerHTML().replace("<","&lt;").replace(">","&gt;");
+str = str.replace("<","&lt;").replace(">","&gt;");
+$('#code').html(str);
 }
 
 function htmlEntities(str) {
