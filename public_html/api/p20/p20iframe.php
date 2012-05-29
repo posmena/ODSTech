@@ -1,9 +1,21 @@
 <?php
 header('Access-Control-Allow-Origin: *');
+$style = isset($_GET['style']) ? $_GET['style'] : "";
+
 ?>
 <html>
 <head>
 <link rel='stylesheet' id='odst_carousel_style-css'  href='css/odst_carousel.css?ver=3.3.2' type='text/css' media='all' />
+
+
+<?php if($style != "" && $style !="default")
+{
+?>
+<link rel='stylesheet' id='odst_carousel_style<?php echo($style)?>-css'  href='css/<?php echo($style)?>.css' type='text/css' media='all' />
+<?php
+}
+?>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type='text/javascript' src='js/easySlider1.7.js?ver=1.0.0'></script>
 </head>
@@ -12,7 +24,7 @@ header('Access-Control-Allow-Origin: *');
 
 // call search.php and print out html
 
-$data = curl_get_file_contents("http://odst.co.uk/api/p20/index.php?" . http_build_query($_GET));
+$data = curl_get_file_contents("http://127.0.0.1/test/index.php?" . http_build_query($_GET));
 
 $type = isset($_GET['type']) ? $_GET['type'] : "grid";
 $width = isset($_GET['width']) ? $_GET['width'] : "500px";
@@ -23,7 +35,7 @@ $width = "210px";
 }
 
 $products=json_decode($data,true);
-echo(display_content_unit($products,"products",$type,"",$width));
+echo(display_content_unit($products,"products",$type,$style,$width));
 
 
 	function curl_get_file_contents($url)
@@ -41,7 +53,6 @@ echo(display_content_unit($products,"products",$type,"",$width));
 
 function display_content_unit($products,$type,$display,$style,$width)
 	{		
-	$style = "default";	
 		
 	switch ($type) {
        

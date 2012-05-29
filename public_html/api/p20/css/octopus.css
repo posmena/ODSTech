@@ -1,0 +1,119 @@
+	
+/* Carousel */
+
+
+.octopus .odst_scontainer .slider li  a.name {background-color:#67006D !important; color:#FFFFFF !important}
+.octopus .odst_scontainer .grid li  a.name {background-color:#67006D !important; color:#FFFFFF !important}
+.octopus .odst_scontainer.vertical li  a.name{background-color:#67006D !important; color:#FFFFFF !important}
+
+
+.widget .odst_hotels.octopus a.name, .odst_hotel_table.octopus div.name a.name {background-color:#67006D  !important; color:#FFFFFF  !important;}
+.post .odst_hotels.octopus a.name{background-color:#67006D  !important; 
+	color:#FFFFFF  !important;}
+	
+.octopus .odst_scontainer.vertical {
+border: 2px solid #67006D !important;
+background-color:#ffffff  !important;;
+}
+
+
+
+	
+.octopus .odst_scontainer a.prevBtn{
+	background:url(../img/octopus/prev-blue.png) no-repeat 0 0;	
+	}	
+
+	
+.octopus .odst_scontainer a.nextBtn{ 
+	background:url(../img/octopus/next-blue.png) no-repeat 0 0;		
+	}	
+		
+.octopus .odst_scontainer.vertical a.nextBtn
+{
+	background:url(../img/octopus/vert-next-blue.png) no-repeat 0 0;	
+}
+
+.octopus .odst_scontainer.vertical a.prevBtn
+{
+	background:url(../img/octopus/vert-prev-blue.png) no-repeat 0 0;	
+}
+
+/* // Carousel */
+
+
+
+.octopus.container
+{
+	  border: 2px solid #67006D;
+
+}
+
+.octopus.odst_hol_logo,.octopus .odst_hol_logo
+{
+background: url(../img/octopus/octopus.png) no-repeat scroll right bottom transparent;
+}
+.octopus.odst_hol_logo.vertical,.octopus .odst_hol_logo.vertical{background: url(../img/octopus/octopus_vertical_header.png) no-repeat scroll right bottom transparent;}
+
+.odst_hotels.octopus div.odst_hol_logo.vertical
+{
+background: url(../img/octopus/octopus_vertical_header.png) no-repeat scroll right bottom transparent;
+height:26px;
+border-bottom: solid 1px #343434;
+margin-bottom:5px;
+background-position:left;
+width:137px
+}
+
+.odst_hotels.octopus.odst_hotel_table div.odst_hol_logo
+{
+border-bottom: none;
+margin-bottom:0px;
+margin-left:342px;
+width:137px
+}
+
+
+.octopus.odst_hol_logo .odst_hol_logo_padding, .octopus .odst_hol_logo_padding
+{
+display:block;
+height:30px;
+}
+
+.octopus .thumb_star
+{
+background: url(../img/octopus/stars.png) no-repeat 0 0;
+}
+
+.thumb_more
+{
+color:#67006D !important;
+}
+
+.thumb_more a
+{
+color:#67006D  !important;
+}
+
+.octopus .thumb_price
+
+{
+color:#67006D  !important;
+}
+
+
+
+.odst_hotel_table.octopus .row.even
+{
+background-color:#ECEBE9  !important;
+}
+
+.odst_hotel_table.octopus div.price span.from
+{
+color: #67006D  !important;
+}
+
+.odst_hotel_table.octopus div.price a
+{
+color: #67006D !important;
+text-decoration:none !important;
+}

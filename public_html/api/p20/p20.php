@@ -10,6 +10,8 @@ header('Access-Control-Allow-Origin: *');
 //$client = isset($_GET['params']['feed_id']) ? $_GET['params']['feed_id'] : "";
 $type = isset($_GET['type']) ? $_GET['type'] : "grid";
 $width = isset($_GET['width']) ? $_GET['width'] : "500px";
+$style = isset($_GET['style']) ? $_GET['style'] : "";
+
 //$params = isset($_GET['params']) ? "&" . $_GET['params'] : "";
 //$maxproducts = isset($_GET['max']) ? "&" . $_GET['max'] : "10";
 
@@ -28,7 +30,7 @@ else
 	{
 	$data = curl_get_file_contents("http://odst.co.uk/api/p20/index.php?" . http_build_query($_GET));
 	$products=json_decode($data,true);
-	$content = display_content_unit($products,"products",$type,"",$width);
+	$content = display_content_unit($products,"products",$type,$style,$width);
 	}
 
  $callback = '';
@@ -61,7 +63,6 @@ echo $callback . '('.json_encode($content).',' . $index . ');';
 
 function display_content_unit($products,$type,$display,$style,$width)
 	{		
-	$style = "default";	
 		
 	switch ($type) {
        

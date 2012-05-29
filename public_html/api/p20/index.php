@@ -30,6 +30,7 @@ $mdb = $conn->odstech;
 $collection = $mdb->p20_products;
 
 $arr = $_GET["params"];
+
 $max = isset($_GET["max"]) ? $_GET["max"] : "10";
 if( !is_numeric($max)) $max=10 ;
 

@@ -135,8 +135,29 @@ BrowserDetect.proptype = {
 		var width = divs[i].getAttribute('data-width');
 		var maxproducts = divs[i].getAttribute('data-max');
 		var params = divs[i].getAttribute('data-params');
+		var style = "";
+		style = divs[i].getAttribute('data-style');
 		if( params == null ) params = "";
-		me.callTheJsonp(i,client,displayType,width,params,maxproducts);
+		if( style != null ) 
+			{
+			if( style != "" )	
+				{
+				if( style != "default" )
+					{
+					var fileref=document.createElement("link")
+						fileref.setAttribute("rel", "stylesheet")
+						fileref.setAttribute("type", "text/css")
+						fileref.setAttribute("href", "http://odst.co.uk/api/p20/css/" + style + ".css")
+				  
+						document.getElementsByTagName('head')[0].appendChild(fileref);
+		
+					}
+				}
+			}
+			
+		// if  need non default styles then add
+		
+		me.callTheJsonp(i,client,displayType,width,params,maxproducts,style);
 		}
 	},
 	showContentUnits : function()
@@ -172,12 +193,12 @@ BrowserDetect.proptype = {
 				  fileref.setAttribute("href", "http://odst.co.uk/api/p20/css/odst_carousel.css")
 				  
 			document.getElementsByTagName('head')[0].appendChild(fileref);
-
+ 
     },		
-    callTheJsonp : function(index,client,displayType,width,params,maxproducts)
+    callTheJsonp : function(index,client,displayType,width,params,maxproducts,style)
             {
                 // the url of the script where we send the asynchronous call
-				 var url = "http://odst.co.uk/api/p20/p20.php?user=m&pwd=test&params[feed_id]=" + client + "&" + params + "&type=" + displayType + "&width=" + width  + "&max=" + maxproducts + "&callback=ODST_P20.parseRequest&index=" + index + "&rand=23ss4322";
+				 var url = "http://odst.co.uk/api/p20/p20.php?user=m&pwd=test&params[feed_id]=" + client + "&" + params + "&type=" + displayType + "&width=" + width  + "&max=" + maxproducts + "&style=" + style + "&callback=ODST_P20.parseRequest&index=" + index + "&rand=23ss4322";
 				// create a new script element
                 var script = document.createElement('script');
                 // set the src attribute to that url

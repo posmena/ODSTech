@@ -1,0 +1,117 @@
+	
+/* Carousel */
+
+
+.ejh .odst_scontainer .slider li  a.name {background-color:#FF6600 !important; color:#FFFFFF !important}
+.ejh .odst_scontainer.vertical li  a.name{background-color:#FF6600 !important; color:#FFFFFF !important}
+
+.widget .odst_hotels.ejh a.name, .odst_hotel_table.ejh div.name a.name {background-color:#FF6600  !important; color:#FFFFFF  !important;}
+.post .odst_hotels.ejh a.name{background-color:#FF6600  !important; 
+	color:#FFFFFF  !important;}
+	
+.ejh .odst_scontainer.vertical {
+border: 2px solid #ff6600 !important;
+background-color:#ffffff  !important;;
+}
+
+
+
+	
+.ejh .odst_scontainer a.prevBtn{
+	background:url(../img/eJH/prev-blue.png) no-repeat 0 0;	
+	}	
+
+	
+.ejh .odst_scontainer a.nextBtn{ 
+	background:url(../img/eJH/next-blue.png) no-repeat 0 0;		
+	}	
+		
+.ejh .odst_scontainer.vertical a.nextBtn
+{
+	background:url(../img/eJH/vert-next-blue.png) no-repeat 0 0;	
+}
+
+.ejh .odst_scontainer.vertical a.prevBtn
+{
+	background:url(../img/eJH/vert-prev-blue.png) no-repeat 0 0;	
+}
+
+/* // Carousel */
+
+
+
+.ejh.container
+{
+	  border: 2px solid #ff6600;
+
+}
+
+.ejh.odst_hol_logo,.ejh .odst_hol_logo
+{
+background: url(../img/eJH/ejh.png) no-repeat scroll right bottom transparent;
+}
+.ejh.odst_hol_logo.vertical,.ejh .odst_hol_logo.vertical{background: url(../img/eJH/ej_vertical_header.png) no-repeat scroll right bottom transparent;}
+
+.odst_hotels.ejh div.odst_hol_logo.vertical
+{
+background: url(../img/eJH/ej_vertical_header.png) no-repeat scroll right bottom transparent;
+height:26px;
+border-bottom: solid 1px #343434;
+margin-bottom:5px;
+background-position:left;
+width:137px
+}
+
+.odst_hotels.ejh.odst_hotel_table div.odst_hol_logo
+{
+border-bottom: none;
+margin-bottom:0px;
+margin-left:342px;
+width:137px
+}
+
+
+.ejh.odst_hol_logo .odst_hol_logo_padding, .ejh .odst_hol_logo_padding
+{
+display:block;
+height:30px;
+}
+
+.ejh .thumb_star
+{
+background: url(../img/eJH/stars.png) no-repeat 0 0;
+}
+
+.thumb_more
+{
+color:#ff6600 !important;
+}
+
+.thumb_more a
+{
+color:#ff6600  !important;
+}
+
+.ejh .thumb_price
+
+{
+color:#ff6600  !important;
+}
+
+
+
+.odst_hotel_table.ejh .row.even
+{
+background-color:lightBlue  !important;
+}
+
+.odst_hotel_table.ejh div.price span.from
+{
+color: #FF6600  !important;
+}
+
+.odst_hotel_table.ejh div.price a
+{
+color: #FF6600 !important;
+text-decoration:none !important;
+}

@@ -85,6 +85,7 @@ div.jqmDialog input:focus, div.jqmDialog input.iefocus { background-color: #eaff
 <script language="javascript">
 	
 	$().ready(function() {
+	$('#tabs').tabs();
 	
 	(function($) {
   $.fn.outerHTML = function() {
@@ -166,10 +167,14 @@ $("select.p20options").each(function(){
 
 var width = $('input#cu_width').val();
 var max = $('input#cu_maxproducts').val();
+var style = $('select#cu_style').val();
 
 $("div.odst_p20").each(function(){
     $(this).removeAttr('data-params');
 	$(this).attr('data-params',params);
+
+	$(this).removeAttr('data-style');
+	$(this).attr('data-style',style);
 
 	$(this).removeAttr('data-width');
 	$(this).attr('data-width',width);
@@ -182,7 +187,7 @@ $("div.odst_p20").each(function(){
 
 {/literal}
 
-<h1 style="margin:20px 0;font-size:22px">ODST P20 Content Units</h1>
+<h1 style="text-align:center;margin:20px 0;font-size:22px">ODST P20 Content Units</h1>
 	<form name=demo_form method="post" action="/p20/home.html">
 		<h2>{$feed.feedname} Content Units</h2>
 		<br>
@@ -201,6 +206,15 @@ $("div.odst_p20").each(function(){
 		<strong>Width</strong>: <input style="width:50px" type="text" id="cu_width" value="500px"></input>
 		&nbsp;&nbsp;
 		<strong>Maximum products</strong>:<input style="width:50px" type="text" id="cu_maxproducts" value="6"></input>
+		<strong>Style</strong>:
+		
+		<select id="cu_style" name="style">
+			<option value="">Default</option>
+			{foreach from=$feed.styles item=style}
+			<option value="{$style}">{$style}</option>
+			{/foreach}
+		</select></p>
+		
 		</p>
 		
 		
@@ -208,13 +222,26 @@ $("div.odst_p20").each(function(){
 	 Preview Content Units
             </button>
 		</div>
-		
-<h2 style="margin:10px 0 4px">Grid Style</h2><a class="modal" href="#" onclick="set_code('grid');$('#ex3a').jqmShow();return false;">get code</a>
-<div style="margin:10px 0" id="grid" class="odst_p20" data-client="{$feed.client}" data-type="grid" data-width="500px" data-max="6" ></div>
-<h2 style="margin:30px 0 4px">Carousel Style</h2><a class="modal" href="#" onclick="set_code('carousel');$('#ex3a').jqmShow();return false;">get code</a>
-<div   style="margin:10px 0" id="carousel" class="odst_p20" data-client="{$feed.client}" data-type="carousel" data-width="500px" data-max="6"></div>
-<h2 style="margin:10px 0 4px">Directory Style</h2><a class="modal" href="#" onclick="set_code('directory');$('#ex3a').jqmShow();return false;">get code</a>
-<div style="margin:10px 0" id="directory" class="odst_p20" data-client="{$feed.client}" data-type="directory" data-width="500px" data-max="6"></div>
+<div id="tabs" style="margin-top:20px">
+   <ul>
+      <li><a href="#tabs-2">Carousel Style</a></li>
+      <li><a href="#tabs-1">Grid Style</a></li>
+      <li><a href="#tabs-3">Directory Style</a></li>
+   </ul>
+   <div id="tabs-1">
+		<a class="modal" href="#" onclick="set_code('grid');$('#ex3a').jqmShow();return false;">get code</a>
+		<div style="margin:10px 0" id="grid" class="odst_p20" data-style="default" data-client="{$feed.client}" data-type="grid" data-width="500px" data-max="6" ></div>
+   </div>
+   <div id="tabs-2">
+	<a class="modal" href="#" onclick="set_code('carousel');$('#ex3a').jqmShow();return false;">get code</a>
+	<div   style="margin:10px 0" id="carousel" class="odst_p20" data-style="default"  data-client="{$feed.client}" data-type="carousel" data-width="500px" data-max="6"></div>
+   </div>
+   <div id="tabs-3">
+    <a class="modal" href="#" onclick="set_code('directory');$('#ex3a').jqmShow();return false;">get code</a>
+	<div style="margin:10px 0" id="directory" class="odst_p20" data-style="default"  data-client="{$feed.client}" data-type="directory" data-width="500px" data-max="6"></div>
+
+   </div>
+</div>
 			
 	</form>	
 	
