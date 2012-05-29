@@ -7,7 +7,7 @@ set_time_limit(0);
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 
-$feeds = $db->ot_feeds->find( array("active" => true ) );
+$feeds = $db->ot_feeds->find( array("active" => true, "client" => 'easyjetholidays' ) );
 $feeds->immortal();
 
 $i=0;
