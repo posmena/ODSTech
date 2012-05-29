@@ -146,6 +146,10 @@ clone.removeAttr('id');
 $('#code').html(clone.outerHTML().replace("<","&lt;").replace(">","&gt;"));
 }
 
+function htmlEntities(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 function updateDivs()
 {
 var params = "";
@@ -155,7 +159,7 @@ $("select.p20options").each(function(){
 	if(  $(this).val() != "" )
 		{
 		if( i > 0 ) { params = params + "&"; }
-		params = params + "params[" + this.name + "]=" + $(this).val();
+		params = params + "params[" + this.name + "]=" + encodeURIComponent(($(this).val()));
 		i = i +1;
 		}
 });	
@@ -189,7 +193,7 @@ $("div.odst_p20").each(function(){
 		<select class="p20options" name={$field.fieldname}>
 			<option value="">Any</option>
 			{foreach from=$field.options item=option}
-			<option value="{$option}">{$option}</option>
+			<option value="{$option}">{$option|escape:"htmlall"}</option>
 			{/foreach}
 		</select></p>
 		{/foreach}
