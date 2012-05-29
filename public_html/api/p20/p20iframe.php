@@ -24,7 +24,7 @@ $style = isset($_GET['style']) ? $_GET['style'] : "";
 
 // call search.php and print out html
 
-$data = curl_get_file_contents("http://127.0.0.1/test/index.php?" . http_build_query($_GET));
+$data = curl_get_file_contents("http://odst.co.uk/api/p20/index.php?" . http_build_query($_GET));
 
 $type = isset($_GET['type']) ? $_GET['type'] : "grid";
 $width = isset($_GET['width']) ? $_GET['width'] : "500px";
