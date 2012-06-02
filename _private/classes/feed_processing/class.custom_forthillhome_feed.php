@@ -28,9 +28,9 @@ class custom_forthillhome_feed extends network_base
 	{
 		if ($field == 'productid') {
 			$productId = $this->xmlMapping['productid'];
-			$this->custom['deeplink'] = 'http://www.forthillhome.co.uk/product-p/' . strtoupper($data->$productId) . '.htm';
-			$this->custom['image_thumbnail'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($data->$productId) . '-1.jpg';
-			$this->custom['image_large'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($data->$productId) . '-2T.jpg';
+			$this->custom['deeplink'] = 'http://www.forthillhome.com/product-p/' . strtoupper($data->$productId) . '.htm';
+			$this->custom['image_thumbnail'] = 'http://www.forthillhome.com/v/vspfiles/photos/' . strtoupper($data->$productId) . '-1.jpg';
+			$this->custom['image_large'] = 'http://www.forthillhome.com/v/vspfiles/photos/' . strtoupper($data->$productId) . '-2T.jpg';
 			$description = $this->xmlMapping['description'];
 			$this->custom['description'] = strip_tags($data->$description);
 		}	
@@ -117,9 +117,9 @@ class custom_forthillhome_feed extends network_base
 					
 
 						$item['updated'] = true;
-						$item['imagethumbnail'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-1.jpg';
-						$item['imagelarge'] = 'http://www.forthillhome.co.uk/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-2T.jpg';
-						$item['deeplink'] = 'http://www.forthillhome.co.uk/product-p/' . strtoupper($item['productcode']) . '.htm';
+						$item['imagethumbnail'] = 'http://www.forthillhome.com/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-1.jpg';
+						$item['imagelarge'] = 'http://www.forthillhome.com/v/vspfiles/photos/' . strtoupper($item['productcode']) . '-2T.jpg';
+						$item['deeplink'] = 'http://www.forthillhome.com/product-p/' . strtoupper($item['productcode']) . '.htm';
 						$item['warranty'] = 1;
 
 						$item['id'] = $item['productcode'];
