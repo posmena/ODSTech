@@ -146,7 +146,9 @@ class custom_forthillhome_feed extends network_base
 						
 						// convert back to original encoding
 						$theData = mb_convert_encoding($item['productdescription'],'UTF-8','ISO-8859-1');
-						
+						$theData = str_replace("\xc2","",$theData);
+						$theData = str_replace("\xc3","",$theData);
+					
 						$theData = strip_tags($theData);
 						// convert to html entities
 						$theData = htmlentities($theData);
