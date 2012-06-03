@@ -205,8 +205,8 @@ class custom_forthillhome_feed extends network_base
 				$collection->remove( array( "title" => "" ) ); 
 				$collection->remove( array( "price" => "" ) ); 
 					
-				$collection->udpate( array( "condition" => "" ), array ( "condition" => "New"), array("multi" => true) ); 
-				$collection->udpate( array( "condition" => null ), array ( "condition" => "New"), array("multi" => true) );
+				$collection->update( array( "condition" => "" ), array ( "condition" => "New"), array("multi" => true) ); 
+				$collection->update( array( "condition" => null ), array ( "condition" => "New"), array("multi" => true) );
 			}
 		 
 		
