@@ -77,14 +77,12 @@ class custom_forthillhome_feed extends network_base
 					// We only care if the element is a product
 					if ($reader->localName == 'Products')
 					{
-						echo($i);
+					
 						$node = $reader->expand();
 						$dom = new DomDocument();
 						$domNode = $dom->importNode($node,true);
 						$dom->appendChild($domNode);
 						$product = simplexml_import_dom($domNode);
-						
-
 						
 						$item = array();
 						
@@ -173,8 +171,13 @@ class custom_forthillhome_feed extends network_base
 							$item['_id'] = $existingitem['_id'];
 							}
 						
-							
+						try{
 						$collection->save($item);
+						}
+						catch( Exception $e)
+							{
+							echo 'Caught exception: ',  $e->getMessage(), "\n";
+							}
 						if (false === array_key_exists('_id', $item)) {
 							print 'Error saving item: '.$i."\n";
 							continue;
