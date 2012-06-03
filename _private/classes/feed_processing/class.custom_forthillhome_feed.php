@@ -96,7 +96,7 @@ class custom_forthillhome_feed extends network_base
 								if ($field == 'ProductDescription') {
 									$html                     = (string) $product->$field;
 									// $item[strtolower($field)] = htmlentities($html, ENT_QUOTES, 'UTF-8');
-									$item[strtolower($field)] = strip_tags($html);
+									$item[strtolower($field)] = $html;
 								}
 								
 								/*
@@ -145,13 +145,17 @@ class custom_forthillhome_feed extends network_base
 						//$item['productdescription'] = preg_replace('/[^(\x20-\x7F)]*/','', $item['productdescription']);
 						
 						// convert back to original encoding
-						$theData = mb_convert_encoding($item['productdescription'],'UTF-8','ISO-8859-1');
-						
-						$theData = strip_tags($theData);
-						// convert to html entities
-						$theData = htmlentities($theData);
-						
 						$theData = mb_convert_encoding($item['productdescription'],'ISO-8859-1','UTF-8');
+						
+						$theData = str_replace("\xc2","",$theData);
+						$theData = str_replace("\xc3","",$theData);
+						$theData =  html_entity_decode ( $theData );
+						$theData = strip_tags($theData);
+						
+						$theData = htmlentities($theData);	
+		
+						
+						$theData = mb_convert_encoding($item['productdescription'],'UTF-8','ISO-8859-1');
 						
 						//$item['productdescription'] = str_replace("\xC3", "", $item['productdescription']);
 						//$item['productdescription'] = str_replace("\x82", "", $item['productdescription']);
@@ -197,18 +201,18 @@ class custom_forthillhome_feed extends network_base
 			{
 				//only removed if feed downloaded 
 				$collection->remove( array( "updated" => false ) ); 
-				
+			}
 				// tidy up
 				$collection->remove( array( "description" => "" ) ); 
 				$collection->remove( array( "description" => null ) ); 
 				$collection->remove( array( "deeplink" => "" ) ); 
 				$collection->remove( array( "title" => "" ) ); 
 				$collection->remove( array( "price" => "" ) ); 
-					
+				$collection->remove( array( "price" => null ) ); 
+				
 				$collection->update( array( "condition" => "" ), array ( "condition" => "New"), array("multi" => true) ); 
 				$collection->update( array( "condition" => null ), array ( "condition" => "New"), array("multi" => true) );
-				$collection->update( array( "condition" => array( 'exists' => false) ), array ( "condition" => "New"), array("multi" => true) );
-			}
+			
 		 
 		
 		$timeEnd = time();
