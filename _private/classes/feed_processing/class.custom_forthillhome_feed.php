@@ -77,7 +77,7 @@ class custom_forthillhome_feed extends network_base
 					// We only care if the element is a product
 					if ($reader->localName == 'Products')
 					{
-					
+						echo($i);
 						$node = $reader->expand();
 						$dom = new DomDocument();
 						$domNode = $dom->importNode($node,true);
@@ -152,6 +152,8 @@ class custom_forthillhome_feed extends network_base
 						$theData = strip_tags($theData);
 						// convert to html entities
 						$theData = htmlentities($theData);
+						
+						$theData = mb_convert_encoding($item['productdescription'],'ISO-8859-1','UTF-8');
 						
 						//$item['productdescription'] = str_replace("\xC3", "", $item['productdescription']);
 						//$item['productdescription'] = str_replace("\x82", "", $item['productdescription']);
