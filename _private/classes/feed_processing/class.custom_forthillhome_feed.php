@@ -207,6 +207,7 @@ class custom_forthillhome_feed extends network_base
 					
 				$collection->update( array( "condition" => "" ), array ( "condition" => "New"), array("multi" => true) ); 
 				$collection->update( array( "condition" => null ), array ( "condition" => "New"), array("multi" => true) );
+				$collection->update( array( "condition" => array( 'exists' => false) ), array ( "condition" => "New"), array("multi" => true) );
 			}
 		 
 		
