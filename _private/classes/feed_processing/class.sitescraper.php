@@ -208,7 +208,7 @@ class sitescraper
 			{
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
-				$collection = $mdb->live_easylife;
+				$collection = $mdb->dump_easylife;
 				$otcollection = $mdb->ot_easylife;
 				$otcollection->drop();
 				$products = $collection->find();
@@ -220,7 +220,7 @@ class sitescraper
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
 					$img = "";
 					
-					if( stripos($page,'EMSImage1252') !== FALSE )
+					if( stripos($page,'class="emsc19"') !== FALSE )
 					{
 						print($product['deeplink']);
 						$start = strpos($page, '<meta name="description" content="') + 34;
@@ -344,7 +344,15 @@ class sitescraper
 						}
 						
 						$product['description'] = str_replace("\"","'",$desc1 . " " . $desc2); //$metadesc . '. ' . $desc;
-					
+						
+						$theData = mb_convert_encoding($product['description'],'ISO-8859-1','UTF-8');
+						
+						$theData = strip_tags($theData);
+						// convert to html entities
+						$theData = htmlentities($theData);
+						$theData = mb_convert_encoding($theData,'UTF-8','ISO-8859-1');
+						
+					$product['description'] =$theData ;
 					
 					if ("" == $img) {
 						$collection->remove(array('productid' => $product['productid']), true);
@@ -375,7 +383,7 @@ class sitescraper
 					}
 					else
 					{
-					//echo "\nSkipped: " . $product['deeplink'];
+					echo "\nSkipped: " . $product['deeplink'];
 					}
 					
 				}
