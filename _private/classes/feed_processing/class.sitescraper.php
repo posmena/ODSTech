@@ -1,11 +1,12 @@
 <?php
 include 'classes/feed_processing/class.feed_processor.php';
 
-class sitescraper
+class sitescraper   
 {
 	function scrape($site, $instance, $of) {
 		global $db;
-						
+					
+					
 		switch ($site) {
 		case 'stylepiques':
 			{
