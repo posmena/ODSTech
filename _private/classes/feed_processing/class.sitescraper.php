@@ -611,7 +611,11 @@ class sitescraper
 							  'jerseys'     => $site.'/departments/5-jerseys',
 							  'blouses'     => $site.'/departments/6-blouses',
 							  'dresses'     => $site.'/departments/7-dresses',
-							  'accessories' => $site.'/departments/8-accessories');
+							  'accessories' => $site.'/departments/8-accessories',
+							  'body-shapers' => $site.'/departments/9-body-shapers',
+							  'swimwear' => $site.'/departments/10-swimwear',
+							  'shrugs' => $site.'/departments/11-shrugs-cover-ups'
+							  );
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>/siU";
 
 				foreach ($urls as $category => $url) {
