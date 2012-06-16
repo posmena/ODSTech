@@ -328,7 +328,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 							break;
 							
 							case 'border_colour':
-							$sprice_colourtyle='border-color:' . $options[$element] .';';
+							$style='border-color:' . $options[$element] .';';
 							break;
 							
 							case 'product_name_bg_colour':
