@@ -730,7 +730,7 @@
 	};
 })(jQuery);
 
-$.fn.applicationBar = function (options) {
+jQuery.fn.applicationBar = function (options) {
 
 	/* Setup the public options for the applicationBar  */
 	var defaults = {
@@ -868,7 +868,7 @@ Array.prototype.remove = function (element) {
 
 // Usage: $(['img1.jpg','img2.jpg']).preloadImages(function(){ ... });
 // Callback function gets called after all images are preloaded
-$.fn.preloadImages = function (callback) {
+jQuery.fn.preloadImages = function (callback) {
 	checklist = this.toArray();
 	var $img = $("<img style='display:none;'>").appendTo("body");
 	this.each(function () {

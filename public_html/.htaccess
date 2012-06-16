@@ -68,6 +68,9 @@ RewriteRule ^wordpressplugin.html$ index.php?loc=wordpressplugin [QSA]
 RewriteRule ^downloads+/ODSTP20.zip$ index.php?loc=odstp20_download [QSA]
 RewriteRule ^p20+/home.html$ index.php?loc=p20_home [QSA]
 RewriteRule ^p20+/([a-z0-9].*)$ index.php?loc=p20_client&client=$1 [QSA]
+
+RewriteRule ^webgains+/p20+/home.html$ index.php?loc=p20_home&skin=webgains [QSA]
+RewriteRule ^webgains+/p20+/([a-z0-9].*)$ index.php?loc=p20_client&client=$1&skin=webgains [QSA]
             
 RewriteRule ^([admin]+/([a-z0-9\.\_]+)).html$ index.php?loc=admin_$2&usertype=admin [QSA]
 RewriteRule ^([clients]+/([a-z0-9])+/([a-z0-9]+))$ index.php?loc=clients_$3&clientid=$2 [QSA]

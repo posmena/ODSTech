@@ -1,27 +1,27 @@
 <script>
 	{literal}
-	$('document').ready(function(){
-		$('#login_tile h2').click(function(){
-			$('#login_tile form').submit();
+	jQuery('document').ready(function(){
+		jQuery('#login_tile h2').click(function(){
+			jQuery('#login_tile form').submit();
 		});
 
-		$('.tile').hover(function(){
-			if ($(this).attr('id') != 'shake_tile' && $(this).attr('id') != 'login_tile' && $(this).attr('id') != 'twitter_tile'&& $(this).attr('id') != 'odst_tile') {
-				$(this).addClass('tile_hover');	
+		jQuery('.tile').hover(function(){
+			if (jQuery(this).attr('id') != 'shake_tile' && jQuery(this).attr('id') != 'login_tile' && jQuery(this).attr('id') != 'twitter_tile'&& jQuery(this).attr('id') != 'odst_tile') {
+				jQuery(this).addClass('tile_hover');	
 			}
 			
 			},
 			function(){
-				$(this).removeClass('tile_hover');
+				jQuery(this).removeClass('tile_hover');
 		})
 
-		$('#email, #name').keypress(function(event) {
+		jQuery('#email, #name').keypress(function(event) {
 			if ( event.which == 13 ) {
-				$('#login_tile form').submit();
+				jQuery('#login_tile form').submit();
 			}
 		});
 		
-		$('.flip-list').not(".exclude").liveTile({ 
+		jQuery('.flip-list').not(".exclude").liveTile({ 
     backImages:[
                  { 
                      src:'/images/clientlogos/client1.jpg',        // path to image

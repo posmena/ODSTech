@@ -41,12 +41,16 @@ class core_odstech_base
 		if (array_key_exists('loc', $this->qs) === true) {
 			
 			$classname      = 'core_'.$this->qs['loc'];
-					
+				
 			$this->action   = $this->qs['loc'];
 			if(class_exists($classname) === true) {
 				$loc               = new $classname($this->db, $this->qs,$ajax);
 				$this->template    = $loc->getTemplate();
 				
+				if( isset($this->qs['skin']) && $this->qs['skin'] == 'webgains' )
+					{
+					$this->base    = 'webgains_temp.tpl.html';
+					}
 				
 				$this->assignments = $loc->getAssignments();
 				if (util::getSession('user') !== false) {
@@ -60,7 +64,6 @@ class core_odstech_base
 						} elseif (true === array_key_exists('usertype', $this->qs) && $this->qs['usertype'] == 'admin') {
 							util::redirect('/');
 						}
-						
 						if (true === array_key_exists('clientid', $this->qs)) {
 							// do some auth check here...
 							$client = $tools->getClient($this->qs['clientid']);

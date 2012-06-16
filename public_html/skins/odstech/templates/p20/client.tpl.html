@@ -3,112 +3,34 @@
 <script language="javascript" src="../../lib/jqModal.js"></script>
 <script language="javascript" src="../../lib/jqDnR.js"></script>
 
-<style>
-div.whiteOverlay { background: white; }
-div.jqDrag {cursor: move;}
-
-/* jqmModal dialog CSS courtesy of;
-  Brice Burgess <bhb@iceburg.net> */
-
-div.jqmDialog {
-  display: none;
-    
-    position: fixed;
-    top: 17%;
-    left: 50%;
-    
-    margin-left: -330px;
-  width: 660px;
-
-  overflow: hidden;
-  font-family:verdana,tahoma,helvetica;
-}
-
-/* Fixed posistioning emulation for IE6
-     Star selector used to hide definition from browsers other than IE6
-     For valid CSS, use a conditional include instead */
-* html div.jqmDialog {
-     position: absolute;
-     top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
-}
-
-
-/* [[[ Title / Top Classes ]]] */
-div.jqmdTC { 
-  background: #d5ff84 url(/lib/jqmodalbcsprite.gif) repeat-x 0px -82px; 
-  color: #528c00;
-  padding: 7px 22px 5px 5px;
-  font-family:"sans serif",verdana,tahoma,helvetica;
-  font-weight: bold;
-  * zoom: 1;
-}
-div.jqmdTL { background:  url(/lib/jqmodalsprite.gif) no-repeat 0px -41px; padding-left: 3px;}
-div.jqmdTR { background: url(/lib/jqmodalsprite.gif) no-repeat right 0px; padding-right: 3px; * zoom: 1;}
-
-
-/* [[[ Body / Message Classes ]]] */
-div.jqmdBC {
-  background: url(/lib/jqmodalbc.gif) repeat-x center bottom;
-  padding: 7px 7px 7px;
-  height: 270px;
-  overflow: auto;
-}
-div.jqmdBL { background: url(/lib/jqmodalbl.gif) no-repeat left bottom; padding-left: 7px; }
-div.jqmdBR { background: url(/lib/jqmodalbr.gif) no-repeat right bottom; padding-right: 7px; * zoom: 1 }
-
-div.jqmdMSG { color: #317895; }
-
-
-/* [[[ Button classes ]]] */
-input.jqmdX {
-  position: absolute;
-  right: 7px;
-  top: 4px;
-  padding: 0 0 0 19px;
-  height: 19px;
-  width: 0px;
-  background: url(/lib/jqmodalclose.gif) no-repeat top left;
-  overflow: hidden;
-}
-input.jqmdXFocus {background-position: bottom left; outline: none;}
-
-div.jqmdBC button, div.jqmdBC input[type="submit"] {
-  margin: 8px 10px 4px 10px;
-  color: #777;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-div.jqmDialog input:focus, div.jqmDialog input.iefocus { background-color: #eaffc3; }}
-</style>
 
 <script language="javascript">
 	
-	$().ready(function() {
-	$('#tabs').tabs();
+	jQuery().ready(function() {
+	jQuery('#tabs').tabs();
 	
 	(function($) {
-  $.fn.outerHTML = function() {
-    return $(this).clone().wrap('<div></div>').parent().html();
+  jQuery.fn.outerHTML = function() {
+    return jQuery(this).clone().wrap('<div></div>').parent().html();
   }
 })(jQuery);
 
 
 
-  $('#ex3a').jqm({
+  jQuery('#ex3a').jqm({
     overlay: 30, /* 0-100 (int) : 0 is off/transparent, 100 is opaque */
     overlayClass: 'whiteOverlay'})
     .jqDrag('.jqDrag'); /* make dialog draggable, assign handle to title */
   
   // Close Button Highlighting. IE doesn't support :hover. Surprise?
-  $('input.jqmdX')
+  jQuery('input.jqmdX')
   .hover(
-    function(){ $(this).addClass('jqmdXFocus'); }, 
-    function(){ $(this).removeClass('jqmdXFocus'); })
+    function(){ jQuery(this).addClass('jqmdXFocus'); }, 
+    function(){ jQuery(this).removeClass('jqmdXFocus'); })
   .focus( 
-    function(){ this.hideFocus=true; $(this).addClass('jqmdXFocus'); })
+    function(){ this.hideFocus=true; jQuery(this).addClass('jqmdXFocus'); })
   .blur( 
-    function(){ $(this).removeClass('jqmdXFocus'); });
+    function(){ jQuery(this).removeClass('jqmdXFocus'); });
 
 });
 	
@@ -116,11 +38,11 @@ div.jqmDialog input:focus, div.jqmDialog input.iefocus { background-color: #eaff
 
 <script>
 function submitForm(sel,cb) {
-    var form = $(sel);
-    $.ajax({
+    var form = jQuery(sel);
+    jQuery.ajax({
         type: "POST",
         url: form.action ? form.action : document.URL,
-        data: $(form).serialize(),
+        data: jQuery(form).serialize(),
         dataType: "text",
         beforeSend: function(xhr) {
             xhr.setRequestHeader("Ajax-Request", "true");
@@ -135,19 +57,19 @@ function submitForm(sel,cb) {
 
 function cb(response)
 {
-$("#demo_div").html(response)
+jQuery("#demo_div").html(response)
 }
 
 function set_code(divid)
 {
-clone = $('#' + divid).clone();
+clone = jQuery('#' + divid).clone();
 clone.children().remove();
 clone.removeAttr('style');
 clone.removeAttr('id');
 
 var str = clone.outerHTML().replace("<","&lt;").replace(">","&gt;");
 str = str.replace("<","&lt;").replace(">","&gt;");
-$('#code').html(str);
+jQuery('#code').html(str);
 }
 
 function htmlEntities(str) {
@@ -157,40 +79,56 @@ function htmlEntities(str) {
 function updateDivs()
 {
 var params = "";
+var colors = "";
 var i = 0;
-$("select.p20options").each(function(){
+jQuery(".p20options").each(function(){
 	
-	if(  $(this).val() != "" )
+	if(  jQuery(this).val() != "" )
 		{
 		if( i > 0 ) { params = params + "&"; }
-		params = params + "params[" + this.name + "]=" + encodeURIComponent(($(this).val()));
+		params = params + "params[" + this.name + "]=" + encodeURIComponent((jQuery(this).val()));
 		i = i +1;
 		}
 });	
 
-var width = $('input#cu_width').val();
-var max = $('input#cu_maxproducts').val();
-var style = $('select#cu_style').val();
+i = 0;
+jQuery(".p20color").each(function(){
+	
+	if( jQuery(this).val() != "" )
+		{
+		if( i > 0 ) { colors = colors + "&"; }
+		colors = colors + "colors[" + this.name + "]=" + encodeURIComponent((jQuery(this).val()));
+		i = i +1;
+		}
+});	
 
-$("div.odst_p20").each(function(){
-    $(this).removeAttr('data-params');
-	$(this).attr('data-params',params);
 
-	$(this).removeAttr('data-style');
-	$(this).attr('data-style',style);
+var width = jQuery('input#cu_width').val();
+var max = jQuery('input#cu_maxproducts').val();
+var style = jQuery('select#cu_style').val();
 
-	$(this).removeAttr('data-width');
-	$(this).attr('data-width',width);
+jQuery("div.odst_p20").each(function(){
+    jQuery(this).removeAttr('data-params');
+	jQuery(this).attr('data-params',params);
+
+	jQuery(this).removeAttr('data-style');
+	jQuery(this).attr('data-style',style);
+
+	jQuery(this).removeAttr('data-width');
+	jQuery(this).attr('data-width',width);
 	 
-	$(this).removeAttr('data-max');
-  	$(this).attr('data-max',max);
+	jQuery(this).removeAttr('data-max');
+  	jQuery(this).attr('data-max',max);
+	
+	jQuery(this).removeAttr('data-colors');
+  	jQuery(this).attr('data-colors',colors);
 	});
 }
 </script>
 
 {/literal}
 
-<h1 style="text-align:center;margin:20px 0;font-size:22px">ODST P20 Content Units</h1>
+<h1 style="text-align:center;margin:20px 0;font-size:22px">Content Units</h1>
 	<form name=demo_form method="post" action="/p20/home.html">
 		<h2>{$feed.feedname} Content Units</h2>
 		<br>
@@ -217,7 +155,16 @@ $("div.odst_p20").each(function(){
 			<option value="{$style|lower}">{$style}</option>
 			{/foreach}
 		</select></p>
-		
+		<p class="colors">
+		<strong>Colors:</strong><br/><br/>
+		<label>Background:</label><input class="p20color color-picker" name="background_color" style="width:78px" type="text" value="#FFFFFF"></input></br>
+		<label>Border:</label><input class="p20color color-picker" name="border_colour" style="width:78px" type="text" value="#D9D9D9"></input></br>
+		<label>Product Name Bg:</label><input class="p20color color-picker" name="product_name_bg_colour" style="width:78px" type="text" value="#0F2A3C"></input></br>
+		<label>Product Name:</label><input class="p20color color-picker" name="product_name_colour" style="width:78px" type="text" value="#FFFFFF"></input></br>
+		<label>Price:</label><input class="p20color color-picker" name="price_colour" style="width:78px" type="text" value="#232221"></input></br>
+		<label>Even Row Bg:</label><input class="p20color color-picker" name="even_row_colour" style="width:78px" type="text" value="#EEEEEE"></input></br>
+		<label>Odd Row Bg:</label><input class="p20color color-picker" name="odd_row_colour" style="width:78px" type="text" value="#F4EDED"></input></br>		
+		</p>
 		</p>
 		
 		
@@ -232,17 +179,17 @@ $("div.odst_p20").each(function(){
       <li><a href="#tabs-3">Directory Style</a></li>
    </ul>
    <div id="tabs-1">
-		<a class="modal" href="#" onclick="set_code('grid');$('#ex3a').jqmShow();return false;"
+		<a class="modal" href="#" onclick="set_code('grid');jQuery('#ex3a').jqmShow();return false;"
 		  style="text-decoration:none;color:#0F2A3C;font-size:20px">get code...</a>
 		<div style="margin:10px 0" id="grid" class="odst_p20" data-style="default" data-client="{$feed.client}" data-type="grid" data-width="500px" data-max="6" ></div>
    </div>
    <div id="tabs-2">
-	<a class="modal" href="#" onclick="set_code('carousel');$('#ex3a').jqmShow();return false;"
+	<a class="modal" href="#" onclick="set_code('carousel');jQuery('#ex3a').jqmShow();return false;"
 		  style="text-decoration:none;color:#0F2A3C;font-size:20px">get code...</a>
 	<div   style="margin:10px 0" id="carousel" class="odst_p20" data-style="default"  data-client="{$feed.client}" data-type="carousel" data-width="500px" data-max="6"></div>
    </div>
    <div id="tabs-3">
-    <a class="modal" href="#" onclick="set_code('directory');$('#ex3a').jqmShow();return false;"
+    <a class="modal" href="#" onclick="set_code('directory');jQuery('#ex3a').jqmShow();return false;"
 		  style="text-decoration:none;color:#0F2A3C;font-size:20px">get code...</a>
 	<div style="margin:10px 0" id="directory" class="odst_p20" data-style="default"  data-client="{$feed.client}" data-type="directory" data-width="500px" data-max="6"></div>
 
@@ -251,10 +198,7 @@ $("div.odst_p20").each(function(){
 			
 	</form>	
 	
-	<script src="http://odst.co.uk/api/p20/p20.js" type="text/javascript"></script>
-<script>
-	ODST_P20.showContentUnits();
-</script>
+	
 
 
 <div id="ex3a" class="jqmDialog">
@@ -271,13 +215,17 @@ Include the following once your page, it is best to include it in the footer.
 </pre>
 <br /><br />
 Add this div tag to where you want the content unit to appear:
-<pre><span id="code">
+<p><span id="code">
 &lt;div class="odst_p20" data-client="{$feed.client}" data-type="grid" data-max="10" data-width="500px" &gt;&lt;/div&gt;
 </span>
-</pre>
+</p>
 </div>
 
 </div></div></div>
-<input type="image" src="dialog/close.gif" class="jqmdX jqmClose" />
+<input type="button" class="jqmdX jqmClose" value="X"/>
 </div>
 
+<script src="http://odstest.co.uk/api/p20/p20.js" type="text/javascript"></script>
+<script>
+	ODST_P20.showContentUnits();
+</script>

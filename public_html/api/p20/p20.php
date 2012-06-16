@@ -11,6 +11,20 @@ header('Access-Control-Allow-Origin: *');
 $type = isset($_GET['type']) ? $_GET['type'] : "grid";
 $width = isset($_GET['width']) ? $_GET['width'] : "500px";
 $style = isset($_GET['style']) ? $_GET['style'] : "";
+$arrColors = $_GET["colors"];
+
+global $options;
+
+$options = array();	 
+	$options['background_colour'] = isset($arrColors['background_colour']) ? $arrColors['background_colour'] :'#FFFFFF';
+	$options['border_colour'] = isset($arrColors['border_colour']) ? $arrColors['border_colour'] :'#D9D9D9';
+	$options['product_name_bg_colour'] = isset($arrColors['product_name_bg_colour']) ? $arrColors['product_name_bg_colour'] :'#0F2A3C';
+	$options['product_name_colour'] = isset($arrColors['product_name_colour']) ? $arrColors['product_name_colour'] :'#FFFFFF';
+	$options['price_colour'] = isset($arrColors['price_colour']) ? $arrColors['price_colour'] :'#232221';
+	$options['even_row_colour'] = isset($arrColors['even_row_colour']) ? $arrColors['even_row_colour'] :'#EEEEEE';
+	$options['odd_row_colour'] = isset($arrColors['odd_row_colour']) ? $arrColors['odd_row_colour'] :'#F4EDED';
+	$options['location_colour'] = isset($arrColors['location_colour']) ? $arrColors['location_colour'] :'#0F2A3C';
+		
 
 //$params = isset($_GET['params']) ? "&" . $_GET['params'] : "";
 //$maxproducts = isset($_GET['max']) ? "&" . $_GET['max'] : "10";
@@ -302,16 +316,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 
 	function apply_style($stylesheet,$element)
 	{
-	$options = array();	 
-	$options['background_colour'] = '#FFFFFF';
-	$options['border_colour'] = '#D9D9D9';
-	$options['product_name_bg_colour'] = '#0F2A3C';
-	$options['product_name_colour'] = '#FFFFFF';
-	$options['price_colour'] = '#232221';
-	$options['even_row_colour'] = '#EEEEEE';
-	$options['odd_row_colour'] = '#F4EDED';
-	$options['location_colour'] = '#0F2A3C';
-	
+	global $options;
 	$style = '';
 
 			switch ( $stylesheet )	{
