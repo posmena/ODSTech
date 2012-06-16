@@ -154,7 +154,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 							$product=  ((object)$product);
 							$hotel .= '<li>';
 
-							$hotel .='<table class="thumb_content">
+							$hotel .='<table class="thumb_content" style="margin:auto">
 
 				<tbody><tr>									
 
