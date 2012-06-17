@@ -96,15 +96,3 @@ RewriteRule ^([feeds]+/stylepiques.zip+)$ index.php?loc=stylepiques_feed [QSA]
 SetEnv SERVER_ADMIN sales@posmena.co.uk
 ServerSignature Off
 DefaultLanguage en-GB
-
-# BEGIN WordPress
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
-</IfModule>
-
-# END WordPress
