@@ -50,6 +50,8 @@ RewriteBase /
 
 ReWriteRule ^jquery$ http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js [P]
 
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 RewriteRule ^login.html$ index.php?loc=login [QSA]	
 RewriteRule ^forgottenpassword.html$ index.php?loc=forgottenpassword [QSA]	
 RewriteRule ^resetpassword.html$ index.php?loc=resetpassword [QSA]
@@ -94,3 +96,15 @@ RewriteRule ^([feeds]+/stylepiques.zip+)$ index.php?loc=stylepiques_feed [QSA]
 SetEnv SERVER_ADMIN sales@posmena.co.uk
 ServerSignature Off
 DefaultLanguage en-GB
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
