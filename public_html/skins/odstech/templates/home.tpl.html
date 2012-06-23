@@ -1,6 +1,11 @@
 <script>
 	{literal}
 	jQuery('document').ready(function(){
+	
+	jQuery('div#odst_tile div.text').rssfeed('http://odst.co.uk/resources/feed',{date : false}, function(e) {
+		jQuery(e).find('div.rssBody').vTicker({ showItems: 1, pause : 5500});
+	});
+
 		jQuery('#login_tile h2').click(function(){
 			jQuery('#login_tile form').submit();
 		});
@@ -106,11 +111,9 @@
 
 	<div id="odst_tile" class="tile">
 		<div class="text">
-		<h3 style="color: #FFFFFF; font-size: 14px;">Outsourced Digital Services &amp; Technology</h3>
-		<br />
-		with ODST's easy to use tools you can be sure that your site will maximise it's potential revenue growth with targetted advertising.  
+		  
 		</div>
-		<h2>ODST</h2>
+		<h2><a href="/resources">ODST</a></h2>
 	</div>
 
 	<div id="wordpress_tile" class="tile">

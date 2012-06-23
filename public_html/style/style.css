@@ -404,9 +404,10 @@ width: 280px;
 	width: 400px;
 	height: 150px;
 	background-position: 0px 0px;
-	
-
 }
+
+#odst_tile p { color: #ffffff; margin-top:5px; }
+
 
 #twitter_tile {
 	height: 320px;
@@ -771,3 +772,32 @@ div.jqmdBC button, div.jqmdBC input[type="submit"] {
 }
 
 div.jqmDialog input:focus, div.jqmDialog input.iefocus { background-color: #eaffc3; }}
+
+
+.rssBody {
+    border: 4px solid #666666;
+}
+.rssRow h4, .rssRow p, .rssRow div {
+    margin: 0;
+    padding: 0.5em;
+}
+
+.rssRow h4 {
+    margin: 0;
+    padding: 0;
+	font-size:16px;
+}
+
+.rssRow h4 a {
+margin-left:7px;
+}
+
+.rssHeader
+{
+display:none;
+}
+
+div .text.rssFeed
+{
+margin-top:0px;
+}
