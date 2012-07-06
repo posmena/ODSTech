@@ -7,7 +7,6 @@ class core_p20_client extends core_default
 	private $assignments;
 	
 	public function __construct($db, $qs, $ajax) {
-		$this->assignments['page']['title'] = ucwords($qs['client']) . ' P20 Tools';
 		$this->ajax = $ajax;
 		
 		
@@ -18,7 +17,8 @@ class core_p20_client extends core_default
 			$collection = $mdb->ot_feeds;
 			
 			$feed = $collection->findOne( array("client" => $qs['client']) );
-			
+			$this->assignments['page']['title'] = $feed['feedname'] . ' P20 Tools';
+		
 			foreach($feed['fields'] as $field)
 				{
 				if( $field['searchable'] == true )
