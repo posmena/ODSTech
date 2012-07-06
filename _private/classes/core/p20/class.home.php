@@ -7,7 +7,7 @@ class core_p20_home extends core_default
 	private $assignments;
 	
 	public function __construct($db, $qs, $ajax) {
-		$this->assignments['page']['title'] = 'P20 Content Units';
+		$this->assignments['page']['title'] = 'P20 Tools Directory';
 		$this->ajax = $ajax;
 		
 		

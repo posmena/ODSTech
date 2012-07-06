@@ -7,7 +7,7 @@ class core_p20_client extends core_default
 	private $assignments;
 	
 	public function __construct($db, $qs, $ajax) {
-		$this->assignments['page']['title'] = 'P20 Content Units Preview';
+		$this->assignments['page']['title'] = ucwords($qs['client']) . ' P20 Tools';
 		$this->ajax = $ajax;
 		
 		
