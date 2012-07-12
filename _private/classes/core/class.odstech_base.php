@@ -51,7 +51,12 @@ class core_odstech_base
 					{
 					$this->base    = 'webgains_temp.tpl.html';
 					}
-				
+					
+					if( isset($this->qs['skin']) && $this->qs['skin'] == 'easyfeed' )
+					{
+					$this->base    = 'easyfeed_temp.tpl.html';
+					}
+					
 				$this->assignments = $loc->getAssignments();
 				if (util::getSession('user') !== false) {
 					$this->user = util::getSession('user');
