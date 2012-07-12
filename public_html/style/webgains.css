@@ -531,7 +531,7 @@ label [for=usertype-merchantuser],[for=usertype-affiliateuser]{
     border:collapse collapse;
     border:1px solid #D71921;
     padding-top:9px;
-}
+}z
 
 div.whiteOverlay { background: white; }
 div.jqDrag {cursor: move;}
@@ -595,8 +595,10 @@ input.jqmdX {
   right: 7px;
   top: 4px;
   height: 19px;
-  width: 0px;
+  width: 30px;
   overflow: hidden;
+  cursor:pointer;
+
 }
 input.jqmdXFocus {background-position: bottom left; outline: none;}
 
@@ -607,7 +609,7 @@ div.jqmdBC button, div.jqmdBC input[type="submit"] {
   cursor: pointer;
 }
 
-div.jqmDialog input:focus, div.jqmDialog input.iefocus { background-color: #eaffc3; }}
+div.jqmDialog input:focus, div.jqmDialog input.iefocus { background-color: #D71921; }}
 
 
 -->
