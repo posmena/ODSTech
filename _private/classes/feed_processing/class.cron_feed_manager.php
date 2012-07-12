@@ -18,6 +18,7 @@ include 'classes/feed_processing/class.custom_jtspas_feed.php';
 include 'classes/feed_processing/class.custom_easylife_feed.php';
 include 'classes/feed_processing/class.custom_octopus_feed.php';
 include 'classes/feed_processing/class.webgains_feed.php';
+include 'classes/feed_processing/class.goldenfeeds_feed.php';
 
 class ODSTech_FeedManager extends feed_processor
 {
