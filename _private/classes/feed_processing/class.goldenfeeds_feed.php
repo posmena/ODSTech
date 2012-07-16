@@ -75,7 +75,7 @@ class goldenfeeds_feed extends network_base
 										$dbproduct["image_url"] = (string)$value;
 									 break;
 									 
-									   case "original_url":
+									   case "url":
 										$dbproduct["deeplink"] = (string)$value;
 									 break;
 									 
