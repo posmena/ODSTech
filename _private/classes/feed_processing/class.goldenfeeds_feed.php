@@ -33,8 +33,8 @@ class goldenfeeds_feed extends network_base
 	
 		$collection = $db->ot_feeds;
 		$doc = $collection->findOne(array("client" => $feed_id));
-		$feed_name = $doc['feed_name'];
-		print($doc['feed_name'] . "\n");
+		$feed_name = $doc['feedname'];
+		print($doc['feedname'] . "\n");
 		
 		$collection = $db->p20_products;
 		
