@@ -25,7 +25,14 @@ class core_p20_client extends core_default
 				$skin = $qs['skin'];
 				$publisher_id = $qs['publisher_id'];
 				
-				$network = $feed['network'];
+				if( isset($feed['network']) )
+					{
+					$network = $feed['network'];
+					}
+				else
+					{
+					$network = "webgains";
+					}
 				$collection_name = 'ot_users_' . $qs['skin'];
 				$users = $mdb->$collection_name;
 				
