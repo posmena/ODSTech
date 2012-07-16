@@ -350,11 +350,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 	 function format_price($price) { 
 	// return with no change if string is shorter than $limit 
 
-	if( number_format($price,0) == number_format($price,2) )
-		{
-			return $price;
-		}
-		return number_format($price,2);
+		return sprintf("%01.2f", $price);
 	 }
 	 
 	 
