@@ -16,7 +16,7 @@ class core_p20_client extends core_default
 			$mdb  = $conn->odstech;
 			$collection = $mdb->ot_feeds;
 			
-			$feed = $collection->findOne( array("client" => $qs['client']) );
+			$feed = $collection->findOne( array("client" => strtolower($qs['client'])) );
 			$this->assignments['page']['title'] = $feed['feedname'] . ' P20 Tools';
 						
 			if( isset($qs['skin']) )
@@ -30,7 +30,7 @@ class core_p20_client extends core_default
 				
 				if( $users != null )
 					{
-					$user = $users->findOne(array('publisher_id' => $publisher_id));
+					$user = $users->findOne(array('publisher_id' => $publisher_id, 'network' => $network));
 					}
 					
 				if( $user )
@@ -41,6 +41,7 @@ class core_p20_client extends core_default
 					{
 					// create an ot_user and insert into mapping trable
 					$newuser = array('skin' => $qs['skin']);
+					
 					 $mdb->ot_users->insert($newuser);
 					$mdb->$collection_name->insert(array('publisher_id' => $publisher_id, 'ot_users_id' => $newuser['_id']));
 					$affiliate_id = $newuser['_id'];
