@@ -27,6 +27,7 @@ class goldenfeeds_feed extends network_base
 
 	function parse_xml($file, $feed_id)
 	{
+	$file = "C:\\Users\\Mike\\Downloads\\custom-feed-linkshare-cathkid131-cath-kidston.xml\\custom-feed-linkshare-cathkid131-cath-kidston.xml";
 		print("Parsing " . $file . "\n");
 		
 		global $db;
@@ -86,7 +87,9 @@ class goldenfeeds_feed extends network_base
 									 break;
 									 
 									   case "category":
+									    print((string)$value . "\n");
 										$dbproduct["merchant_category"] = (string)$value;
+										
 									 break;
 									 
 									 
@@ -100,7 +103,10 @@ class goldenfeeds_feed extends network_base
 							$dbproduct['image_thumbnail'] = (false !== strpos($dbproduct['image_thumbnail'], 'http')) ? $dbproduct['image_thumbnail'] : $dbproduct['image_url'];
 							
 							$collection->save($dbproduct);
-							
+							if( stripos($dbproduct["merchant_category"],"under" ))
+											{
+											die();
+											}
 							$i++;
 							}
 					}
