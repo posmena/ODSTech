@@ -18,6 +18,42 @@ class core_p20_client extends core_default
 			
 			$feed = $collection->findOne( array("client" => $qs['client']) );
 			$this->assignments['page']['title'] = $feed['feedname'] . ' P20 Tools';
+						
+			if( isset($qs['skin']) )
+				{
+				// using a skin - the publisher id is 
+				$skin = $qs['skin'];
+				$publisher_id = $qs['publisher_id'];
+				
+				$collection_name = 'ot_feeds_' . $qs['skin'];
+				$users = $mdb->$collection_name;
+				
+				if( $users != null )
+					{
+					$user = $users->findOne(array('publisher_id' => $publisher_id));
+					}
+					
+				if( $user )
+					{
+					$affiliate_id = $user['ot_users_id'];
+					}
+				else
+					{
+					// create an ot_user and insert into mapping trable
+					$newuser = array('skin' => $qs['skin']);
+					 $mdb->ot_users->insert($newuser);
+					$mdb->$collection_name->insert(array('publisher_id' => $publisher_id, 'ot_users_id' => $newuser['_id']));
+					$affiliate_id = $newuser['_id'];
+					}
+			
+				}
+			else
+				{
+				// get from logged in user
+				$affiliate_id = '7234678368';
+				}
+								
+			$this->assignments['p20']['affiliate_id'] = $affiliate_id;
 		
 			foreach($feed['fields'] as $field)
 				{
