@@ -140,7 +140,7 @@ jQuery("div.odst_p20").each(function(){
 		<select class="p20options" name={$field.fieldname}>
 			<option value="">Any</option>
 			{foreach from=$field.options item=option}
-			<option value="{$option}">{$option|escape:"htmlall"}</option>
+			<option value="{$option}">{$option}</option>
 			{/foreach}
 		</select></p>
 		{/foreach}
