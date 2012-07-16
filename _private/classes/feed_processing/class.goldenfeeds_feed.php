@@ -25,7 +25,7 @@ class goldenfeeds_feed extends network_base
 			}
 	}
 
-	function parse_xml($file, $feed_id)
+	function parse_xml($file, $feed_id, $feed_name)
 	{
 		print("Parsing " . $file . "\n");
 		
@@ -34,7 +34,7 @@ class goldenfeeds_feed extends network_base
 		$collection = $db->p20_products;
 		
 		$reader = new XMLReader();
-		$reader->open($file,"ISO-8859-1");
+		$reader->open($file,"UTF-8");
 
 		// Read each line of the XML
 		$i=0;
@@ -62,6 +62,7 @@ class goldenfeeds_feed extends network_base
 							
 							$dbproduct['_id'] = 				 $feed_id . '_' . $product->product_number;
 							$dbproduct['feed_id'] =			     $feed_id;
+							$dbproduct['program_name'] =	$feed_name;
 							
 							foreach( $product as $field => $value)
 								{
