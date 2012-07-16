@@ -41,7 +41,7 @@ class core_p20_client extends core_default
 				else
 					{
 					// create an ot_user and insert into mapping trable
-					$newuser = array('skin' => $qs['skin'],$network.'_id'=>'publisher_id');
+					$newuser = array('skin' => $qs['skin'],$network=>$publisher_id);
 					
 					$mdb->ot_users->insert($newuser);
 					$mdb->$collection_name->insert(array('publisher_id' => $publisher_id, 'ot_users_id' => $newuser['_id']));
