@@ -103,10 +103,7 @@ class goldenfeeds_feed extends network_base
 							$dbproduct['image_thumbnail'] = (false !== strpos($dbproduct['image_thumbnail'], 'http')) ? $dbproduct['image_thumbnail'] : $dbproduct['image_url'];
 							
 							$collection->save($dbproduct);
-							if( stripos($dbproduct["merchant_category"],"under" ))
-											{
-											die();
-											}
+						
 							$i++;
 							}
 					}
