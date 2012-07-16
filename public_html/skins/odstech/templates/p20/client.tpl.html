@@ -132,11 +132,11 @@ jQuery("div.odst_p20").each(function(){
 <h1 style="text-align:center;margin:20px 0;font-size:22px">Content Units</h1>
 	<form name=demo_form method="post" action="/p20/home.html">
 		<h2>{$feed.feedname} Content Units</h2>
-		<br>
-		<div style="padding:10px;width:660px;border:2px solid #D9D9D9;border-radius: 16px 16px 16px 16px;">
-		<strong>Select options to preview content units for {$feed.feedname}</strong><br><br>
+
+		<div style="padding:10px;width:660px;border:2px solid #D9D9D9;border-radius: 16px 16px 16px 16px;line-height:26px">
+		<b>Select options to preview content units for {$feed.feedname}</b><br>
 		{foreach from=$feed.searchoptions item=field}
-		<p><strong>{$field.fieldname}</strong>:
+		<p><b>{$field.fieldname}</b>:
 		<select class="p20options" name={$field.fieldname}>
 			<option value="">Any</option>
 			{foreach from=$field.options item=option}
@@ -145,10 +145,10 @@ jQuery("div.odst_p20").each(function(){
 		</select></p>
 		{/foreach}
 		<p>
-		<strong>Width</strong>: <input style="width:50px" type="text" id="cu_width" value="500px"></input>
+		<b>Width</b>: <input style="width:50px" type="text" id="cu_width" value="500px"></input>
 		&nbsp;&nbsp;
-		<strong>Maximum products</strong>:<input style="width:50px" type="text" id="cu_maxproducts" value="6"></input>
-		<strong>Style</strong>:
+		<b>Maximum products</b>:<input style="width:50px" type="text" id="cu_maxproducts" value="6"></input>
+		<b>Style</b>:
 		
 		<select id="cu_style" name="style">
 			<option value="default">Default</option>
@@ -157,7 +157,7 @@ jQuery("div.odst_p20").each(function(){
 			{/foreach}
 		</select></p>
 		<p class="colors">
-		<strong>Colors:</strong><br/>
+		<b>Colors:</b><br/>
 		<table>
 		<tr><td><label>Background:</label></td><td><input class="p20color color-picker" name="background_color" style="width:78px" type="text" value="#FFFFFF"></input></td>
 		<td class="col2"><label>Border:</label></td><td><input class="p20color color-picker" name="border_colour" style="width:78px" type="text" value="#D9D9D9"></input></td></tr>
