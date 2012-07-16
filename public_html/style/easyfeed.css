@@ -1,8 +1,12 @@
 
 div#contentunits
 {
-padding-top:10px;
 margin-left:30px;
+}
+
+h2#unitname
+{
+display:none;
 }
 
 div.whiteOverlay { background: white; }
