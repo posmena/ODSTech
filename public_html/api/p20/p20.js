@@ -163,7 +163,7 @@ BrowserDetect.proptype = {
 		me.callTheJsonp(i,client,displayType,width,params,colors,maxproducts,style);
 		}
 	},
-	showContentUnits : function()
+	showContentUnits : function(id)
 	{		
 		var Me = this;
 		this.browserDetect = new BrowserDetect;
