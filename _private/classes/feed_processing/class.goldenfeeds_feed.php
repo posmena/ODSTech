@@ -27,7 +27,7 @@ class goldenfeeds_feed extends network_base
 
 	function parse_xml($file, $feed_id)
 	{
-	$file = "C:\\Users\\Mike\\Downloads\\custom-feed-linkshare-cathkid131-cath-kidston.xml\\custom-feed-linkshare-cathkid131-cath-kidston.xml";
+	//$file = "C:\\Users\\Mike\\Downloads\\custom-feed-linkshare-cathkid131-cath-kidston.xml\\custom-feed-linkshare-cathkid131-cath-kidston.xml";
 		print("Parsing " . $file . "\n");
 		
 		global $db;
