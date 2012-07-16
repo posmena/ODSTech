@@ -25,11 +25,16 @@ class goldenfeeds_feed extends network_base
 			}
 	}
 
-	function parse_xml($file, $feed_id, $feed_name)
+	function parse_xml($file, $feed_id)
 	{
 		print("Parsing " . $file . "\n");
 		
 		global $db;
+	
+		$collection = $db->ot_feeds;
+		$doc = $collection->findOne(array("client" => $feed_id));
+		$feed_name = $doc['feed_name'];
+		print($doc['feed_name'] . "\n");
 		
 		$collection = $db->p20_products;
 		
