@@ -623,6 +623,7 @@ class sitescraper
 							  'swimwear' => $site.'/departments/10-swimwear',
 							  'shrugs' => $site.'/departments/11-shrugs-cover-ups'
 							  );
+							  
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)[^>]*>(.*)<\/a>/siU";
 				
 				foreach ($urls as $category => $url) {
@@ -698,17 +699,19 @@ class sitescraper
 									$start = strpos($info, '<h1>') + 4;
 									$end   = strpos($info, '</h1>', $start);
 									$name  = substr($info,$start,$end-$start);
-								
+									
+									print("name" . $name . "\n");
 									$start = strpos($info, "<p class='code'>") + 30;
 									$end   = strpos($info, '</p>', $start);
 									$code  = trim(substr($info,$start,$end-$start));
+									print("code" . $code . "\n");
 									
 									$start = strpos($info, "<div class='price'>") + 20;
 									$end   = strpos($info, "</div>");
 									$price = str_replace('&pound;', '', trim(substr($info,$start,$end-$start)));
 									$oldPrice = $price;
 									$newPrice = strstr($price, "\n");
-
+		
 									if (false !== $newPrice) {
 										$start = strpos($price, "<span class='old-price'>") + 24;
 										$end   = strpos($price, "</span>");
@@ -716,19 +719,27 @@ class sitescraper
 										$price = str_replace("\n", '', $newPrice);
 									}
 
+										print("price" . $price . "\n");
+										
 									$start = strpos($product, "<p class='description'>") + 23;
 									$end   = strpos($product, "</p>", $start);
 									$desc  = trim(substr($product,$start,$end-$start));
 
+										print("desc" . $desc . "\n");
+										
 									$start = strpos($product, "<div class='images'>");
 									$end   = strpos($product, "</a>", $start) + 4;
 									$image = trim(substr($product,$start,$end-$start));
 
-									if (preg_match($regexp, $image, $imgmatches)) {
+									
+									
+									if (preg_match($regexp1, $image, $imgmatches)) {
 										$largeImage = $site.$imgmatches[2];
 										$thumbnail = str_replace('large', 'small', $largeImage);
 									}
 
+									print("image" . $largeImage . "\n");
+									
 									if (preg_match('/<select\s[^>](.*)<\/select>/msU',$product,$sizes)) {
 										$option = $sizes[0];
 										if (preg_match_all('/<option\s[^>]*(.*)<\/option>/msU',$option,$size)) {
@@ -743,6 +754,8 @@ class sitescraper
 									$end   = strpos($product, "</span>", $start);
 									$stock = trim(substr($product,$start,$end-$start));
 
+									print("stock" . $stock . "\n");
+									
 									$start = strpos($product, "<p class='composition'>") + 23;
 									$end   = strpos($product, "</p>", $start);
 									$material = trim(substr($product,$start,$end-$start));
