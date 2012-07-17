@@ -631,8 +631,8 @@ class sitescraper
 					$page = feed_processor::curl_get_file_contents($url);
 					$pages = array();
 					if (preg_match_all($regexp, $page, $matches)) {
-						foreach($matches[0] as $product_url) {
-						 echo($product_url . '\n');
+						foreach($matches[1] as $product_url) {
+						 echo("Found Product URL:" . $product_url . '\n');
 							if (false !== strpos($product_url, '&amp;page=')) {
 								$pages[] = $product_url;
 							}
