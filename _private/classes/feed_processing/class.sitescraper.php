@@ -655,6 +655,8 @@ class sitescraper
 					//	}
 						
 						$matches = '';
+						if(isset($pageUrls[$category]))
+						{
 						foreach($pageUrls[$category] as $url) {
 						echo("DOWNLOAD page url:" . $url . "\n");
 						
@@ -670,6 +672,7 @@ class sitescraper
 								}
 							}	
 						}
+					 }
 					}
 				}
 				print("**** Stage2 ******\n");
@@ -733,7 +736,7 @@ class sitescraper
 
 									
 									
-									if (preg_match($regexp1, $image, $imgmatches)) {
+									if (preg_match($regexp, $image, $imgmatches)) {
 										$largeImage = $site.$imgmatches[2];
 										$thumbnail = str_replace('large', 'small', $largeImage);
 									}
