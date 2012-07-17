@@ -476,7 +476,7 @@ class sitescraper
 									$end   = strpos($product,'</h1>',$start);
 									$name  = trim(substr($product,$start,$end-$start));
 									
-																
+											print("Name " . $name . "\n");					
 																						
 									$start = strpos($product, '<div id="skucode">') + 18;
 									$end   = strpos($product, '</div>', $start);
@@ -587,7 +587,7 @@ class sitescraper
 					}
 
 					
-					$collection->remove(array("updated" => false));
+					$collection->remove(array("updated" => false),array("multi" => true));
 					
 					$products = $collection->find();
 					foreach ($products as $product) {
