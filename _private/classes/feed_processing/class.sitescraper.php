@@ -397,7 +397,7 @@ class sitescraper
 			{
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
-				$collection = $mdb->nn;
+				$collection = $mdb->damsel_scrape;
 				
 			    $collection->update(array("_id" => array("exists" => true)),array("updated" => false),array("multi" => true)); 
 													
