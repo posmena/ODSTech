@@ -623,22 +623,23 @@ class sitescraper
 							  'swimwear' => $site.'/departments/10-swimwear',
 							  'shrugs' => $site.'/departments/11-shrugs-cover-ups'
 							  );
-				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>/siU";
-
+				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)[^>]*>(.*)<\/a>/siU";
+			
 				foreach ($urls as $category => $url) {
-				print("CATEGORY:" . $category . '\n');
-				print("URL:" . $url . '\n');
+			
 					$page = feed_processor::curl_get_file_contents($url);
 					$pages = array();
 					if (preg_match_all($regexp, $page, $matches)) {
-						foreach($matches[1] as $product_url) {
-						 echo("Found Product URL:" . $product_url . '\n');
+						foreach($matches[0] as $product_url) {
+						
 							if (false !== strpos($product_url, '&amp;page=')) {
+							 echo("Found page:" . $product_url . '\n');
 								$pages[] = $product_url;
 							}
 							
 							// page 1
 							if (false !== strpos($product_url,'href="/products')) {
+							 echo("Found product:" . $product_url . '\n');
 								$pUrls[$category][] = $product_url;
 							}
 						}
@@ -646,13 +647,14 @@ class sitescraper
 						// loop through all pages
 						foreach ($pages as $page) {
 							if (preg_match($regexp, $page, $matches)) {
+							 echo("Found page url:" . $matches[2] . '\n');
 								$pageUrls[$category][] = $matches[2];
 							}
 						}
 						
 						$matches = '';
 						foreach($pageUrls[$category] as $url) {
-						echo("DOWNLOAD:" . $url . '\n');
+						echo("DOWNLOAD page url:" . $url . '\n');
 						
 							//$url = html_entity_decode($url);
 							$page = feed_processor::curl_get_file_contents($site.$url);
@@ -660,6 +662,7 @@ class sitescraper
 								foreach($matches[0] as $product_url) {
 									// page x
 									if (false !== strpos($product_url,'href="/products')) {
+									echo("Found product:" . $product_url . '\n');
 										$pUrls[$category][] = $product_url;
 									}
 								}
