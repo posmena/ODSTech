@@ -786,7 +786,7 @@ class sitescraper
 									$item['category']    = $categories;
 									$item['price']       = $price;
 									$item['description'] = $desc;
-									$item['link']    = $url;
+									$item['link']    = $pUrl;
 									$item['image_link']  = $largeImage;
 									$item['thumbnail']   = $thumbnail;
 									$item['sizes']       = $itemSize;
