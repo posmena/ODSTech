@@ -264,7 +264,7 @@ class sitescraper
 							if( $end2 && $end2 < $end) { $end = $end2; }
 							$desc2 = trim(substr($page,$start,$end-$start));					
 					//		$desc2 = strip_tags($desc2);
-					//		$desc2 = str_replace('\n','\r\n',$desc2);
+					//		$desc2 = str_replace("\n",'\r\n',$desc2);
 							}
 													
 						$start = stripos($page, '<img emssteve="False"');
@@ -633,37 +633,38 @@ class sitescraper
 						foreach($matches[2] as $product_url) {
 						
 							if (false !== strpos($product_url, '&amp;page=')) {
-							 echo("Found page:" . $product_url . '\n');
-								$pages[] = $product_url;
+							 echo("Found page:" . $product_url . "\n");
+								$pages[] = $site.$product_url;
+								$pageUrls[$category][] = $site.$product_url;
 							}
 							
 							// page 1
 							if (false !== strpos($product_url,'/products')) {
-							 echo("Found product:" . $product_url . '\n');
-								$pUrls[$category][] = $product_url;
+							 echo("Found product:" . $product_url . "\n");
+								$pUrls[$category][] = $site.$product_url;
 							}
 						}
 						
 						// loop through all pages
-						foreach ($pages as $page) {
-							if (preg_match($regexp, $page, $matches)) {
-							 echo("Found page url:" . $matches[2] . '\n');
-								$pageUrls[$category][] = $matches[2];
-							}
-						}
+					//	foreach ($pages as $page) {
+						//	if (preg_match($regexp, $page, $matches)) {
+					//	 echo("Found page url:" . $matches[2] . "\n");
+					//			$pageUrls[$category][] = $matches[2];
+					//		}
+					//	}
 						
 						$matches = '';
 						foreach($pageUrls[$category] as $url) {
-						echo("DOWNLOAD page url:" . $url . '\n');
+						echo("DOWNLOAD page url:" . $url . "\n");
 						
 							//$url = html_entity_decode($url);
 							$page = feed_processor::curl_get_file_contents($site.$url);
 							if (preg_match_all($regexp, $page, $matches)) {
-								foreach($matches[0] as $product_url) {
+								foreach($matches[2] as $product_url) {
 									// page x
 									if (false !== strpos($product_url,'/products')) {
-									echo("Found product:" . $product_url . '\n');
-										$pUrls[$category][] = $product_url;
+									echo("Found product on page:" . $product_url . "\n");
+										$pUrls[$category][] = $site.$product_url;
 									}
 								}
 							}	
@@ -675,18 +676,18 @@ class sitescraper
 					foreach ($pUrls as $categories => $cat) {
 					
 						foreach ($cat as $pUrl) {
-						    print($pUrl . '\n');
-							if (preg_match($regexp, $pUrl, $matches)) {
-								$url = $site.$matches[2];
+						    print("Process " . $pUrl . "\n");
+						//	if (preg_match($regexp, $pUrl, $matches)) {
+							//	$url = $site.$matches[2];
 								//$url = 'http://chescadirect.co.uk/products/97-champagne-panelled-skirt-limited-size-range-please-phone-0207-60-3434-before-ordering';
-								$product = feed_processor::curl_get_file_contents($url);
-								continue;
+								$product = feed_processor::curl_get_file_contents($pUrl);
+								
 								$item = array();
 								try {
 									$start = strpos($product, "<div class='info'>");
 
 									if ($start === false) {
-										throw new Exception ('Name not found for ' . $url);
+										throw new Exception ('Name not found for ' . $pUrl);
 									}
 
 									$end   = strpos($product,'</div>',$start) + 6;
@@ -789,7 +790,7 @@ class sitescraper
 								} catch(Exception $ex) {
 									
 								}
-							}
+							
 						}
 					}
 				}
