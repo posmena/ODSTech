@@ -624,13 +624,13 @@ class sitescraper
 							  'shrugs' => $site.'/departments/11-shrugs-cover-ups'
 							  );
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)[^>]*>(.*)<\/a>/siU";
-			
+				
 				foreach ($urls as $category => $url) {
 			
 					$page = feed_processor::curl_get_file_contents($url);
 					$pages = array();
 					if (preg_match_all($regexp, $page, $matches)) {
-						foreach($matches[0] as $product_url) {
+						foreach($matches[2] as $product_url) {
 						
 							if (false !== strpos($product_url, '&amp;page=')) {
 							 echo("Found page:" . $product_url . '\n');
