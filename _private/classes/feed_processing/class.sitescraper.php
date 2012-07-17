@@ -661,7 +661,7 @@ class sitescraper
 						echo("DOWNLOAD page url:" . $url . "\n");
 						
 							//$url = html_entity_decode($url);
-							$page = feed_processor::curl_get_file_contents($site.$url);
+							$page = feed_processor::curl_get_file_contents($url);
 							if (preg_match_all($regexp, $page, $matches)) {
 								foreach($matches[2] as $product_url) {
 									// page x
