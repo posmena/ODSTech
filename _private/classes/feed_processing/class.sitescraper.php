@@ -626,7 +626,7 @@ class sitescraper
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)[^>]*>(.*)<\/a>/siU";
 				
 				foreach ($urls as $category => $url) {
-			
+					print("*** Category " .$category . "\n");
 					$page = feed_processor::curl_get_file_contents($url);
 					$pages = array();
 					if (preg_match_all($regexp, $page, $matches)) {
@@ -671,10 +671,12 @@ class sitescraper
 						}
 					}
 				}
-
+				print("**** Stage2 ******\n");
 				if (true === is_array($pUrls) && count($pUrls) > 0) {
 					foreach ($pUrls as $categories => $cat) {
-					
+					   print("categories" . $categories ."\n");
+					   print("cat" . $cat ."\n");
+					   
 						foreach ($cat as $pUrl) {
 						    print("Process " . $pUrl . "\n");
 						//	if (preg_match($regexp, $pUrl, $matches)) {
@@ -788,7 +790,7 @@ class sitescraper
 									$collection->save($item, array('_id' => $code));
 									
 								} catch(Exception $ex) {
-									
+									print $ex;
 								}
 							
 						}
