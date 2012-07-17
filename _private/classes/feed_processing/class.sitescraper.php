@@ -638,7 +638,7 @@ class sitescraper
 							}
 							
 							// page 1
-							if (false !== strpos($product_url,'href="/products')) {
+							if (false !== strpos($product_url,'/products')) {
 							 echo("Found product:" . $product_url . '\n');
 								$pUrls[$category][] = $product_url;
 							}
@@ -661,7 +661,7 @@ class sitescraper
 							if (preg_match_all($regexp, $page, $matches)) {
 								foreach($matches[0] as $product_url) {
 									// page x
-									if (false !== strpos($product_url,'href="/products')) {
+									if (false !== strpos($product_url,'/products')) {
 									echo("Found product:" . $product_url . '\n');
 										$pUrls[$category][] = $product_url;
 									}
