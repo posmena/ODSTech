@@ -397,8 +397,8 @@ class sitescraper
 			{
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
-				$collection = $mdb->damsel_scrape;
-			
+				$collection = $mdb->nn;
+				
 			    $collection->update(array("_id" => array("exists" => true)),array("updated" => false),array("multi" => true)); 
 													
 				$site = "http://www.damselinadress.co.uk";
@@ -409,6 +409,7 @@ class sitescraper
 							  'skirts & trousers > womens skirts'   => 'http://www.damselinadress.co.uk/shop/skirts-and-trousers/skirts.aspx',
 							  'skirts & trousers > womens trousers' => 'http://www.damselinadress.co.uk/shop/skirts-and-trousers/trousers.aspx',
 							  'coats & jackets > womens jackets'    => 'http://www.damselinadress.co.uk/shop/coats-and-jackets/jackets.aspx',
+							  'coats & jackets > coats'    			=> 	'http://www.damselinadress.co.uk/shop/coats-and-jackets/coats.aspx',
 							  'tailoring > work wear'				=> 'http://www.damselinadress.co.uk/shop/tailoring/work-wear.aspx',
 							  'tops > shrugs'                       => 'http://www.damselinadress.co.uk/shop/tops/shrugs.aspx',
 							  'tops > blouses & shirts'             => 'http://www.damselinadress.co.uk/shop/tops/blouses-and-shirts.aspx',
@@ -417,15 +418,15 @@ class sitescraper
 							  'tops > tunics'						=> 'http://www.damselinadress.co.uk/shop/tops/tunics.aspx',
 							  'accessories > scarves'				=> 'http://www.damselinadress.co.uk/shop/accessories/scarves.aspx',
 							  'wedding > bride'                     => 'http://www.damselinadress.co.uk/shop/wedding/bride.aspx',
-							  'wedding > mother of the bride'		=> 'http://www.damselinadress.co.uk/shop/aw11-sale/dresses.aspx?i=32&px=0&ob=3&vbb=0&vbc=0&vbp=0',
-							  'sale > dresses'						=> 'http://www.damselinadress.co.uk/shop/aw11-sale/dresses.aspx?i=32&px=0&ob=3&vbb=0&vbc=0&vbp=0',
-							  'sale > jackets'						=> 'http://www.damselinadress.co.uk/shop/aw11-sale/jackets.aspx',
-							  'sale > coats'						=> 'http://www.damselinadress.co.uk/shop/aw11-sale/coats.aspx',
-							  'sale > skirts'						=> 'http://www.damselinadress.co.uk/shop/aw11-sale/skirts.aspx',
-							  'sale > trousers'						=> 'http://www.damselinadress.co.uk/shop/aw11-sale/trousers.aspx',
-							  'sale > blouses & shirts'				=> 'http://www.damselinadress.co.uk/shop/aw11-sale/blouses-and-shirts.aspx',
-							  'sale > shrugs'                       => 'http://www.damselinadress.co.uk/shop/aw11-sale/shrugs.aspx',
-							  'sale > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/aw11-sale/jersey-wear.aspx'
+							  'wedding > mother of the bride'		=> 'http://www.damselinadress.co.uk/shop/ss12_sale/dresses.aspx?i=32&px=0&ob=3&vbb=0&vbc=0&vbp=0',
+							  'sale > dresses'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/dresses.aspx?i=32&px=0&ob=3&vbb=0&vbc=0&vbp=0',
+							  'sale > jackets'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/jackets.aspx',
+							  'sale > coats'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/coats.aspx',
+							  'sale > skirts'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/skirts.aspx',
+							  'sale > trousers'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/trousers.aspx',
+							  'sale > blouses & shirts'				=> 'http://www.damselinadress.co.uk/shop/ss12_sale/blouses-and-shirts.aspx',
+							  'sale > shrugs'                       => 'http://www.damselinadress.co.uk/shop/ss12_sale/shrugs.aspx',
+							  'sale > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/ss12_sale/jersey-wear.aspx'
 							  );
 				//$urls = array('dresses > any occasion'              => 'http://www.damselinadress.co.uk/shop/dresses.aspx?i=32&px=0&ob=1&vbs=309&vbb=0&vbc=0&vbp=0');
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>/siU";
@@ -459,7 +460,9 @@ class sitescraper
 								try {
 
 									$delivery = '4.95';
-
+									
+									print($url . "\n");
+									
 									$start = strpos($product, "<div id='mainproductimage'>");
 									$end   = strpos($product, "</div>", $start);
 									$image = trim(substr($product,$start,$end-$start));
@@ -573,7 +576,7 @@ class sitescraper
 									$item['quantity'] = 1;
 									$item['updated'] = true;
 
-									$existing = $collection->update(array('title' => $name), $item, array("upsert" => true));
+									$collection->update(array('title' => $name), $item, array("upsert" => true));
 									
 									
 								} catch(Exception $ex) {
@@ -603,6 +606,7 @@ class sitescraper
 				$conn = new Mongo('localhost');
 				$mdb = $conn->odstech;
 				$collection = $mdb->chesca_scrape;
+				$collection->drop();
 				$site = "http://chescadirect.co.uk";
 				$urls = array('jackets' => $site.'/departments/1-jackets-coats',
 							  'trousers'    => $site.'/departments/2-trousers',
@@ -619,10 +623,12 @@ class sitescraper
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>/siU";
 
 				foreach ($urls as $category => $url) {
+				print($category . '\n');
 					$page = feed_processor::curl_get_file_contents($url);
 					$pages = array();
 					if (preg_match_all($regexp, $page, $matches)) {
 						foreach($matches[0] as $product_url) {
+						 echo($product_url . '\n');
 							if (false !== strpos($product_url, '&amp;page=')) {
 								$pages[] = $product_url;
 							}
@@ -642,6 +648,8 @@ class sitescraper
 						
 						$matches = '';
 						foreach($pageUrls[$category] as $url) {
+						echo($url . '\n');
+						
 							//$url = html_entity_decode($url);
 							$page = feed_processor::curl_get_file_contents($site.$url);
 							if (preg_match_all($regexp, $page, $matches)) {
@@ -658,11 +666,14 @@ class sitescraper
 
 				if (true === is_array($pUrls) && count($pUrls) > 0) {
 					foreach ($pUrls as $categories => $cat) {
+					
 						foreach ($cat as $pUrl) {
+						    print($pUrl . '\n');
 							if (preg_match($regexp, $pUrl, $matches)) {
 								$url = $site.$matches[2];
 								//$url = 'http://chescadirect.co.uk/products/97-champagne-panelled-skirt-limited-size-range-please-phone-0207-60-3434-before-ordering';
 								$product = feed_processor::curl_get_file_contents($url);
+								continue;
 								$item = array();
 								try {
 									$start = strpos($product, "<div class='info'>");
