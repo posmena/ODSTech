@@ -590,7 +590,7 @@ class sitescraper
 					}
 
 					
-					//$collection->remove(array("updated" => false),array("multi" => true));
+					$collection->remove(array("updated" => false),array("multi" => true));
 					
 					$products = $collection->find();
 					foreach ($products as $product) {
@@ -626,7 +626,8 @@ class sitescraper
 				$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>/siU";
 
 				foreach ($urls as $category => $url) {
-				print($category . '\n');
+				print("CATEGORY:" . $category . '\n');
+				print("URL:" . $url . '\n');
 					$page = feed_processor::curl_get_file_contents($url);
 					$pages = array();
 					if (preg_match_all($regexp, $page, $matches)) {
@@ -651,7 +652,7 @@ class sitescraper
 						
 						$matches = '';
 						foreach($pageUrls[$category] as $url) {
-						echo($url . '\n');
+						echo("DOWNLOAD:" . $url . '\n');
 						
 							//$url = html_entity_decode($url);
 							$page = feed_processor::curl_get_file_contents($site.$url);
