@@ -576,8 +576,9 @@ class sitescraper
 									$item['quantity'] = 1;
 									$item['updated'] = true;
 
-									$collection->update(array('title' => $name), $item, array("upsert" => true));
+									$update = $collection->update(array('title' => $name), $item, array("upsert" => true));
 									
+									print($update . "\n");
 									
 								} catch(Exception $ex) {
 									print $ex;
@@ -587,7 +588,7 @@ class sitescraper
 					}
 
 					
-					$collection->remove(array("updated" => false),array("multi" => true));
+					//$collection->remove(array("updated" => false),array("multi" => true));
 					
 					$products = $collection->find();
 					foreach ($products as $product) {
