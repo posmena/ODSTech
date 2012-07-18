@@ -85,7 +85,7 @@ class sitescraper
 									}
 															
 								
-								$regexp = "/<div class=\"price\">(.*)<\/div>/siU" ;
+								$regexp = "/<div class=\"price*\">(.*)<\/div>/siU" ;
 								if( preg_match($regexp, $product, $arr ) )
 									{			
 									$price = $arr[1];
