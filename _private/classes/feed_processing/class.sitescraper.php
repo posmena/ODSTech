@@ -76,6 +76,7 @@ class sitescraper
 																
 								if( preg_match($regexp, $product, $arr) ) {								
 									$item['title'] = (trim($arr[1]));
+								
 									}
 								
 								$regexp = "/<div class=\"brand\">(.*)<\/div>/siU" ;
@@ -83,32 +84,36 @@ class sitescraper
 									{
 									$item['brand'] = trim(str_replace("By","",$arr[1])) ;
 									}
-															
-								
-								$regexp = "/<div class=\"price*\">(.*)<\/div>/siU" ;
+																									
+								$regexp = "/<div class=\"price.*\">(.*)<\/div>/siU" ;
 								if( preg_match($regexp, $product, $arr ) )
-									{			
+				{					
 									$price = $arr[1];
+									$price = trim(str_replace("<span>","",$price)) ;
+									$price = trim(str_replace("</span>","",$price)) ;
 									$price = trim(str_replace("£","",$price)) ;
 									$price = trim(str_replace("Price:","",$price)) ;
 									$price = trim(str_replace("&pound;","",$price)) ;
 									$item['original_price']	= $price;
 									$item['price']	= $price;
 									
-									$regexp = "/<span class=\"old-price\">(.*)<\/span>/siU" ;
+									$regexp = "/<div class=\"new-price\">(.*)<\/div>/siU" ;
 									if( preg_match($regexp, $product, $arr ) )
 										{
-											$regexp = "/<span class=\"new-price\">(.*)<\/span>/siU" ;	
-											$item['original_price']	= trim(str_replace("&pound;","",$arr[1])) ;										
-											if( preg_match($regexp, $product, $arr ) )
-												{
-												$item['price'] = trim(str_replace("NOW","",str_replace("&pound;","",$arr[1])));
-												}
+											$price = $arr[1];
+											$price = trim(str_replace("&pound;","",$price)) ;										
+											$price = trim(str_replace("<span>","",$price)) ;
+											$price = trim(str_replace("</span>","",$price)) ;
+											$price = trim(str_replace("NOW:","",$price)) ;
+											
+											$item['original_price']	= $item['price'];
+											$item['price'] = $price;
+																					
 										}
 								
 									
 									}
-									
+								
 								$item['delivery_cost'] = 0;
 								$item['delivery_time'] = "6 working days";
 															
