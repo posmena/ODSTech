@@ -68,6 +68,9 @@ class core_p20_client extends core_default
 				{
 				if( $field['searchable'] == true )
 					{
+					$field['displayname']  = preg_replace("/[^a-zA-Z0-9\s]/", " ", $field['fieldname']);
+					$field['displayname'] = ucwords($field['displayname']);
+					
 					$feed['searchoptions'][] = $field;
 					}
 				}
