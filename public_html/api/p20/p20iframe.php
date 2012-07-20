@@ -14,8 +14,7 @@ $options = array();
 	$options['price_colour'] = isset($_GET['price_colour']) ? $_GET['price_colour'] :'#232221';
 	$options['even_row_colour'] = isset($_GET['even_row_colour']) ? $_GET['even_row_colour'] :'#EEEEEE';
 	$options['odd_row_colour'] = isset($_GET['odd_row_colour']) ? $_GET['odd_row_colour'] :'#F4EDED';
-	$options['location_colour'] = isset($_GET['location_colour']) ? $_GET['location_colour'] :'#0F2A3C';
-	
+	$options['link_colour'] = isset($_GET['link_colour']) ? $_GET['link_colour'] :'#232221';
 ?>
 <html>
 <head>
@@ -110,11 +109,11 @@ function display_content_unit($products,$type,$display,$style,$width)
 							$hotel .= '<div class="name"><a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' class="name" target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->product_name . '</a>';			
 							$hotel .= '</div>';
 
-							$hotel .= '<div class="location" ' . format_style(apply_style($style,'location_colour')) . '>' . odst_truncate($product->description,70) . '</div>';	
+							$hotel .= '<div class="location" ' . format_style(apply_style($style,'link_colour')) . '>' . odst_truncate($product->description,70) . '</div>';	
 
 						
 							$hotel .= '<div class="price"><a ' . format_style(apply_style($style,'price_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">&pound;' . format_price($product->price) . '</a>';
-							$hotel .= '<div class="clear"></div><div class="merchant">' . $product->program_name . '</div></div>';
+							$hotel .= '<div class="clear"></div><div class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->program_name . '</a></div></div>';
 							$hotel .= '</div>';
 											
 							$i+=1;
@@ -332,7 +331,11 @@ function display_content_unit($products,$type,$display,$style,$width)
 							case 'price_colour':
 							$style='color:' . $options[$element] .';';
 							break;
-											
+							
+							case 'link_colour':
+							$style='color:' . $options[$element] .';';
+							break;	
+							
 							case 'even_row_colour':
 							$style='background-color:' . $options[$element] .';';
 							break;
