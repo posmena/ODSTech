@@ -142,7 +142,7 @@ BrowserDetect.proptype = {
 		if( params == null ) params = "";
 		if( colors == null ) colors = "";
 		
-		colors = colors.replace("#","%23");
+		colors = colors.replace(/#/g,"%23");
 		
 		if( style != null ) 
 			{
