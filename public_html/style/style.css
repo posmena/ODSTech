@@ -808,7 +808,7 @@ padding-left:20px;
 }
 
 
-.preview
+textarea.preview
 {
 min-height: 115px !important;
 width: 660px ;
