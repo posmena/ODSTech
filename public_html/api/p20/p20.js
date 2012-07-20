@@ -142,7 +142,7 @@ BrowserDetect.proptype = {
 		if( params == null ) params = "";
 		if( colors == null ) colors = "";
 		
-		color = encodeURIComponent(colors);
+		colors = encodeURIComponent(colors);
 		
 		if( style != null ) 
 			{
