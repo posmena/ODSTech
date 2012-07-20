@@ -5,6 +5,16 @@ margin-left:30px;
 line-height:26px
 }
 
+
+.preview
+{
+min-height: 95px !important;
+width: 60% !important;
+padding: 3px 4px;
+font-size: 11px;
+font-family: monospace;
+}
+
 h2#unitname
 {
 display:none;
@@ -90,4 +100,3 @@ div.jqmDialog input:focus, div.jqmDialog input.iefocus { background-color: #D4C1
 
 
 -->
-

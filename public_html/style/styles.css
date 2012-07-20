@@ -217,3 +217,13 @@ div.maincontent {
     color: white;
     /*display: none;*/
 }
+
+
+.preview
+{
+min-height: 105px !important;
+width: 60% !important;
+padding: 3px 4px;
+font-size: 11px;
+font-family: monospace;
+}

@@ -32,6 +32,7 @@
   .blur( 
     function(){ jQuery(this).removeClass('jqmdXFocus'); });
 
+	updateDivs();
 });
 	
 </script>
@@ -69,7 +70,22 @@ clone.removeAttr('id');
 
 var str = clone.outerHTML().replace("<","&lt;").replace(">","&gt;");
 str = str.replace("<","&lt;").replace(">","&gt;");
-jQuery('#code').html(str);
+
+
+var code;
+code = "Include the following once your page, it is best to include it in the footer.<br>";
+code += "<textarea class=\"preview\">";
+code += "&lt;script src=\"http://odst.co.uk/api/p20/p20.js\" type=\"text/javascript\"&gt;&lt;/script&gt;\n";
+code += "&lt;script&gt;\n";
+code += "	ODST_P20.showContentUnits();\n";
+code += "&lt;/script&gt;\n";
+code += "</textarea>";
+code += "<br /><br />"
+code += "Add this div tag to where you want the content unit to appear:<br>"
+code += "<textarea class=\"preview\">";
+code += str
+code += "</textarea>";
+jQuery('#code_' + divid).html(code);
 }
 
 function htmlEntities(str) {
@@ -97,7 +113,7 @@ jQuery(".p20color").each(function(){
 	if( jQuery(this).val() != "" )
 		{
 		if( i > 0 ) { colors = colors + "&"; }
-		colors = colors + "colors[" + this.name + "]=" + encodeURIComponent((jQuery(this).val()));
+		colors = colors + this.name + "=" + ((jQuery(this).val()));
 		i = i +1;
 		}
 });	
@@ -123,6 +139,10 @@ jQuery("div.odst_p20").each(function(){
 	jQuery(this).removeAttr('data-colors');
   	jQuery(this).attr('data-colors',colors);
 	});
+	
+	set_code('grid');
+	set_code('carousel');
+	set_code('directory');
 }
 </script>
 
@@ -170,10 +190,8 @@ jQuery("div.odst_p20").each(function(){
 		</table>
 		</p>
 		
-		
-	<button type="submit" style="margin:10px 0" value="show_preview" onclick="updateDivs();ODST_P20.display(ODST_P20);return false;">
-	 Preview Content Units
-            </button>
+	<a class="btn-show" href="#" onclick="ODST_P20.display(ODST_P20);updateDivs();;return false;">Preview Content Units</a>
+
 		</div>
 <div id="tabs" style="margin-top:20px">
    <ul>
@@ -182,20 +200,22 @@ jQuery("div.odst_p20").each(function(){
       <li><a href="#tabs-3">Directory Style</a></li>
    </ul>
    <div id="tabs-1">
-		<a class="modal" href="#" onclick="set_code('grid');jQuery('#ex3a').jqmShow();return false;"
-		  style="text-decoration:none;color:#0F2A3C;font-size:20px">get code...</a>
-		<div style="margin:10px 0" id="grid" class="odst_p20" data-style="default" data-client="{$feed.client}" data-type="grid" data-width="500px" data-max="6" ></div>
+		<!--a class="modal" href="#" onclick="set_code('grid');jQuery('#ex3a').jqmShow();return false;"
+		  style="text-decoration:none;color:#0F2A3C;font-size:20px">get code...</a-->
+		<div style="margin:10px 0" id="grid" class="odst_p20" data-id="{$p20.affiliate_id}" data-style="default" data-client="{$feed.client}" data-type="grid" data-width="500px" data-max="6" ></div>
+		<div id="code_grid"></div>
    </div>
    <div id="tabs-2">
-	<a class="modal" href="#" onclick="set_code('carousel');jQuery('#ex3a').jqmShow();return false;"
-		  style="text-decoration:none;color:#0F2A3C;font-size:20px">get code...</a>
-	<div   style="margin:10px 0" id="carousel" class="odst_p20" data-style="default"  data-client="{$feed.client}" data-type="carousel" data-width="500px" data-max="6"></div>
+	<!--a class="modal" href="#" onclick="set_code('carousel');jQuery('#ex3a').jqmShow();return false;"
+		  style="text-decoration:none;color:#0F2A3C;font-size:20px">get code...</a-->
+	<div   style="margin:10px 0" id="carousel" class="odst_p20" data-id="{$p20.affiliate_id}" data-style="default"  data-client="{$feed.client}" data-type="carousel" data-width="500px" data-max="6"></div>
+   <div id="code_carousel"></div>
    </div>
    <div id="tabs-3">
-    <a class="modal" href="#" onclick="set_code('directory');jQuery('#ex3a').jqmShow();return false;"
-		  style="text-decoration:none;color:#0F2A3C;font-size:20px">get code...</a>
-	<div style="margin:10px 0" id="directory" class="odst_p20" data-style="default"  data-client="{$feed.client}" data-type="directory" data-width="500px" data-max="6"></div>
-
+    <!--a class="modal" href="#" onclick="set_code('directory');jQuery('#ex3a').jqmShow();return false;"
+		  style="text-decoration:none;color:#0F2A3C;font-size:20px">get code...</a-->
+	<div style="margin:10px 0" id="directory" class="odst_p20" data-id="{$p20.affiliate_id}" data-style="default"  data-client="{$feed.client}" data-type="directory" data-width="500px" data-max="6"></div>
+<div id="code_directory"></div>
    </div>
 </div>
 			
