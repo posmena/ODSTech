@@ -172,7 +172,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 							</tr>
 							<tr>
 
-							<td class="merchant"><a target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->program_name . '</a>
+							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->program_name . '</a>
 
 							</td>
 
@@ -241,7 +241,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 							</tr>
 							<tr>
 
-							<td class="merchant"><a target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->program_name . '</a>
+							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->program_name . '</a>
 
 							</td>
 
