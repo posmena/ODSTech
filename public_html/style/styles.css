@@ -200,7 +200,7 @@ div.maincontent {
             font-size: 0.9em;
         }
         .addon .comment {
-            margin-top: 2em;
+            margin-top: 2em; 
             font-style: italic;
         }
         .addon .download {
@@ -218,12 +218,3 @@ div.maincontent {
     /*display: none;*/
 }
 
-
-.preview
-{
-min-height: 105px !important;
-width: 60% !important;
-padding: 3px 4px;
-font-size: 11px;
-font-family: monospace;
-}
