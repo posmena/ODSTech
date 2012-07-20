@@ -141,6 +141,9 @@ BrowserDetect.proptype = {
 		style = divs[i].getAttribute('data-style');
 		if( params == null ) params = "";
 		if( colors == null ) colors = "";
+		
+		color = encodeURIComponent(colors);
+		
 		if( style != null ) 
 			{
 			if( style != "" )	
