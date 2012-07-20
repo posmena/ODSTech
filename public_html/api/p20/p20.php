@@ -11,7 +11,6 @@ header('Access-Control-Allow-Origin: *');
 $type = isset($_GET['type']) ? $_GET['type'] : "grid";
 $width = isset($_GET['width']) ? $_GET['width'] : "500px";
 $style = isset($_GET['style']) ? $_GET['style'] : "";
-$arrColors = $_GET["colors"];
 
 global $options;
 

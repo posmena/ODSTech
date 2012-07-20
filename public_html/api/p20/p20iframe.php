@@ -2,8 +2,6 @@
 header('Access-Control-Allow-Origin: *');
 $style = isset($_GET['style']) ? $_GET['style'] : "";
 
-$arrColors = $_GET["colors"];
-
 global $options;
 
 $options = array();	 
