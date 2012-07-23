@@ -51,7 +51,7 @@ FB.ui(
 {
 method: 'feed',
 name: 'Special discount voucher for thegiftexperience.co.uk',
-link: ' http://www.facebook.com/ODST_co_uk/app_461798647173464',
+link: 'http://www.facebook.com/pages/ODST_co_uk/116457125039404?sk=app_461798647173464',
 picture: 'the_gift_experience.png',
 caption: 'I have just got my voucher!',
 description: 'You can claim yours by visiting the giftexperience.co.uk Facebook page.',
