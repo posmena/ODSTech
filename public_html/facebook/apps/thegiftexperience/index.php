@@ -77,7 +77,7 @@ document.getElementById('fb-root').appendChild(e);
 }());
 </script>
 
-<div id="share_button"></div>
+<div id="share_button" style="position:absolute;width:180px;height:30px;top:235px;left:140px;cursor:pointer" ></div>
 
 <?php if($liked) { ?>
 <img src="liked.jpg">
