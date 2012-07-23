@@ -27,6 +27,6 @@ function base64_url_decode($input) {
 }
 
 
-$signed = parse_signed_request($_REQUEST['signed_request'], "dab79a06068c4600754fcae06e5b35f9");
+$signed = parse_signed_request($_POST['signed_request'], "dab79a06068c4600754fcae06e5b35f9");
 print_r($signed);
 ?>
