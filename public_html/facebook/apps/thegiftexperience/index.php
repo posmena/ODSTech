@@ -28,12 +28,18 @@ function base64_url_decode($input) {
 
 $liked = false;
 
-$signed = parse_signed_request($_POST['signed_request'], "dab79a06068c4600754fcae06e5b35f9");
-if( $signed && $signed['page']['liked'] == 1 )
+if( isset($_POST['signed_request']) )
 	{
-	$liked = true;
+	$signed = parse_signed_request($_POST['signed_request'], "dab79a06068c4600754fcae06e5b35f9");
+	if( $signed && $signed['page']['liked'] == 1 )
+		{
+		$liked = true;
+		}
 	}
 ?>
+
+<html>
+<body>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
 
@@ -45,7 +51,7 @@ FB.ui(
 {
 method: 'feed',
 name: 'This is the content of the "name" field.',
-link: ' http://www.hyperarts.com/',
+link: ' http://www.facebook.com/intelligentenergies/app_461798647173464',
 picture: 'http://www.hyperarts.com/external-xfbml/share-image.gif',
 caption: 'This is the content of the "caption" field.',
 description: 'This is the content of the "description" field, below the caption.',
@@ -70,3 +76,7 @@ e.src = document.location.protocol +
 document.getElementById('fb-root').appendChild(e);
 }());
 </script>
+
+<div id="share_button">Share</div>
+</body>
+</html>
