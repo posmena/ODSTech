@@ -50,11 +50,11 @@ e.preventDefault();
 FB.ui(
 {
 method: 'feed',
-name: 'This is the content of the "name" field.',
-link: ' http://www.facebook.com/intelligentenergies/app_461798647173464',
-picture: 'http://www.hyperarts.com/external-xfbml/share-image.gif',
-caption: 'This is the content of the "caption" field.',
-description: 'This is the content of the "description" field, below the caption.',
+name: 'Special discount voucher for thegiftexperience.co.uk',
+link: ' http://www.facebook.com/ODST_co_uk/app_461798647173464',
+picture: 'the_gift_experience.png',
+caption: 'I have just got my voucher!',
+description: 'You can claim yours by visiting the giftexperience.co.uk Facebook page.',
 message: ''
 });
 });
