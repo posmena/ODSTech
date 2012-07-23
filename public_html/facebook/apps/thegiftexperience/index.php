@@ -77,6 +77,13 @@ document.getElementById('fb-root').appendChild(e);
 }());
 </script>
 
-<div id="share_button">Share</div>
+<div id="share_button"></div>
+
+<?php if($liked) { ?>
+<img src="liked.jpg">
+<? } else { ?>
+<img src="notliked.jpg">
+<? } ?>
+
 </body>
 </html>
