@@ -29,7 +29,7 @@ function base64_url_decode($input) {
 $liked = false;
 
 $signed = parse_signed_request($_POST['signed_request'], "dab79a06068c4600754fcae06e5b35f9");
-if( $signed && $signed['liked'] == 1 )
+if( $signed && $signed['page']['liked'] == 1 )
 	{
 	$liked = true;
 	}
