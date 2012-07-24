@@ -88,7 +88,7 @@ document.getElementById('fb-root').appendChild(e);
 <div id="share_button"></div>
 
 <?php if($liked) { ?>
-<div id="main"><img src="likednew.jpg"></div>
+<div id="main"><img src="liked2.jpg"></div>
 <div id="code">FB15842</div>
 <div id="activate"><a href="http://track.webgains.com/click.html?wgcampaignid=106558&amp;wgprogramid=151&amp;wgtarget=http://www.thegiftexperience.co.uk/home/index:registercoupon?coupon_code=FB15842&amp;returnview=1">Click here to activate it!</a></div>
 <div id="recentItemsContainer">        	                       
@@ -149,7 +149,7 @@ document.getElementById('fb-root').appendChild(e);
 </div>
 
 <? } else { ?>
-<div id="main"><img src="notlikednew.jpg"></div>
+<div id="main"><img src="notliked2.jpg"></div>
 <? } ?>
 
 <div id="footer">
