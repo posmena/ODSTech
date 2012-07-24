@@ -160,7 +160,7 @@ document.getElementById('fb-root').appendChild(e);
 <div id="share_button" style="position:absolute;width:180px;height:30px;top:235px;left:140px;cursor:pointer" ></div>
 
 <?php if($liked) { ?>
-<div id="main"><img src="liked.jpg"></div>
+<div id="main"><img src="likednew.jpg"></div>
 <div id="code" style="position:absolute;top:197px;left:470px;color:#ffffff;letter-spacing:1.5px;font-size:24px;font-weight:bold;font-family:Arial">FB15842</div>
 <div style="position: absolute; top: 240px; font-family: Arial; font-size: 19px; left: 430px;" id="activate"><a style="text-decoration: none; color: rgb(107, 142, 130);" href="http://track.webgains.com/click.html?wgcampaignid=106558&amp;wgprogramid=151&amp;wgtarget=http://www.thegiftexperience.co.uk/home/index:registercoupon?coupon_code=FB15842&amp;returnview=1">Click here to activate it!</a></div>
 <div id="recentItemsContainer">        	                       
@@ -173,7 +173,7 @@ document.getElementById('fb-root').appendChild(e);
     <h2><a title="Pair Of Engraved Cut Crystal Whisky Tumblers" href="http://track.webgains.com/click.html?wgcampaignid=106558&wgprogramid=151&wgtarget=http://www.thegiftexperience.co.uk/catalogue/1829/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">Pair Of Engraved Cut Crystal Whisky Tumblers</a></h2>   
     
 				
-					<strong class="itemprice"> £34.90</strong>
+					<strong class="itemprice"> &pound;34.90</strong>
 					
 			
                                             </div>
@@ -185,7 +185,7 @@ document.getElementById('fb-root').appendChild(e);
     <h2><a title="Shiny Silver Engraved Photo Frame" href="http://track.webgains.com/click.html?wgcampaignid=106558&wgprogramid=151&wgtarget=http://www.thegiftexperience.co.uk/catalogue/shiny_silver_engraved_photo_frame/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">Shiny Silver Engraved Photo Frame</a></h2>   
     
 				
-					<strong class="itemprice">from £19.99</strong>
+					<strong class="itemprice">from &pound;19.99</strong>
 					
 			
                                             </div>
@@ -197,7 +197,7 @@ document.getElementById('fb-root').appendChild(e);
     <h2><a title="The Day You Were Born" href="/catalogue/729/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">The Day You Were Born</a></h2>   
     
 				
-					<strong class="itemprice"> £15.95</strong>
+					<strong class="itemprice"> &pound;15.95</strong>
 					
 			
                                             </div>
@@ -209,7 +209,7 @@ document.getElementById('fb-root').appendChild(e);
     <h2><a title="Silver Plated Cufflinks" href="/catalogue/1521/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">Silver Plated Cufflinks</a></h2>   
     
 				
-					<strong class="itemprice"> £19.99</strong>
+					<strong class="itemprice"> &pound;19.99</strong>
 					
 			
                                             </div>
@@ -221,7 +221,7 @@ document.getElementById('fb-root').appendChild(e);
 </div>
 
 <? } else { ?>
-<div id="main"><img src="notliked.jpg"></div>
+<div id="main"><img src="notlikednew.jpg"></div>
 <? } ?>
 
 
