@@ -33,7 +33,7 @@ if( isset($_POST['signed_request']) )
 	{
 	$signed = parse_signed_request($_POST['signed_request'], "dab79a06068c4600754fcae06e5b35f9");
 	
-	$url = "http://www.facebook.com/profile.php?id=". $signed['page']['id'] . "#v=app_461798647173464";
+	$url = "http://www.facebook.com/profile.php?id=". $signed['page']['id'] . "?sk=app_461798647173464";
 
 	if( $signed && $signed['page']['liked'] == 1 )
 		{
