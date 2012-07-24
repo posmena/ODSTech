@@ -40,6 +40,86 @@ if( isset($_POST['signed_request']) )
 
 <html>
 <body>
+<style>
+
+body
+{
+background: url("http://d26kxapmp05apn.cloudfront.net/images/polaroid.png") repeat scroll left top #FFFFFF;
+font-family:Helvetica,Arial,sans-serif;
+}
+
+.productbox.itemcount4 {
+    width: 586px;
+}
+.productbox.related {
+    float: left;
+}
+.productbox {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 0 none;
+    float: left;
+    margin: 0 0 20px 71px;
+    padding: 20px;
+}
+
+.productbox i {
+    color: #333333;
+    display: block;
+    font-family: 'Handlee',"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 110%;
+    margin: 0 0 5px;
+}
+
+.productbox.itemcount5 .resultsItem {
+    margin: 0 0 0 22px;
+}
+.productbox .resultsItem.first {
+    margin-left: 0 !important;
+}
+.productbox .resultsItem {
+    margin: 0 0 0 25px;
+}
+.productbox .resultsItem {
+    width: 122px;
+}
+.resultsItem.first {
+    clear: both;
+    margin-left: 0;
+}
+.resultsItem {
+    float: left;
+    margin: 0 0 20px 17px;
+    position: relative;
+    width: 162px;
+}
+
+a {
+    color: #4BAC38;
+    text-decoration: none;
+}
+
+.resultsItem h2 {
+    font-size: 12px;
+    height: 45px;
+    line-height: 120%;
+    margin: 0;
+    overflow: hidden;
+}
+h2 {
+    color: #333333;
+    font-size: 20px;
+    line-height: 120%;
+    margin: 0 0 10px;
+}
+
+.itemprice {
+    color: #000000;
+}
+
+</style>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
 
@@ -81,9 +161,8 @@ document.getElementById('fb-root').appendChild(e);
 
 <?php if($liked) { ?>
 <div id="main"><img src="liked.jpg"></div>
-<div id="code">FB15842</div>
-<div id="activate"><a href="http://track.webgains.com/click.html?wgcampaignid=106558&wgprogramid=151&wgtarget=http://www.thegiftexperience.co.uk/home/index:registercoupon?coupon_code=FB15842&returnview=1">Click here to activate it!</a></div>
-
+<div id="code" style="position:absolute;top:197px;left:470px;color:#ffffff;letter-spacing:1.5px;font-size:24px;font-weight:bold;font-family:Arial">FB15842</div>
+<div style="position: absolute; top: 240px; font-family: Arial; font-size: 19px; left: 430px;" id="activate"><a style="text-decoration: none; color: rgb(107, 142, 130);" href="http://track.webgains.com/click.html?wgcampaignid=106558&amp;wgprogramid=151&amp;wgtarget=http://www.thegiftexperience.co.uk/home/index:registercoupon?coupon_code=FB15842&amp;returnview=1">Click here to activate it!</a></div>
 <div id="recentItemsContainer">        	                       
         <div class="productbox related itemcount4">
             <i>Our Favourite Gifts</i>
@@ -134,24 +213,12 @@ document.getElementById('fb-root').appendChild(e);
 					
 			
                                             </div>
-                
-                                                <div class="resultsItem">
-                            
-        <a class="imgthumb" title="Top Off Engraved Bottle Opener" href="/catalogue/top_off_engraved_bottle_opener/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">
-                            <img border="0" width="120" height="120" alt="Top Off Engraved Bottle Opener" src="http://d26kxapmp05apn.cloudfront.net/cms_media/images/120x120_fitbox-top_off_bottle_openner_a.jpg">                        </a>
-    <h2><a title="Top Off Engraved Bottle Opener" href="/catalogue/top_off_engraved_bottle_opener/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">Top Off Engraved Bottle Opener</a></h2>   
-    
-				
-					<strong class="itemprice"> £14.95</strong>
-					
-			
-                                            </div>
+                                                               
                 
            
                 	</div>     
 
 </div>
-
 
 <? } else { ?>
 <div id="main"><img src="notliked.jpg"></div>
