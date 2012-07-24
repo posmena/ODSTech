@@ -41,7 +41,7 @@ if( isset($_POST['signed_request']) )
 <html>
 <body>
 
-<link rel="stylesheet" type="text/css" href="/style.css" media="all">
+<link rel="stylesheet" type="text/css" href="style.css" media="all">
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
