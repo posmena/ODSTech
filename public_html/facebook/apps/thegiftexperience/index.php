@@ -40,86 +40,9 @@ if( isset($_POST['signed_request']) )
 
 <html>
 <body>
-<style>
 
-body
-{
-background: url("http://d26kxapmp05apn.cloudfront.net/images/polaroid.png") repeat scroll left top #FFFFFF;
-font-family:Helvetica,Arial,sans-serif;
-}
+<link rel="stylesheet" type="text/css" href="/style.css" media="all">
 
-.productbox.itemcount4 {
-    width: 586px;
-}
-.productbox.related {
-    float: left;
-}
-.productbox {
-    background: none repeat scroll 0 0 #F5F5F5;
-    border: 0 none;
-    float: left;
-    margin: 0 0 20px 71px;
-    padding: 20px;
-}
-
-.productbox i {
-    color: #333333;
-    display: block;
-    font-family: 'Handlee',"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 110%;
-    margin: 0 0 5px;
-}
-
-.productbox.itemcount5 .resultsItem {
-    margin: 0 0 0 22px;
-}
-.productbox .resultsItem.first {
-    margin-left: 0 !important;
-}
-.productbox .resultsItem {
-    margin: 0 0 0 25px;
-}
-.productbox .resultsItem {
-    width: 122px;
-}
-.resultsItem.first {
-    clear: both;
-    margin-left: 0;
-}
-.resultsItem {
-    float: left;
-    margin: 0 0 20px 17px;
-    position: relative;
-    width: 162px;
-}
-
-a {
-    color: #4BAC38;
-    text-decoration: none;
-}
-
-.resultsItem h2 {
-    font-size: 12px;
-    height: 45px;
-    line-height: 120%;
-    margin: 0;
-    overflow: hidden;
-}
-h2 {
-    color: #333333;
-    font-size: 20px;
-    line-height: 120%;
-    margin: 0 0 10px;
-}
-
-.itemprice {
-    color: #000000;
-}
-
-</style>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
 
@@ -157,12 +80,12 @@ document.getElementById('fb-root').appendChild(e);
 }());
 </script>
 
-<div id="share_button" style="position:absolute;width:180px;height:30px;top:235px;left:140px;cursor:pointer" ></div>
+<div id="share_button"></div>
 
 <?php if($liked) { ?>
 <div id="main"><img src="likednew.jpg"></div>
-<div id="code" style="position:absolute;top:197px;left:470px;color:#ffffff;letter-spacing:1.5px;font-size:24px;font-weight:bold;font-family:Arial">FB15842</div>
-<div style="position: absolute; top: 240px; font-family: Arial; font-size: 19px; left: 430px;" id="activate"><a style="text-decoration: none; color: rgb(107, 142, 130);" href="http://track.webgains.com/click.html?wgcampaignid=106558&amp;wgprogramid=151&amp;wgtarget=http://www.thegiftexperience.co.uk/home/index:registercoupon?coupon_code=FB15842&amp;returnview=1">Click here to activate it!</a></div>
+<div id="code">FB15842</div>
+<div id="activate"><a href="http://track.webgains.com/click.html?wgcampaignid=106558&amp;wgprogramid=151&amp;wgtarget=http://www.thegiftexperience.co.uk/home/index:registercoupon?coupon_code=FB15842&amp;returnview=1">Click here to activate it!</a></div>
 <div id="recentItemsContainer">        	                       
         <div class="productbox related itemcount4">
             <i>Our Favourite Gifts</i>
@@ -224,7 +147,9 @@ document.getElementById('fb-root').appendChild(e);
 <div id="main"><img src="notlikednew.jpg"></div>
 <? } ?>
 
-
+<div id="footer">
+<a href="http://odst.co.uk" >App powered by ODST.co.uk</a>
+</div>
 
 </body>
 </html>

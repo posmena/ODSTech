@@ -1,0 +1,102 @@
+
+#activate
+{
+position: absolute; top: 240px; font-family: Arial; font-size: 19px; left: 430px;
+}
+
+#activate a
+{
+text-decoration: none; color: rgb(107, 142, 130);
+}
+
+#code
+{
+position:absolute;top:197px;left:470px;color:#ffffff;letter-spacing:1.5px;font-size:24px;font-weight:bold;font-family:Arial
+}
+
+#share-button
+{
+position:absolute;width:180px;height:30px;top:235px;left:140px;cursor:pointer;
+}
+
+#footer a
+{
+color:#0F2A3C;clear:both;float:right;margin-right:80px;font-size:12px
+}
+
+body
+{
+background: url("http://d26kxapmp05apn.cloudfront.net/images/polaroid.png") repeat scroll left top #FFFFFF;
+font-family:Helvetica,Arial,sans-serif;
+}
+
+.productbox.itemcount4 {
+    width: 586px;
+}
+.productbox.related {
+    float: left;
+}
+.productbox {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 0 none;
+    float: left;
+    margin: 0 0 20px 71px;
+    padding: 20px;
+}
+
+.productbox i {
+    color: #333333;
+    display: block;
+    font-family: 'Handlee',"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 110%;
+    margin: 0 0 5px;
+}
+
+.productbox.itemcount5 .resultsItem {
+    margin: 0 0 0 22px;
+}
+.productbox .resultsItem.first {
+    margin-left: 0 !important;
+}
+.productbox .resultsItem {
+    margin: 0 0 0 25px;
+}
+.productbox .resultsItem {
+    width: 122px;
+}
+.resultsItem.first {
+    clear: both;
+    margin-left: 0;
+}
+.resultsItem {
+    float: left;
+    margin: 0 0 20px 17px;
+    position: relative;
+    width: 162px;
+}
+
+a {
+    color: #4BAC38;
+    text-decoration: none;
+}
+
+.resultsItem h2 {
+    font-size: 12px;
+    height: 45px;
+    line-height: 120%;
+    margin: 0;
+    overflow: hidden;
+}
+h2 {
+    color: #333333;
+    font-size: 20px;
+    line-height: 120%;
+    margin: 0 0 10px;
+}
+
+.itemprice {
+    color: #000000;
+}
