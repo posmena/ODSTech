@@ -80,10 +80,84 @@ document.getElementById('fb-root').appendChild(e);
 <div id="share_button" style="position:absolute;width:180px;height:30px;top:235px;left:140px;cursor:pointer" ></div>
 
 <?php if($liked) { ?>
-<img src="liked.jpg">
+<div id="main"><img src="liked.jpg"></div>
+<div id="code">FB15842</div>
+<div id="activate"><a href="http://track.webgains.com/click.html?wgcampaignid=106558&wgprogramid=151&wgtarget=http://www.thegiftexperience.co.uk/home/index:registercoupon?coupon_code=FB15842&returnview=1">Click here to activate it!</a></div>
+
+<div id="recentItemsContainer">        	                       
+        <div class="productbox related itemcount4">
+            <i>Our Favourite Gifts</i>
+                                                <div class="resultsItem first">
+                            
+        <a class="imgthumb" title="Pair Of Engraved Cut Crystal Whisky Tumblers" href="http://track.webgains.com/click.html?wgcampaignid=106558&wgprogramid=151&wgtarget=http://www.thegiftexperience.co.uk/catalogue/1829/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">
+                            <img border="0" width="120" height="120" alt="Pair Of Engraved Cut Crystal Whisky Tumblers" src="http://d26kxapmp05apn.cloudfront.net/cms_media/images/120x120_fitbox-cystal_whisky_tumblers_a2.jpg">                        </a>
+    <h2><a title="Pair Of Engraved Cut Crystal Whisky Tumblers" href="http://track.webgains.com/click.html?wgcampaignid=106558&wgprogramid=151&wgtarget=http://www.thegiftexperience.co.uk/catalogue/1829/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">Pair Of Engraved Cut Crystal Whisky Tumblers</a></h2>   
+    
+				
+					<strong class="itemprice"> £34.90</strong>
+					
+			
+                                            </div>
+                
+                                                <div class="resultsItem">
+                            
+        <a class="imgthumb" title="Shiny Silver Engraved Photo Frame" href="http://track.webgains.com/click.html?wgcampaignid=106558&wgprogramid=151&wgtarget=http://www.thegiftexperience.co.uk/catalogue/shiny_silver_engraved_photo_frame/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">
+                            <img border="0" width="120" height="120" alt="Shiny Silver Engraved Photo Frame" src="http://d26kxapmp05apn.cloudfront.net/cms_media/images/120x120_fitbox-silver_photo_frame_a6.jpg">                        </a>
+    <h2><a title="Shiny Silver Engraved Photo Frame" href="http://track.webgains.com/click.html?wgcampaignid=106558&wgprogramid=151&wgtarget=http://www.thegiftexperience.co.uk/catalogue/shiny_silver_engraved_photo_frame/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">Shiny Silver Engraved Photo Frame</a></h2>   
+    
+				
+					<strong class="itemprice">from £19.99</strong>
+					
+			
+                                            </div>
+                
+                                                <div class="resultsItem">
+                            
+        <a class="imgthumb" title="The Day You Were Born" href="/catalogue/729/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">
+                            <img border="0" width="120" height="120" alt="The Day You Were Born" src="http://d26kxapmp05apn.cloudfront.net/cms_media/images/120x120_fitbox-the_day_you_were_born_aa.jpg">                        </a>
+    <h2><a title="The Day You Were Born" href="/catalogue/729/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">The Day You Were Born</a></h2>   
+    
+				
+					<strong class="itemprice"> £15.95</strong>
+					
+			
+                                            </div>
+                
+                                                <div class="resultsItem">
+                            
+        <a class="imgthumb" title="Silver Plated Cufflinks" href="/catalogue/1521/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">
+                            <img border="0" width="120" height="120" alt="Silver Plated Cufflinks" src="http://d26kxapmp05apn.cloudfront.net/cms_media/images/120x120_fitbox-silver_plated_cufflinks_a.jpg">                        </a>
+    <h2><a title="Silver Plated Cufflinks" href="/catalogue/1521/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">Silver Plated Cufflinks</a></h2>   
+    
+				
+					<strong class="itemprice"> £19.99</strong>
+					
+			
+                                            </div>
+                
+                                                <div class="resultsItem">
+                            
+        <a class="imgthumb" title="Top Off Engraved Bottle Opener" href="/catalogue/top_off_engraved_bottle_opener/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">
+                            <img border="0" width="120" height="120" alt="Top Off Engraved Bottle Opener" src="http://d26kxapmp05apn.cloudfront.net/cms_media/images/120x120_fitbox-top_off_bottle_openner_a.jpg">                        </a>
+    <h2><a title="Top Off Engraved Bottle Opener" href="/catalogue/top_off_engraved_bottle_opener/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">Top Off Engraved Bottle Opener</a></h2>   
+    
+				
+					<strong class="itemprice"> £14.95</strong>
+					
+			
+                                            </div>
+                
+           
+                	</div>     
+
+</div>
+
+
 <? } else { ?>
-<img src="notliked.jpg">
+<div id="main"><img src="notliked.jpg"></div>
 <? } ?>
+
+
 
 </body>
 </html>
