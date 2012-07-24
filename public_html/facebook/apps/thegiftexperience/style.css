@@ -14,7 +14,7 @@ text-decoration: none; color: rgb(107, 142, 130);
 position:absolute;top:197px;left:470px;color:#ffffff;letter-spacing:1.5px;font-size:24px;font-weight:bold;font-family:Arial
 }
 
-#share-button
+#share_button
 {
 position:absolute;width:180px;height:30px;top:235px;left:140px;cursor:pointer;
 }
