@@ -5,6 +5,11 @@ margin-left:30px;
 line-height:26px
 }
 
+.ui-widget textarea.preview
+{
+font-size: 11px;
+font-family: monospace;
+}
 
 textarea.preview
 {
