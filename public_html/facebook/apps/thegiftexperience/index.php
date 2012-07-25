@@ -27,13 +27,13 @@ function base64_url_decode($input) {
 }
 
 $liked = false;
-$url = "http://www.facebook.com/pages/ODST_co_uk/116457125039404?sk=app_461798647173464";
+$url = "http://www.facebook.com/thegiftexperience/app_461798647173464";
 
 if( isset($_POST['signed_request']) )
 	{
 	$signed = parse_signed_request($_POST['signed_request'], "dab79a06068c4600754fcae06e5b35f9");
 	
-	$url = "http://www.facebook.com/profile.php?id=". $signed['page']['id'] . "?sk=app_461798647173464";
+	//$url = "http://www.facebook.com/profile.php?id=". $signed['page']['id'] . "?sk=app_461798647173464";
 
 	if( $signed && $signed['page']['liked'] == 1 )
 		{
@@ -120,7 +120,7 @@ document.getElementById('fb-root').appendChild(e);
                 
                                                 <div class="resultsItem">
                             
-        <a class="imgthumb" title="The Day You Were Born" target="_blank" href ="/catalogue/729/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">
+        <a class="imgthumb" title="The Day You Were Born" target="_blank" href ="http://track.webgains.com/click.html?wgcampaignid=106558&wgprogramid=151&wgtarget=http://www.thegiftexperience.co.uk/catalogue/729/index.html?utm_source=website&amp;utm_medium=website&amp;utm_content=Home&amp;utm_campaign=related_items">
                             <img border="0" width="120" height="120" alt="The Day You Were Born" src="http://d26kxapmp05apn.cloudfront.net/cms_media/images/120x120_fitbox-the_day_you_were_born_aa.jpg">                        </a>
     <h2><a title="The Day You Were Born" target="_blank" href ="http://track.webgains.com/click.html?wgcampaignid=106558&wgprogramid=151&wgtarget=http://www.thegiftexperience.co.uk/catalogue/729/index.html">The Day You Were Born</a></h2>   
     
