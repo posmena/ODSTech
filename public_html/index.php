@@ -16,6 +16,10 @@ function __autoload($class_name)
 			$class_name = str_replace('p20_', '', $class_name);
 			$include_file = '../_private/classes/core/p20/class.' . $class_name . '.php';
 		}
+		elseif (false !== strpos($class_name, 'facebook_')) {
+			$class_name = str_replace('facebook_', '', $class_name);
+			$include_file = '../_private/classes/core/facebook/class.' . $class_name . '.php';
+		}
 	} else {
 		$include_file = '../_private/classes/class.' . $class_name . '.php';
 	}
