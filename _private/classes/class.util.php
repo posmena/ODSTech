@@ -34,9 +34,9 @@ class util
 	}
 	
 	function unzip($file,$extention = "")  {
-	if( $extension != "" )
+	if( $extention != "" )
 		{
-		$extension = '.' . $extention;
+		$extention = '.' . $extention;
 		}
 		//the basic unzip operation
 		$zip = new ZipArchive;
