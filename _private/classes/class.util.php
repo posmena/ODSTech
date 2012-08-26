@@ -33,21 +33,36 @@ class util
 	    return false;
 	}
 	
-	function unzip($file)  {
+	function unzip($file,$extention = "")  {
+	if( $extension != "" )
+		{
+		$extension = '.' . $extention;
+		}
 		//the basic unzip operation
 		$zip = new ZipArchive;
 		 $res = $zip->open($file);
+		 
 		 if ($res === TRUE) {
 			for($i = 0; $i < $zip->numFiles; $i++) {
              $entry = $zip->getNameIndex($i);
 			 $zip->extractTo(dirname($file).'/');
 			 $zip->close();
-			 return dirname($file).'/'. $entry;
+			 return dirname($file).'/'. $entry . $extention;
 			 echo($entry);
 			 }
 		 } else {
-			 echo "failed to unzip" . $file;
-			 return false;
+			 //echo "trying gz" . $file;
+			 // try gzip
+			$sfp = gzopen($file, "rb");
+			$fp = fopen($file . "_unzipped". $extention, "w");
+
+			while ($string = gzread($sfp, 4096)) {
+				fwrite($fp, $string, strlen($string));
+			}
+			gzclose($sfp);
+			fclose($fp);
+			 
+			return $file . "_unzipped". $extention;
 		 }
 	}
 }

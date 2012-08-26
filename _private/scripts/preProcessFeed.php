@@ -15,22 +15,9 @@ if (false === array_key_exists(1, $argv)) {
 	exit;
 }
 
+$feed_id = $argv[1];
 
-$searchOpts = getopt("s:");
-$search = null;
-
-if( FALSE !== $searchOpts && isset($searchOpts['s']))
-	{
-	parse_str($searchOpts['s'], $search);	
-	$feed_id = $argv[2];
-	}
-else
-	{	
-	$feed_id = $argv[1];
-	}
-
-
-$full = false;
+$full    = false;
 if (true === in_array('full', $argv)) {
 	if (defined('VERBOSE')) {
 		print "WARNING: Dropping Entire " . $feed_id . " Table.\n";
@@ -48,7 +35,7 @@ $conn = new Mongo('localhost');
 
 try {
 	$db = $conn->odstech;
-	ODSTech_FeedManager::process($feed_id, $full, $search);
+	ODSTech_FeedManager::pre_process($feed_id, $full);
 } catch (Exception $ex) {
 	print $ex->getMessage()."\n";
 }

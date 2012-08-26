@@ -22,14 +22,27 @@ include 'classes/feed_processing/class.goldenfeeds_feed.php';
 
 class ODSTech_FeedManager extends feed_processor
 {
-	public function process($feed_id = null, $full = false) {
+	public function process($feed_id = null, $full = false, $search = null) {
 		global $db;
 		
 		//if ($feed_id === null || $feed_id < 1 || ctype_digit($feed_id) === false) {
 		//	throw new Exception ('Usage: processFeed.php feed_id full verbose');
 		//}
-		return self::process_feed($feed_id, $full);
+		return self::process_feed($feed_id, $full, $search);
 	}
 	
+	public function pre_process($feed_id = null, $full = false) {
+		global $db;
+		
+	
+		return self::pre_process_feed($feed_id, $full);
+	}
+	
+	public function post_process($feed_id = null, $full = false) {
+		global $db;
+		
+	
+		return self::post_process_feed($feed_id, $full);
+	}
 
 }

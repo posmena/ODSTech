@@ -178,7 +178,7 @@ class network_base implements network
 		}
 	}
 
-	function csv_call($local_file, $full)
+	function csv_call($local_file, $full, $comma = "\t")
 	{
 		global $db;
 		// access collection
@@ -213,7 +213,7 @@ class network_base implements network
 		$timeStart  = time();
 
 		$handle     = fopen($local_file, 'r');
-		$comma      = "\t";
+		
 		
 		$i          = 0;
 		$u 			= 0;
@@ -363,8 +363,8 @@ class network_base implements network
 		
 		$fc = 'field_mapping_' . $this->feedid;
 		$fc     = $db->$fc;
-		$cursor = $fc->find();
-
+		$cursor = $fc->find();		
+		
 		if (false === $cursor->hasNext()) {
 			return array();
 		}
@@ -383,11 +383,15 @@ class network_base implements network
 
 		foreach ($cursor as $field) {
 			if (false === isset($this->mapping[$field['fieldname']])) {
-				print 'Unknown field: ' . $field['fieldname'] . "\n";
-				break;
+				//print 'Unknown field: ' . $field['fieldname'] . "\n";
+			//	break;
+			$fields['standard'][] = '';
 			}
-
-			$fields['standard'][] = $this->mapping[$field['fieldname']];
+			else
+				{
+					$fields['standard'][] = $this->mapping[$field['fieldname']];
+				}
+				
 		}
 
 		$fc = 'field_extra_' . $this->feedid;

@@ -6,14 +6,26 @@ if (class_exists('util') === false) {
 
 class feed_processor
 {
-	public static function process_feed($feed_id, $full)
+	public static function process_feed($feed_id, $full, $search)
 	{
 		global $db;
 		$count = 0;
-		
+			
 		$collection = $db->ot_feeds;
-		$cursor = $collection->find(array('client' => $feed_id));
-		foreach ($cursor as $item) {
+		
+		if( false === isset($search) )
+			{
+			$cursor = $collection->find(array('client' => $feed_id));
+			}
+		else
+			{
+			// merge the search array 
+			$arr = array_merge(array('client' => $feed_id), $search);
+			
+			$cursor = $collection->find($arr);
+			}
+			
+		foreach ($cursor as $item) {		
 			$feeds[] = $item;
 		}
 		
@@ -48,7 +60,7 @@ class feed_processor
 				}
 				default:
 				{
-					$local_file = $path4feed.'feed'.$feed_id;
+					$local_file = $path4feed.'feed'.$feed_id.'.'.$feed['format'];
 					print("Downloading from html:" . $feed['url']."\n");
 					$data = self::curl_get_file_contents($feed['url']);
 					print("Finished downloading");
@@ -57,11 +69,11 @@ class feed_processor
 					fclose($fp);
 					
 					// if need to unzip then unzip
-					if( true === $feed['zipped'] )
+					if( isset($feed['zipped']) && true === $feed['zipped'] )
 						{
-						print("Unzip");
-							$unzipped = util::unzip($local_file);
-							print("UNZIPEED");
+						print("Unzip $local_file");
+							$unzipped = util::unzip($local_file,$feed['format']);
+							print("UNZIPEED to " . $unzipped);
 							
 							if( $unzipped !== false )
 								{
@@ -79,7 +91,17 @@ class feed_processor
 					// custom feeds will handle their own shizzle.
 					
 					$network = new $feed['classname']($local_file, $full, $feed_id);
+					if( method_exists($network,'process') )
+						{
+						$network->process();
+						}
 					$count = $network->num_products;
+					if( $count ) 
+						{
+						$feed['last_update_state'] = 1;
+						$feed['last_updated'] = new MongoDate();
+						$collection->save($feed);
+						}
 					
 				}
 			} else {
@@ -90,6 +112,92 @@ class feed_processor
 		return $count;
 	}
 
+	public static function pre_process_feed($feed_id, $full)
+	{
+		global $db;
+		
+		$collection = $db->ot_feeds;
+	
+		$cursor = $collection->find(array('client' => $feed_id));
+			
+		echo("pre_process_feed");	
+		foreach ($cursor as $item) {
+		
+		$item['last_update_state'] = 0;
+		$collection ->save($item);
+		
+			$feeds[] = $item;
+		}
+		
+		
+		foreach($feeds as $feed)
+		{
+			
+			// determine network
+			if (true === class_exists($feed['classname'])) {
+				{
+					print("\nHERE\n");
+					// custom feeds will handle their own shizzle.
+					
+					$network = new $feed['classname']('', $full, $feed_id);
+					$network->pre_process();
+					return;
+					
+				}
+			} else {
+				print 'Class '.$feed['classname'].' dunt exist\n';
+			}
+		}
+		
+		
+	}
+	
+	
+	public static function post_process_feed($feed_id, $full)
+	{
+		global $db;
+		
+		echo($feed_id);
+		$collection = $db->ot_feeds;
+	
+		$cursor = $collection->find(array('client' => $feed_id));
+			
+		$success = true;
+		foreach ($cursor as $item) {
+		
+		 if( $item['last_update_state'] == 0 ) 
+			{
+			$success = false;
+			break;
+			}
+		$feeds[] = $item;
+		}
+		
+		
+		
+			
+		foreach($feeds as $feed)
+		{
+			
+			// determine network
+			if (true === class_exists($feed['classname'])) {
+				{
+					print("\nHERE\n");
+					// custom feeds will handle their own shizzle.
+					
+					$network = new $feed['classname']('', $full, $feed_id);
+					$network->post_process($success);
+					return;
+					
+				}
+			} else {
+				print 'Class '.$feed['classname'].' dunt exist\n';
+			}
+		}
+		
+		
+	}
+	
 	function categorise()
 	{
 		global $db;
