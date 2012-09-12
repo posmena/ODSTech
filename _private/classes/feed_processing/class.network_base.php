@@ -410,7 +410,7 @@ class network_base implements network
 				$fields['extra'][$field['ot_field']][$field['fieldname']]['value'] =  $field['value'];
 			}
 		}
-		
+		print_r($fields);
 		return $fields;
 	}
 	
