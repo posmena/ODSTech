@@ -101,7 +101,12 @@ function display_content_unit($products,$type,$display,$style,$width)
 					$lastproduct = "";
 					if(count($products) > 0) {
 						foreach ($products as $product) {		
+												   
 							$product=  ((object)$product);
+							
+							$merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
+													
+							
 							$hotel = $hotel . '<div class="row ';
 
 							if ( $i%2 == false ) { $hotel = $hotel. ' even'; }
@@ -122,7 +127,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 							$hotel .= '<div class="location" ' . format_style(apply_style($style,'link_colour')) . '>' . odst_truncate($product->description,70) . '</div>';	
 						
 							$hotel .= '<div class="price"><a ' . format_style(apply_style($style,'price_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">&pound;' . format_price($product->price) . '</a>';
-							$hotel .= '<div class="clear"></div><div class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->program_name . '</a></div></div>';
+							$hotel .= '<div class="clear"></div><div class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $merchant . '</a></div></div>';
 							$hotel .= '</div>';
 											
 							$i+=1;
@@ -160,6 +165,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 						foreach ($products as $product) {
 						
 							$product=  ((object)$product);
+							$merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
 							$hotel .= '<li>';
 
 							$hotel .='<table class="thumb_content" style="margin:auto">
@@ -183,7 +189,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 							</tr>
 							<tr>
 
-							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->program_name . '</a>
+							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $merchant . '</a>
 
 							</td>
 
@@ -228,7 +234,8 @@ function display_content_unit($products,$type,$display,$style,$width)
 					if(count($products) > 0) {
 						foreach ($products as $product) {
 								$product=  ((object)$product);
-						
+						    $merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
+							
 							$hotel .= '<li>';
 
 							$hotel .='<table class="thumb_content">
@@ -252,7 +259,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 							</tr>
 							<tr>
 
-							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->program_name . '</a>
+							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $merchant . '</a>
 
 							</td>
 
