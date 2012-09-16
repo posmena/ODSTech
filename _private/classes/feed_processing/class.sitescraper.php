@@ -226,6 +226,11 @@ class sitescraper
 					$page = feed_processor::curl_get_file_contents($product['deeplink']);
 					$img = "";
 					
+					if( $product['price'] == 0) 
+						{
+						continue;
+						}
+						
 					if( stripos($page,'class="emsc19"') !== FALSE )
 					{
 						print($product['deeplink']);
