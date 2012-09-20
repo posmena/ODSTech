@@ -46,7 +46,7 @@ class goldenfeeds_feed extends network_base
 		$mongotime = New Mongodate(time()-$diff);
 		$condition = array('last_updated' => array('$lt'=>$mongotime) );
 
-		$products->remove($condition);
+		//$products->remove($condition);
 		}
 	}
 	
