@@ -262,13 +262,15 @@ class network_base implements network
 			$item = array();
 			$this->custom = array();
 			foreach ($fields['standard'] as $key => $field) {
+			
 				if ($field != '') {
 					$isUTF8 = mb_detect_encoding($data[$key], 'UTF-8', true); // false
 					if (false === $isUTF8) {
 						$data[$key] = mb_convert_encoding($data[$key], "UTF-8");
 					}
 					$item[$field] = $data[$key];
-					$this->doCustomEdits($data, $key, $field);
+					echo($field . " : " . $data[$key] > "(" .  $key. ")" . "\n");
+					//$this->doCustomEdits($data, $key, $field);
 				}
 			}
 
@@ -410,7 +412,7 @@ class network_base implements network
 				$fields['extra'][$field['ot_field']][$field['fieldname']]['value'] =  $field['value'];
 			}
 		}
-		print_r($fields);
+		//print_r($fields);
 		return $fields;
 	}
 	
