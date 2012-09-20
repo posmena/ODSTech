@@ -2,14 +2,14 @@
 /* Carousel */
 
 
-.ejh .odst_scontainer .slider li  a.name {background-color:#FF6600 !important; color:#FFFFFF !important}
-.ejh .odst_scontainer.vertical li  a.name{background-color:#FF6600 !important; color:#FFFFFF !important}
+.kelkoo .odst_scontainer .slider li  a.name {background-color:#FF6600 !important; color:#FFFFFF !important}
+.kelkoo .odst_scontainer.vertical li  a.name{background-color:#FF6600 !important; color:#FFFFFF !important}
 
-.widget .odst_hotels.ejh a.name, .odst_hotel_table.ejh div.name a.name {background-color:#FF6600  !important; color:#FFFFFF  !important;}
-.post .odst_hotels.ejh a.name{background-color:#FF6600  !important; 
+.widget .odst_hotels.kelkoo a.name, .odst_hotel_table.kelkoo div.name a.name {background-color:#FF6600  !important; color:#FFFFFF  !important;}
+.post .odst_hotels.kelkoo a.name{background-color:#FF6600  !important; 
 	color:#FFFFFF  !important;}
 	
-.ejh .odst_scontainer.vertical {
+.kelkoo .odst_scontainer.vertical {
 border: 2px solid #ff6600 !important;
 background-color:#ffffff  !important;;
 }
@@ -17,21 +17,21 @@ background-color:#ffffff  !important;;
 
 
 	
-.ejh .odst_scontainer a.prevBtn{
+.kelkoo .odst_scontainer a.prevBtn{
 	background:url(../img/kelkoo/prev-blue.png) no-repeat 0 0;	
 	}	
 
 	
-.ejh .odst_scontainer a.nextBtn{ 
+.kelkoo .odst_scontainer a.nextBtn{ 
 	background:url(../img/kelkoo/next-blue.png) no-repeat 0 0;		
 	}	
 		
-.ejh .odst_scontainer.vertical a.nextBtn
+.kelkoo .odst_scontainer.vertical a.nextBtn
 {
 	background:url(../img/kelkoo/vert-next-blue.png) no-repeat 0 0;	
 }
 
-.ejh .odst_scontainer.vertical a.prevBtn
+.kelkoo .odst_scontainer.vertical a.prevBtn
 {
 	background:url(../img/kelkoo/vert-prev-blue.png) no-repeat 0 0;	
 }
@@ -40,19 +40,19 @@ background-color:#ffffff  !important;;
 
 
 
-.ejh.container
+.kelkoo.container
 {
 	  border: 2px solid #ff6600;
 
 }
 
-.ejh.odst_hol_logo,.ejh .odst_hol_logo
+.kelkoo.odst_hol_logo,.kelkoo .odst_hol_logo
 {
 background: url(../img/kelkoo/kelkoo.png) no-repeat scroll right bottom transparent;
 }
-.ejh.odst_hol_logo.vertical,.ejh .odst_hol_logo.vertical{background: url(../img/kelkoo/ej_vertical_header.png) no-repeat scroll right bottom transparent;}
+.kelkoo.odst_hol_logo.vertical,.kelkoo .odst_hol_logo.vertical{background: url(../img/kelkoo/ej_vertical_header.png) no-repeat scroll right bottom transparent;}
 
-.odst_hotels.ejh div.odst_hol_logo.vertical
+.odst_hotels.kelkoo div.odst_hol_logo.vertical
 {
 background: url(../img/kelkoo/ej_vertical_header.png) no-repeat scroll right bottom transparent;
 height:26px;
@@ -62,7 +62,7 @@ background-position:left;
 width:137px
 }
 
-.odst_hotels.ejh.odst_hotel_table div.odst_hol_logo
+.odst_hotels.kelkoo.odst_hotel_table div.odst_hol_logo
 {
 border-bottom: none;
 margin-bottom:0px;
@@ -71,13 +71,13 @@ width:137px
 }
 
 
-.ejh.odst_hol_logo .odst_hol_logo_padding, .ejh .odst_hol_logo_padding
+.kelkoo.odst_hol_logo .odst_hol_logo_padding, .kelkoo .odst_hol_logo_padding
 {
 display:block;
 height:30px;
 }
 
-.ejh .thumb_star
+.kelkoo .thumb_star
 {
 background: url(../img/kelkoo/stars.png) no-repeat 0 0;
 }
@@ -92,7 +92,7 @@ color:#ff6600 !important;
 color:#ff6600  !important;
 }
 
-.ejh .thumb_price
+.kelkoo .thumb_price
 
 {
 color:#ff6600  !important;
@@ -100,17 +100,17 @@ color:#ff6600  !important;
 
 
 
-.odst_hotel_table.ejh .row.even
+.odst_hotel_table.kelkoo .row.even
 {
 background-color:lightBlue  !important;
 }
 
-.odst_hotel_table.ejh div.price span.from
+.odst_hotel_table.kelkoo div.price span.from
 {
 color: #FF6600  !important;
 }
 
-.odst_hotel_table.ejh div.price a
+.odst_hotel_table.kelkoo div.price a
 {
 color: #FF6600 !important;
 text-decoration:none !important;
