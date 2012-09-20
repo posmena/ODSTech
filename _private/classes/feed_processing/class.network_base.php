@@ -269,7 +269,7 @@ class network_base implements network
 						$data[$key] = mb_convert_encoding($data[$key], "UTF-8");
 					}
 					$item[$field] = $data[$key];
-					echo($field . " : " . $data[$key] > "(" .  $key. ")" . "\n");
+					echo($field . " : " . $data[$key] . "(" .  $key. ")" . "\n");
 					//$this->doCustomEdits($data, $key, $field);
 				}
 			}
