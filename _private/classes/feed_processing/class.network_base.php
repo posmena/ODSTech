@@ -261,6 +261,7 @@ class network_base implements network
 
 			$item = array();
 			$this->custom = array();
+			
 			foreach ($fields['standard'] as $key => $field) {
 			
 				if ($field != '') {
@@ -387,7 +388,7 @@ class network_base implements network
 			if (false === isset($this->mapping[$field['fieldname']])) {
 				//print 'Unknown field: ' . $field['fieldname'] . "\n";
 			//	break;
-			$fields['standard'][] = '';
+			//$fields['standard'][] = '';
 			}
 			else
 				{
