@@ -369,7 +369,6 @@ class network_base implements network
 		$fc = 'field_mapping_' . $this->feedid;
 		$fc     = $db->$fc;
 		$cursor = $fc->find();		
-		$cursor->sort(array('id' => 1));
 		
 		if (false === $cursor->hasNext()) {
 			return array();
@@ -382,7 +381,8 @@ class network_base implements network
 		$fc = 'field_columns_' . $this->feedid;
 		$fc     = $db->$fc;
 		$cursor = $fc->find();
-
+		$cursor->sort(array('id' => 1));
+		
 		if (false === $cursor->hasNext()) {
 			return array();
 		}
