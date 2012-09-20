@@ -368,7 +368,8 @@ class network_base implements network
 		
 		$fc = 'field_mapping_' . $this->feedid;
 		$fc     = $db->$fc;
-		$cursor = $fc->find()->sort(array('id' => 1));		
+		$cursor = $fc->find();		
+		$cursor->sort(array('id' => 1));
 		
 		if (false === $cursor->hasNext()) {
 			return array();
@@ -393,6 +394,7 @@ class network_base implements network
 			}
 			else
 				{
+				print 'Field: ' . $field['fieldname'] . "\n";
 					$fields['standard'][] = $this->mapping[$field['fieldname']];
 				}
 				
