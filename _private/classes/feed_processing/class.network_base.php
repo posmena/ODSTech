@@ -387,7 +387,7 @@ class network_base implements network
 		foreach ($cursor as $field) {
 			if (false === isset($this->mapping[$field['fieldname']])) {
 				print 'Unknown field: ' . $field['fieldname'] . "\n";
-				$fields['standard'][] = "";
+				$fields['standard'][] = $field['fieldname'];
 			}
 			else
 				{
