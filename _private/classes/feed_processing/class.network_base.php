@@ -263,7 +263,7 @@ class network_base implements network
 			$this->custom = array();
 			
 			foreach ($fields['standard'] as $key => $field) {
-			
+			echo($field . "(" .  $key. ")" . "\n");
 				if ($field != '') {
 					$isUTF8 = mb_detect_encoding($data[$key], 'UTF-8', true); // false
 					if (false === $isUTF8) {
@@ -386,9 +386,8 @@ class network_base implements network
 
 		foreach ($cursor as $field) {
 			if (false === isset($this->mapping[$field['fieldname']])) {
-				//print 'Unknown field: ' . $field['fieldname'] . "\n";
-			//	break;
-			//$fields['standard'][] = '';
+				print 'Unknown field: ' . $field['fieldname'] . "\n";
+				fields['standard'][] = "";
 			}
 			else
 				{
@@ -413,7 +412,7 @@ class network_base implements network
 				$fields['extra'][$field['ot_field']][$field['fieldname']]['value'] =  $field['value'];
 			}
 		}
-		//print_r($fields);
+		print_r($fields);
 		return $fields;
 	}
 	
