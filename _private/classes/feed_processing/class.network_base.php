@@ -235,7 +235,6 @@ class network_base implements network
 			
 			if($i == 1) {
 				$fic->drop();
-print_r($data);
 
 				foreach ($data as $key => $fieldname) {
 					if ($key == 0) {
@@ -245,6 +244,8 @@ print_r($data);
 					}
 
 					$fieldname = trim($fieldname);
+					echo($fieldname . "(" . $key . ")\n");
+					
 					$mField['id']        = $key;
 					$mField['fieldname'] = $fieldname;
 					$fic->save($mField);
