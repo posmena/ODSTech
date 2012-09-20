@@ -11,7 +11,7 @@ $login_result = ftp_login($conn_id, $feed['username'], $feed['password']);
 
 $files = ftp_rawlist($conn_id, '-1t');
 
-$files = array_reverse($files);
+//$files = array_reverse($files);
 
 foreach($files as $file)
 {
@@ -21,6 +21,7 @@ if( strpos($file, 'efmaster') !== FALSE )
 	$feeds->save($feed);
 	ODSTech_FeedManager::process('kelkoo');
 	echo("Processed" . $file . "\r\n");
+	die();
 	ftp_delete($conn_id, $file);
 	}
 }
