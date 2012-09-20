@@ -14,7 +14,7 @@ $files = array_reverse($files);
 
 foreach($files as $file)
 {
-if( strpos($file, 'efmaster') != FALSE )
+if( strpos($file, 'efmaster') !== FALSE )
 	{
 	$feed['filename'] = $file;
 	$feeds->save($feed);
