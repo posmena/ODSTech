@@ -56,6 +56,21 @@ class feed_processor
 					}
 					// close the connection
 					ftp_close($conn_id);
+					
+					// if need to unzip then unzip
+					if( isset($feed['zipped']) && true === $feed['zipped'] )
+						{
+						print("Unzip $local_file");
+							$unzipped = util::unzip($local_file,$feed['format']);
+							print("UNZIPEED to " . $unzipped);
+							
+							if( $unzipped !== false )
+								{
+								$local_file = $unzipped;
+												
+							}
+						}
+						
 					break;
 				}
 				default:
