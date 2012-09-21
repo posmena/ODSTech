@@ -45,9 +45,14 @@ if( $width < 210 )
 $width = "210px";
 }
 
-global $publisher_id = $_GET['user'];
-global $network = "";
-global $affid = "";
+global $publisher_id;
+global $network;
+global $affid;
+
+
+$publisher_id = $_GET['user'];
+$network = "";
+$affid = "";
 
 
 if( $_GET['params']['feed_id'] == 'kelkoo' )
@@ -97,6 +102,9 @@ echo(display_content_unit($products,"products",$type,$style,$width));
 
 function display_content_unit($products,$type,$display,$style,$width)
 	{		
+	global $publisher_id;
+	global $network;
+	global $affid;
 		
 	switch ($type) {
        
