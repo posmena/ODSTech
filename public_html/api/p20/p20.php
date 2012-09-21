@@ -36,7 +36,7 @@ if( $_GET['params']['feed_id'] == 'kelkoo' )
 	$mdb = $conn->odstech;
 	// access collection
 	$collection = $mdb->ot_users;
-	$publisher = $collection->findOne(array('publisher_id' => $publisher_id));
+	$publisher = $collection->findOne(array('publisher_id' => new MongoId($publisher_id)));
 	if( isset($publisher['AWIN']) )
 		{
 		$network = 'AWIN';
