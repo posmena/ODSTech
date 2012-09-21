@@ -24,9 +24,9 @@ if( strpos($file, 'efmaster') !== FALSE )
 	ODSTech_FeedManager::process('kelkoo');
 	echo("Processed" . $file . "\r\n");
 	}
-	catch()
+	catch(Exception $e)
 	{
-	echo("Error processing" . $file . "\r\n");
+	echo("Error processing" . $file . "\r\n". $e . "\r\n");
 	}
 	ftp_delete($conn_id, $file);
 	}
