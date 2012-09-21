@@ -69,9 +69,9 @@ else
 	$products=json_decode($data,true);
 	
 		
-$publisher_id = $_GET['user'];
-$network = "";
-$affid = "";
+global $publisher_id = $_GET['user'];
+global $network = "";
+global $affid = "";
 
 if( $_GET['params']['feed_id'] == 'kelkoo' )
 	{
