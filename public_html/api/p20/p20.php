@@ -24,9 +24,69 @@ $options = array();
 	$options['odd_row_colour'] = isset($_GET['odd_row_colour']) ? $_GET['odd_row_colour'] :'#F4EDED';
 	$options['link_colour'] = isset($_GET['link_colour']) ? $_GET['link_colour'] :'#232221';
 		
+$publisher_id = $_GET['user'];
+$network = "";
+$affid = "";
 
+if( $_GET['params']['feed_id'] == 'kelkoo' )
+	{
+	// work out which network to use from publisherId;
+	$conn = new Mongo('localhost');
+	// access database
+	$mdb = $conn->odstech;
+	// access collection
+	$collection = $mdb->ot_users;
+	$publisher = $collection->findOne(array('publisher_id' => $publisher_id));
+	if( isset($publisher['AWIN']) )
+		{
+		$network = 'AWIN';
+		$affid = $publisher['AWIN'];
+		}
+	elseif( isset($publisher['TD']) )
+		{
+		$network = 'TD';
+		$affid = $publisher['TD'];
+		$campaign_id = $publisher['campaign_id'];
+		}
+	else
+		{
+		$network = 'KK';
+		$affid = $publisher['KK'];
+		}
+	
+	echo($network . "<br>");
+	echo($affid . "<br>");
+	echo($campaign_id . "<br>");
+	
+	}
+
+
+	function make_deep_link($network, $affid, $url, $campaign_id)
+		{
+		switch( $network )
+			{
+			case "KK":
+				return $url . "&addedParams=true&custom1=" . $affid . "&custom2=network_KK";
+				break;
+			
+			case "TD":
+			//textfield20
+				return "http://tracker.tradedoubler.com/pan/TrackerServlet?a=" . $affid . "&g=" . $campaign_id . "&p=3431&url=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_TD";
+				break;
+				
+			case "AWIN":
+			//textfield19;
+				return "http://www.awin1.com/awclick.php?awinmid=3278&awinaffid=" . $affid . "&p=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_AWIN";
+				break;
+			}
+		}
+		
 //$params = isset($_GET['params']) ? "&" . $_GET['params'] : "";
 //$maxproducts = isset($_GET['max']) ? "&" . $_GET['max'] : "10";
+
+// get publisher id from URL
+// get affiliate ids
+
 
 if( $width < 210 ) 
 {
