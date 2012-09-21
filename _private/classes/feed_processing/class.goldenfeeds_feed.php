@@ -105,7 +105,10 @@ class goldenfeeds_feed extends network_base
 				}
 			else
 				{
-				$products->save($product);			
+				if( $product['price'] != "" )
+					{
+					$products->save($product);			
+					}
 				}
 		}
 		
