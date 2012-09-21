@@ -72,10 +72,12 @@ else
 global $publisher_id;
 global $network;
 global $affid;
+global $campaign_id;
 
 $publisher_id = $_GET['user'];
 $network = "";
 $affid = "";
+$campaign_id = "";
 
 if( $_GET['params']['feed_id'] == 'kelkoo' )
 	{
@@ -143,7 +145,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 	global $publisher_id;
 	global $network;
 	global $affid;
-
+	global $campaign_id;
 
 	switch ($type) {
        

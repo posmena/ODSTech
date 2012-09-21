@@ -48,8 +48,9 @@ $width = "210px";
 global $publisher_id;
 global $network;
 global $affid;
+global $campaign_id;
 
-
+$campaign_id = "";
 $publisher_id = $_GET['user'];
 $network = "";
 $affid = "";
@@ -105,7 +106,8 @@ function display_content_unit($products,$type,$display,$style,$width)
 	global $publisher_id;
 	global $network;
 	global $affid;
-		
+	global $campaign_id;
+	
 	switch ($type) {
        
 		case 'products':{				
