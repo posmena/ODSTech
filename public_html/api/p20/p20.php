@@ -106,7 +106,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 							
 							$merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
 													
-							$merchant = $product->program_name;
+							//$merchant = $product->program_name;
 							$hotel = $hotel . '<div class="row ';
 
 							if ( $i%2 == false ) { $hotel = $hotel. ' even'; }
@@ -166,7 +166,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 						
 							$product=  ((object)$product);
 							$merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
-							$merchant = $product->program_name;
+							//$merchant = $product->program_name;
 							$hotel .= '<li>';
 
 							$hotel .='<table class="thumb_content" style="margin:auto">
@@ -236,7 +236,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 						foreach ($products as $product) {
 								$product=  ((object)$product);
 						    $merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
-							$merchant = $product->program_name;
+							//$merchant = $product->program_name;
 							$hotel .= '<li>';
 
 							$hotel .='<table class="thumb_content">
