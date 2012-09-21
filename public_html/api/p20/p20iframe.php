@@ -45,6 +45,39 @@ if( $width < 210 )
 $width = "210px";
 }
 
+$publisher_id = $_GET['user'];
+$network = "";
+$affid = "";
+
+
+if( $_GET['params']['feed_id'] == 'kelkoo' )
+	{
+	// work out which network to use from publisherId;
+	$conn = new Mongo('localhost');
+	// access database
+	$mdb = $conn->odstech;
+	// access collection
+	$collection = $mdb->ot_users;
+	$publisher = $collection->findOne(array('_id' => new MongoId($publisher_id)));
+	if( isset($publisher['AWIN']) )
+		{
+		$network = 'AWIN';
+		$affid = $publisher['AWIN'];
+		}
+	elseif( isset($publisher['TD']) )
+		{
+		$network = 'TD';
+		$affid = $publisher['TD'];
+		$campaign_id = $publisher['campaign_id'];
+		}
+	else
+		{
+		$network = 'KK';
+		$affid = $publisher['KK'];
+		}
+
+	}
+	
 $products=json_decode($data,true);
 echo(display_content_unit($products,"products",$type,$style,$width));
 
@@ -90,6 +123,16 @@ function display_content_unit($products,$type,$display,$style,$width)
 					if(count($products) > 0) {
 						foreach ($products as $product) {		
 							$product=  ((object)$product);
+							$deeplink = $product->deeplink;
+							if( $network == 'TD' )
+								{
+								$deeplink = $product->deeplink2;
+								}
+								
+							if( $network == 'AWIN' )
+								{
+								$deeplink = $product->deeplink3;
+								}
 							$merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
 							//$merchant = $product->program_name;
 							$hotel = $hotel . '<div class="row ';
@@ -104,16 +147,16 @@ function display_content_unit($products,$type,$display,$style,$width)
 								
 							$hotel .= '>';
 
-							$hotel .= '<div class="photo"><a target="_blank" rel="nofollow" href="' . $product->deeplink . '"><img class="photo" src="' . $product->image_thumbnail . '"/></a></div>';
+							$hotel .= '<div class="photo"><a target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '"><img class="photo" src="' . $product->image_thumbnail . '"/></a></div>';
 
-							$hotel .= '<div class="name"><a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' class="name" target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->product_name . '</a>';			
+							$hotel .= '<div class="name"><a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' class="name" target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $product->product_name . '</a>';			
 							$hotel .= '</div>';
 
 							$hotel .= '<div class="location" ' . format_style(apply_style($style,'link_colour')) . '>' . odst_truncate($product->description,70) . '</div>';	
 
 						
-							$hotel .= '<div class="price"><a ' . format_style(apply_style($style,'price_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">&pound;' . format_price($product->price) . '</a>';
-							$hotel .= '<div class="clear"></div><div class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $merchant . '</a></div></div>';
+							$hotel .= '<div class="price"><a ' . format_style(apply_style($style,'price_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">&pound;' . format_price($product->price) . '</a>';
+							$hotel .= '<div class="clear"></div><div class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $merchant . '</a></div></div>';
 							$hotel .= '</div>';
 											
 							$i+=1;
@@ -149,7 +192,16 @@ function display_content_unit($products,$type,$display,$style,$width)
 				$lastproduct = "";
 					if(count($products) > 0) {
 						foreach ($products as $product) {
-						
+						$deeplink = $product->deeplink;
+							if( $network == 'TD' )
+								{
+								$deeplink = $product->deeplink2;
+								}
+								
+							if( $network == 'AWIN' )
+								{
+								$deeplink = $product->deeplink3;
+								}
 							$product=  ((object)$product);
 							$merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
 							//$merchant = $product->program_name;
@@ -221,6 +273,16 @@ function display_content_unit($products,$type,$display,$style,$width)
 					if(count($products) > 0) {
 						foreach ($products as $product) {
 							$product=  ((object)$product);
+							$deeplink = $product->deeplink;
+							if( $network == 'TD' )
+								{
+								$deeplink = $product->deeplink2;
+								}
+								
+							if( $network == 'AWIN' )
+								{
+								$deeplink = $product->deeplink3;
+								}
 							$merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
 						//$merchant = $product->program_name;							
 							$hotel .= '<li>';
@@ -359,7 +421,26 @@ function display_content_unit($products,$type,$display,$style,$width)
 		return sprintf("%01.2f", $price);
 	 }
 	 
-	 
+	function make_deep_link($network, $affid, $url, $campaign_id)
+		{
+		switch( $network )
+			{
+			case "KK":
+				return $url . "&addedParams=true&custom1=" . $affid . "&custom2=network_KK";
+				break;
+			
+			case "TD":
+				return "http://tracker.tradedoubler.com/pan/TrackerServlet?a=" . $affid . "&g=" . $campaign_id . "&p=3431&url=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_TD";
+				break;
+				
+			case "AWIN":
+				return "http://www.awin1.com/awclick.php?awinmid=3278&awinaffid=" . $affid . "&p=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_AWIN";
+				break;
+			}
+			
+			return $url;
+		}
+		
 	 
 	function odst_truncate($string, $limit, $break=" ", $pad="...") { 
 // return with no change if string is shorter than $limit 

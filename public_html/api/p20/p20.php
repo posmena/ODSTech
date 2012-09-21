@@ -23,6 +23,51 @@ $options = array();
 	$options['even_row_colour'] = isset($_GET['even_row_colour']) ? $_GET['even_row_colour'] :'#EEEEEE';
 	$options['odd_row_colour'] = isset($_GET['odd_row_colour']) ? $_GET['odd_row_colour'] :'#F4EDED';
 	$options['link_colour'] = isset($_GET['link_colour']) ? $_GET['link_colour'] :'#232221';
+	
+
+	function make_deep_link($network, $affid, $url, $campaign_id)
+		{
+		switch( $network )
+			{
+			case "KK":
+				return $url . "&addedParams=true&custom1=" . $affid . "&custom2=network_KK";
+				break;
+			
+			case "TD":
+				return "http://tracker.tradedoubler.com/pan/TrackerServlet?a=" . $affid . "&g=" . $campaign_id . "&p=3431&url=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_TD";
+				break;
+				
+			case "AWIN":
+				return "http://www.awin1.com/awclick.php?awinmid=3278&awinaffid=" . $affid . "&p=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_AWIN";
+				break;
+			}
+			
+			return $url;
+		}
+		
+//$params = isset($_GET['params']) ? "&" . $_GET['params'] : "";
+//$maxproducts = isset($_GET['max']) ? "&" . $_GET['max'] : "10";
+
+// get publisher id from URL
+// get affiliate ids
+
+
+if( $width < 210 ) 
+{
+	$width = "210px";
+}
+
+if( $type == "carousel" )
+	{
+	$content = "<iframe height='250px' margin=0 border=0 scrolling=no width='" . ($width+10) . "px' frameborder=0 src='http://odst.co.uk/api/p20/p20iframe.php?" . http_build_query($_GET) . "'></iframe>";
+	//$content = "http://odst.co.uk/api/p20/p20iframe.php?user=m&pwd=test&params[feed_id]=" . $client . "&type=" . $type . "&width=" . $width . "'"
+	//$content  = "<iframe";
+	}
+else
+	{
+	$data = curl_get_file_contents("http://odst.co.uk/api/p20/index.php?" . http_build_query($_GET));
+	$products=json_decode($data,true);
+	
 		
 $publisher_id = $_GET['user'];
 $network = "";
@@ -52,52 +97,12 @@ if( $_GET['params']['feed_id'] == 'kelkoo' )
 		{
 		$network = 'KK';
 		$affid = $publisher['KK'];
-		}	
-	}
-
-
-	function make_deep_link($network, $affid, $url, $campaign_id)
-		{
-		switch( $network )
-			{
-			case "KK":
-				return $url . "&addedParams=true&custom1=" . $affid . "&custom2=network_KK";
-				break;
-			
-			case "TD":
-			//textfield20
-				return "http://tracker.tradedoubler.com/pan/TrackerServlet?a=" . $affid . "&g=" . $campaign_id . "&p=3431&url=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_TD";
-				break;
-				
-			case "AWIN":
-			//textfield19;
-				return "http://www.awin1.com/awclick.php?awinmid=3278&awinaffid=" . $affid . "&p=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_AWIN";
-				break;
-			}
 		}
-		
-//$params = isset($_GET['params']) ? "&" . $_GET['params'] : "";
-//$maxproducts = isset($_GET['max']) ? "&" . $_GET['max'] : "10";
-
-// get publisher id from URL
-// get affiliate ids
-
-
-if( $width < 210 ) 
-{
-	$width = "210px";
-}
-
-if( $type == "carousel" )
-	{
-	$content = "<iframe height='250px' margin=0 border=0 scrolling=no width='" . ($width+10) . "px' frameborder=0 src='http://odst.co.uk/api/p20/p20iframe.php?" . http_build_query($_GET) . "'></iframe>";
-	//$content = "http://odst.co.uk/api/p20/p20iframe.php?user=m&pwd=test&params[feed_id]=" . $client . "&type=" . $type . "&width=" . $width . "'"
-	//$content  = "<iframe";
+	
+	
 	}
-else
-	{
-	$data = curl_get_file_contents("http://odst.co.uk/api/p20/index.php?" . http_build_query($_GET));
-	$products=json_decode($data,true);
+
+	
 	$content = display_content_unit($products,"products",$type,$style,$width);
 	}
 
@@ -158,7 +163,17 @@ function display_content_unit($products,$type,$display,$style,$width)
 						foreach ($products as $product) {		
 												   
 							$product=  ((object)$product);
-							
+							$deeplink = $product->deeplink;
+							if( $network == 'TD' )
+								{
+								$deeplink = $product->deeplink2;
+								}
+								
+							if( $network == 'AWIN' )
+								{
+								$deeplink = $product->deeplink3;
+								}
+															
 							$merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
 													
 							//$merchant = $product->program_name;
@@ -174,15 +189,15 @@ function display_content_unit($products,$type,$display,$style,$width)
 								
 							$hotel .= '>';
 
-							$hotel .= '<div class="photo"><a target="_blank" rel="nofollow" href="' . $product->deeplink . '"><img class="photo" src="'. $product->image_thumbnail . '"/></a></div>';
+							$hotel .= '<div class="photo"><a target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '"><img class="photo" src="'. $product->image_thumbnail . '"/></a></div>';
 
-							$hotel .= '<div class="name"><a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' class="name" target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $product->product_name . '</a>';			
+							$hotel .= '<div class="name"><a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' class="name" target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $product->product_name . '</a>';			
 							$hotel .= '</div>';
 
 							$hotel .= '<div class="location" ' . format_style(apply_style($style,'link_colour')) . '>' . odst_truncate($product->description,70) . '</div>';	
 						
-							$hotel .= '<div class="price"><a ' . format_style(apply_style($style,'price_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">&pound;' . format_price($product->price) . '</a>';
-							$hotel .= '<div class="clear"></div><div class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $merchant . '</a></div></div>';
+							$hotel .= '<div class="price"><a ' . format_style(apply_style($style,'price_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">&pound;' . format_price($product->price) . '</a>';
+							$hotel .= '<div class="clear"></div><div class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $merchant . '</a></div></div>';
 							$hotel .= '</div>';
 											
 							$i+=1;
@@ -220,6 +235,17 @@ function display_content_unit($products,$type,$display,$style,$width)
 						foreach ($products as $product) {
 						
 							$product=  ((object)$product);
+							$deeplink = $product->deeplink;
+							if( $network == 'TD' )
+								{
+								$deeplink = $product->deeplink2;
+								}
+								
+							if( $network == 'AWIN' )
+								{
+								$deeplink = $product->deeplink3;
+								}
+								
 							$merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
 							//$merchant = $product->program_name;
 							$hotel .= '<li>';
@@ -230,7 +256,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 
 							<td class="thumb_heading">
 
-							<a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' target="_blank" rel="nofollow" class="name" href="' . $product->deeplink . '">' . $product->product_name . '</a>
+							<a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' target="_blank" rel="nofollow" class="name" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $product->product_name . '</a>
 
 							</td>
 							</tr>							
@@ -238,14 +264,14 @@ function display_content_unit($products,$type,$display,$style,$width)
 								
 							<tr>
 
-							<td><a target="_blank" rel="nofollow" href="' . $product->deeplink . '"><img class="photo" src="' . $product->image_thumbnail . '"/></a>
+							<td><a target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '"><img class="photo" src="' . $product->image_thumbnail . '"/></a>
 
 							</td>
 
 							</tr>
 							<tr>
 
-							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $merchant . '</a>
+							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $merchant . '</a>
 
 							</td>
 
@@ -290,6 +316,16 @@ function display_content_unit($products,$type,$display,$style,$width)
 					if(count($products) > 0) {
 						foreach ($products as $product) {
 								$product=  ((object)$product);
+								$deeplink = $product->deeplink;
+							if( $network == 'TD' )
+								{
+								$deeplink = $product->deeplink2;
+								}
+								
+							if( $network == 'AWIN' )
+								{
+								$deeplink = $product->deeplink3;
+								}
 						    $merchant = isset($product->merchant) ? $product->merchant : $product->program_name;
 							//$merchant = $product->program_name;
 							$hotel .= '<li>';
@@ -300,7 +336,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 
 							<td class="thumb_heading">
 
-							<a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' target="_blank" rel="nofollow" class="name" href="' . $product->deeplink . '">' . $product->product_name . '</a>
+							<a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' target="_blank" rel="nofollow" class="name" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $product->product_name . '</a>
 
 							</td>
 							</tr>							
@@ -308,14 +344,14 @@ function display_content_unit($products,$type,$display,$style,$width)
 								
 							<tr>
 
-							<td><a target="_blank" rel="nofollow" href="' . $product->deeplink . '"><img class="thumb_image" src="' . $product->image_thumbnail . '"/></a>
+							<td><a target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '"><img class="thumb_image" src="' . $product->image_thumbnail . '"/></a>
 
 							</td>
 
 							</tr>
 							<tr>
 
-							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $merchant . '</a>
+							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $merchant . '</a>
 
 							</td>
 
