@@ -19,8 +19,15 @@ if( strpos($file, 'efmaster') !== FALSE )
 	{
 	$feed['filename'] = $file;
 	$feeds->save($feed);
+	try
+	{
 	ODSTech_FeedManager::process('kelkoo');
 	echo("Processed" . $file . "\r\n");
+	}
+	catch()
+	{
+	echo("Error processing" . $file . "\r\n");
+	}
 	ftp_delete($conn_id, $file);
 	}
 }
