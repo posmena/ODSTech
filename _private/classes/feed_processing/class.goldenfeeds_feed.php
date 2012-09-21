@@ -99,7 +99,14 @@ class goldenfeeds_feed extends network_base
 		    $product['feed_id'] = $feed_id;
 			$product['program_name'] = $feed['feedname'];
 			$product['last_updated'] = new MongoDate();
-			$products->save($product);			
+			if( $product['product_operation'] == 'delete' )
+				{
+				$products->remove(array('_id' => $feed_id . "_" . $product['productid']) );			
+				}
+			else
+				{
+				$products->save($product);			
+				}
 		}
 		
 		return $i;
