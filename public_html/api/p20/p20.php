@@ -52,12 +52,7 @@ if( $_GET['params']['feed_id'] == 'kelkoo' )
 		{
 		$network = 'KK';
 		$affid = $publisher['KK'];
-		}
-	
-	echo($network . "<br>");
-	echo($affid . "<br>");
-	echo($campaign_id . "<br>");
-	
+		}	
 	}
 
 
