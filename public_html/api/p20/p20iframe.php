@@ -303,7 +303,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 
 							<td class="thumb_heading">
 
-							<a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' target="_blank" rel="nofollow" class="name" href="' . $product->deeplink . '">' . $product->product_name . '</a>
+							<a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' target="_blank" rel="nofollow" class="name" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $product->product_name . '</a>
 
 							</td>
 							</tr>							
@@ -311,14 +311,14 @@ function display_content_unit($products,$type,$display,$style,$width)
 								
 							<tr>
 
-							<td><a target="_blank" rel="nofollow" href="' . $product->deeplink . '"><img class="photo" src="' . $product->image_thumbnail . '"/></a>
+							<td><a target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '"><img class="photo" src="' . $product->image_thumbnail . '"/></a>
 
 							</td>
 
 							</tr>
 							<tr>
 
-							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . $product->deeplink . '">' . $merchant . '</a>
+							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $merchant . '</a>
 
 							</td>
 
