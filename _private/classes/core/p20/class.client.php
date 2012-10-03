@@ -56,6 +56,9 @@ class core_p20_client extends core_default
 				if( $user )
 					{
 					$affiliate_id = $user['ot_users_id'];
+					// if the network is new then add the data
+					$user[$network] = $publisher_id;					
+					$users->save($user);
 					}
 				else
 					{
