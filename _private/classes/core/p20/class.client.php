@@ -59,11 +59,11 @@ class core_p20_client extends core_default
 					// if the network is new then add the data
 						
 					
-					$mdb->ot_users->update(array('_id' => $user['ot_users_id']),array('$unset' => array("KK" => 1)),false,false);
-					$mdb->ot_users->update(array('_id' => $user['ot_users_id']),array('$unset' => array("TD" => 1)),false,false);
-					$mdb->ot_users->update(array('_id' => $user['ot_users_id']),array('$unset' => array("AWIN" => 1)),false,false);
+					$mdb->ot_users->update(array('_id' => $user['ot_users_id']),array('$unset' => array("KK" => 1)));
+					$mdb->ot_users->update(array('_id' => $user['ot_users_id']),array('$unset' => array("TD" => 1)));
+					$mdb->ot_users->update(array('_id' => $user['ot_users_id']),array('$unset' => array("AWIN" => 1)));
 														
-					$mdb->ot_users->update(array('_id' => $user['ot_users_id']),array('$set' => array($network => $publisher_id)),false,false);
+					$mdb->ot_users->update(array('_id' => $user['ot_users_id']),array('$set' => array($network => $publisher_id)));
 					
 					}
 				else
