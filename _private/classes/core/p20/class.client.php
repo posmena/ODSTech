@@ -8,12 +8,13 @@ class core_p20_client extends core_default
 	
 	public function __construct($db, $qs, $ajax) {
 		$this->ajax = $ajax;
-		
+		$conn = new Mongo('localhost');
+		$mdb  = $conn->odstech;
+		$affiliate_id = "";
 		
 		if( false == $ajax )
 			{
-			$conn = new Mongo('localhost');
-			$mdb  = $conn->odstech;
+			
 			$collection = $mdb->ot_feeds;
 			
 			$feed = $collection->findOne( array("client" => strtolower($qs['client'])) );
@@ -79,12 +80,21 @@ class core_p20_client extends core_default
 					$mdb->$collection_name->insert(array('publisher_id' => $publisher_id, 'ot_users_id' => $newuser['_id']));
 					$affiliate_id = $newuser['_id'];
 					}
+					
+				// store the affiliateid in the session for saving units	
+				$user = new user($db,'','',null,$affiliate_id);
 			
+			    util::setSession('user',$user);
 				}
 			else
 				{
 				// get from logged in user
-				$affiliate_id = '7234678368';
+				$user = util::getSession('user');	
+				if( $user )
+					{
+					$affiliate_id = $user->user_id;
+					}
+			
 				}
 								
 			$this->assignments['p20']['affiliate_id'] = $affiliate_id;
@@ -100,8 +110,45 @@ class core_p20_client extends core_default
 					}
 				}
 				
-			}
 			$this->assignments['feed'] = $feed;
+				
+			}
+			
+			else if( isset($_POST['action']) )
+			{
+			// ajax call
+			// are we saving the unit?
+			
+			$action = $_POST['action'];
+			switch( $action ) 
+				{
+				case 'load':
+				    // load from DB where unitID=xx and affiliate_id=$affiliate_id
+					//send data back as ajax return data
+					$user = util::getSession('user');				
+					$affiliate_id = $user->user_id;
+					$unitid = $_POST['unitid'];
+					$coll = $mdb->p20_contentunits;
+					$itm = $coll->findOne(array('_id' => $unitid . '_' . $affiliate_id));
+					echo(http_build_query($itm['values']));
+					die();
+					break;
+				
+				case 'save':
+					// store in DB unit=xx and affiliate_id=$affiliate_id
+					$user = util::getSession('user');				
+					$affiliate_id = $user->user_id;
+					$coll = $mdb->p20_contentunits;
+					$unitid = $_POST['unitid'];
+					$itm = array('_id' => $unitid . '_' . $affiliate_id, 'affiliateid' => $affiliate_id, 'unitid' => $unitid, 'values' => $_POST);
+					$coll->save($itm);					
+					die();
+					break;
+				}
+			
+			}
+			
+			
 		if (true === array_key_exists('login', $qs)) {
 			
 			$username = $qs['email'];

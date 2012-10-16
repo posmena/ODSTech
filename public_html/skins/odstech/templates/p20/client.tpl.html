@@ -5,6 +5,8 @@
 
 
 <script language="javascript">
+	var UNITID;
+	var AFFID = '{/literal}{$p20.affiliate_id}{literal}';
 	
 	jQuery().ready(function() {
 	jQuery('#tabs').tabs();
@@ -13,6 +15,8 @@
   jQuery.fn.outerHTML = function() {
     return jQuery(this).clone().wrap('<div></div>').parent().html();
   }
+  
+  
 })(jQuery);
 
 
@@ -33,6 +37,19 @@
     function(){ jQuery(this).removeClass('jqmdXFocus'); });
 
 	updateDivs();
+	
+	//if id passed in then load from db
+	
+	UNITID = get_url_param('unit_id');
+	
+	if( UNITID != '' )
+		{
+		load('#demo_form',UNITID);
+		}
+		
+	
+	
+	
 });
 	
 </script>
@@ -63,34 +80,103 @@ jQuery("#demo_div").html(response)
 
 function set_code(divid)
 {
-clone = jQuery('#' + divid).clone();
-clone.children().remove();
-clone.removeAttr('style');
-clone.removeAttr('id');
-
-var str = clone.outerHTML().replace("<","&lt;").replace(">","&gt;");
-str = str.replace("<","&lt;").replace(">","&gt;");
-
-
 var code;
-code = "<strong><b>Content unit embedding code</b></strong><br>";
-code += "Include the following once your page, it is best to include it in the footer.<br>";
-code += "<textarea class=\"preview\">";
-code += "&lt;script src=\"http://odst.co.uk/api/p20/p20.js\" type=\"text/javascript\"&gt;&lt;/script&gt;\n";
-code += "&lt;script&gt;\n";
-code += "	ODST_P20.showContentUnits();\n";
-code += "&lt;/script&gt;\n";
-code += "</textarea>";
-code += "<br /><br />"
-code += "Add this div tag to where you want the content unit to appear:<br>"
-code += "<textarea class=\"preview\">";
-code += str
-code += "</textarea>";
+
+if( AFFID == '' )
+	{
+	code = "<a href='/login.html?url=" + document.location.href + "'>Log in</a> to get code";
+	}
+else
+	{
+	clone = jQuery('#' + divid).clone();
+	clone.children().remove();
+	clone.removeAttr('style');
+	clone.removeAttr('id');
+
+	var str = clone.outerHTML().replace("<","&lt;").replace(">","&gt;");
+	str = str.replace("<","&lt;").replace(">","&gt;");
+
+	code = "<strong><b>Content unit embedding code</b></strong><br>";
+	code += "Include the following once your page, it is best to include it in the footer.<br>";
+	code += "<textarea class=\"preview\">";
+	code += "&lt;script src=\"http://odst.co.uk/api/p20/p20.js\" type=\"text/javascript\"&gt;&lt;/script&gt;\n";
+	code += "&lt;script&gt;\n";
+	code += "	ODST_P20.showContentUnits();\n";
+	code += "&lt;/script&gt;\n";
+	code += "</textarea>";
+	code += "<br /><br />"
+	code += "Add this div tag to where you want the content unit to appear:<br>"
+	code += "<textarea class=\"preview\">";
+	code += str
+	code += "</textarea>";
+	}
+	
 jQuery('#code_' + divid).html(code);
 }
 
 function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function load(sel,unitId)
+{
+var form = jQuery(sel);
+ 
+    jQuery.ajax({
+        type: "POST",
+        url: form.action ? form.action : document.URL,
+        data: "action=load&unitid=" + unitId ,
+        dataType: "text",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Ajax-Request", "true");
+        },
+        success: function(response) {
+			
+		    jQuery(form).deserialize(response);
+		
+			// re-initialise the color pickers
+			jQuery(".color-picker").each( function() {
+				jQuery(this).miniColors('value',jQuery(this).val());
+				});
+			
+			updateDivs();
+			ODST_P20.display(ODST_P20);
+			
+        }
+		
+    });
+    return false;
+}
+
+function saveUnit(sel,cb, unitid)
+{
+if( unitid == '' )
+	{
+	return;
+	}
+	
+// if a unit ID was passed in then save the settings
+ var form = jQuery(sel);
+ 
+    jQuery.ajax({
+        type: "POST",
+        url: form.action ? form.action : document.URL,
+        data: jQuery(form).serialize() + '&unitid=' + unitid + '&action=save' ,
+        dataType: "text",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Ajax-Request", "true");
+        },
+        success: function(response) {
+		    cb(response);
+        }
+		
+    });
+    return false;
+}
+
+function say(x)
+{
+//alert(x);
 }
 
 function updateDivs()
@@ -151,7 +237,7 @@ jQuery("div.odst_p20").each(function(){
 
 <div id="contentunits">
 <h1 style="text-align:center;margin:20px 0;font-size:22px">Content Units</h1>
-	<form name=demo_form method="post" action="/p20/home.html">
+	<form id="demo_form" name=demo_form method="post" action="/p20/home.html">
 		<h2 id="unitname">{$feed.feedname} Content Units</h2>
 
 		<div style="padding:10px;width:660px;border:2px solid #D9D9D9;border-radius: 16px 16px 16px 16px">
@@ -166,9 +252,9 @@ jQuery("div.odst_p20").each(function(){
 		</select></p>
 		{/foreach}
 		<p>
-		<b>Width</b>: <input style="width:50px" type="text" id="cu_width" value="500px"></input>
+		<b>Width</b>: <input style="width:50px" type="text" name="cu_width" id="cu_width" value="500px"></input>
 		&nbsp;&nbsp;
-		<b>Maximum products</b>:<input style="width:50px" type="text" id="cu_maxproducts" value="6"></input>
+		<b>Maximum products</b>:<input style="width:50px"  name="cu_maxproducts" type="text" id="cu_maxproducts" value="6"></input>
 		<b>Style</b>:
 		
 		<select id="cu_style" name="style">
@@ -181,7 +267,7 @@ jQuery("div.odst_p20").each(function(){
 		<b>Colors:</b><br/>
 		<table>
 		<tr>
-		<td><label>Border:</label></td><td><input class="p20color color-picker" name="border_colour" style="width:78px" type="text" value="#D9D9D9"></input></td>
+		<td><label>Border:</label></td><td><input id="border_colour" class="p20color color-picker" name="border_colour" style="width:78px" type="text" value="#D9D9D9"></input></td>
 		<td class="col2"><label>Background:</label></td><td><input class="p20color color-picker" name="background_colour" style="width:78px" type="text" value="#FFFFFF"></input></td>
 		</tr>
 		<tr>
@@ -199,7 +285,7 @@ jQuery("div.odst_p20").each(function(){
 		</table>
 		</p>
 		<br>
-	<a class="btn-show" href="#" onclick="updateDivs();ODST_P20.display(ODST_P20);return false;">Preview Content Units</a>
+	<a class="btn-show" href="#" onclick="updateDivs();ODST_P20.display(ODST_P20);saveUnit('#demo_form',say, UNITID);return false;">Preview Content Units</a>
 
 		</div>
 <div id="tabs" style="margin-top:20px">

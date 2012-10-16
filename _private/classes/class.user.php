@@ -8,16 +8,37 @@ class user {
 	private $userclass;
 	private $clientid;
 	
-	function __construct($db, $username, $password, $user = null) {
+	function __construct($db, $username, $password, $user = null, $id = null) {
+		
+		$this->db = $db;		
+		
 		if ($user !== null) {
 			$this->setUser($user);
 		}
 		
-		$this->db = $db;
-		$this->username = $username;
+		if ( $id !== null )
+			{
+			$this->load_from_id($id);
+			}
+		
 		$this->password = $password;
 	}
 	
+	
+	
+	function load_from_id($id)
+		{
+		
+		$obj = $this->db->ot_users->findOne(array('_id' => $id));
+		
+		if( $obj == null )
+			{
+			return false;
+			}
+		
+		$this->setUser($obj);
+		}
+		
 	function login() {
 	
 	/*
@@ -41,14 +62,17 @@ class user {
 			{
 			return false;
 			}
-			
+		
 		$this->setUser($obj);
 		
 		return true;
 	}
 	
 	function setUser($user) {
-		$this->email = $user->email;
+		if(isset($user['email'])) $this->email = $user['email'];
+		if(isset($user['_id'])) $this->user_id = (string) $user['_id'];
+		if(isset($user['firstname'])) $this->firstname = $user['firstname'];
+		if(isset($user['username'])) $this->username = $user['username'];
 		//$this->userclass = $user->userclass;
 		//$this->clientid = $user->clientid;
 	}
