@@ -11,6 +11,8 @@ class user {
 	function __construct($db, $username, $password, $user = null, $id = null) {
 		
 		$this->db = $db;		
+		$this->username = $username;
+		$this->password = $password;
 		
 		if ($user !== null) {
 			$this->setUser($user);
@@ -21,7 +23,6 @@ class user {
 			$this->load_from_id($id);
 			}
 		
-		$this->password = $password;
 	}
 	
 	
