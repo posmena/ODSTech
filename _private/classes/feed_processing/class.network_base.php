@@ -270,7 +270,7 @@ class network_base implements network
 						$data[$key] = mb_convert_encoding($data[$key], "UTF-8");
 					}
 					$item[$field] = $data[$key];
-					//$this->doCustomEdits($data, $key, $field);
+					$this->doCustomEdits($data, $key, $field);
 				}
 			}
 
