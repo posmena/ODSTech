@@ -75,7 +75,12 @@ class feed_processor
 				}
 				default:
 				{
-					$local_file = $path4feed.'feed'.$feed_id.'.'.$feed['format'];
+					$format = "";
+					if( isset($feed['format']) )
+						{
+						$format = "." . $feed['format'];
+						}
+					$local_file = $path4feed.'feed'.$feed_id.$format;
 					print("Downloading from html:" . $feed['url']."\n");
 					$data = self::curl_get_file_contents($feed['url']);
 					print("Finished downloading");
