@@ -27,7 +27,7 @@ $options = array();
 }
 ?>
 
-<?php if isset( $_GET['ssl'] )
+<?php if ( isset( $_GET['ssl'] ) )
 {
 ?>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
