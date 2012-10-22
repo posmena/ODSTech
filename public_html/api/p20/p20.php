@@ -59,7 +59,14 @@ if( $width < 210 )
 
 if( $type == "carousel" )
 	{
-	$content = "<iframe height='250px' margin=0 border=0 scrolling=no width='" . ($width+10) . "px' frameborder=0 src='http://odst.co.uk/api/p20/p20iframe.php?" . http_build_query($_GET) . "'></iframe>";
+	if( isset($_GET['ssl']) )
+		{
+		$content = "<iframe height='250px' margin=0 border=0 scrolling=no width='" . ($width+10) . "px' frameborder=0 src='https://odst.co.uk/api/p20/p20iframe.php?" . http_build_query($_GET) . "'></iframe>";	
+		}
+	else
+		{
+		$content = "<iframe height='250px' margin=0 border=0 scrolling=no width='" . ($width+10) . "px' frameborder=0 src='http://odst.co.uk/api/p20/p20iframe.php?" . http_build_query($_GET) . "'></iframe>";
+		}
 	//$content = "http://odst.co.uk/api/p20/p20iframe.php?user=m&pwd=test&params[feed_id]=" . $client . "&type=" . $type . "&width=" . $width . "'"
 	//$content  = "<iframe";
 	}
