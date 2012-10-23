@@ -137,16 +137,7 @@ BrowserDetect.proptype = {
 		var params = divs[i].getAttribute('data-params');
 		var colors = divs[i].getAttribute('data-colors');
 		var publisher_id = divs[i].getAttribute('data-id');
-		var ssl_opt = divs[i].getAttribute('data-ssl');
-		
-		if( (ssl_opt == "" || ssl_opt == null) && ssl == false)
-			{
-			ssl = false;
-			}
-		else
-			{
-			ssl = true;
-			}
+
 		
 		var style = "";
 		style = divs[i].getAttribute('data-style');
