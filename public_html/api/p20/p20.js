@@ -137,7 +137,16 @@ BrowserDetect.proptype = {
 		var params = divs[i].getAttribute('data-params');
 		var colors = divs[i].getAttribute('data-colors');
 		var publisher_id = divs[i].getAttribute('data-id');
-		var ssl = divs[i].hasAttribute('data-ssl');
+		var ssl = divs[i].getAttribute('data-ssl');
+		
+		if( ssl == "" || ss == null )
+			{
+			ssl = false;
+			}
+		else
+			{
+			ssl = true;
+			}
 		
 		var style = "";
 		style = divs[i].getAttribute('data-style');
@@ -209,11 +218,11 @@ BrowserDetect.proptype = {
 				 var url;
 				if( ssl == true )
 					{
-				  url = "https://odst.co.uk/api/p20/p20.php?user=" + publisher_id + "&params[feed_id]=" + client + "&" + params + "&" + colors + "&type=" + displayType + "&width=" + width  + "&max=" + maxproducts + "&style=" + style + "&callback=ODST_P20.parseRequest&index=" + index + "&rand=23ss4322&ssl=1";
+				  url = "https://s.odst.co.uk/api/p20/p20.php?user=" + publisher_id + "&params[feed_id]=" + client + "&" + params + "&" + colors + "&type=" + displayType + "&width=" + width  + "&max=" + maxproducts + "&style=" + style + "&callback=ODST_P20.parseRequest&index=" + index + "&rand=23ss4322&ssl=1";
 				 }
 				else
 					{
-					url = "http://odst.co.uk/api/p20/p20.php?user=" + publisher_id + "&params[feed_id]=" + client + "&" + params + "&" + colors + "&type=" + displayType + "&width=" + width  + "&max=" + maxproducts + "&style=" + style + "&callback=ODST_P20.parseRequest&index=" + index + "&rand=23ss4322";		
+					url = "http://s.odst.co.uk/api/p20/p20.php?user=" + publisher_id + "&params[feed_id]=" + client + "&" + params + "&" + colors + "&type=" + displayType + "&width=" + width  + "&max=" + maxproducts + "&style=" + style + "&callback=ODST_P20.parseRequest&index=" + index + "&rand=23ss4322";		
 					}
 					
 				// create a new script element
