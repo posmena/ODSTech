@@ -30,11 +30,11 @@ $options = array();
 <?php if ( isset( $_GET['ssl'] ) )
 {
 ?>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
 <?php }
 else
 { ?>
-<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <?php } ?>
 
 <script type='text/javascript' src='js/easySlider1.7.js?ver=1.0.0'></script>
