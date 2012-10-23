@@ -139,7 +139,7 @@ BrowserDetect.proptype = {
 		var publisher_id = divs[i].getAttribute('data-id');
 		var ssl_opt = divs[i].getAttribute('data-ssl');
 		
-		if( ssl_opt == "" || ssl_opt == null && ssl == false)
+		if( (ssl_opt == "" || ssl_opt == null) && ssl == false)
 			{
 			ssl = false;
 			}
