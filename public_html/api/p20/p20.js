@@ -168,9 +168,11 @@ BrowserDetect.proptype = {
 		me.callTheJsonp(i,client,displayType,width,params,colors,maxproducts,style,publisher_id,ssl);
 		}
 	},
-	showContentUnits : function(id,ssl = false)
+	showContentUnits : function(id,ssl)
 	{		
 		var Me = this;
+		if( !ssl ) { ssl = false; }
+		
 		this.browserDetect = new BrowserDetect;
 		if(document.addEventListener)
 			{
@@ -207,8 +209,7 @@ BrowserDetect.proptype = {
             {
                 // the url of the script where we send the asynchronous call
 				 var url;
-				 alert(ssl);
-				if( ssl == true )
+				 if( ssl == true )
 					{
 				  url = "https://odst.co.uk/api/p20/p20.php?user=" + publisher_id + "&params[feed_id]=" + client + "&" + params + "&" + colors + "&type=" + displayType + "&width=" + width  + "&max=" + maxproducts + "&style=" + style + "&callback=ODST_P20.parseRequest&index=" + index + "&rand=23ss4322&ssl=1";
 				 }
