@@ -123,7 +123,7 @@ BrowserDetect.proptype = {
  
  ODST_P20.prototype = {
     options           : {},
-	display : function(me)
+	display : function(me,ssl)
 	{
 	// for each p20 div call jsonP with params
 	var divs = this.getElementsByClassNameX("odst_p20");
@@ -137,9 +137,9 @@ BrowserDetect.proptype = {
 		var params = divs[i].getAttribute('data-params');
 		var colors = divs[i].getAttribute('data-colors');
 		var publisher_id = divs[i].getAttribute('data-id');
-		var ssl = divs[i].getAttribute('data-ssl');
+		var ssl_opt = divs[i].getAttribute('data-ssl');
 		
-		if( ssl == "" || ssl == null )
+		if( ssl_opt == "" || ssl_opt == null && ssl == false)
 			{
 			ssl = false;
 			}
@@ -177,7 +177,7 @@ BrowserDetect.proptype = {
 		me.callTheJsonp(i,client,displayType,width,params,colors,maxproducts,style,publisher_id,ssl);
 		}
 	},
-	showContentUnits : function(id)
+	showContentUnits : function(id,ssl = false)
 	{		
 		var Me = this;
 		this.browserDetect = new BrowserDetect;
@@ -195,11 +195,11 @@ BrowserDetect.proptype = {
 			try
 			{document.documentElement.doScroll('left');}
 			catch(error){setTimeout(arguments.callee,0);return;}
-			this.display(this);})();
+			this.display(this,ssl);})();
 
 			var oldonload=window.onload;
 			window.onload=function(){
-			Me.display(Me);
+			Me.display(Me,ssl);
 			if(oldonload)
 			if(typeof oldonload=='string'){eval(oldonload);}
 			else oldonload();};
@@ -218,7 +218,7 @@ BrowserDetect.proptype = {
 				 var url;
 				if( ssl == true )
 					{
-				  url = "https://s.odst.co.uk/api/p20/p20.php?user=" + publisher_id + "&params[feed_id]=" + client + "&" + params + "&" + colors + "&type=" + displayType + "&width=" + width  + "&max=" + maxproducts + "&style=" + style + "&callback=ODST_P20.parseRequest&index=" + index + "&rand=23ss4322&ssl=1";
+				  url = "https://odst.co.uk/api/p20/p20.php?user=" + publisher_id + "&params[feed_id]=" + client + "&" + params + "&" + colors + "&type=" + displayType + "&width=" + width  + "&max=" + maxproducts + "&style=" + style + "&callback=ODST_P20.parseRequest&index=" + index + "&rand=23ss4322&ssl=1";
 				 }
 				else
 					{

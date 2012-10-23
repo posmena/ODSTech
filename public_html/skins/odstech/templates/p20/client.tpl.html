@@ -140,7 +140,7 @@ var form = jQuery(sel);
 				});
 			
 			updateDivs();
-			ODST_P20.display(ODST_P20);
+			ODST_P20.display(ODST_P20,true);
 			
         }
 		
@@ -287,7 +287,7 @@ jQuery("div.odst_p20").each(function(){
 		</table>
 		</p>
 		<br>
-	<a class="btn-show" href="#" onclick="updateDivs();ODST_P20.display(ODST_P20);saveUnit('#demo_form',say, UNITID);return false;">Preview Content Units</a>
+	<a class="btn-show" href="#" onclick="updateDivs();ODST_P20.display(ODST_P20,true);saveUnit('#demo_form',say, UNITID);return false;">Preview Content Units</a>
 
 		</div>
 <div id="tabs" style="margin-top:20px">
@@ -341,13 +341,11 @@ Add this div tag to where you want the content unit to appear:
 </p>
 </div>
 
-
-
 </div></div></div>
 <input type="button" class="jqmdX jqmClose" value="X"/>
 </div>
 
 <script src="https://odst.co.uk/api/p20/p20.js" type="text/javascript"></script>
 <script>
-	ODST_P20.showContentUnits();
+	ODST_P20.showContentUnits(0,true);
 </script>
