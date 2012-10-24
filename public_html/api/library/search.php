@@ -33,7 +33,15 @@ try
 	$itm['image'] = $response->Items->Item->MediumImage->URL;
 	$itm['price'] = $response->Items->Item->ItemAttributes->ListPrice->FormattedPrice;
 	$itm['author'] = $response->Items->Item->ItemAttributes->Author;
-	$itm['author'] = $response->Items->Item->EditorialReviews->EditorialReview->Content;
+	
+	try
+	{
+	$itm['description'] = $response->Items->Item->EditorialReviews->EditorialReview->Content;
+	}
+	catch()
+	{
+	$itm['description'] = "";
+	}
 	
 	if( $response->Items->Item->CustomerReviews->HasReviews )
 		{
