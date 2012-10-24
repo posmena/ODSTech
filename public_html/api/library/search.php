@@ -3,11 +3,6 @@
  * For a running Search Demo see: http://amazonecs.pixel-web.org
  */
 
-if ("cli" !== PHP_SAPI)
-{
-    echo "<pre>";
-}
-
 
 if (is_file('sampleSettings.php'))
 {
@@ -53,9 +48,4 @@ try
 catch(Exception $e)
 {
   echo $e->getMessage();
-}
-
-if ("cli" !== PHP_SAPI)
-{
-    echo "</pre>";
 }
