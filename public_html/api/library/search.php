@@ -40,7 +40,9 @@ try
 		$itm['reviews'] =  $response->Items->Item->CustomerReviews->IFrameURL;
 		}
 
-	echo(json_encode($itm));
+	$books[] = $itm;
+	
+	echo(json_encode($books));
     //$response = $amazonEcs->responseGroup('Images')->lookup('B0017TZY5Y');
     //var_dump($response);
 
