@@ -38,7 +38,7 @@ try
 	{
 	$itm['description'] = $response->Items->Item->EditorialReviews->EditorialReview->Content;
 	}
-	catch()
+	catch(Exception $e)
 	{
 	$itm['description'] = "";
 	}
