@@ -155,8 +155,16 @@ BrowserDetect.proptype = {
 					var fileref=document.createElement("link")
 						fileref.setAttribute("rel", "stylesheet")
 						fileref.setAttribute("type", "text/css")
-						fileref.setAttribute("href", "http://odst.co.uk/api/p20/css/" + style + ".css")
-				  
+						
+						if( ssl )
+							{
+							fileref.setAttribute("href", "https://odst.co.uk/api/p20/css/" + style + ".css")
+							}
+						else
+							{
+							fileref.setAttribute("href", "http://odst.co.uk/api/p20/css/" + style + ".css")
+							}
+							
 						document.getElementsByTagName('head')[0].appendChild(fileref);
 		
 					}
