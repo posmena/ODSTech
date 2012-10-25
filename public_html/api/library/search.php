@@ -103,7 +103,7 @@ try
 			}
 		
 		$itm['description'] = "";
-		$itm['description'] = "";
+		
 			
 		try
 		{
@@ -116,6 +116,11 @@ try
 		{
 		$itm['description'] = "";
 		}
+		
+		if( $itm['description'] == null )
+			{
+			$itm['description'] = "";
+			}
 		
 		if( $theitem->CustomerReviews->HasReviews )
 			{
