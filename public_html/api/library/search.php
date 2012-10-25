@@ -35,6 +35,8 @@ try
 		
 	for( $i=0; $i < $results; $i++ )
 		{
+	
+			
 		$theitem = null;
 		if( $results == 1 )
 			{
@@ -67,6 +69,12 @@ try
 			
 		
 		$itm['price'] = $theitem->ItemAttributes->ListPrice->FormattedPrice;
+		
+		if( !isset($theitem->ItemAttributes->ISBN) )
+		{
+		continue;
+		}
+		
 		$itm['ISBN'] = $theitem->ItemAttributes->ISBN;
 		
 		if( isset($theitem->ItemAttributes->Author) )
