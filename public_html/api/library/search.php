@@ -25,31 +25,86 @@ try
     $amazonEcs->associateTag(AWS_ASSOCIATE_TAG);
 
     // Looking up multiple items
-    $response = $amazonEcs->category('Books')->responseGroup('ItemAttributes,Images,Reviews,EditorialReview')->optionalParameters(array('SearchIndex' => 'Books', 'IdType' => 'ISBN'))->search($_GET['keyword']);
+    $response = $amazonEcs->category('Books')->responseGroup('ItemAttributes,Images,Reviews,EditorialReview')->search($_GET['keyword']);
    // $response = $amazonEcs->category('Books')->responseGroup('Large,EditorialReview')->lookup($_GET['search']);
 
+	//var_dump($response);
+	//die();
 	
-	$itm['title'] = $response->Items->Item->ItemAttributes->Title;
-	$itm['image'] = $response->Items->Item->MediumImage->URL;
-	$itm['price'] = $response->Items->Item->ItemAttributes->ListPrice->FormattedPrice;
-	$itm['author'] = $response->Items->Item->ItemAttributes->Author;
-	
-	try
-	{
-	$itm['description'] = $response->Items->Item->EditorialReviews->EditorialReview->Content;
-	}
-	catch(Exception $e)
-	{
-	$itm['description'] = "";
-	}
-	
-	if( $response->Items->Item->CustomerReviews->HasReviews )
+    $results = count($response->Items->Item);
+		
+	for( $i=0; $i < $results; $i++ )
 		{
-		$itm['reviews'] =  $response->Items->Item->CustomerReviews->IFrameURL;
+		$theitem = null;
+		if( $results == 1 )
+			{
+			$theitem = $response->Items->Item;
+			}
+		else
+			{
+			$theitem = $response->Items->Item[$i];
+			}
+			
+		$itm['title'] = $theitem->ItemAttributes->Title;
+		
+		if( isset($theitem->MediumImage) )
+			{
+			$itm['image'] = $theitem->MediumImage->URL;
+			}
+		else
+			{
+			$itm['image'] = "";
+			}
+			
+		if( isset($theitem->SmallImage) )
+			{
+			$itm['thumbnail'] = $theitem->SmallImage->URL;
+			}
+		else
+			{
+			$itm['thumbnail'] = "";
+			}
+			
+		
+		$itm['price'] = $theitem->ItemAttributes->ListPrice->FormattedPrice;
+		$itm['ISBN'] = $theitem->ItemAttributes->ISBN;
+		
+		if( isset($theitem->ItemAttributes->Author) )
+			{
+		if( count($theitem->ItemAttributes->Author) > 1 )
+			{
+				$itm['author'] = $theitem->ItemAttributes->Author[0];
+			}
+			else
+			{
+				$itm['author'] = $theitem->ItemAttributes->Author;
+			}
+			}
+		else
+			{
+			$itm['author'] = "";
+			}
+			
+		try
+		{
+		if( isset($theitem->EditorialReviews) )
+			{
+			$itm['description'] = $theitem->EditorialReviews->EditorialReview->Content;
+			}
 		}
+		catch(Exception $e)
+		{
+		$itm['description'] = "";
+		}
+		
+		if( $theitem->CustomerReviews->HasReviews )
+			{
+			$itm['reviews'] =  $theitem->CustomerReviews->IFrameURL;
+			}
 
-	$books[] = $itm;
-	
+		$books[] = $itm;
+		}
+		
 	echo(json_encode($books));
     //$response = $amazonEcs->responseGroup('Images')->lookup('B0017TZY5Y');
     //var_dump($response);
