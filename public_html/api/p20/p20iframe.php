@@ -30,7 +30,7 @@ $options = array();
 <?php if ( isset( $_GET['ssl'] ) )
 {
 ?>
-<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="https://odst.co.uk/api/p20/js/jquery.js"></script>
 <?php }
 else
 { ?>
