@@ -90,6 +90,7 @@ try
 			}
 		else
 			{
+			continue;
 			$itm['author'] = "";
 			}
 			
