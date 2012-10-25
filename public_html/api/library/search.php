@@ -3,6 +3,7 @@
  * For a running Search Demo see: http://amazonecs.pixel-web.org
  */
 
+error_reporting(0);
 
 if (is_file('sampleSettings.php'))
 {
@@ -100,6 +101,9 @@ try
 			continue;
 			$itm['author'] = "";
 			}
+		
+		$itm['description'] = "";
+		$itm['description'] = "";
 			
 		try
 		{
@@ -118,7 +122,10 @@ try
 			$itm['reviews'] =  $theitem->CustomerReviews->IFrameURL;
 			}
 
-		$books[] = $itm;
+		if( isset($itm['price']) )
+			{
+			$books[] = $itm;
+			}
 		}
 		
 	echo(json_encode($books));
