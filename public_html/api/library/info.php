@@ -1,7 +1,7 @@
 <html><body><b>Hackney Central Library</b><br/><br/>        		
 Hackney Technology and Learning Centre<br/>
 1 Reading Lane<br/>
-E8 1GQ<br/><br/><br/>
+E8 1GQ (<a href="https://maps.google.co.uk/maps?ie=UTF8&cid=13331052498808940340&q=Hackney+Central+Library+Technology+%26+Learning+Centre&iwloc=A&gl=GB&hl=en">show map</a>)<br/><br/><br/>
 <b>Opening Hours</b><br/><br/>
 Mon to Thurs 9am - 8pm<br/>
 Fri 9am - 6pm<br/>
