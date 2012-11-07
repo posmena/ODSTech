@@ -1,0 +1,281 @@
+/*
+   Search-as-you-type styles: Generic styles for all browsers
+   Copyright 2007 Google Inc. All rights reserved.
+*/ 
+
+#searchAsYouType {
+  border: 0px;
+  padding: 0px;
+  margin: 0em auto;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+#searchAsYouType .nowrap {
+  white-space: nowrap;
+}
+#searchAsYouType .unselectable {
+  -moz-user-select: none;
+  -user-select: none;
+}
+
+/* Input field */
+
+input#searchAsYouTypeBackupSearchField {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* Search results */
+
+#searchAsYouType div.searchResults {
+  font-family: Arial, Helvetica, sans-serif;
+
+  background: white;
+  font-size: 92%;
+  line-height: 140%;
+  border-top: 1px #c9c9c9 solid;
+  border-bottom: 0;
+
+  position: absolute;
+  z-index: 2010;
+
+  overflow: auto;
+
+  display: none;
+}
+#searchAsYouType div.searchResults div.searchResult {
+  padding: 0.5em;
+  border-top: 1px #cde1ff solid;
+
+  border-left: 0.6em solid white;
+  border-right: 0.6em solid white;
+
+  display: block !important;
+  cursor: pointer;
+
+  overflow: hidden;
+}
+#searchAsYouType div.searchResults div.searchResult:hover {
+  background: #e5f0ff !important;
+}
+#searchAsYouType div.searchResults div.highlighted {
+  background: #e5f0ff;
+}
+#searchAsYouType div.searchResults a.highlighted,
+#searchAsYouType div.searchResults div.summary a.summarized:hover {
+  margin: -0.1em -0.3em;
+  padding: 0.1em 0.3em;
+  background: #e5f0ff;
+}
+#searchAsYouType div.searchResults div.summary {
+  text-indent: -1em;
+  padding-left: 1.5em;
+  cursor: auto;
+}
+#searchAsYouType div.searchResults div.summary:hover {
+  background: white !important;
+}
+#searchAsYouType div.searchResults div.summary a.summarized {
+  white-space: nowrap;
+}
+#searchAsYouType div.searchResults div.searchResult a {
+  -moz-user-focus: ignore;
+  -user-focus: ignore;
+  -khtml-user-focus: ignore;
+}
+#searchAsYouType div.searchResults div.first {
+  border-top: 0;
+}
+#searchAsYouType div.searchResults div.searchResult div.auxLinks {
+  clear: both;
+  text-align: right;
+  color: #ccd9f2;
+  font-size: 88%;
+  margin-top: 1em;
+}
+#searchAsYouType div.searchResults div.searchResult div.auxLinks span {
+  color: black;
+}
+
+#searchAsYouType div.searchResults div.searchResult div.auxLinks {
+  clear: right; 
+  margin-right: -0.5em;
+}
+#searchAsYouType div.searchResults div.searchResult h1 {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  font-weight: bold;
+}
+#searchAsYouType div.searchResults div.searchResult .type {
+  padding-left: 0.3em;
+  font-style: italic;
+}
+#searchAsYouType div.searchResults div.searchResult br + .type {
+  padding-left: 0;
+}
+
+/* Search results -- specific search result types */
+
+#searchAsYouType div.searchResults div.People {
+  border-left-color: #c1d9ff;
+  border-right-color: #c1d9ff;
+}
+#searchAsYouType div.searchResults div.Glossary {
+  border-left-color: #a8eb8d;
+  border-right-color: #a8eb8d;
+}
+#searchAsYouType div.searchResults div.Rooms {
+  border-left-color: #a376cc;
+  border-right-color: #a376cc;
+}
+#searchAsYouType div.searchResults div.Offices {
+  border-left-color: #ffe699;
+  border-right-color: #ffe699;
+}
+#searchAsYouType div.searchResults div.Suggestions {
+  border-left-color: #7777cc;
+  border-right-color: #7777cc;
+}
+#searchAsYouType div.searchResults div.Tip {
+  border-left-color: transparent;
+  border-right-color: transparent;
+  color: #5f5f5f;
+}
+#searchAsYouType div.searchResults div.Tip p {
+  padding: 0;
+  margin: 0;
+  margin-left: -5px;
+  margin-top: -2px;
+  padding-top: 2px;
+  padding-left: 22px;
+  background: url(../images/idea.gif) left top no-repeat;
+}
+#searchAsYouType div.searchResults div.Tip p a {
+  color: #7777cc;
+}
+#searchAsYouType div.searchResults div.Tip p a:visited {
+  color: #a376cc;
+} 
+
+/* Search results -- shadows */
+
+div#searchAsYouTypeResultsShadow {
+  position: absolute;
+  z-index: 2000;
+}
+div#searchAsYouTypeResultsShadow div {
+  position: absolute;
+  overflow: hidden;
+}
+div#searchAsYouTypeResultsShadowL {
+  background: url(../images/shadow//l.png) repeat-y left top;
+}
+div#searchAsYouTypeResultsShadowR {
+  background: url(../images/shadow/r.png) repeat-y left top;
+}
+div#searchAsYouTypeResultsShadowB {
+  background: url(../images/shadow/b.png) repeat-x left bottom;
+}
+div#searchAsYouTypeResultsShadowTL {
+  background: url(../images/shadow/tl.png) no-repeat left top;
+}
+div#searchAsYouTypeResultsShadowTR {
+  background: url(../images/shadow/tr.png) no-repeat right top;
+}
+div#searchAsYouTypeResultsShadowBL {
+  background: url(../images/shadow/bl.png) no-repeat left bottom;
+}
+div#searchAsYouTypeResultsShadowBR {
+  background: url(../images/shadow/br.png) no-repeat right bottom;
+}
+
+/* Autocomplete */
+
+div.searchAsYouTypeAutocompleteInputMatch { /* editable... to match input (...) */
+  margin-top: 3px;
+  margin-left: 3px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+div#searchAsYouTypeAutocomplete {
+  position: absolute;
+  color: #6f6f6f;
+  background: #efefef;
+  z-index: 2500;
+  height: 1.2em !important;
+}
+div#searchAsYouTypeAutocompleteHelper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+}
+
+/* Waiting animation */
+
+img#searchAsYouTypeWaitingForSearchResults {
+  width: 15px;
+  height: 15px;
+  visibility: hidden; 
+  border: 0; 
+  padding: 0; 
+  position: absolute;
+  top: 0.15em;
+  right: 2px;
+  z-index: 3001;
+}
+
+/* Debug console */
+
+div#searchAsYouTypeDebugConsole {
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  width: 90%;
+  height: 60%;
+  opacity: 0.95;
+  background: #ffefef;
+  border: 1px solid #cf7f7f;
+  bottom: 2%;
+  left: 5%;
+  font-size: 83%;
+  z-index: 5000;
+  padding: 0.5em;
+  overflow: auto;
+}
+div#searchAsYouTypeDebugConsole.expanded {
+  height: 60%;
+}
+div#searchAsYouTypeDebugConsole.contracted {
+  height: 5%;
+}
+div#searchAsYouTypeDebugConsole h1 {
+  color: #af0000;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-weight: bold;
+}
+div#searchAsYouTypeDebugConsole button {
+  margin: 0em 0.5em;
+}
+div#searchAsYouTypeDebugConsole table {
+  font-size: 90%;
+  border-collapse: collapse;
+  line-height: 120%;
+  margin-top: 1em;
+}
+div#searchAsYouTypeDebugConsole table th {
+  padding: 0.2em 1em;
+  text-align: left;
+}
+div#searchAsYouTypeDebugConsole table td {
+  padding: 0.2em 1em;
+  border-bottom: 1px solid #cf7f7f;
+}
+div#searchAsYouTypeDebugConsole table td.no {
+  text-align: right;
+}

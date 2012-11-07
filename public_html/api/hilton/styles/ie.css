@@ -1,0 +1,45 @@
+/* Search-as-you-type styles: Style corrections for Internet Explorer.
+
+   Copyright 2007 Google Inc. All rights reserved.
+
+   Author: mwichary@google.com (Marcin Wichary). */ 
+
+div#searchAsYouTypeResultsShadowL {
+  background: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, 
+    sizingMethod=scale, src="images/shadow/l.png");
+}
+div#searchAsYouTypeResultsShadowR {
+  background: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, 
+    sizingMethod=scale, src="images/shadow/r.png");
+}
+div#searchAsYouTypeResultsShadowB {
+  background: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, 
+    sizingMethod=scale, src="images/shadow/b.png");
+}
+div#searchAsYouTypeResultsShadowTL {
+  background: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, 
+    sizingMethod=scale, src="images/shadow/tl.png");
+}
+div#searchAsYouTypeResultsShadowTR {
+  background: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, 
+    sizingMethod=scale, src="images/shadow/tr.png");
+}
+div#searchAsYouTypeResultsShadowBL {
+  background: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, 
+    sizingMethod=scale, src="images/shadow/bl.png");
+}
+div#searchAsYouTypeResultsShadowBR {
+  background: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, 
+    sizingMethod=scale, src="images/shadow/br.png");
+}
+#searchAsYouType div.searchResults div.Tip {
+  border-left-color: white;
+  border-right-color: white;
+}

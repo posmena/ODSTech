@@ -1,0 +1,10 @@
+/* Search-as-you-type styles: Style corrections for Safari.
+
+   Copyright 2007 Google Inc. All rights reserved.
+
+*/ 
+
+div.searchAsYouTypeAutocompleteInputMatch {
+  margin-left: 5px;
+  font-size: 84%;
+}

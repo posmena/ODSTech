@@ -1,0 +1,103 @@
+table.odst {
+	color: #373737;
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+	}
+
+	
+.odst_findbutton .odst_text {
+	/* background: url('images/link_arrow.png') 100% -15px no-repeat transparent; CR# 17029 */ 
+	background: url('images/link_arrow.png') 100% -17px no-repeat transparent;
+	padding-right: 10px;
+	font-size: 11px;
+	font-weight: normal;
+	}
+
+.odst_findbutton {
+	font-size: 11px;
+	position: relative;
+	color: white !important;
+	padding: 5px 10px 5px 10px;
+	margin: 0px;
+	display: inline-block;
+	text-decoration: none !Important;
+	cursor: pointer;
+	border-radius: 5px;
+	background: #23478a; /* Old browsers */
+	background: -moz-linear-gradient(top, #23478a 0%, #1d3a70 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#23478a), color-stop(100%,#1d3a70)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #23478a 0%,#1d3a70 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #23478a 0%,#1d3a70 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #23478a 0%,#1d3a70 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #23478a 0%,#1d3a70 100%); /* W3C */
+	}
+
+
+
+.odst_findbutton:hover {
+	background: #515050; /* Old browsers */
+	background: -moz-linear-gradient(top, #515050 0%, #363636 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#363636), color-stop(100%,#1d3a70)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #515050 0%,#363636 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #515050 0%,#363636 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #515050 0%,#363636 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #515050 0%,#363636 100%); /* W3C */
+}
+
+input#from, input#to {
+ 	width: 85px;
+	height: 20px;
+	line-height: 18px;
+	padding: 3px 4px 2px 4px;
+	font-size: 10px;
+	background:none;
+	border:none;
+	color: #888;
+	}
+
+input
+{
+font-family: "MS Shell Dlg";
+font-size: 12px;
+}
+	
+span.odt_spanTextInput {
+	background-color: #fff;
+    border: 2px solid #FFFFFF;
+    position: relative; 
+	float:left;
+	height:21px;
+	border-radius: 3px;
+	border:1px solid #c1c1c1;
+	behavior: url(http://www3.hilton.com/skins/common/js/PIE.htc);
+	}
+
+span.odt_spanTextInput #odst_locationTextInput {
+	border:none;
+	background:none;
+	}
+	
+.spanTextInput input { 
+	background: transparent url(images/null.gif); /* ORG - CR 17145 */
+	zoom:1; /* ORG - CR 17145 */
+}
+
+thead tr {position: relative; top: 5px;}
+
+
+
+.labelOneBoxHint
+{
+	color: #888;
+	position: absolute;	
+	left: 6px;
+    top: 3px;
+	font-family: Arial;	cursor:text; /* ORG - CR #17145 */
+}
+
+.labelOneBoxHint
+{
+	z-index: 100;
+}
+
+
