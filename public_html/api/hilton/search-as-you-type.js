@@ -28,7 +28,7 @@ var searchAsYouTypeConfiguration = {
     // The fully qualified URL to the Ajax responder. 
     // e.g. http://intranet.company.com/search-as-you-type/responder.php
     ajaxResponderUrl:
-      "http://odstest.co.uk/api/hilton/search.php",
+      "http://odst.co.uk/api/hilton/search.php",
 
     // The fully qualified URL to the help page. Leave as empty string if
     // not available
