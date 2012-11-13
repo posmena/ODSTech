@@ -37,7 +37,8 @@ class ODSTech_xmlgenerator
 			$shipping = false;
 			foreach ($headers as $key => $heading) {
 				if ($heading == 'google_product_category' || $heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time' || $heading == 'category' || $heading == 'mpn') {
-					$tData = htmlspecialchars($data[$key]);
+					//$tData = htmlspecialchars($data[$key]);
+					$tData = $data[$key];
 					if ($heading == 'title') {
 						if ($name == 'chesca') {
 							$tData .= " Chesca Womens";	
