@@ -36,7 +36,7 @@ class ODSTech_xmlgenerator
 			$xmlContent .= '<item>';
 			$shipping = false;
 			foreach ($headers as $key => $heading) {
-				if ($heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time' || $heading == 'category' || $heading == 'mpn') {
+				if ($heading == 'google_product_category' || $heading == 'product_type' || $heading == 'description' || $heading == 'title' || $heading == 'delivery_time' || $heading == 'category' || $heading == 'mpn') {
 					$tData = htmlspecialchars($data[$key]);
 					if ($heading == 'title') {
 						if ($name == 'chesca') {
@@ -44,6 +44,12 @@ class ODSTech_xmlgenerator
 						}
 						
 					}
+					
+					if ($heading == 'google_product_category')
+						{
+						$heading = 'category';
+						}
+						
 					$content = '<![CDATA[' .htmlentities(utf8_encode($tData), ENT_QUOTES, "UTF-8") . ']]>';
 				} elseif ($heading == 'shipping' || $heading == 'shipping_cost_uk') {
 					$heading = 'shipping';
