@@ -41,18 +41,23 @@ if( document.location.hostname == 'www.bootybingo.com' )
 
 function ubud_getBBAlias()
 {
+var val;
 $("li.hello span").each( function(i,x) {  
-  return $(x).html();
+  val =  $(x).html();
 });
+return val;
 }
 
 function ubud_getVBAlias()
 {
+var val;
+
 $("li.hello").each( function(i,x) {  
 var str = $(x).html();
 var y = str.split('<br>');
-  return $.trim(y[1]);
+  val =  $.trim(y[1]);
 });
+return val;
 }
 
 function ubud_getBalance()
