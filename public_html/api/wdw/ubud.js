@@ -19,7 +19,7 @@ if( document.location.hostname == 'www.bootybingo.com' )
 
 	if( document.location.hostname == 'www.vampirebingo.com' )
 	{
-	ubud_getVBAlias();
+	return ubud_getVBAlias();
 	}
 
 }
@@ -62,9 +62,13 @@ return val;
 
 function ubud_getBalance()
 {
+var val;
+
 $("li.cb span").each( function(i,x) {  
-  return $(x).html();
+  val = $(x).html();
 });
+
+return val;
 }
 
 function ubud_createCookie(name,value,days) {
