@@ -41,7 +41,7 @@ if( document.location.hostname == 'www.bootybingo.com' )
 
 function ubud_getBBAlias()
 {
-var val;
+var val = '';
 $("li.hello span").each( function(i,x) {  
   val =  $(x).html();
 });
@@ -50,7 +50,7 @@ return val;
 
 function ubud_getVBAlias()
 {
-var val;
+var val = '';
 
 $("li.hello").each( function(i,x) {  
 var str = $(x).html();
