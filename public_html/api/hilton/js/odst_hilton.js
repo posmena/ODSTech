@@ -2,7 +2,7 @@
 	$(function() {
 		$( "#from" ).datepicker({
 			showOn: "button",
-			buttonImage: "http://odstest.co.uk/api/hilton/images/ui_cal_icon.gif",
+			buttonImage: "http://odst.co.uk/api/hilton/images/ui_cal_icon.gif",
 			buttonImageOnly: true,
 			dateFormat: "dd M yy",
 			minDate: -20, 
@@ -25,7 +25,7 @@
 		
 		$( "#to" ).datepicker({
 			showOn: "button",
-			buttonImage: "http://odstest.co.uk/api/hilton/images/ui_cal_icon.gif",
+			buttonImage: "http://odst.co.uk/api/hilton/images/ui_cal_icon.gif",
 			buttonImageOnly: true,
 			dateFormat: "dd M yy",
 			minDate: -20, 
