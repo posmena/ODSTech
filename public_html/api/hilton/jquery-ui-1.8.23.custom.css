@@ -69,7 +69,7 @@
 img.ui-datepicker-trigger {
 	width: 17px;
 	height: 17px;
-	background: url('images/calendar_icon.jpeg') 0 0 no-repeat transparent;
+	background: url('http://odstest.co.uk/api/hilton/images/calendar_icon.jpeg') 0 0 no-repeat transparent;
 	position: absolute;
 	right: 1px;
 	top: 2px;
@@ -104,7 +104,7 @@ img.ui-datepicker-trigger {
 /* Icons
 ----------------------------------*/
 
-/* states and images */
+/* states and http://odstest.co.uk/api/hilton/images */
 .ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
 
 
@@ -163,7 +163,7 @@ img.ui-datepicker-trigger {
 /* Icons
 ----------------------------------*/
 
-/* states and images */
+/* states and http://odstest.co.uk/api/hilton/images */
 .ui-icon { width: 16px; height: 16px; background-image: url(img/datepicker/ui-icons_bbbbbb_256x240.png); }
 .ui-widget-content .ui-icon {background-image: url(img/datepicker/ui-icons_bbbbbb_256x240.png); }
 .ui-widget-header .ui-icon {background-image: url(img/datepicker/ui-icons_525252_256x240.png); }
