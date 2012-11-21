@@ -9,8 +9,8 @@ table.odst_hilton_1 {
 .odst_reset label { line-height:12px; float: none; width: auto; margin:0px; padding:0px }	
 
 .odst_findbutton .odst_text {
-	/* background: url('http://odstest.co.uk/api/hilton/images/link_arrow.png') 100% -15px no-repeat transparent; CR# 17029 */ 
-	background: url('http://odstest.co.uk/api/hilton/images/link_arrow.png') 100% -17px no-repeat transparent;
+	/* background: url('http://odst.co.uk/api/hilton/images/link_arrow.png') 100% -15px no-repeat transparent; CR# 17029 */ 
+	background: url('http://odst.co.uk/api/hilton/images/link_arrow.png') 100% -17px no-repeat transparent;
 	padding-right: 10px;
 	font-size: 11px;
 	font-weight: normal;
@@ -81,7 +81,7 @@ span.odt_spanTextInput #odst_locationTextInput {
 	}
 	
 .spanTextInput input { 
-	background: transparent url(http://odstest.co.uk/api/hilton/images/null.gif); /* ORG - CR 17145 */
+	background: transparent url(http://odst.co.uk/api/hilton/images/null.gif); /* ORG - CR 17145 */
 	zoom:1; /* ORG - CR 17145 */
 }
 
