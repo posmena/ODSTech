@@ -121,11 +121,9 @@ img.src = src;
 function ubud_RecDupReg()
 {
 var err = false;
-console.log('ubud_RecDupReg');
 $("div.myerror_msg").each( function(i,x) {  
   if($(x).html() == "The entered email address already exists !")
 	{
-	console.log($(x).html());
 	err = true;
 	}
 });
@@ -143,7 +141,7 @@ if( err == true )
 	src = src + '&utm_term=' + ubud_readCookie('utm_term');
 	src = src + '&utm_content=' + ubud_readCookie('utm_content');
 	src = src + '&utm_id=' + ubud_readCookie('utm_id');
-	console.log(src);
+	
 	img.src = src;
 	}
 
