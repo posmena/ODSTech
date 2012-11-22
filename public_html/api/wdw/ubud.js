@@ -103,7 +103,7 @@ var newbal = ubud_getBalance();
 var oldbal = ubud_readCookie('bal');
 
 var img = new Image();
-var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'odst.co.uk/api/wdw/dep.php?';
+var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/dep.php?';
 
 src = src + 'site=' + ubud_getSite();
 src = src + '&alias=' + ubud_getAlias();
@@ -131,7 +131,7 @@ $("div.myerror_msg").each( function(i,x) {
 if( err == true )
 	{
 	var img = new Image();
-	var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'odst.co.uk/api/wdw/dup.php?';
+	var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/dup.php?';
 	
 	src = src + 'site=' + ubud_getSite();
 	src = src + '&alias=' + ubud_getAlias();
@@ -150,7 +150,7 @@ if( err == true )
 function ubud_RecReg()
 {
 var img = new Image();
-var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'odst.co.uk/api/wdw/reg.php?';
+var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/reg.php?';
 
 src = src + 'site=' + ubud_getSite();
 src = src + '&alias=' + ubud_getAlias();
