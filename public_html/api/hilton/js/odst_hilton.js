@@ -1,6 +1,6 @@
 	
 	$(function() {
-		$( "#from" ).datepicker({
+		$( ".odst_from" ).datepicker({
 			showOn: "button",
 			buttonImage: "http://odst.co.uk/api/hilton/images/ui_cal_icon.gif",
 			buttonImageOnly: true,
@@ -11,7 +11,7 @@
 			changeMonth: false,
 			numberOfMonths: 2,
 			onSelect: function( selectedDate ) {
-				$( "#to" ).datepicker( "option", "minDate", selectedDate );
+				$( ".odst_to" ).datepicker( "option", "minDate", selectedDate );
 			}
 		});
 
@@ -23,7 +23,7 @@
 			 
 			});
 		
-		$( "#to" ).datepicker({
+		$( ".odst_to" ).datepicker({
 			showOn: "button",
 			buttonImage: "http://odst.co.uk/api/hilton/images/ui_cal_icon.gif",
 			buttonImageOnly: true,
@@ -34,7 +34,7 @@
 			changeMonth: false,
 			numberOfMonths: 2,
 			onSelect: function( selectedDate ) {
-				$( "#from" ).datepicker( "option", "maxDate", selectedDate );
+				$( ".odst_from" ).datepicker( "option", "maxDate", selectedDate );
 			}
 		});
 		
