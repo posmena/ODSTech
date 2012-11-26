@@ -1,5 +1,5 @@
 var searchAsYouTypeConfiguration =  {
-    // The path (beginning of the URL) to the place containing /http://odst.co.uk/api/hilton/images and
+    // The path (beginning of the URL) to the place containing /http://s.odst.co.uk/api/hilton/images and
     // /styles. Should end with a slash. 
     // e.g. http://intranet.company.com/search-as-you-type/
     resourcesPath: 
@@ -8,7 +8,7 @@ var searchAsYouTypeConfiguration =  {
     // The fully qualified URL to the Ajax responder. 
     // e.g. http://intranet.company.com/search-as-you-type/responder.php
     ajaxResponderUrl:
-      "http://odst.co.uk/api/hilton/search.php",
+      "http://s.odst.co.uk/api/hilton/search.php",
 
     // The fully qualified URL to the help page. Leave as empty string if
     // not available
@@ -88,7 +88,7 @@ SearchAsYouType.prototype.initializeVariables_ = function(inputFieldEl) {
   // Protocol used by the parent page ("http" or "https").
   this.protocol = this.location.substr(0, this.location.indexOf("://") + 3);
 
-  // Path (URL beginning) to resources such as http://odst.co.uk/api/hilton/images or CSS files
+  // Path (URL beginning) to resources such as http://s.odst.co.uk/api/hilton/images or CSS files
   this.resourcesPath = searchAsYouTypeConfiguration.resourcesPath;
   // (...) make it understand https
 
@@ -296,7 +296,7 @@ SearchAsYouType.prototype.createDomElements_ = function() {
   this.waitingForSearchResultsEl.style.visibility = 'hidden'; 
   this.waitingForSearchResultsEl.style.position = 'absolute'; 
   this.waitingForSearchResultsEl.src = 
-    this.resourcesPath + "http://odst.co.uk/api/hilton/images/loading.gif";
+    this.resourcesPath + "http://s.odst.co.uk/api/hilton/images/loading.gif";
 
   document.body.appendChild(this.waitingForSearchResultsEl);
 
@@ -906,7 +906,7 @@ SearchAsYouType.prototype.showResultsWindow_ = function() {
     els.item(i).target = "_top";
   }  
 
-  // We go through all of the http://odst.co.uk/api/hilton/images, hide them, and assign the function
+  // We go through all of the http://s.odst.co.uk/api/hilton/images, hide them, and assign the function
   // to show them when they're fully loaded. Since an image can resize
   // a search result window, we need to make sure that we recalculate the
   // dimensions (and shadows) on image load
@@ -934,7 +934,7 @@ SearchAsYouType.prototype.showResultsWindow_ = function() {
 }
 
 /**
- * Show the image after it's loaded. Prevents http://odst.co.uk/api/hilton/images loading and layout
+ * Show the image after it's loaded. Prevents http://s.odst.co.uk/api/hilton/images loading and layout
  * reflowing bit by bit -- it only shows the image if it is fully loaded.
  *
  * @param {element} el The image to be shown
@@ -1797,14 +1797,14 @@ $affiliate_id = $_GET['aid'];
 $campaign_id = $_GET['cid'];
 ?>
 
-document.write('<link href="http://odst.co.uk/api/hilton/styles.css" rel="stylesheet" type="text/css" />');
+document.write('<link href="http://s.odst.co.uk/api/hilton/styles.css" rel="stylesheet" type="text/css" />');
 document.write('<!--[if IE]>');
-document.write('<link rel="stylesheet" type="text/css" href="http://odst.co.uk/api/hilton/ieStyles.css" />');
-document.write('<![endif]--><link href="http://odst.co.uk/api/hilton/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />');
-document.write('<link href="http://odst.co.uk/api/hilton/sayt.css" rel="stylesheet" type="text/css" />');
-document.write('<script src="http://odst.co.uk/api/hilton/js/jquery-1.8.0.min.js" type="text/javascript" /></script>');
-document.write('<script src="http://odst.co.uk/api/hilton/js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>');
-document.write('<script src="http://odst.co.uk/api/hilton/js/odst_hilton.js" type="text/javascript"></script>');
+document.write('<link rel="stylesheet" type="text/css" href="http://s.odst.co.uk/api/hilton/ieStyles.css" />');
+document.write('<![endif]--><link href="http://s.odst.co.uk/api/hilton/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />');
+document.write('<link href="http://s.odst.co.uk/api/hilton/sayt.css" rel="stylesheet" type="text/css" />');
+document.write('<script src="http://s.odst.co.uk/api/hilton/js/jquery-1.8.0.min.js" type="text/javascript" /></script>');
+document.write('<script src="http://s.odst.co.uk/api/hilton/js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>');
+document.write('<script src="http://s.odst.co.uk/api/hilton/js/odst_hilton.js" type="text/javascript"></script>');
 document.write('');
 document.write('<form id="frm_odst_hilton" method="POST" action="http://www.awin1.com/awclick.php?awinmid=3624&awinaffid=<?php echo($affiliate_id)?>&clickref=<?php echo($campaign_id)?>&p=http://www3.hilton.com/en_US/hi/search/findhotels/index.htm">');
 document.write('	<input type="hidden" name="searchType" value="ALL">');
@@ -1863,7 +1863,7 @@ if( $w == "160" && $h == "600" )
 ?>
 document.write('	<table class="odst_reset odst_hilton_1" width="160" height="600" border="0" cellspacing="0"  >');
 document.write('		<tr>');
-document.write('			<td align="left" valign="middle" style="vertical-align:middle" background="http://odst.co.uk/api/hilton/images/160x600back.jpg" style="padding:10px">');
+document.write('			<td align="left" valign="middle" style="vertical-align:middle" background="http://s.odst.co.uk/api/hilton/images/160x600back.jpg" style="padding:10px">');
 document.write('				<table style="padding-left:6px" class="odst_reset odst_hilton_1"  border="0" table="table" width="140" height="250" cellspacing="0" cellpadding="0" class="vstyle" >');
 document.write('					<tr>');
 document.write('						<td>');
@@ -1927,7 +1927,7 @@ document.write('	</table>');
 
 document.write('<table class="odst_reset odst_hilton_1" width="120" height="600" border="0" cellspacing="0"  >');
 document.write('		<tr>');
-document.write('			<td align="left" valign="middle"  style="vertical-align:middle" background="http://odst.co.uk/api/hilton/images/120x600back.jpg" style="padding:10px">');
+document.write('			<td align="left" valign="middle"  style="vertical-align:middle" background="http://s.odst.co.uk/api/hilton/images/120x600back.jpg" style="padding:10px">');
 document.write('				<table style="padding-left:6px" class="odst_reset odst_hilton_1" border="0" table="table" width="100" height="270" cellspacing="0" cellpadding="0" class="vstyle">');
 document.write('					<tr>');
 document.write('						<td>');
@@ -1993,7 +1993,7 @@ document.write('	</table>');
 
 document.write('<table class="odst_reset odst_hilton_1" width="460" height="125" border="0" cellspacing="0"  >');
 document.write('		<tr>');
-document.write('			<td align="right" valign="bottom" background="http://odst.co.uk/api/hilton/images/460x125back.jpg" style="padding:10px">');
+document.write('			<td align="right" valign="bottom" background="http://s.odst.co.uk/api/hilton/images/460x125back.jpg" style="padding:10px">');
 document.write('				<table style="padding-left:6px" valign="top" class="odst_reset odst_hilton_1" border="0" table="table" width="320" height="50" cellspacing="0" cellpadding="0" class="vstyle" style="text-align: left;">');
 document.write('					<tr>');
 document.write('						<td>');
@@ -2052,7 +2052,7 @@ document.write('	</table>');
 ?>	
 document.write('<table class="odst_reset odst_hilton_1" width="728" height="90" border="0" cellspacing="0"  >');
 document.write('		<tr>');
-document.write('			<td align="right" valign="top" background="http://odst.co.uk/api/hilton/images/728x90back.jpg">');
+document.write('			<td align="right" valign="top" background="http://s.odst.co.uk/api/hilton/images/728x90back.jpg">');
 document.write('				<table style="padding-left:6px" class="odst_reset odst_hilton_1" border="0" table="table" width="440" height"45" cellspacing="0" cellpadding="0" class="vstyle" style="text-align: left;">');
 document.write('					<tr>');
 document.write('						<td>');
@@ -2107,7 +2107,7 @@ else if( $w == "300" && $h == "250" )
 ?>
 document.write('<table class="odst_reset odst_hilton_1" width="300" height="250" border="0" cellpadding="8" cellspacing="0"  >');
 document.write('		<tr>');
-document.write('			<td align="left" valign="bottom" background="http://odst.co.uk/api/hilton/images/300x250back.jpg" style="padding:10px">');
+document.write('			<td align="left" valign="bottom" background="http://s.odst.co.uk/api/hilton/images/300x250back.jpg" style="padding:10px">');
 document.write('				<table class="odst_reset odst_hilton_1" border="0" table="table" width="280" height="46" cellspacing="0" cellpadding="0" class="vstyle" >');
 document.write('					<tr>');
 document.write('						<td>');
