@@ -91,7 +91,7 @@ table.odst_hilton_1 {
 	background: linear-gradient(to bottom, #515050 0%,#363636 100%); /* W3C */
 }
 
-input#from, input#to {
+input.odst_from, input.odst_to {
  	font-family: Arial;
 	width: 76px;
 	height: 20px;
@@ -101,6 +101,7 @@ input#from, input#to {
 	background:none;
 	border:none;
 	color: #888;
+	text-indent: 15px;
 	}
 	
 span.odt_spanTextInput {
