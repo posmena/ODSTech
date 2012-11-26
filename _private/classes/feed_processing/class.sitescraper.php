@@ -409,7 +409,7 @@ class sitescraper
 				$mdb = $conn->odstech;
 				$collection = $mdb->damsel_scrape;
 				
-			    $collection->update(array("_id" => array("exists" => true)),array("updated" => false),array("multi" => true)); 
+			    $collection->update(array("_id" => array('$exists' => true)),array('$set' => array("updated" => false)),array("multiple" => true)); 
 													
 				$site = "http://www.damselinadress.co.uk";
 				$urls = array('dresses > day dresses'               => 'http://www.damselinadress.co.uk/shop/dresses/day-dresses.aspx',
@@ -423,17 +423,15 @@ class sitescraper
 							  'tailoring > work wear'				=> 'http://www.damselinadress.co.uk/shop/tailoring/work-wear.aspx',
 							  'tops > shrugs'                       => 'http://www.damselinadress.co.uk/shop/tops/shrugs.aspx',
 							  'tops > blouses & shirts'             => 'http://www.damselinadress.co.uk/shop/tops/blouses-and-shirts.aspx',
-							  'tops > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/tops/jersey-wear.aspx',
-							  'tops > cardigans'					=> 'http://www.damselinadress.co.uk/shop/tops/cardigans.aspx',
-							  'tops > tunics'						=> 'http://www.damselinadress.co.uk/shop/tops/tunics.aspx',
-							  'accessories > scarves'				=> 'http://www.damselinadress.co.uk/shop/accessories/scarves.aspx',
+							  'tops > jersey wear'                  => 'http://www.damselinadress.co.uk/shop/tops/jersey-wear.aspx',							
+							  //'accessories > scarves'				=> 'http://www.damselinadress.co.uk/shop/accessories/scarves.aspx',
 							  'wedding > bride'                     => 'http://www.damselinadress.co.uk/shop/wedding/bride.aspx',
 							  'wedding > bridesmaids'               => 'http://www.damselinadress.co.uk/shop/wedding/bridesmaids.aspx',
 							  'wedding > wedding guest'             => 'http://www.damselinadress.co.uk/shop/wedding/wedding-guest.aspx',						
 							  'wedding > mother of the bride'		=> 'http://www.damselinadress.co.uk/shop/wedding/motherofthebride.aspx',
 							  'sale > dresses'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/dresses.aspx',
 							  'sale > jackets'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/jackets.aspx',
-							  'sale > coats'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/coats.aspx',
+						//	  'sale > coats'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/coats.aspx',
 							  'sale > skirts'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/skirts.aspx',
 							  'sale > trousers'						=> 'http://www.damselinadress.co.uk/shop/ss12_sale/trousers.aspx',
 							  'sale > blouses & shirts'				=> 'http://www.damselinadress.co.uk/shop/ss12_sale/blouses-and-shirts.aspx',
@@ -528,8 +526,11 @@ class sitescraper
 									$start = strpos($product, '<div id="probrief">') + 19;
 									$end   = strpos($product, "</div>", $start);
 									$desc  = trim(str_replace('"', '', substr($product,$start,$end-$start)));
+									$desc  = str_replace('\r\n',' ',$desc);
+									$desc  = str_replace('  ',' ',$desc);
 
-
+									print($desc);
+									
 									if (preg_match('/<select\s[^>](.*)<\/select>/msU',$product,$sizes)) {
 										$option = $sizes[0];
 										if (preg_match_all('/<option\s[^>]*(.*)<\/option>/msU',$option,$size)) {
@@ -600,7 +601,7 @@ class sitescraper
 					}
 
 					
-					$collection->remove(array("updated" => false),array("multi" => true));
+					$collection->remove(array("updated" => false),array("multiple" => true));
 					
 					$products = $collection->find();
 					foreach ($products as $product) {
