@@ -1791,7 +1791,7 @@ try {
 <?php
 
 $w = $_GET['w'];
-$h = $_GET['h'];
+$h = $_GET['h']; 
 $id = $_GET['id'];
 $affiliate_id = $_GET['aid'];
 $campaign_id = $_GET['cid'];
@@ -1802,7 +1802,9 @@ document.write('<!--[if IE]>');
 document.write('<link rel="stylesheet" type="text/css" href="http://s.odst.co.uk/api/hilton/ieStyles.css" />');
 document.write('<![endif]--><link href="http://s.odst.co.uk/api/hilton/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />');
 document.write('<link href="http://s.odst.co.uk/api/hilton/sayt.css" rel="stylesheet" type="text/css" />');
-document.write('<script src="http://s.odst.co.uk/api/hilton/js/jquery-1.8.0.min.js" type="text/javascript" /></script>');
+if (typeof jQuery == 'undefined') {  
+  document.write('<script src="http://s.odst.co.uk/api/hilton/js/jquery-1.8.0.min.js" type="text/javascript" /></script>');
+}
 document.write('<script src="http://s.odst.co.uk/api/hilton/js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>');
 document.write('<script src="http://s.odst.co.uk/api/hilton/js/odst_hilton.js" type="text/javascript"></script>');
 document.write('');
@@ -1861,10 +1863,10 @@ document.write('<input type="hidden" name="_searchAllBrands" value="on">');
 if( $w == "160" && $h == "600" )
 {
 ?>
-document.write('	<table class="odst_reset odst_hilton_1" width="160" height="600" border="0" cellspacing="0"  >');
+document.write('	<table class="odst" width="160" height="600" border="0" cellpadding="8" cellspacing="0"  >');
 document.write('		<tr>');
-document.write('			<td align="left" valign="middle" style="vertical-align:middle" background="http://s.odst.co.uk/api/hilton/images/160x600back.jpg" style="padding:10px">');
-document.write('				<table style="padding-left:6px" class="odst_reset odst_hilton_1"  border="0" table="table" width="140" height="250" cellspacing="0" cellpadding="0" class="vstyle" >');
+document.write('			<td align="left" valign="middle" background="http://s.odst.co.uk/api/hilton/images/160x600back.jpg" style="padding:10px">');
+document.write('				<table class="odst"  border="0" table="table" width="140" height="250" cellspacing="0" cellpadding="0" class="vstyle" style="margin-top: 140px;">');
 document.write('					<tr>');
 document.write('						<td>');
 document.write('							<label for="city" style="margin-bottom:5px; display:inline-block;">WHERE ARE YOU GOING?</label>');
@@ -1891,7 +1893,7 @@ document.write('						<td>');
 document.write('							<label for="checkin" class="labelTop arrival" style="margin-bottom: 7px; display: inline-block;">Arrival</label>');
 document.write('							<br/>');
 document.write('							<span class="odt_spanTextInput" dir="ltr">');
-document.write('								<input type="text" id="from" class="odst_from" value="16 Nov 2012" name="arrivalDate" >');
+document.write('								<input type="text" id="from" class="odst_from" name="arrivalDate" >');
 document.write('								<span id="arrivalPopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your arrival date must be within the next year.</span>');
 document.write('							</span>');
 document.write('						</td>');
@@ -1901,14 +1903,14 @@ document.write('						<td> ');
 document.write('							<label for="checkout" class="labelTop departure" style="margin-bottom: 7px; display: inline-block;">Departure</label>');
 document.write('							<br/>');
 document.write('							<span class="odt_spanTextInput" dir="ltr">');
-document.write('								<input type="text" id="to" class="odst_to" value="18 Nov 2012" name="departureDate" >');
+document.write('								<input type="text" id="to" class="odst_to" name="departureDate" >');
 document.write('								<span id="departurePopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your departure date must be within 4 months after your arrival date.</span>');
 document.write('							</span> ');
 document.write('						</td>');
 document.write('					</tr>');
 document.write('					<tr>');
 document.write('						<td>');
-document.write('							<a href="#" class="odst_findbutton" title="Find it" role="button">');
+document.write('							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 41px; height: 11px;">');
 document.write('								<span class="odst_text" >Find it</span>');
 document.write('								<span class="arrow_icon">&nbsp;</span>');
 document.write('							</a>');
@@ -1925,11 +1927,10 @@ document.write('	</table>');
 {
 ?>
 
-document.write('<table class="odst_reset odst_hilton_1" width="120" height="600" border="0" cellspacing="0"  >');
+document.write('	<table class="odst" width="120" height="600" border="0" cellpadding="8" cellspacing="0"  >');
 document.write('		<tr>');
-document.write('			<td align="left" valign="middle"  style="vertical-align:middle" background="http://s.odst.co.uk/api/hilton/images/120x600back.jpg" style="padding:10px">');
-document.write('				<table style="padding-left:6px" class="odst_reset odst_hilton_1" border="0" table="table" width="100" height="270" cellspacing="0" cellpadding="0" class="vstyle">');
-document.write('					<tr>');
+document.write('			<td align="left" valign="middle" background="http://s.odst.co.uk/api/hilton/images/120x600back.jpg" style="padding:10px">');
+document.write('				<table class="odst" border="0" table="table" width="100" height="270" cellspacing="0" cellpadding="0" class="vstyle" style="margin-top: 100px;">									<tr>');
 document.write('						<td>');
 document.write('							<label for="city" style="margin-bottom:5px; display:inline-block;">WHERE ARE YOU GOING?</label>');
 document.write('							<br />   ');
@@ -1955,7 +1956,7 @@ document.write('						<td>');
 document.write('							<label for="checkin" class="labelTop arrival" style="margin-bottom: 7px; display: inline-block;">Arrival</label>');
 document.write('							<br/>');
 document.write('							<span class="odt_spanTextInput" dir="ltr">');
-document.write('								<input type="text" id="from" class="odst_from" value="15 Nov 2012" name="arrivalDate" style="width: 80px!important" >');
+document.write('								<input type="text" id="from" class="odst_from" name="arrivalDate" style="width: 80px!important" >');
 document.write('								<span id="arrivalPopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your arrival date must be within the next year.</span>');
 document.write('							</span>');
 document.write('						</td>');
@@ -1965,14 +1966,14 @@ document.write('						<td> ');
 document.write('							<label for="checkout" class="labelTop departure" style="margin-bottom: 7px; display: inline-block;">Departure</label>');
 document.write('							<br/>');
 document.write('							<span class="odt_spanTextInput" dir="ltr">');
-document.write('								<input type="text" id="to" class="odst_to" value="18 Nov 2012" name="departureDate" style="width: 80px!important" >');
+document.write('								<input type="text" id="to" class="odst_to" name="departureDate" style="width: 80px!important" >');
 document.write('								<span id="departurePopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your departure date must be within 4 months after your arrival date.</span>');
 document.write('							</span> ');
 document.write('						</td>');
 document.write('					</tr>');
 document.write('					<tr>');
 document.write('						<td>');
-document.write('							<a href="#" class="odst_findbutton" title="Find it" role="button" style="margin-top:5px;">');
+document.write('							<a href="#" class="odst_findbutton" title="Find it" role="button" style="margin-top:5px; width: 42px; height: 11px;">');
 document.write('								<span class="odst_text" >Find it</span>');
 document.write('								<span class="arrow_icon">&nbsp;</span>');
 document.write('							</a>');
@@ -1985,16 +1986,17 @@ document.write('            </td>');
 document.write('        </tr>');
 document.write('	</table>');
 
+
 <?php
  }
  else if( $w == "460" && $h == "125" )
 {
 ?>
 
-document.write('<table class="odst_reset odst_hilton_1" width="460" height="125" border="0" cellspacing="0"  >');
+document.write('	<table class="odst" width="460" height="125" border="0" cellpadding="8" cellspacing="0"  >');
 document.write('		<tr>');
-document.write('			<td align="right" valign="bottom" background="http://s.odst.co.uk/api/hilton/images/460x125back.jpg" style="padding:10px">');
-document.write('				<table style="padding-left:6px" valign="top" class="odst_reset odst_hilton_1" border="0" table="table" width="320" height="50" cellspacing="0" cellpadding="0" class="vstyle" style="text-align: left;">');
+document.write('			<td align="right" valign="middle" background="http://s.odst.co.uk/api/hilton/images/460x125back.jpg" style="padding:10px">');
+document.write('				<table valign="top" class="odst" border="0" table="table" width="320" height="50" cellspacing="0" cellpadding="0" class="vstyle" style="text-align: left; margin-left: 127px!important;">');
 document.write('					<tr>');
 document.write('						<td>');
 document.write('							<label for="city" style="margin-bottom:5px; display:inline-block;">WHERE ARE YOU GOING?</label>');
@@ -2005,7 +2007,7 @@ document.write('							</span>');
 document.write('						</td>');
 document.write('					</tr>');
 document.write('				</table>');
-document.write('				<table style="padding-left:6px" class="odst_reset odst_hilton_1" valign="bottom" border="0" table="table" width="320" height="50" cellspacing="0" cellpadding="0" class="vstyle" >');
+document.write('				<table class="odst" valign="bottom" border="0" table="table" width="320" height="50" cellspacing="0" cellpadding="0" class="vstyle" style=" margin-left: 127px!important;" >');
 document.write('					<tr>');
 document.write('						<td align="left" width="50px">');
 document.write('							<label for="guests"  style="margin-bottom: 5px;">Guests</label>');
@@ -2020,8 +2022,9 @@ document.write('						</td>					');
 document.write('						<td width="101px" align="left">');
 document.write('							<label for="checkin" class="labelTop arrival" style="margin-bottom: 7px; display: inline-block;">Arrival</label>');
 document.write('							<br/>');
+document.write('													');
 document.write('							<span class="odt_spanTextInput" dir="ltr">');
-document.write('								<input type="text" id="from" class="odst_from" value="15 Nov 2012" name="arrivalDate" >');
+document.write('								<input type="text" id="from" class="odst_from" name="arrivalDate" >');
 document.write('								<span id="arrivalPopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your arrival date must be within the next year.</span>');
 document.write('							</span>');
 document.write('						</td>');
@@ -2030,12 +2033,12 @@ document.write('						<td width="101px" align="left"> ');
 document.write('							<label for="checkout" class="labelTop departure" style="margin-bottom: 7px; display: inline-block;">Departure</label>');
 document.write('							<br/>');
 document.write('							<span class="odt_spanTextInput" dir="ltr">');
-document.write('								<input type="text" id="to" class="odst_to" value="18 Nov 2012" name="departureDate" >');
+document.write('								<input type="text" id="to" class="odst_to" name="departureDate" >');
 document.write('								<span id="departurePopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your departure date must be within 4 months after your arrival date.</span>');
 document.write('							</span> ');
 document.write('						</td>');
-document.write('						<td align="right">');
-document.write('							<a href="#" class="odst_findbutton" title="Find it" role="button" style="margin-top:20px;">');
+document.write('						<td align="right" style="vertical-align: middle;">');
+document.write('							<a href="#" class="odst_findbutton" title="Find it" role="button" valign="bottom" style=" margin-left: 5px; width: 50px; height: 11px; ">');
 document.write('								<span class="odst_text" >Find it</span>');
 document.write('								');
 document.write('							</a>');
@@ -2050,10 +2053,11 @@ document.write('	</table>');
  else if( $w == "728" && $h == "90" )
 {
 ?>	
-document.write('<table class="odst_reset odst_hilton_1" width="728" height="90" border="0" cellspacing="0"  >');
+
+document.write('	<table class="odst" width="728" height="90" border="0" cellpadding="8" cellspacing="0"  >');
 document.write('		<tr>');
 document.write('			<td align="right" valign="top" background="http://s.odst.co.uk/api/hilton/images/728x90back.jpg">');
-document.write('				<table style="padding-left:6px" class="odst_reset odst_hilton_1" border="0" table="table" width="440" height"45" cellspacing="0" cellpadding="0" class="vstyle" style="text-align: left;">');
+document.write('				<table class="odst" border="0" table="table" width="440" height"45" cellspacing="0" cellpadding="0" class="vstyle" style="text-align: left; margin-left: 281px!important; margin-top: 4px!important;">');
 document.write('					<tr>');
 document.write('						<td>');
 document.write('							<label for="city" style="margin-bottom:5px; text-align: left; display:inline-block;">WHERE ARE YOU GOING?</label>');
@@ -2074,24 +2078,25 @@ document.write('                    	    </select>');
 document.write('						</td>');
 document.write('					</tr>');
 document.write('				</table>');
-document.write('				<table class="odst_reset odst_hilton_1" border="0" table="table" width="440" cellspacing="0" cellpadding="0" class="vstyle" height=30">');
+document.write('				<table class="odst" border="0" table="table" width="440" cellspacing="0" cellpadding="0" class="vstyle" height=30 style="margin-left: 281px!important; margin-top: 4px!important;">');
 document.write('					<tr valign="bottom">');
-document.write('						<td valign="middle" style="vertical-align:middle" width="178" align="left">');
+document.write('						<td valign="middle" width="178" align="left">');
 document.write('							<label for="checkin" class="labelTop arrival" style="float: left; margin-top: 4px; margin-right:5px;">Arrival</label>');
 document.write('							<span class="odt_spanTextInput" dir="ltr">');
-document.write('								<input type="text" id="from" class="odst_from" value="15 Nov 2012" name="arrivalDate" >');
+document.write('								<input type="text" id="from" class="odst_from" name="arrivalDate" >');
 document.write('								<span id="arrivalPopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your arrival date must be within the next year.</span>');
 document.write('							</span>');
 document.write('						</td>');
-document.write('						<td valign="middle" style="vertical-align:middle" width="178" align="left"> ');
+document.write('						<td valign="middle" width="178" align="left"> ');
 document.write('							<label for="checkout" class="labelTop departure" style="float: left; margin-top: 4px; margin-right:5px;">Departure</label>');
 document.write('							<span class="odt_spanTextInput" dir="ltr">');
-document.write('								<input type="text" id="to" class="odst_to" value="18 Nov 2012" name="departureDate" >');
+document.write('								<input type="text" id="to" class="odst_to" name="departureDate" >');
 document.write('								<span id="departurePopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your departure date must be within 4 months after your arrival date.</span>');
 document.write('							</span> ');
 document.write('						</td>');
-document.write('						<td valign="middle" style="vertical-align:middle" align="left" width="84">');
-document.write('							<a href="#" class="odst_findbutton" title="Find it" role="button" style="margin-top:3px;">');
+document.write('						<td valign="top" align="left" width="84">');
+document.write('							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 30px; height: 11px;">');
+document.write('');
 document.write('								<span class="odst_text">Find</span>');
 document.write('							</a>');
 document.write('						</td>');
@@ -2105,28 +2110,27 @@ document.write('	</table>');
 else if( $w == "300" && $h == "250" )
 {
 ?>
-document.write('<table class="odst_reset odst_hilton_1" width="300" height="250" border="0" cellpadding="8" cellspacing="0"  >');
+document.write('	<table class="odst" width="300" height="250" border="0" cellpadding="8" cellspacing="0"  >');
 document.write('		<tr>');
 document.write('			<td align="left" valign="bottom" background="http://s.odst.co.uk/api/hilton/images/300x250back.jpg" style="padding:10px">');
-document.write('				<table class="odst_reset odst_hilton_1" border="0" table="table" width="280" height="46" cellspacing="0" cellpadding="0" class="vstyle" >');
+document.write('				<table class="odst" border="0" table="table" width="280" height="46" cellspacing="0" cellpadding="0" class="vstyle" style="margin-top: 85px;">');
 document.write('					<tr>');
 document.write('						<td>');
 document.write('							<label for="city" style="margin-bottom:5px; display:inline-block;">WHERE ARE YOU GOING?</label>');
 document.write('							<br />   ');
 document.write('							<span class="odt_spanTextInput">');
 document.write('								<input onfocus="searchAsYouType.initialize(this, false);"  id="odst_locationTextInput" type="text" value="City, airport, address, attraction, or hotel" maxlength="100" autocomplete="off" style="width:270px;"/>');
-document.write('							');
 document.write('							</span>');
 document.write('						</td>');
 document.write('					</tr>');
 document.write('				</table>');
-document.write('				<table class="odst_reset odst_hilton_1" border="0" table="table" width="280" height="92" cellspacing="0" cellpadding="0" class="vstyle" >');
+document.write('				<table class="odst" border="0" table="table" width="280" height="92" cellspacing="0" cellpadding="0" class="vstyle"  >');
 document.write('					<tr>');
 document.write('						<td>');
 document.write('							<label for="checkin" class="labelTop arrival" style="margin-bottom: 7px; display: inline-block;">Arrival</label>');
 document.write('							<br/>');
 document.write('							<span class="odt_spanTextInput" dir="ltr">');
-document.write('								<input type="text" id="from" class="odst_from" value="15 Nov 2012" name="arrivalDate" >');
+document.write('								<input type="text" id="from" class="odst_from" name="arrivalDate" >');
 document.write('								<span id="arrivalPopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your arrival date must be within the next year.</span>');
 document.write('							</span>');
 document.write('						</td>');
@@ -2135,7 +2139,7 @@ document.write('						<td> ');
 document.write('							<label for="checkout" class="labelTop departure" style="margin-bottom: 7px; display: inline-block;">Departure</label>');
 document.write('							<br/>');
 document.write('							<span class="odt_spanTextInput" dir="ltr">');
-document.write('								<input type="text" id="to" class="odst_to" value="18 Nov 2012" name="departureDate" >');
+document.write('								<input type="text" id="to" class="odst_to" name="departureDate" >');
 document.write('								<span id="departurePopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your departure date must be within 4 months after your arrival date.</span>');
 document.write('							</span> ');
 document.write('						</td>');
@@ -2151,7 +2155,7 @@ document.write('								<option value="4">4 </option>');
 document.write('                    	    </select>');
 document.write('						</td>');
 document.write('						<td>');
-document.write('							<a href="#" class="odst_findbutton" title="Find it" role="button">');
+document.write('							<a href="#" class="odst_findbutton" title="Find it" role="button"style="width: 45px; height: 11px;">');
 document.write('								<span class="odst_text" >Find it</span>');
 document.write('								<span class="arrow_icon">&nbsp;</span>');
 document.write('							</a>');
