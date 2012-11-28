@@ -1,110 +1,92 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+.odst img, .odst li,.odst td, .odst table, .odst tr,
+.odst label, .odst span, .odst input, .odst select, .odst tbody
+{margin: 0 !important;
+padding:0 !important;
+outline:0 !important;
+left:0 !important; 
+top:0 !important; 
+text-align:left !important;
+line-height:12px !important;
+border-top: medium none !important;
+border-bottom: medium none !important;
+border-left: medium none !important;
+border-right: medium none !important;
+text-decoration:none !important;
+font-size: 12px !important;}
+.odst a{text-decoration: none !important;}
 
-table.odst_hilton_1 {
-	color: #373737;
-	font-family: "Trebuchet MS";
-	font-size: 12px;
-	}
-
-.odst_reset img, .odst_reset li,.odst_reset td, .odst_reset table, .odst_reset tr{margin: 0 !important;padding:1px !important;outline:0 !important; left:0 !important; top:0 !important; text-align:left !important;line-height:0.7em !important;border-top: medium none !important;border-bottom: medium none !important;border-left: medium none !important;border-right: medium none !important;text-decoration:none !important;font-size: 12px !important;}
-.odst_reset label { line-height:12px; float: none; width: auto; margin:0px; padding:0px }	
-
-.odst_findbutton .odst_text {
-	/* background: url('http://odst.co.uk/api/hilton/images/link_arrow.png') 100% -15px no-repeat transparent; CR# 17029 */ 
-	background: url('http://s.odst.co.uk/api/hilton/images/link_arrow.png') 100% -17px no-repeat transparent;
-	padding-right: 10px;
-	font-size: 11px;
-	font-weight: normal;
-	}
-
-.odst_findbutton {
-	font-size: 11px;
-	position: relative;
-	color: white !important;
-	padding: 5px 10px 5px 10px;
-	margin: 0px;
-	display: inline-block;
-	text-decoration: none !Important;
-	cursor: pointer;
-	border-radius: 5px;
-	background: #23478a; /* Old browsers */
-	background: -moz-linear-gradient(top, #23478a 0%, #1d3a70 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#23478a), color-stop(100%,#1d3a70)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #23478a 0%,#1d3a70 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #23478a 0%,#1d3a70 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #23478a 0%,#1d3a70 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #23478a 0%,#1d3a70 100%); /* W3C */
-	}
-
-
-
-.odst_findbutton:hover {
-	background: #515050; /* Old browsers */
-	background: -moz-linear-gradient(top, #515050 0%, #363636 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#363636), color-stop(100%,#1d3a70)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #515050 0%,#363636 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #515050 0%,#363636 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #515050 0%,#363636 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #515050 0%,#363636 100%); /* W3C */
-}
-
-input.odst_from, input.odst_to {
- 	font-family: Arial;
-	width: 76px;
-	height: 20px;
-	line-height: 18px;
-	padding: 3px 4px 2px 4px;
-	font-size: 10px;
-	background:none;
-	border:none;
-	color: #888;
-	text-indent: 15px;
+table.odst label, table.odst, tabel.odst tbody{
+	color: #373737!important;
+	font-family: "Trebuchet MS"!important;
+	font-size: 12px!important;
+	line-height: 12px!important;
+	border-collapse: collapse!important;
+	border-spacing: 0!important;	
 	}
 	
-span.odt_spanTextInput {
+	table.odst
+	{
+	display:inline-table!important;
+	}
+
+table.odst .odst_findbutton .odst_text {
+	/* background: url('http://odst.co.uk/api/hilton/images/link_arrow.png') 100% -15px no-repeat transparent; CR# 17029 */ 
+	background: url('http://odst.co.uk/api/hilton/images/link_arrow.png') 100% -17px no-repeat transparent!important;
+	padding-right: 10px!important;
+	font-size: 11px!important;
+	font-weight: normal!important;	
+	color: white !important;	
+	
+	}
+	
+
+table.odst .odst_findbutton {
+	font-size: 11px!important;
+	position: relative!important;
+	padding: 5px 10px 5px 10px!important;
+	margin: 0px!important;
+	display: inline-block!important;
+	text-decoration: none !important;
+	cursor: pointer!important;
+	border-radius: 5px!important;
+	background: #23478a!important; /* Old browsers */
+	background: -moz-linear-gradient(top, #23478a 0%, #1d3a70 100%)!important; /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#23478a), color-stop(100%,#1d3a70))!important; /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #23478a 0%,#1d3a70 100%)!important; /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #23478a 0%,#1d3a70 100%)!important; /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #23478a 0%,#1d3a70 100%)!important; /* IE10+ */
+	background: linear-gradient(to bottom, #23478a 0%,#1d3a70 100%)!important; /* W3C */
+	}
+
+
+
+table.odst .odst_findbutton:hover {
+	background: #515050!important; /* Old browsers */
+	background: -moz-linear-gradient(top, #515050 0%, #363636 100%)!important; /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#363636), color-stop(100%,#1d3a70))!important; /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #515050 0%,#363636 100%)!important; /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #515050 0%,#363636 100%)!important; /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #515050 0%,#363636 100%)!important; /* IE10+ */
+	background: linear-gradient(to bottom, #515050 0%,#363636 100%)!important; /* W3C */
+}
+table.odst input.odst_from, table.odst input.odst_to {
+	font-family: Arial!important;
+	width: 76px!important;
+	height: 20px!important;
+	line-height: 18px!important;
+	padding: 3px 4px 2px 4px!important;
+	font-size: 10px!important;
+	background:none!important;
+	border:none!important;
+	color: #888!important;
+	}
+	
+table.odst span.odt_spanTextInput {
 	background-color: #fff;
     border: 2px solid #FFFFFF;
     position: relative; 
@@ -115,32 +97,32 @@ span.odt_spanTextInput {
 	behavior: url(http://www3.hilton.com/skins/common/js/PIE.htc);
 	}
 
-span.odt_spanTextInput #odst_locationTextInput {
-	border:none;
-	background:none;
+table.odst span.odt_spanTextInput #odst_locationTextInput {
+	border:none!important;
+	background:none!important;
 	}
 	
-.spanTextInput input { 
-	background: transparent url(http://s.odst.co.uk/api/hilton/images/null.gif); /* ORG - CR 17145 */
-	zoom:1; /* ORG - CR 17145 */
+table.odst .spanTextInput input { 
+	background: transparent url(http://odst.co.uk/api/hilton/images/null.gif)!important; /* ORG - CR 17145 */
+	zoom:1!important; /* ORG - CR 17145 */
 }
 
-thead tr {position: relative; top: 5px;}
+thead tr {position: relative!important; top: 5px!important;}
 
 
 
-.labelOneBoxHint
+table.odst .labelOneBoxHint
 {
-	color: #888;
-	position: absolute;	
-	left: 6px;
-    top: 3px;
-	font-family: Arial;	cursor:text; /* ORG - CR #17145 */
+	color: #888!important;
+	position: absolute!important;	
+	left: 6px!important;
+    top: 3px!important;
+	font-family: Arial!important;	cursor:text!important; /* ORG - CR #17145 */
 }
 
-.labelOneBoxHint
+table.odst .labelOneBoxHint
 {
-	z-index: 100;
+	z-index: 100!important;
 }
 
 
