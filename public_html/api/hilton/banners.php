@@ -10,5 +10,5 @@ $r = rand();
 ?>
 
 
-document.write('<div style="z-index: 0; position: relative;width:<?php echo $width;?>px;height:<?php echo $width;?>px;"><iframe width="460" height="600" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" src="http://s.odst.co.uk/api/hilton/banner_<?php echo $width?>x<?php echo $height?>.php?aid=<?php echo $aid?>&cid=<?php echo $cid?>"></iframe></div>');
+document.write('<div style="z-index: 0; position: relative;width:<?php echo $width;?>px;height:<?php echo $height;?>px;"><iframe width="560" height="600" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" src="http://s.odst.co.uk/api/hilton/banner_<?php echo $width?>x<?php echo $height?>.php?aid=<?php echo $aid?>&cid=<?php echo $cid?>"></iframe></div>');
 	
