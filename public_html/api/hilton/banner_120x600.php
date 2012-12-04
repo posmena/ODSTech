@@ -128,7 +128,8 @@ $campaign_id = $_GET['cid'];
 
 
 <script src="js/odst_hilton.js" type="text/javascript"></script>
+<script src="js/calendars.js" type="text/javascript"></script>
 
 <!--[if lt IE 8]>
-<script src="js/calendars.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="ie7.css" />
 <![endif]-->
