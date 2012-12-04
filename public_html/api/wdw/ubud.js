@@ -135,7 +135,7 @@ if( err == true )
 	
 	src = src + 'site=' + ubud_getSite();
 	src = src + '&alias=' + ubud_getAlias();
-	src = src + '&email=' + $('#register input[name=email]').val();
+	src = src + '&email=' + $('#regstep-form #email').val();
 	src = src + '&utm_source=' + ubud_readCookie('utm_source');
 	src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
 	src = src + '&utm_term=' + ubud_readCookie('utm_term');
@@ -153,7 +153,10 @@ var img = new Image();
 var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/reg.php?';
 
 src = src + 'site=' + ubud_getSite();
-src = src + '&alias=' + ubud_getAlias();
+src = src + '&alias=' + $('#regstep-form #alias').val();
+src = src + '&email=' + $('#regstep-form #email').val();
+src = src + '&fname=' + $('#regstep-form #firstname').val();
+src = src + '&lname=' + $('#regstep-form #lastname').val();
 src = src + '&utm_source=' + ubud_readCookie('utm_source');
 src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
 src = src + '&utm_term=' + ubud_readCookie('utm_term');
