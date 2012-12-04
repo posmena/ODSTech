@@ -122,3 +122,10 @@ $campaign_id = $_GET['cid'];
         </tr>
 	</table>
 </form>
+
+
+<script src="js/odst_hilton.js" type="text/javascript"></script>
+
+<!--[if lt IE 8]>
+<script src="js/calendars.js" type="text/javascript"></script>
+<![endif]-->
