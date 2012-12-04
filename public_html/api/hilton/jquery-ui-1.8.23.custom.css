@@ -69,10 +69,11 @@
 img.ui-datepicker-trigger {
 	width: 17px;
 	height: 17px;
-	background: url('http://odstest.co.uk/api/hilton/images/calendar_icon.jpeg') 0 0 no-repeat transparent;
-	position: absolute;
+	background: url('images/ui_cal_icon.gif') 0 0 no-repeat transparent;
+	position: relative;
 	right: 1px;
 	top: 2px;
+	float: right;
 	}
 
 
@@ -104,7 +105,7 @@ img.ui-datepicker-trigger {
 /* Icons
 ----------------------------------*/
 
-/* states and http://odstest.co.uk/api/hilton/images */
+/* states and images */
 .ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
 
 
@@ -151,9 +152,9 @@ img.ui-datepicker-trigger {
 
 /* Interaction Cues
 ----------------------------------*/
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #555555; background: #555555 /*url(img/datepicker/ui-bg_highlight-hard_55_555555_1x100.png) 50% top repeat-x */ /* CR 17079 */; color: #cccccc; }
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #555555; background: #555555 /*url(images/ui-bg_highlight-hard_55_555555_1x100.png) 50% top repeat-x */ /* CR 17079 */; color: #cccccc; }
 .ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #cccccc; }
-.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec url(img/datepicker/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x; color: #cd0a0a; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec url(images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x; color: #cd0a0a; }
 .ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #cd0a0a; }
 .ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #cd0a0a; }
 .ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
@@ -163,15 +164,15 @@ img.ui-datepicker-trigger {
 /* Icons
 ----------------------------------*/
 
-/* states and http://odstest.co.uk/api/hilton/images */
-.ui-icon { width: 16px; height: 16px; background-image: url(img/datepicker/ui-icons_bbbbbb_256x240.png); }
-.ui-widget-content .ui-icon {background-image: url(img/datepicker/ui-icons_bbbbbb_256x240.png); }
-.ui-widget-header .ui-icon {background-image: url(img/datepicker/ui-icons_525252_256x240.png); }
-.ui-state-default .ui-icon { background-image: url(img/datepicker/ui-icons_666666_256x240.png); }
-.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(img/datepicker/ui-icons_00364e_256x240.png); }
-.ui-state-active .ui-icon {background-image: url(img/datepicker/ui-icons_f29a00_256x240.png); }
-.ui-state-highlight .ui-icon {background-image: url(img/datepicker/ui-icons_aaaaaa_256x240.png); }
-.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(img/datepicker/ui-icons_cd0a0a_256x240.png); }
+/* states and images */
+.ui-icon { width: 16px; height: 16px; background-image: url(/images/ui-icons_bbbbbb_256x240.png); }
+.ui-widget-content .ui-icon {background-image: url(images/ui-icons_bbbbbb_256x240.png); }
+.ui-widget-header .ui-icon {background-image: url(images/ui-icons_525252_256x240.png); }
+.ui-state-default .ui-icon { background-image: url(images/ui-icons_666666_256x240.png); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_00364e_256x240.png); }
+.ui-state-active .ui-icon {background-image: url(images/ui-icons_f29a00_256x240.png); }
+.ui-state-highlight .ui-icon {background-image: url(images/ui-icons_aaaaaa_256x240.png); }
+.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_cd0a0a_256x240.png); }
 
 /* positioning */
 .ui-icon-carat-1-n { background-position: 0 0; }
@@ -356,8 +357,8 @@ img.ui-datepicker-trigger {
 
 
 /* Overlays */
-.ui-widget-overlay { background: #aaaaaa url(img/datepicker/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
-.ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa url(img/datepicker/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }/*
+.ui-widget-overlay { background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
+.ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }/*
  * jQuery UI Datepicker 1.8.9
  *
  * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
