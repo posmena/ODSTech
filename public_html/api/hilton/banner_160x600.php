@@ -15,7 +15,7 @@ $campaign_id = $_GET['cid'];
 <script src="js/jquery-1.8.0.min.js" type="text/javascript" /></script>
 <script src="js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
 
-<form id="frm_odst_hilton" method="POST" action="http://www.awin1.com/awclick.php?awinmid=3624&awinaffid=<?php echo($affiliate_id)?>&clickref=<?php echo($campaign_id)?>&p=http://www3.hilton.com/en_US/hi/search/findhotels/index.htm">
+<form target="_blank" id="frm_odst_hilton" method="POST" action="http://www.awin1.com/awclick.php?awinmid=3624&awinaffid=<?php echo($affiliate_id)?>&clickref=<?php echo($campaign_id)?>&p=http://www3.hilton.com/en_US/hi/search/findhotels/index.htm">
 	<input type="hidden" name="searchType" value="ALL">
 	<input type="hidden" name="searchQuery" value="">
 <input type="hidden" name="arrivalDate" value="">
@@ -111,7 +111,7 @@ $campaign_id = $_GET['cid'];
 					</tr>
 					<tr>
 						<td>
-							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 41px; height: 11px;">
+							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 44px; height: 11px;">
 								<span class="odst_text" >Find it</span>
 								<span class="arrow_icon">&nbsp;</span>
 							</a>
