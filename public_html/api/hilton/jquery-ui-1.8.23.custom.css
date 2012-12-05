@@ -168,10 +168,10 @@ img.ui-datepicker-trigger {
 .ui-icon { width: 16px; height: 16px; background-image: url(/images/ui-icons_bbbbbb_256x240.png); }
 .ui-widget-content .ui-icon {background-image: url(images/ui-icons_bbbbbb_256x240.png); }
 .ui-widget-header .ui-icon {background-image: url(images/ui-icons_525252_256x240.png); }
-.ui-state-default .ui-icon { background-image: url(images/ui-icons_666666_256x240.png); }
+.ui-state-default .ui-icon { background-image: url(images/ui-icons_222222_256x240.png); }
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_00364e_256x240.png); }
 .ui-state-active .ui-icon {background-image: url(images/ui-icons_f29a00_256x240.png); }
-.ui-state-highlight .ui-icon {background-image: url(images/ui-icons_aaaaaa_256x240.png); }
+.ui-state-highlight .ui-icon {background-image: url(images/ui-icons_222222_256x240.png); }
 .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_cd0a0a_256x240.png); }
 
 /* positioning */
