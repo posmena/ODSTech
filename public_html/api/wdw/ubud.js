@@ -1,3 +1,17 @@
+function ubud_generateGuid()
+{
+var result, i, j;
+result = '';
+for(j=0; j<32; j++)
+{
+if( j == 8 || j == 12|| j == 16|| j == 20)
+result = result + '-';
+i = Math.floor(Math.random()*16).toString(16).toUpperCase();
+result = result + i;
+}
+return result
+} 
+
 function ubud_getParameterByName( name )
 {
   name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
@@ -108,6 +122,7 @@ var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'w
 src = src + 'site=' + ubud_getSite();
 src = src + '&alias=' + ubud_getAlias();
 src = src + '&utm_source=' + ubud_readCookie('utm_source');
+src = src + '&guid=' + ubud_readCookie('guid');
 src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
 src = src + '&utm_term=' + ubud_readCookie('utm_term');
 src = src + '&utm_content=' + ubud_readCookie('utm_content');
@@ -135,7 +150,8 @@ if( err == true )
 	
 	src = src + 'site=' + ubud_getSite();
 	src = src + '&alias=' + ubud_getAlias();
-	src = src + '&email=' + $('#regstep-form #email').val();
+	src = src + '&email=' + $('#email').val();
+	src = src + '&guid=' + ubud_readCookie('guid');
 	src = src + '&utm_source=' + ubud_readCookie('utm_source');
 	src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
 	src = src + '&utm_term=' + ubud_readCookie('utm_term');
@@ -153,11 +169,12 @@ var img = new Image();
 var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/reg.php?';
 
 src = src + 'site=' + ubud_getSite();
-src = src + '&alias=' + $('#regstep-form #alias').val();
-src = src + '&email=' + $('#regstep-form #email').val();
-src = src + '&fname=' + $('#regstep-form #firstname').val();
-src = src + '&lname=' + $('#regstep-form #lastname').val();
+src = src + '&alias=' + $('#alias').val();
+src = src + '&email=' + $('#email').val();
+src = src + '&fname=' + $('#firstname').val();
+src = src + '&lname=' + $('#lastname').val();
 src = src + '&utm_source=' + ubud_readCookie('utm_source');
+src = src + '&guid=' + ubud_readCookie('guid');
 src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
 src = src + '&utm_term=' + ubud_readCookie('utm_term');
 src = src + '&utm_content=' + ubud_readCookie('utm_content');
@@ -176,6 +193,10 @@ if( ubud_getParameterByName('utm_source') != '' )
 	UTM2Cookie('utm_content');
 	UTM2Cookie('utm_campaign');
 	UTM2Cookie('utm_id');	
+	if( ubud_readCookie('guid') == null )
+		{
+		ubud_createCookie('guid',generateGuid());
+		}
 	}
 }
 
