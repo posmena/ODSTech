@@ -122,7 +122,7 @@ var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'w
 src = src + 'site=' + ubud_getSite();
 src = src + '&alias=' + ubud_getAlias();
 src = src + '&utm_source=' + ubud_readCookie('utm_source');
-src = src + '&guid=' + ubud_readCookie('guid');
+src = src + '&guid=' + ubud_readCookie('PHPSESSID');
 src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
 src = src + '&utm_term=' + ubud_readCookie('utm_term');
 src = src + '&utm_content=' + ubud_readCookie('utm_content');
@@ -151,7 +151,7 @@ if( err == true )
 	src = src + 'site=' + ubud_getSite();
 	src = src + '&alias=' + ubud_getAlias();
 	src = src + '&email=' + $('#email').val();
-	src = src + '&guid=' + ubud_readCookie('guid');
+	src = src + '&guid=' + ubud_readCookie('PHPSESSID');
 	src = src + '&utm_source=' + ubud_readCookie('utm_source');
 	src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
 	src = src + '&utm_term=' + ubud_readCookie('utm_term');
@@ -174,7 +174,7 @@ src = src + '&email=' + $('#email').val();
 src = src + '&fname=' + $('#firstname').val();
 src = src + '&lname=' + $('#lastname').val();
 src = src + '&utm_source=' + ubud_readCookie('utm_source');
-src = src + '&guid=' + ubud_readCookie('guid');
+src = src + '&guid=' + ubud_readCookie('PHPSESSID');
 src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
 src = src + '&utm_term=' + ubud_readCookie('utm_term');
 src = src + '&utm_content=' + ubud_readCookie('utm_content');
@@ -192,12 +192,7 @@ if( ubud_getParameterByName('utm_source') != '' )
 	UTM2Cookie('utm_term');
 	UTM2Cookie('utm_content');
 	UTM2Cookie('utm_campaign');
-	UTM2Cookie('utm_id');	
-	if( ubud_readCookie('guid') == null )
-		{
-		ubud_createCookie('guid',generateGuid());
-		}
-	}
+	UTM2Cookie('utm_id');		
 }
 
 function UTM2Cookie(name)
