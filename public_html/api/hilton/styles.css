@@ -52,6 +52,7 @@ table.odst {
 	color: #373737;
 	font-family: "Trebuchet MS";
 	font-size: 12px;
+	display: inline-block;
 	}
 
 .odst_findbutton .odst_text {
