@@ -38,6 +38,18 @@
 			numberOfMonths: 2,
 			onSelect: function( selectedDate ) {
 				jQuery( "#from" ).datepicker( "option", "maxDate", selectedDate );
+			beforeShow: function(el,obj)
+				{
+					jQuery("#odst_d_52652").css('z-index',200000);
+					jQuery("#odst_52652").width = "720px";
+					jQuery("#odst_52652").height = "720px";				
+				};
+			onClose: function(dt,obj)
+				{
+					jQuery("#odst_d_52652").css('z-index',0);
+					jQuery("#odst_52652").width = jQuery("#odst_d_52652").width;
+					jQuery("#odst_52652").height = jQuery("#odst_d_52652").height;
+				};
 			}
 		});
 		

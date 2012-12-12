@@ -10,5 +10,5 @@ $r = rand();
 ?>
 
 
-document.write('<div onmouseout="this.style.zIndex = 0;document.getElementById(\'odst_52652\').width=<?php echo $width;?>;document.getElementById(\'odst_52652\').height=<?php echo $height;?>;" onmouseover="this.style.zIndex = 2000000000;document.getElementById(\'odst_52652\').width=720;document.getElementById(\'odst_52652\').height=600;"  style="z-index: 0; position: relative;width:<?php echo $width;?>px;height:<?php echo $height;?>px;"><iframe id="odst_52652" allowtransparency="true" width="<?php echo $width;?>" height="<?php echo $height;?>" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" src="http://s.odst.co.uk/api/hilton/banner_<?php echo $width?>x<?php echo $height?>.php?aid=<?php echo $aid?>&cid=<?php echo $cid?>"></iframe></div>');
+document.write('<div id="odst_d_52652" style="z-index: 0; position: relative;width:<?php echo $width;?>px;height:<?php echo $height;?>px;"><iframe id="odst_52652" allowtransparency="true" width="<?php echo $width;?>" height="<?php echo $height;?>" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" src="http://s.odst.co.uk/api/hilton/banner_<?php echo $width?>x<?php echo $height?>.php?aid=<?php echo $aid?>&cid=<?php echo $cid?>"></iframe></div>');
 	
