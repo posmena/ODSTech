@@ -110,7 +110,7 @@ $campaign_id = $_GET['cid'];
                     	    </select>
 						</td>
 						<td style="vertical-align:top;">
-							<a href="#" class="odst_findbutton" title="Find it" role="button"style="width: 45px; height: 11px;">
+							<a href="#" class="odst_findbutton" title="Find it" role="button"style="width: 45px; height: 11px;margin-top:10px">
 								<span class="odst_text" >Find it</span>
 								<span class="arrow_icon">&nbsp;</span>
 							</a>
