@@ -66,7 +66,7 @@ $campaign_id = $_GET['cid'];
 <input type="hidden" name="_searchAllBrands" value="on">
 	<table class="odst" width="728" height="90" border="0" cellpadding="8" cellspacing="0"  >
 		<tr>
-			<td align="right" valign="top" background="images/728x90back.jpg">
+			<td align="right" valign="top"  style="min-height:90px"  background="images/728x90back.jpg">
 				<table class="odst" border="0" table="table" width="440" height"45" cellspacing="0" cellpadding="0" class="vstyle" style="text-align: left; margin-left: 281px!important; margin-top: 4px!important;">
 					<tr>
 						<td>
@@ -106,7 +106,7 @@ $campaign_id = $_GET['cid'];
 							</span> 
 						</td>
 						<td valign="top" align="left" width="84" style="vertical-align:top;">
-							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 30px; height: 11px;margin-top:8px">
+							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 30px; height: 11px;">
 
 								<span class="odst_text">Find</span>
 							</a>
