@@ -66,7 +66,7 @@ $campaign_id = $_GET['cid'];
 <input type="hidden" name="_searchAllBrands" value="on">	<table class="odst"  style="min-height:600px" width="160" height="600" border="0" cellpadding="8" cellspacing="0"  >
 		<tr>
 			<td align="left" valign="middle" background="images/160x600back.jpg" style="padding:10px">
-				<table class="odst"  border="0" table="table" width="140" height="250" cellspacing="0" cellpadding="0" class="vstyle" style="margin-top: 140px;">
+				<table style="min-height:600px" class="odst"  border="0" table="table" width="140" height="250" cellspacing="0" cellpadding="0" class="vstyle" style="margin-top: 140px;">
 					<tr>
 						<td>
 							<label for="city" style="margin-bottom:5px; display:inline-block;">WHERE ARE YOU GOING?</label>
