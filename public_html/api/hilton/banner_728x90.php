@@ -80,7 +80,7 @@ $campaign_id = $_GET['cid'];
 						<td width="80" valign="top" align="left">
 							<label for="guests">Guests</label>
 							<br />   
-							<select name="guests"  style="margin-top:3px;">
+							<select name="guests"  style="margin-top:6px;margin-left:2px;">
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -105,7 +105,7 @@ $campaign_id = $_GET['cid'];
 								<span id="departurePopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your departure date must be within 4 months after your arrival date.</span>
 							</span> 
 						</td>
-						<td valign="top" align="left" width="84">
+						<td valign="top" align="left" width="84" style="vertical-align:top;">
 							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 30px; height: 11px;">
 
 								<span class="odst_text">Find</span>

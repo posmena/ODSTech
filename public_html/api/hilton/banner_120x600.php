@@ -82,7 +82,7 @@ $campaign_id = $_GET['cid'];
 						<td>
 							<label for="guests">Guests</label>
 							<br />   
-							<select name="guests"  style="margin-top:5px;">
+							<select name="guests"  style="margin-top:5px;margin-bottom:8px">
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>

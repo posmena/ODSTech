@@ -81,7 +81,7 @@ $campaign_id = $_GET['cid'];
 						<td>
 							<label for="guests">Guests</label>
 							<br />   
-							<select name="guests"  style="margin-top:5px;">
+							<select name="guests"  style="margin-top:5px;margin-bottom:8px">
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -111,7 +111,7 @@ $campaign_id = $_GET['cid'];
 					</tr>
 					<tr>
 						<td>
-							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 44px; height: 11px;">
+							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 44px; height: 11px;margin-top:5px">
 								<span class="odst_text" >Find it</span>
 								<span class="arrow_icon">&nbsp;</span>
 							</a>
