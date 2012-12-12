@@ -41,14 +41,14 @@
 			beforeShow: function(el,obj)
 				{
 					jQuery("#odst_d_52652").css('z-index',200000);
-					jQuery("#odst_52652").width = "720px";
-					jQuery("#odst_52652").height = "720px";				
+					jQuery("#odst_52652").width(720);
+					jQuery("#odst_52652").height(720);				
 				};
 			onClose: function(dt,obj)
 				{
 					jQuery("#odst_d_52652").css('z-index',0);
-					jQuery("#odst_52652").width = jQuery("#odst_d_52652").width;
-					jQuery("#odst_52652").height = jQuery("#odst_d_52652").height;
+					jQuery("#odst_52652").width(jQuery("#odst_d_52652").width());
+					jQuery("#odst_52652").height(jQuery("#odst_d_52652").height());
 				};
 			}
 		});
