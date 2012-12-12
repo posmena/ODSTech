@@ -14,7 +14,7 @@ if( intval($fwidth) < 720 )
 
 if( intval($fheight) < 250 ) 
 	{
-	$fwidth = "250";
+	$fheight = "250";
 	}
 
 $id = $_GET['id'];
