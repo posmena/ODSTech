@@ -7,9 +7,9 @@ $height = $_GET['h'];
 $fwidth = $_GET['w'];
 $fheight = $_GET['h']; 
 
-if( intval($fwidth) < 720 ) 
+if( intval($fwidth) < 430 ) 
 	{
-	$fwidth = 720;
+	$fwidth = "430";
 	}
 
 if( intval($fheight) < 250 ) 
