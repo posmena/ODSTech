@@ -113,8 +113,8 @@ span.odt_spanTextInput {
 	height:21px;
 	border-radius: 3px;
 	border:1px solid #c1c1c1;
-	behavior: url(http://www3.hilton.com/skins/common/js/PIE.htc);
 	margin-bottom:8px;
+	behavior: url(http://www3.hilton.com/skins/common/js/PIE.htc);
 	}
 
 span.odt_spanTextInput #odst_locationTextInput {

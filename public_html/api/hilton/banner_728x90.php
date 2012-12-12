@@ -106,7 +106,7 @@ $campaign_id = $_GET['cid'];
 							</span> 
 						</td>
 						<td valign="top" align="left" width="84" style="vertical-align:top;">
-							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 30px; height: 11px;">
+							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 30px; height: 11px;margin-top:8px">
 
 								<span class="odst_text">Find</span>
 							</a>

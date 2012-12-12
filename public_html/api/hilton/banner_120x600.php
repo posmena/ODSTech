@@ -102,7 +102,7 @@ $campaign_id = $_GET['cid'];
 					</tr>
 					<tr>
 						<td> 
-							<label for="checkout" class="labelTop departure" style="margin-bottom: 7px; display: inline-block;">Departure</label>
+							<label for="checkout" class="labelTop departure" style="margin-top:7px;margin-bottom: 7px; display: inline-block;">Departure</label>
 							<br/>
 							<span class="odt_spanTextInput" dir="ltr">
 								<input type="text" id="to" name="departureDate" style="width: 80px!important" >
