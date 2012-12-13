@@ -49,7 +49,7 @@
 			minDate: -20, 
 			maxDate: "+1Y",
 			changeMonth: false,
-			numberOfMonths: 2,
+			numberOfMonths: 1,
 			onSelect: function( selectedDate ) {
 				jQuery( "#to" ).datepicker( "option", "minDate", selectedDate );				
 			},
@@ -75,7 +75,7 @@
 			maxDate: "+1Y",
 			defaultDate: "+1w",
 			changeMonth: false,
-			numberOfMonths: 2,
+			numberOfMonths: 1,
 			onSelect: function( selectedDate ) {
 				jQuery( "#from" ).datepicker( "option", "maxDate", selectedDate );
 				},
