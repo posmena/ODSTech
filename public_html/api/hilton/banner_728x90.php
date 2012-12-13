@@ -106,7 +106,7 @@ $campaign_id = $_GET['cid'];
 							</span> 
 						</td>
 						<td valign="top" align="left" width="84" style="vertical-align:top;">
-							<a href="#" class="odst_findbutton" title="Find it" role="button" style="width: 30px; height: 11px;">
+							<a href="#" class="odst_findbutton" title="Find it" role="button" style="height: 11px;">
 
 								<span class="odst_text">Find</span>
 							</a>
@@ -120,8 +120,8 @@ $campaign_id = $_GET['cid'];
 
 
 
-<script src="js/odst_hilton.js" type="text/javascript"></script>
-<script src="js/calendars.js" type="text/javascript"></script>
+<script src="js/odst_hilton_v2.js" type="text/javascript"></script>
+<script src="js/calendars_v2.js" type="text/javascript"></script>
 
 <!--[if lt IE 8]>
 <link rel="stylesheet" type="text/css" href="ie7.css" />

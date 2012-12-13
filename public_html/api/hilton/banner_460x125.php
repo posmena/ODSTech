@@ -67,7 +67,7 @@ $campaign_id = $_GET['cid'];
 	<table class="odst"  style="min-height:425px"  width="460" height="125" border="0" cellpadding="8" cellspacing="0"  >
 		<tr>
 			<td align="right" valign="middle" background="images/460x125back.jpg" style="padding:10px">
-				<table valign="top" class="odst" border="0" table="table" width="320" height="50" cellspacing="0" cellpadding="0" class="vstyle" style="text-align: left; margin-left: 127px!important;">
+				<table valign="top" class="odst" border="0" table="table" width="320" height="50" cellspacing="0" cellpadding="0" class="vstyle" style="text-align: left; margin-left: 107px!important;">
 					<tr>
 						<td>
 							<label for="city" style="margin-bottom:5px; display:inline-block;">WHERE ARE YOU GOING?</label>
@@ -79,7 +79,7 @@ $campaign_id = $_GET['cid'];
 						</td>
 					</tr>
 				</table>
-				<table class="odst" valign="bottom" border="0" table="table" width="320" height="50" cellspacing="0" cellpadding="0" class="vstyle" style=" margin-left: 127px!important;" >
+				<table class="odst" valign="bottom" border="0" table="table" width="320" height="50" cellspacing="0" cellpadding="0" class="vstyle" style=" margin-left: 107px!important;" >
 					<tr>
 						<td align="left" width="50px">
 							<label for="guests"  style="margin-bottom: 5px;margin-top:8px">Guests</label>
@@ -110,7 +110,7 @@ $campaign_id = $_GET['cid'];
 							</span> 
 						</td>
 						<td align="right" style="vertical-align: middle;">
-							<a href="#" class="odst_findbutton" title="Find it" role="button" valign="bottom" style="margin-top:13px; margin-left: 5px; width: 50px; height: 11px; ">
+							<a href="#" class="odst_findbutton" title="Find it" role="button" valign="bottom" style="margin-top:13px; margin-left: 5px; height: 11px; ">
 								<span class="odst_text" >Find it</span>
 								
 							</a>
@@ -123,8 +123,8 @@ $campaign_id = $_GET['cid'];
 </form>
 
 
-<script src="js/odst_hilton.js" type="text/javascript"></script>
-<script src="js/calendars.js" type="text/javascript"></script>
+<script src="js/odst_hilton_v2.js" type="text/javascript"></script>
+<script src="js/calendars_v2.js" type="text/javascript"></script>
 
 <!--[if lt IE 8]>
 <link rel="stylesheet" type="text/css" href="ie7.css" />

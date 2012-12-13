@@ -66,10 +66,11 @@ $campaign_id = $_GET['cid'];
 <input type="hidden" name="_searchAllBrands" value="on">
 
 
-	<table class="odst" style="min-height:600px" width="120" height="600" border="0" cellpadding="8" cellspacing="0"  >
+	<table class="odst" style="min-height:600px;display:table" width="120" height="600" border="0" cellpadding="8" cellspacing="0"  >
 		<tr>
 			<td align="left" valign="middle" background="images/120x600back.jpg" style="padding:10px">
-				<table  class="odst" border="0" table="table" width="100" height="270" cellspacing="0" cellpadding="0" class="vstyle" style="margin-top: 100px;min-height:600px">									<tr>
+				<table  class="odst" border="0" table="table" width="100" height="270" cellspacing="0" cellpadding="0" class="vstyle" style="margin-top: 100px;">
+				<tr>
 						<td>
 							<label for="city" style="margin-bottom:5px; display:inline-block;">WHERE ARE YOU GOING?</label>
 							<br />   
@@ -112,7 +113,7 @@ $campaign_id = $_GET['cid'];
 					</tr>
 					<tr>
 						<td>
-							<a href="#" class="odst_findbutton" title="Find it" role="button" style="margin-top:5px; width: 42px; height: 11px;">
+							<a href="#" class="odst_findbutton" title="Find it" role="button" style="margin-top:5px;height: 11px;">
 								<span class="odst_text" >Find it</span>
 								<span class="arrow_icon">&nbsp;</span>
 							</a>
@@ -127,8 +128,8 @@ $campaign_id = $_GET['cid'];
 </form>
 
 
-<script src="js/odst_hilton.js" type="text/javascript"></script>
-<script src="js/calendars.js" type="text/javascript"></script>
+<script src="js/odst_hilton_v2.js" type="text/javascript"></script>
+<script src="js/calendars_v2.js" type="text/javascript"></script>
 
 <!--[if lt IE 8]>
 <link rel="stylesheet" type="text/css" href="ie7.css" />
