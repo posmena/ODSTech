@@ -96,7 +96,7 @@ $campaign_id = $_GET['cid'];
 							<label for="checkin" class="labelTop arrival" style="margin-bottom: 3px; display: inline-block;">Arrival</label>
 							<br/>
 							<span class="odt_spanTextInput" dir="ltr">
-								<input type="text" id="from" name="arrivalDate" style="width: 80px!important" >
+								<input type="text" id="from" name="arrivalDate" >
 								<span id="arrivalPopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your arrival date must be within the next year.</span>
 							</span>
 						</td>
@@ -106,7 +106,7 @@ $campaign_id = $_GET['cid'];
 							<label for="checkout" class="labelTop departure" style="margin-bottom: 5px; display: inline-block;">Departure</label>
 							<br/>
 							<span class="odt_spanTextInput" dir="ltr">
-								<input type="text" id="to" name="departureDate" style="width: 80px!important" >
+								<input type="text" id="to" name="departureDate">
 								<span id="departurePopupInstruction" style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your departure date must be within 4 months after your arrival date.</span>
 							</span> 
 						</td>
