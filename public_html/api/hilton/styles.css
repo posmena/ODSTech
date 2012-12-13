@@ -98,7 +98,7 @@ input#from, input#to {
 	width: 76px;
 	height: 20px;
 	line-height: 18px;
-	padding: 3px 4px 2px 4px;
+	padding: 3px 0px 2px 4px;
 	font-size: 10px;
 	background:none;
 	border:none;

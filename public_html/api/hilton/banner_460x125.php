@@ -64,7 +64,7 @@ $campaign_id = $_GET['cid'];
 <input type="hidden" name="_selectedHotelBrands" value="on">
 <input type="hidden" name="searchAllBrands" value="true">
 <input type="hidden" name="_searchAllBrands" value="on">
-	<table class="odst"  style="min-height:425px"  width="460" height="125" border="0" cellpadding="8" cellspacing="0"  >
+	<table class="odst" width="460" height="125" border="0" cellpadding="8" cellspacing="0"  >
 		<tr>
 			<td align="right" valign="middle" background="images/460x125back.jpg" style="padding:10px">
 				<table valign="top" class="odst" border="0" table="table" width="320" height="50" cellspacing="0" cellpadding="0" class="vstyle" style="text-align: left; margin-left: 107px!important;">
