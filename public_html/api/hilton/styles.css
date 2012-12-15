@@ -124,7 +124,7 @@ span.odt_spanTextInput #odst_locationTextInput {
 	}
 	
 .spanTextInput input { 
-	background: transparent url(images/null.gif); /* ORG - CR 17145 */
+	background: transparent url(http://s.odst.co.uk/api/hilton/images/null.gif); /* ORG - CR 17145 */
 	zoom:1; /* ORG - CR 17145 */
 }
 

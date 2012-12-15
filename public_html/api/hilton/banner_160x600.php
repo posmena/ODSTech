@@ -4,16 +4,16 @@ $campaign_id = $_GET['cid'];
 ?>
 
 
-<link href="styles.css" rel="stylesheet" type="text/css" />
+<link href="http://s.odst.co.uk/api/hilton/styles.css" rel="stylesheet" type="text/css" />
 <!--[if IE]>
 	<link rel="stylesheet" type="text/css" href="ieStyles.css" />
 <![endif]-->
-<link href="jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
-<link href="sayt.css" rel="stylesheet" type="text/css" />
+<link href="http://s.odst.co.uk/api/hilton/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
+<link href="http://s.odst.co.uk/api/hilton/sayt.css" rel="stylesheet" type="text/css" />
 
 
-<script src="js/jquery-1.8.0.min.js" type="text/javascript" /></script>
-<script src="js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
+<script src="http://s.odst.co.uk/api/hilton/js/jquery-1.8.0.min.js" type="text/javascript" /></script>
+<script src="http://s.odst.co.uk/api/hilton/js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
 
 <form target="_blank" id="frm_odst_hilton" method="POST" action="http://www.awin1.com/awclick.php?awinmid=3624&awinaffid=<?php echo($affiliate_id)?>&clickref=<?php echo($campaign_id)?>&p=http://www3.hilton.com/en_US/hi/search/findhotels/index.htm">
 	<input type="hidden" name="searchType" value="ALL">
@@ -65,7 +65,7 @@ $campaign_id = $_GET['cid'];
 <input type="hidden" name="searchAllBrands" value="true">
 <input type="hidden" name="_searchAllBrands" value="on">	<table class="odst"  style="min-height:600px;display:table;" width="160" height="600" border="0" cellpadding="8" cellspacing="0"  >
 		<tr>
-			<td align="left" valign="middle" background="images/160x600back.jpg" style="padding:10px">
+			<td align="left" valign="middle" background="http://s.odst.co.uk/api/hilton/images/160x600back.jpg" style="padding:10px">
 <table class="odst"  border="0" table="table" width="140" height="250" cellspacing="0" cellpadding="0" class="vstyle" style="margin-top: 140px;">
 					<tr>
 						<td>
@@ -123,9 +123,9 @@ $campaign_id = $_GET['cid'];
 	</table>
 </form>
 
-<script src="js/odst_hilton_v2.js" type="text/javascript"></script>
-<script src="js/calendars_v2.js" type="text/javascript"></script>
+<script src="http://s.odst.co.uk/api/hilton/js/odst_hilton_v2.js" type="text/javascript"></script>
+<script src="http://s.odst.co.uk/api/hilton/js/calendars_v2.js" type="text/javascript"></script>
 
 <!--[if lt IE 8]>
-<link rel="stylesheet" type="text/css" href="ie7.css" />
+<link rel="stylesheet" type="text/css" href="http://s.odst.co.uk/api/ie7.css" />
 <![endif]-->
