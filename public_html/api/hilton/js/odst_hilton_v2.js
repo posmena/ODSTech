@@ -296,7 +296,7 @@ SearchAsYouType.prototype.createDomElements_ = function() {
   this.waitingForSearchResultsEl.style.visibility = 'hidden'; 
   this.waitingForSearchResultsEl.style.position = 'absolute'; 
   this.waitingForSearchResultsEl.src = 
-    this.resourcesPath + "http://s.odst.co.uk/api/hilton/images/loading.gif";
+    this.resourcesPath + "/images/loading.gif";
 
   document.body.appendChild(this.waitingForSearchResultsEl);
 
