@@ -142,8 +142,8 @@ $campaign_id = $_GET['cid'];
 	</table>
 </form>
 
-<script src="http://s.odst.co.uk/api/hilton/js/odst_hilton_v2.js" type="text/javascript"></script>
-<script src="http://s.odst.co.uk/api/hilton/js/calendars_v2.js" type="text/javascript"></script>
+<script src="http://s.odst.co.uk/api/hilton_2/js/odst_hilton_v2.js" type="text/javascript"></script>
+<script src="http://s.odst.co.uk/api/hilton_2/js/calendars_v2.js" type="text/javascript"></script>
 
 <!--[if lt IE 8]>
 <link rel="stylesheet" type="text/css" href="http://s.odst.co.uk/api/ie7.css" />

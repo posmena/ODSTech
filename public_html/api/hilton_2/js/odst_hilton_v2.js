@@ -1,3 +1,25 @@
+$('html').addClass('js');
+
+		$(function() {
+
+ 		 var timer = setInterval( showDiv, 5000);
+
+ 		 var counter = 3;
+
+ 		 function showDiv() {
+ 		   if (counter ==0) { counter++; return; }
+
+ 		  $('div','#messages')
+ 		     .stop()
+ 		     .hide()
+ 		     .filter( function() { return this.id.match('div' + counter); })   
+ 		     .fadeIn('fast');
+ 		   counter == 3? counter = 0 : counter++; 
+
+ 		 }
+
+	});
+
 var searchAsYouTypeConfiguration =  {
     // The path (beginning of the URL) to the place containing /http://s.odst.co.uk/api/hilton/images and
     // /styles. Should end with a slash. 
