@@ -61,7 +61,7 @@
 <input type="hidden" name="_searchAllBrands" value="on">
 		<table class="odst" width="460" height="60" border="0" cellpadding="8" cellspacing="0" >
 		<tr>
-			<td align="right" valign="middle" background="images/468x60back.jpg" style="padding:5px; ">
+			<td align="right" valign="middle" background="images/468X60back.jpg" style="padding:5px; ">
 			<table class="odst" border="0" table="table" width="150" height="20" cellspacing="0" cellpadding="0" class="vstyle" style="color: #2f51a8; text-align: center;  margin-top: 5px; display: inline-block; text-transform: uppercase; position: absolute; top: 6px; left: -6px;">
 					<tr> 
 						<td>
