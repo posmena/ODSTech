@@ -70,12 +70,12 @@
 					<div id='div1' class=''> 
   						<span style="font-size: 25px; font-weight: bold;">SAVE UP TO 40%</span>
 					</div>
-					<div id='div2' class='display'> 
+					<div id='div2' class='display' style="display:none"> 
 						<span style="font-size: 25px; font-weight: bold;">Save</span><br/>
 							<span style="font-size: 28px; font-weight: bold;">Upto</span><br/>
 							<span style="font-size: 50px; font-weight: bold;">40%</span>
 					</div>
-					<div id='div3' class='display'> 
+					<div id='div3' class='display' style="display:none"> 
 							<span style="font-size: 25px; font-weight: bold;">Save</span><br/>
 							<span style="font-size: 28px; font-weight: bold;">Upto</span><br/>
 							<span style="font-size: 50px; font-weight: bold;">40%</span>
