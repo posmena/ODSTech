@@ -1,14 +1,14 @@
 
-<link href="http://s.odst.co.uk/api/hilton/styles.css" rel="stylesheet" type="text/css" />
+<link href="http://s.odst.co.uk/api/hilton_2/styles.css" rel="stylesheet" type="text/css" />
 <!--[if IE]>
 	<link rel="stylesheet" type="text/css" href="ieStyles.css" />
 <![endif]-->
-<link href="http://s.odst.co.uk/api/hilton/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
-<link href="http://s.odst.co.uk/api/hilton/sayt.css" rel="stylesheet" type="text/css" />
+<link href="http://s.odst.co.uk/api/hilton_2/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
+<link href="http://s.odst.co.uk/api/hilton_2/sayt.css" rel="stylesheet" type="text/css" />
 
 
-<script src="http://s.odst.co.uk/api/hilton/js/jquery-1.8.0.min.js" type="text/javascript" /></script>
-<script src="http://s.odst.co.uk/api/hilton/js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
+<script src="http://s.odst.co.uk/api/hilton_2/js/jquery-1.8.0.min.js" type="text/javascript" /></script>
+<script src="http://s.odst.co.uk/api/hilton_2/js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
 
 <form target="_blank" id="frm_odst_hilton" method="POST" action="http://www3.hilton.com/en_US/hi/search/findhotels/index.htm">
 	<input type="hidden" name="searchType" value="ALL">
@@ -58,7 +58,8 @@
 <input type="hidden" name="selectedHotelBrands" value="WA">
 <input type="hidden" name="_selectedHotelBrands" value="on">
 <input type="hidden" name="searchAllBrands" value="true">
-<input type="hidden" name="_searchAllBrands" value="on">	<table class="odst" width="160" height="600" border="0" cellpadding="8" cellspacing="0"  >
+<input type="hidden" name="_searchAllBrands" value="on">	
+<table class="odst" width="160" height="600" border="0" cellpadding="8" cellspacing="0"  >
 		<tr>
 			<td align="left" valign="middle" background="images/160x600back.jpg" style="padding:15px">
 		
