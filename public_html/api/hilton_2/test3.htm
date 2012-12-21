@@ -1,0 +1,123 @@
+<style type="text/css" media="all">body {margin: 0px;}
+.date{font-family:Arial, Helvetica, sans-serif; font-size:11px; width:80px; height:20px;}
+.dest{font-family:Arial, Helvetica, sans-serif; font-size:11px; width:100px; height:20px;}
+.text{font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; color:#000000;}
+.bttn{background:url(http://banners.affiliatefuture.com/2816/72898/butt-bg.gif); 
+border:1pt solid #20A9B9; color:#000000; cursor: pointer; font-family: verdana; font-size:11px; font-weight:bold; width:100px; height:23px;}.option {font-family:Arial, Helvetica, sans-serif;font-size:11px;height:20px;color:#000000;border-color:#B3B3B3;border-style:solid;border-width:1px;}.rating {width:130px;height:20px;width:80px;font-size:11px;border-color:#B3B3B3;border-style:solid;border-width:1px;}
+</style>
+
+<script type="text/javascript">
+function getObj(objID){    
+if (document.getElementById) 
+{return document.getElementById(objID);}    
+else if (document.all) {return document.all[objID];}    
+else if (document.layers) {return document.layers[objID];}}
+
+function checkClick(e) {	
+e?evt=e:evt=event;	
+CSE=evt.target?evt.target:evt.srcElement;	
+
+if (getObj('fc'))		
+if (!isChild(CSE,getObj('fc')))			
+getObj('fc').style.display='none';		
+document.getElementById("guests").style.visibility='visible';		
+document.getElementById("stars").style.visibility='visible';}
+
+function isChild(s,d) {	
+while(s) {		
+if (s==d) 			
+return true;		
+
+s=s.parentNode;	}	
+
+return false;}
+
+function Left(obj)
+{	var curleft = 0;	
+if (obj.offsetParent)	{		
+while (obj.offsetParent)		
+{			
+curleft += obj.offsetLeft;			
+obj = obj.offsetParent;		}	}	
+else if (obj.x)		
+curleft += obj.x;	
+return curleft;}
+
+function Top(obj){	
+var curtop = 0;	
+if (obj.offsetParent)	{		
+while (obj.offsetParent)		
+{			curtop += obj.offsetTop;			
+obj = obj.offsetParent;		}	}	
+else if (obj.y)		
+curtop += obj.y;	
+return curtop;}	
+
+document.write('x<table id="fc" style="position:absolute;border-collapse:collapse;background:#FFFFFF;border:1px solid #ABABAB;display:none" cellpadding=2>');
+document.write('<tr><td style="cursor:pointer;background:#008389" onclick="csubm()"><img src="http://banners.affiliatefuture.com/2816/72898/arrow_previous.gif"></td><td colspan=5 id="mns" align="center" style="font:bold 12px Arial;background:#008389;color:#FFFFFF"></td><td align="right" style="cursor:pointer;background:#008389" onclick="caddm()"><img src="http://banners.affiliatefuture.com/2816/72898/arrow_next.gif"></td></tr>');
+document.write('<tr><td align=center style="background:#008389;font:bold 12px Arial;color:#FFFFFF">S</td><td align=center style="background:#008389;font:bold 12px Arial;color:#FFFFFF">M</td><td align=center style="background:#008389;font:bold 12px Arial;color:#FFFFFF">T</td><td align=center style="background:#008389;font:bold 12px Arial;color:#FFFFFF">W</td><td align=center style="background:#008389;font:bold 12px Arial;color:#FFFFFF">T</td><td align=center style="background:#008389;font:bold 12px Arial;color:#FFFFFF">F</td><td align=center style="background:#008389;font:bold 12px Arial;color:#FFFFFF">S</td></tr>');
+
+for(var kk=1;kk<=6;kk++) 
+{	document.write('<tr>');	
+for(var tt=1;tt<=7;tt++) {		
+num=7 * (kk-1) - (-tt);		
+document.write('<td id="v' + num + '" style="width:16px;height:16px">&nbsp;</td>');	}	
+document.write('</tr>');}
+
+document.write('</table>');
+document.all?document.attachEvent('onclick',checkClick):document.addEventListener('click',checkClick,false);
+var now = new Date;var sccm=now.getMonth();var sccy=now.getFullYear();var ccm=now.getMonth();var ccy=now.getFullYear();var updobj;function lcs(ielem) {	updobj=ielem;	
+getObj('fc').style.left=Left(ielem);	
+getObj('fc').style.top=Top(ielem)+ielem.offsetHeight;	
+getObj('fc').style.display='';		
+document.getElementById("guests").style.visibility='hidden';	
+document.getElementById("stars").style.visibility='hidden';		
+curdt=ielem.value;	curdtarr=curdt.split('/');	
+isdt=true;	
+for(var k=0;k<curdtarr.length;k++) {		
+if (isNaN(curdtarr[k]))			
+isdt=false;	}	
+
+if (isdt&(curdtarr.length==3)) 
+{		ccm=curdtarr[1]-1;		
+ccy=curdtarr[2];		
+prepcalendar(curdtarr[0],curdtarr[1]-1,curdtarr[2]);	}	}
+
+function evtTgt(e){	var el;	
+if(e.target)el=e.target;	
+else if(e.srcElement)el=e.srcElement;	
+if(el.nodeType==3)el=el.parentNode; 	
+return el;}
+
+function EvtObj(e){if(!e)e=window.event;return e;}
+
+function cs_over(e) {	evtTgt(EvtObj(e)).style.background='#FFCC66';}
+function cs_out(e) {	evtTgt(EvtObj(e)).style.background='#FFF8c1';}
+function cs_click(e) {	updobj.value=calvalarr[evtTgt(EvtObj(e)).id.substring(1,evtTgt(EvtObj(e)).id.length)];	
+
+getObj('fc').style.display='none';	document.getElementById("guests").style.visibility='hidden';	
+document.getElementById("stars").style.visibility='hidden';}
+var mn=new Array('JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC');
+var mnn=new Array('31','28','31','30','31','30','31','31','30','31','30','31');
+var mnl=new Array('31','29','31','30','31','30','31','31','30','31','30','31');
+var calvalarr=new Array(42);
+
+function f_cps(obj) {	obj.style.background='#FFFFFF';	obj.style.font='10px Arial';	
+obj.style.color='#333333';	obj.style.textAlign='center';	obj.style.textDecoration='none';	
+obj.style.border='1px solid #B0E8EA';	obj.style.cursor='pointer';}
+
+function f_cpps(obj) {	obj.style.background='#DEF4F5';	obj.style.font='10px Arial';	obj.style.color='#ABABAB';	obj.style.textAlign='center';	obj.style.textDecoration='line-through';	obj.style.border='1px solid #B0E8EA';	obj.style.cursor='default';}
+
+function f_hds(obj) {	obj.style.background='#FFF799';	obj.style.font='bold 10px Arial';	obj.style.color='#333333';	obj.style.textAlign='center';	obj.style.border='1px solid #B0E8EA';	obj.style.cursor='pointer';}
+function prepcalendar(hd,cm,cy) {	now=new Date();	sd=now.getDate();	td=new Date();	td.setDate(1);	td.setFullYear(cy);	td.setMonth(cm);	cd=td.getDay();	getObj('mns').innerHTML=mn[cm]+ ' ' + cy;	marr=((cy%4)==0)?mnl:mnn;	for(var d=1;d<=42;d++) {		f_cps(getObj('v'+parseInt(d)));		if ((d >= (cd -(-1))) && (d<=cd-(-marr[cm]))) {			dip=((d-cd < sd)&&(cm==sccm)&&(cy==sccy));			htd=((hd!='')&&(d-cd==hd));			if (dip)				f_cpps(getObj('v'+parseInt(d)));			else if (htd)				f_hds(getObj('v'+parseInt(d)));			else				f_cps(getObj('v'+parseInt(d)));			getObj('v'+parseInt(d)).onmouseover=(dip)?null:cs_over;			getObj('v'+parseInt(d)).onmouseout=(dip)?null:cs_out;			getObj('v'+parseInt(d)).onclick=(dip)?null:cs_click;						getObj('v'+parseInt(d)).innerHTML=d-cd;				calvalarr[d]=''+(d-cd)+'/'+(cm-(-1))+'/'+cy;		}		else {			getObj('v'+d).innerHTML='&nbsp;';			getObj('v'+parseInt(d)).onmouseover=null;			getObj('v'+parseInt(d)).onmouseout=null;			getObj('v'+parseInt(d)).style.cursor='default';			}	}}prepcalendar('',ccm,ccy);getObj('fc'+cc).style.visibility='hidden';
+
+function caddm() {	marr=((ccy%4)==0)?mnl:mnn;		ccm+=1;	if (ccm>=12) {		ccm=0;		ccy++;	}	cdayf();	prepcalendar('',ccm,ccy);}
+function csubm() {	marr=((ccy%4)==0)?mnl:mnn;		ccm-=1;	if (ccm<0) {		ccm=11;		ccy--;	}	cdayf();	prepcalendar('',ccm,ccy);}
+function cdayf() {if ((ccy>sccy)|((ccy==sccy)&&(ccm>=sccm)))	return;else {	ccy=sccy;	ccm=sccm;	cfd=scfd;	}}
+function validateHotel(form){	if (document.bookHotelsForm.market.value == "")	{		
+alert("Please enter a valid deatination.");		document.bookHotelsForm.market.focus();		
+return false;	}	return true;} </script>
+
+<table width="120" height="600" border="0" cellpadding="0" cellspacing="0" id="container_table">    
+<tr>       <td valign="top" background="http://banners.affiliatefuture.com/2816/72898/creatives-test-60990_backgr.jpg">	  <form name="bookHotelsForm" onSubmit="return validateHotel('bookHotelsForm')" action="http://sv.afnt.co.uk/AFPost.aspx?a=3872&m=2816&p=7676&md=72898&t=&u=http://www.ebookers.com/partner/offsitesearch" target="_blank" method="post">	    <table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0">          <tr>            <td height="80"><input type="hidden" name="type" value="hotel"><input type="hidden" name="searchtype" value="keyword"><input type="hidden" name="rooms" value="1">			</td>          </tr>          <tr>            <td class="text">Destination:</td>          </tr>          <tr>            <td><input name="market" type="text" class="dest" id="market" value=""/></td>          </tr>          <tr>            <td>&nbsp;</td>          </tr>          <tr>            <td class="text">Check-in:</td>          </tr>          <tr>            <td><input class="date" type="text" name="checkin" id="checkin" value="dd/mm/yy" onclick="event.cancelBubble=true;this.select();lcs(this);document.getElementById('stars').style.visibility='visible';" readonly=""  /></td>          </tr>          <tr>            <td>&nbsp;</td>          </tr>          <tr>            <td class="text">Check-out:</td>          </tr>          <tr>            <td><input class="date" type="text" name="checkout" id="checkout" value="dd/mm/yy" onclick="event.cancelBubble=true;this.select();lcs(this)" readonly="" /></td>          </tr>          <tr>            <td height="25">&nbsp;</td>          </tr>          <tr>            <td class="text">Guests:</td>          </tr>          <tr>            <td><select name="guests" id="guests" class="option">                <option value="1" selected >1</option>                <option value="2" >2</option>                <option value="3" >3</option>                <option value="4" >4</option>            </select></td>          </tr>          <tr>            <td>&nbsp;</td>          </tr>          <tr>            <td class="text">Rating:</td>          </tr>          <tr>            <td><select name="stars" id="stars" class="rating">                <option value="" selected >All</option>                <option value="2" >2 star hotels and up</option>                <option value="3" >3 star hotels and up</option>                <option value="4" >4 star hotels and up</option>                <option value="5" >Only 5 star hotels</option>            </select></td>          </tr>          <tr>            <td>&nbsp;</td>          </tr>          <tr>            <td><input type="submit" value="Search Hotels" class="bttn"/></td>          </tr>        
+</table>	  </form>	  </td>    </tr>  </table>
