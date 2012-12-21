@@ -1,8 +1,3 @@
-<?php
-$affiliate_id = $_GET['aid'];
-$campaign_id = $_GET['cid'];
-?>
-
 
 <link href="styles.css" rel="stylesheet" type="text/css" />
 <!--[if IE]>
@@ -15,7 +10,7 @@ $campaign_id = $_GET['cid'];
 <script src="js/jquery-1.8.0.min.js" type="text/javascript" /></script>
 <script src="js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
 
-<form id="frm_odst_hilton" target="_blank" method="POST" action="http://www.awin1.com/awclick.php?awinmid=3624&awinaffid=<?php echo($affiliate_id)?>&clickref=<?php echo($campaign_id)?>&p=http://www3.hilton.com/en_US/hi/search/findhotels/index.htm">
+<form id="frm_odst_hilton" target="_blank" method="POST" action="http://www3.hilton.com/en_US/hi/search/findhotels/index.htm">
 	<input type="hidden" name="searchType" value="ALL">
 	<input type="hidden" name="searchQuery" value="">
 <input type="hidden" name="arrivalDate" value="">
