@@ -185,8 +185,7 @@ img.src = src;
 
 function ubud_RecUTM()
 {
-if( ubud_getParameterByName('utm_source') != '' )
-	{
+
 	UTM2Cookie('utm_source');
 	UTM2Cookie('utm_medium');
 	UTM2Cookie('utm_term');
@@ -197,7 +196,7 @@ if( ubud_getParameterByName('utm_source') != '' )
 		{
 		ubud_createCookie('guid',ubud_generateGuid());
 		}
-	}
+
 }
 
 function UTM2Cookie(name)
