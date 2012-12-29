@@ -119,16 +119,16 @@ var oldbal = ubud_readCookie('bal');
 var img = new Image();
 var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/dep.php?';
 
-src = src + 'site=' + ubud_getSite();
-src = src + '&alias=' + ubud_getAlias();
-src = src + '&utm_source=' + ubud_readCookie('utm_source');
-src = src + '&guid=' + ubud_readCookie('guid');
-src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
-src = src + '&utm_term=' + ubud_readCookie('utm_term');
-src = src + '&utm_content=' + ubud_readCookie('utm_content');
-src = src + '&utm_id=' + ubud_readCookie('utm_id');
-src = src + '&oldbal=' + oldbal;
-src = src + '&newbal=' + newbal;
+src = src + 'site=' + encodeURIComponent(ubud_getSite());
+src = src + '&alias=' + encodeURIComponent(ubud_getAlias());
+src = src + '&utm_source=' + encodeURIComponent(ubud_readCookie('utm_source'));
+src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
+src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
+src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
+src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
+src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
+src = src + '&oldbal=' + encodeURIComponent(oldbal);
+src = src + '&newbal=' + encodeURIComponent(newbal);
 
 img.src = src;
 }
@@ -148,15 +148,15 @@ if( err == true )
 	var img = new Image();
 	var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/dup.php?';
 	
-	src = src + 'site=' + ubud_getSite();
-	src = src + '&alias=' + ubud_getAlias();
-	src = src + '&email=' + $('#email').val();
-	src = src + '&guid=' + ubud_readCookie('guid');
-	src = src + '&utm_source=' + ubud_readCookie('utm_source');
-	src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
-	src = src + '&utm_term=' + ubud_readCookie('utm_term');
-	src = src + '&utm_content=' + ubud_readCookie('utm_content');
-	src = src + '&utm_id=' + ubud_readCookie('utm_id');
+	src = src + 'site=' + encodeURIComponent(ubud_getSite());
+	src = src + '&alias=' + encodeURIComponent(ubud_getAlias());
+	src = src + '&email=' + encodeURIComponent($('#email').val());
+	src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
+	src = src + '&utm_source=' + encodeURIComponent(ubud_readCookie('utm_source'));
+	src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
+	src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
+	src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
+	src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
 	
 	img.src = src;
 	}
@@ -168,17 +168,17 @@ function ubud_RecReg()
 var img = new Image();
 var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/reg.php?';
 
-src = src + 'site=' + ubud_getSite();
-src = src + '&alias=' + $('#alias').val();
-src = src + '&email=' + $('#email').val();
-src = src + '&fname=' + $('#firstname').val();
-src = src + '&lname=' + $('#lastname').val();
-src = src + '&utm_source=' + ubud_readCookie('utm_source');
-src = src + '&guid=' + ubud_readCookie('guid');
-src = src + '&utm_medium=' + ubud_readCookie('utm_medium');
-src = src + '&utm_term=' + ubud_readCookie('utm_term');
-src = src + '&utm_content=' + ubud_readCookie('utm_content');
-src = src + '&utm_id=' + ubud_readCookie('utm_id');
+src = src + 'site=' + encodeURIComponent(ubud_getSite());
+src = src + '&alias=' + encodeURIComponent($('#alias').val());
+src = src + '&email=' + encodeURIComponent($('#email').val());
+src = src + '&fname=' + encodeURIComponent($('#firstname').val());
+src = src + '&lname=' + encodeURIComponent($('#lastname').val());
+src = src + '&utm_source=' + encodeURIComponent(ubud_readCookie('utm_source'));
+src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
+src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
+src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
+src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
+src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
 
 img.src = src;
 }
