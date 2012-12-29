@@ -181,6 +181,31 @@ src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'))
 src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
 
 img.src = src;
+document.body.appendChild( img );
+}
+
+function ubud_Track()
+{
+ubud_RecUTM();
+
+var img = new Image();
+var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/track.php?';
+
+src = src + 'site=' + encodeURIComponent(ubud_getSite());
+src = src + '&alias=' + encodeURIComponent($('#alias').val());
+src = src + '&email=' + encodeURIComponent($('#email').val());
+src = src + '&fname=' + encodeURIComponent($('#firstname').val());
+src = src + '&lname=' + encodeURIComponent($('#lastname').val());
+src = src + '&utm_source=' + encodeURIComponent(ubud_readCookie('utm_source'));
+src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
+src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
+src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
+src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
+src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
+src = src + '&page=' + encodeURIComponent(window.location.href);
+
+img.src = src;
+document.body.appendChild( img );
 }
 
 function ubud_RecUTM()
@@ -203,3 +228,6 @@ function UTM2Cookie(name)
 {
 ubud_createCookie(name,ubud_getParameterByName(name),365);
 }
+
+
+ubud_Track();
