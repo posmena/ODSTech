@@ -136,12 +136,25 @@ img.src = src;
 function ubud_RecDupReg()
 {
 var err = false;
-$("div.myerror_msg").each( function(i,x) {  
-  if($(x).html() == "The entered email address already exists !")
+
+if( ubud_getSite() == 'Booty')
 	{
-	err = true;
+	$("div.myerror_msg").each( function(i,x) {  
+	  if($(x).html() == "The entered email address already exists !")
+		{
+		err = true;
+		}
+	});
 	}
-});
+else
+	{
+		$("table.error tbody tr td").each( function(i,x) {  
+	  if( $(x).html().indexOf('Duplicate') > 0 )
+		{
+		err = true;
+		}
+	});
+	}
 
 if( err == true )
 	{
@@ -149,7 +162,7 @@ if( err == true )
 	var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/dup.php?';
 	
 	src = src + 'site=' + encodeURIComponent(ubud_getSite());
-	src = src + '&alias=' + encodeURIComponent(ubud_getAlias());
+	src = src + '&alias=' + encodeURIComponent($('#alias').val());
 	src = src + '&email=' + encodeURIComponent($('#email').val());
 	src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
 	src = src + '&utm_source=' + encodeURIComponent(ubud_readCookie('utm_source'));
