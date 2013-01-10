@@ -148,7 +148,7 @@ if( ubud_getSite() == 'Booty')
 	}
 else
 	{
-		$("table.error tbody tr td").each( function(i,x) {  
+		$("table.error").each( function(i,x) {  
 	  if( $(x).html().indexOf('Duplicate') > 0 )
 		{
 		err = true;
