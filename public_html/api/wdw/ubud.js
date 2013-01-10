@@ -239,7 +239,7 @@ function ubud_RecUTM()
 
 function UTM2Cookie(name)
 {
-if( ubud_readCookie(name) == null )
+if( ubud_readCookie(name) == null ||  ubud_readCookie(name) == "")
 	{
 	ubud_createCookie(name,ubud_getParameterByName(name),365);
 	}
