@@ -2,17 +2,17 @@
 /* Carousel */
 
 
-.disneytravel .odst_scontainer .slider li  a.name {background-color:#67006D !important; color:#FFFFFF !important}
-.disneytravel .odst_scontainer .grid li  a.name {background-color:#67006D !important; color:#FFFFFF !important}
-.disneytravel .odst_scontainer.vertical li  a.name{background-color:#67006D !important; color:#FFFFFF !important}
+.disneytravel .odst_scontainer .slider li  a.name {background-color:#A7D5EC !important; color:#FFFFFF !important}
+.disneytravel .odst_scontainer .grid li  a.name {background-color:#A7D5EC !important; color:#FFFFFF !important}
+.disneytravel .odst_scontainer.vertical li  a.name{background-color:#A7D5EC !important; color:#FFFFFF !important}
 
 
-.widget .odst_hotels.disneytravel a.name, .odst_hotel_table.disneytravel div.name a.name {background-color:#67006D  !important; color:#FFFFFF  !important;}
-.post .odst_hotels.disneytravel a.name{background-color:#67006D  !important; 
+.widget .odst_hotels.disneytravel a.name, .odst_hotel_table.disneytravel div.name a.name {background-color:#A7D5EC  !important; color:#253B56  !important;}
+.post .odst_hotels.disneytravel a.name{background-color:#A7D5EC  !important; 
 	color:#FFFFFF  !important;}
 	
 .disneytravel .odst_scontainer.vertical {
-border: 2px solid #67006D !important;
+border: 2px solid #A7D5EC !important;
 background-color:#ffffff  !important;;
 }
 
@@ -44,7 +44,7 @@ background-color:#ffffff  !important;;
 
 .disneytravel.container
 {
-	  border: 2px solid #67006D;
+	  border: 2px solid #A7D5EC;
 
 }
 
