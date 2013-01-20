@@ -1,0 +1,119 @@
+	
+/* Carousel */
+
+
+.disney .odst_scontainer .slider li  a.name {background-color:#1994D7 !important; color:#FFFFFF !important}
+.disney .odst_scontainer .grid li  a.name {background-color:#1994D7 !important; color:#FFFFFF !important}
+.disney .odst_scontainer.vertical li  a.name{background-color:#1994D7 !important; color:#FFFFFF !important}
+
+
+.widget .odst_hotels.disney a.name, .odst_hotel_table.disney div.name a.name {background-color:#1994D7  !important; color:##FFFFFF  !important;}
+.post .odst_hotels.disney a.name{background-color:#1994D7  !important; 
+	color:#FFFFFF  !important;}
+	
+.disney .odst_scontainer.vertical {
+border: 2px solid #1994D7 !important;
+background-color:#ffffff  !important;;
+}
+
+
+
+	
+.disney .odst_scontainer a.prevBtn{
+	background:url(../img/disneyTravel/prev-blue.png) no-repeat 0 0;	
+	}	
+
+	
+.disney .odst_scontainer a.nextBtn{ 
+	background:url(../img/disneyTravel/next-blue.png) no-repeat 0 0;		
+	}	
+		
+.disney .odst_scontainer.vertical a.nextBtn
+{
+	background:url(../img/disneyTravel/vert-next-blue.png) no-repeat 0 0;	
+}
+
+.disney .odst_scontainer.vertical a.prevBtn
+{
+	background:url(../img/disneyTravel/vert-prev-blue.png) no-repeat 0 0;	
+}
+
+/* // Carousel */
+
+
+
+.disney.container
+{
+	  border: 2px solid #1994D7;
+
+}
+
+.disney.odst_hol_logo,.disney .odst_hol_logo
+{
+background: url(../img/disneyTravel/disneyTravel.png) no-repeat scroll right bottom transparent;
+}
+.disney.odst_hol_logo.vertical,.disney .odst_hol_logo.vertical{background: url(../img/disneyTravel/disneyTravel.png) no-repeat scroll right bottom transparent;}
+
+.odst_hotels.disney div.odst_hol_logo.vertical
+{
+background: url(../img/disneyTravel/disneyTravel.png) no-repeat scroll right bottom transparent;
+height:26px;
+border-bottom: solid 1px #343434;
+margin-bottom:5px;
+background-position:left;
+width:137px
+}
+
+.odst_hotels.disney.odst_hotel_table div.odst_hol_logo
+{
+border-bottom: none;
+margin-bottom:0px;
+margin-left:342px;
+width:137px
+}
+
+
+.disney.odst_hol_logo .odst_hol_logo_padding, .disney .odst_hol_logo_padding
+{
+display:block;
+height:30px;
+}
+
+.disney .thumb_star
+{
+background: url(../img/disneyTravel/stars.png) no-repeat 0 0;
+}
+
+.thumb_more
+{
+color:#67006D !important;
+}
+
+.thumb_more a
+{
+color:#67006D  !important;
+}
+
+.disney .thumb_price
+
+{
+color:#67006D  !important;
+}
+
+
+
+.odst_hotel_table.disney .row.even
+{
+background-color:#ECEBE9  !important;
+}
+
+.odst_hotel_table.disney div.price span.from
+{
+color: #67006D  !important;
+}
+
+.odst_hotel_table.disney div.price a
+{
+color: #67006D !important;
+text-decoration:none !important;
+}
