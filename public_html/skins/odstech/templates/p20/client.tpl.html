@@ -208,8 +208,14 @@ jQuery(".p20color").each(function(){
 
 var width = jQuery('input#cu_width').val();
 var max = jQuery('input#cu_maxproducts').val();
-var style = jQuery('select#cu_style').val();
-
+var style = jQuery('#cu_style').val();
+var colorOverride = false;
+if( style == "custom" )
+	{
+	style = "default";
+	colorOverride = true;
+	}
+	
 jQuery("div.odst_p20").each(function(){
     jQuery(this).removeAttr('data-params');
 	jQuery(this).attr('data-params',params);
@@ -224,7 +230,10 @@ jQuery("div.odst_p20").each(function(){
   	jQuery(this).attr('data-max',max);
 	
 	jQuery(this).removeAttr('data-colors');
-  	jQuery(this).attr('data-colors',colors);
+  	if( colorOverride == true )
+		{
+		jQuery(this).attr('data-colors',colors);
+		}
 	
 	
 	});
@@ -257,14 +266,26 @@ jQuery("div.odst_p20").each(function(){
 		<b>Width</b>: <input style="width:50px" type="text" name="cu_width" id="cu_width" value="500px"></input>
 		&nbsp;&nbsp;
 		<b>Maximum products</b>:<input style="width:50px"  name="cu_maxproducts" type="text" id="cu_maxproducts" value="6"></input>
-		<b>Style</b>:
+	
+		{if $feed.styles|@count > 1  || $feed.allowCustom}
+			<b>Style</b>:
+			<select id="cu_style" name="style">
+			{if $feed.allowCustom}
+				<option value="default">Default</option>
+				<option value="custom">Custom</option>
+			{/if}
+				{foreach from=$feed.styles item=style}
+				<option value="{$style|lower}">{$style}</option>
+				{/foreach}
+			</select>
+		{elseif $feed.styles|@count == 1 }
+				{foreach from=$feed.styles item=style}
+				<input type="hidden" id="cu_style" name="style" value="{$style|lower}"/>
+				{/foreach}
+			{/if}
 		
-		<select id="cu_style" name="style">
-			<option value="default">Default</option>
-			{foreach from=$feed.styles item=style}
-			<option value="{$style|lower}">{$style}</option>
-			{/foreach}
-		</select></p>
+		</p>
+		{if $feed.allowCustom}
 		<p class="colors">
 		<b>Colors:</b><br/>
 		<table>
@@ -286,7 +307,9 @@ jQuery("div.odst_p20").each(function(){
 		</tr>		
 		</table>
 		</p>
-		<br>
+	
+		{/if}
+	<br>
 	<a class="btn-show" href="#" onclick="updateDivs();ODST_P20.display(ODST_P20,true);saveUnit('#demo_form',say, UNITID);return false;">Preview Content Units</a>
 
 		</div>
