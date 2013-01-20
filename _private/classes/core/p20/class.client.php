@@ -18,6 +18,7 @@ class core_p20_client extends core_default
 			$collection = $mdb->ot_feeds;
 			
 			$feed = $collection->findOne( array("client" => strtolower($qs['client'])) );
+			
 			$this->assignments['page']['title'] = $feed['feedname'] . ' P20 Tools';
 			
 			if( isset($qs['skin']) )
