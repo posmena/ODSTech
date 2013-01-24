@@ -197,7 +197,7 @@ img.src = src;
 document.body.appendChild( img );
 }
 
-function ubud_Track()
+function ubud_Track(ref)
 {
 ubud_RecUTM();
 
@@ -215,7 +215,7 @@ src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
 src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
 src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
 src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
-src = src + '&page=' + encodeURIComponent(window.location.href);
+src = src + '&page=' + encodeURIComponent(window.location.href) + '&ref=' + ref;
 
 img.src = src;
 document.body.appendChild( img );
@@ -246,4 +246,4 @@ if( ubud_readCookie(name) == null ||  ubud_readCookie(name) == "")
 }
 
 
-ubud_Track();
+ubud_Track(0);
