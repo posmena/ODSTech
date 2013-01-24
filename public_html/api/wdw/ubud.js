@@ -129,7 +129,7 @@ src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'))
 src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
 src = src + '&oldbal=' + encodeURIComponent(oldbal);
 src = src + '&newbal=' + encodeURIComponent(newbal);
-
+src = src + '&r=' + Math.floor(Math.random()*99999);
 img.src = src;
 }
 
@@ -170,7 +170,8 @@ if( err == true )
 	src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
 	src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
 	src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
-	
+	src = src + '&r=' + Math.floor(Math.random()*99999);
+
 	img.src = src;
 	}
 
@@ -192,6 +193,7 @@ src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
 src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
 src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
 src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
+src = src + '&r=' + Math.floor(Math.random()*99999);
 
 img.src = src;
 document.body.appendChild( img );
@@ -216,6 +218,7 @@ src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
 src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
 src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
 src = src + '&page=' + encodeURIComponent(window.location.href) + '_ref=' + ref;
+src = src + '&r=' + Math.floor(Math.random()*99999);
 
 img.src = src;
 document.body.appendChild( img );
