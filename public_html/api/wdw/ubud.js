@@ -207,7 +207,7 @@ var img = new Image();
 var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/track.php?';
 
 src = src + 'site=' + encodeURIComponent(ubud_getSite());
-src = src + '&alias=' + encodeURIComponent($('#alias').val());
+src = src + '&alias=' + encodeURIComponent(ubud_getAlias());
 src = src + '&email=' + encodeURIComponent($('#email').val());
 src = src + '&fname=' + encodeURIComponent($('#firstname').val());
 src = src + '&lname=' + encodeURIComponent($('#lastname').val());
