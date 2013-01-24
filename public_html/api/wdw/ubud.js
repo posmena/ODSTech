@@ -68,7 +68,7 @@ var val = '';
 
 $("li.hello").each( function(i,x) {  
 var str = $(x).html();
-var y = str.split('<br/>');
+var y = str.split('<br>');
   val =  $.trim(y[1]);
 });
 return val;
