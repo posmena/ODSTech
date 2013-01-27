@@ -1,0 +1,1 @@
+homeText=<font size="25">SAVE</font><br/><font size="25">UPTO</font><br/><font size="50">40</font>&homeText2=Search today&homeText3=<font size="25">BOOK</font><br/><font size="25">NOW</font>
