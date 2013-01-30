@@ -1,8 +1,6 @@
 <?php
 include 'classes/feed_processing/class.cron_feed_manager.php';
 
-die()
-
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $feeds = $db->ot_feeds;
