@@ -19,6 +19,11 @@ class core_p20_client extends core_default
 			
 			$feed = $collection->findOne( array("client" => strtolower($qs['client'])) );
 			
+			if( !isset($feed['allowCustom']) )
+				{
+				$feed['allowCustom'] = true;
+				}
+				
 			$this->assignments['page']['title'] = $feed['feedname'] . ' P20 Tools';
 			
 			if( isset($qs['skin']) )
