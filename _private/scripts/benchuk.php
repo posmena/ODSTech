@@ -230,6 +230,9 @@ $products = $db->dump_bench;
 									'gender' => $gender
 								);
 								
+								if($cat_name == 'Sale' )
+									$product['category'] = 'Sale';
+									
 								CreateGoogleProducts($product, $product_sizes);
 								
 								if( $product['title'] != "" )
