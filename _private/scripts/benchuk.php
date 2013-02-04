@@ -82,13 +82,12 @@ $products = $db->dump_bench;
 						foreach ($product_boxes as $product_box) {
 							$product_box = pq($product_box);
 							$product_url = $product_box->find('h2.product-name a')->attr('href');
-							
+							//$product_url = 'http://www.bench.co.uk/men/phonecases/15-laptop-bag-black-black';
 							$_product_detail_page = phpQuery::newDocumentFileHTML($product_url,'utf-8');
 // die('die_here;'.$_product_detail_page->trigger('dom:loaded')->html());
 
 							$product_name = $_product_detail_page->find('li.product strong')->text();
 							$product_name = html_entity_decode($product_name);
-							$product_name = str_replace('"','""',$product_name);
 							
 							$product_images = array();
 							foreach ($_product_detail_page->find('div.thumbnails ul') as $ul) {
@@ -240,6 +239,7 @@ $products = $db->dump_bench;
 								
 								if( $product['title'] != "" )
 									$products->save($product);
+								
 								
 //								var_dump($_final[$cat_name][$subcat_name][$product_name]);
 								
