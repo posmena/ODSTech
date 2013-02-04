@@ -2,33 +2,35 @@
 error_reporting(E_ALL);
 include('phpQuery/phpQuery.php');
 
+$conn = new Mongo('localhost');
+$db = $conn->odstech;
+$db->dump_bench->drop();
+$db->dump_google_bench->drop();
 
 $base_page = phpQuery::newDocumentFileHTML('http://www.bench.co.uk/');
 $data = pq('ul#nav li.level0', $base_page);
 $result = array();
 $_final = array();
 
-
-GetProducts('http://www.bench.co.uk/sale','Sale','','','');
-
 foreach ($data as  $key1 => $li) { // men and women
 	//if ($key1 > 1) break;
 	$li = pq($li);
 	$cat_name = $li->find('a span')->text();
 	$_final[$cat_name] = array();
-    echo($cat_name);
+    echo($cat_name."\n");
 	$subcats = array();
 	foreach ($li->find('.level0 > div') as $key2 => $subcat) { // subcats
-		//if ($key2 > 1) break;
+		if ($key2 > 1) continue;
 		$subcat = pq($subcat);
-		$subcat_name = $subcat->find('span.subtitle')->text();
-		echo($subcat_name);
+		$subcat_name = $subcat->find('span:first.subtitle')->text();
+		echo("\t".$subcat_name."\n");
 		$_final[$cat_name][$subcat_name] = array();
 
 		$clothes_types = array();
-		foreach ($subcat->find('ul li a') as $clothes_type) {
+		foreach ($subcat->find('ul:first li a') as $clothes_type) {
 			$clothes_type = pq($clothes_type);
-			echo($clothes_type->text()."\n");
+			echo("\t\t".$clothes_type->text()."\n");
+			
 			$_clothes_page = phpQuery::newDocumentFileHTML($clothes_type->attr('href'));
 			foreach (pq('ul.filter-dropdown',$_clothes_page) as $k => $color_filter) {
 				if (!$k) continue;
@@ -51,10 +53,15 @@ foreach ($data as  $key1 => $li) { // men and women
 		//break; // @debug, skip all the rest until we make this functional
 	}
 	
+
 //	break; // @debug, skip all the rest until we make this functional
 
 
 }
+
+
+GetProducts('http://www.bench.co.uk/sale','Sale','','','');
+
 //print('<pre>');print_r($_final); die;
 // die('<pre>'.var_export($result, true).'</pre>');
 //mongoexport -d odstech -c dump_bench --csv -f '_id','name','price','category','description','sizes','image1','image2','color','url' -o bench.csv
@@ -164,34 +171,27 @@ $products = $db->dump_bench;
 								$desc = trim($desc);
 							
 								$gender = '';
-								if ( $cat_name == "Men")
-									{
-									$gender = 'Male';
-									}
-									
-								if( strpos( $product_url, 'boys' ) )
-									{
-									$gender = 'Male';
-									}
-								
-								if( strpos( $product_url, 'girls') )
-									{
-									$gender = 'Female';
-									}
-								
-								// or if product_box -> get parent -> parent contains MEN
+								if ( $cat_name == "Men" || $cat_name = "MENS" || $subcat_name == "Men")
+									$gender = 'Male';										
+							
+						
+								if( strpos( $product_url, 'boys' ) )									
+									$gender = 'Male';									
 								
 								if($cat_name == 'Sale' && strpos($product_box->parent()->parent()->parent()->text(),'MEN'))
 									$gender = 'Male';
+																	
+								
+								if ( $cat_name == "Women" || $cat_name = "WOMENS" || $subcat_name == "Women")
+									$gender = 'Female';	
 									
+								if( strpos( $product_url, 'girls') )
+									$gender = 'Female';
+								
 								if($cat_name == 'Sale' && strpos($product_box->parent()->parent()->parent()->text(),'WOMEN'))
 									$gender = 'Female';
 								
-								if ( $cat_name == "Women" )
-									{
-									$gender = 'Female';
-									}
-										
+								
 // get current products from db and append color if not in list of colors
 // add each color / size variation as mew row to google_bench
 								$product_images_1 = "";
@@ -291,6 +291,10 @@ if( $product['old_price'] != "" )
 	{
 	$product['sale_price'] = $product['price'];
 	$product['price'] = $product['old_price'];
+	if( $product['price'] == $product['sale_price'] ) 
+		{
+		unset($product['sale_price']);
+		}
 	}
 	
 // if product with name already exists then get the group_id
