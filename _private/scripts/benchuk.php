@@ -1,28 +1,35 @@
-	<?
+<?php
 error_reporting(E_ALL);
 include('phpQuery/phpQuery.php');
 
-$base_page = phpQuery::newDocumentFileHTML('http://www.bench-clothing.com/');
+
+$base_page = phpQuery::newDocumentFileHTML('http://www.bench.co.uk/');
 $data = pq('ul#nav li.level0', $base_page);
+$result = array();
 $_final = array();
 
+
+GetProducts('http://www.bench.co.uk/sale','Sale','','','');
+
 foreach ($data as  $key1 => $li) { // men and women
-	if ($key1 > 1) break;
+	//if ($key1 > 1) break;
 	$li = pq($li);
 	$cat_name = $li->find('a span')->text();
 	$_final[$cat_name] = array();
-
+    echo($cat_name);
+	$subcats = array();
 	foreach ($li->find('.level0 > div') as $key2 => $subcat) { // subcats
-		if ($key2 > 1) break;
+		//if ($key2 > 1) break;
 		$subcat = pq($subcat);
 		$subcat_name = $subcat->find('span.subtitle')->text();
-		
+		echo($subcat_name);
 		$_final[$cat_name][$subcat_name] = array();
 
+		$clothes_types = array();
 		foreach ($subcat->find('ul li a') as $clothes_type) {
 			$clothes_type = pq($clothes_type);
+			echo($clothes_type->text()."\n");
 			$_clothes_page = phpQuery::newDocumentFileHTML($clothes_type->attr('href'));
-
 			foreach (pq('ul.filter-dropdown',$_clothes_page) as $k => $color_filter) {
 				if (!$k) continue;
 				$color_filter = pq($color_filter);
@@ -30,16 +37,45 @@ foreach ($data as  $key1 => $li) { // men and women
 					if (!$_k) continue;
 					$color_item = pq($color_item);
 					$color_name = trim($color_item->text());
-// print('<p>Color: '.trim($color_item->text()).'</p>');
-					$_product_page = phpQuery::newDocumentFileHTML($color_item->attr('location'));
+					
+					if( strpos($color_item->attr('location'),'color' ) )
+					{					
+ //print('<p>Color: '.trim($color_item->text()).'</p>');
+					GetProducts($color_item->attr('location'),$cat_name,$subcat_name,$clothes_type->text(),$color_name);
+				}
+			}
+		  }
+		}
+// die('<pre>'.var_export($clothes_types,true).'</pre>');
+		
+		//break; // @debug, skip all the rest until we make this functional
+	}
+	
+//	break; // @debug, skip all the rest until we make this functional
 
+
+}
+//print('<pre>');print_r($_final); die;
+// die('<pre>'.var_export($result, true).'</pre>');
+//mongoexport -d odstech -c dump_bench --csv -f '_id','name','price','category','description','sizes','image1','image2','color','url' -o bench.csv
+
+
+function GetProducts($url,$cat_name,$subcat_name,$clothes_type,$color_name)
+{
+
+$conn = new Mongo('localhost');
+$db = $conn->odstech;
+$products = $db->dump_bench;
+
+	$_product_page = phpQuery::newDocumentFileHTML($url);
+//echo($color_item->attr('location'));
 					// get products
 					$product_boxes = $_product_page->find('div.category-products ul.products-grid li.item');
 					if ($product_boxes->count()) {
 						foreach ($product_boxes as $product_box) {
 							$product_box = pq($product_box);
 							$product_url = $product_box->find('h2.product-name a')->attr('href');
-							$_product_detail_page = phpQuery::newDocumentFileHTML($product_url);
+							$_product_detail_page = phpQuery::newDocumentFileHTML($product_url,'utf-8');
 // die('die_here;'.$_product_detail_page->trigger('dom:loaded')->html());
 
 							$product_name = $_product_detail_page->find('li.product strong')->text();
@@ -53,7 +89,7 @@ foreach ($data as  $key1 => $li) { // men and women
 								}
 							}
 							
-							if (isset($_final[$cat_name][$subcat_name][$product_name])) {
+							/*if (isset($_final[$cat_name][$subcat_name][$product_name])) {
 								// add color
 								$_final[$cat_name][$subcat_name][$product_name]['colors'][] = array(
 									'name' => $color_name,
@@ -62,15 +98,24 @@ foreach ($data as  $key1 => $li) { // men and women
 								// add images by color
 								$_final[$cat_name][$subcat_name][$product_name]['images'][$color_name] = $product_images;
 								
-							} else {
+							} else {*/
+								$product_price = "";
+								$old_price = "";
+								
 								foreach($_product_detail_page->find('div.product-main-info div.price-box span.price') as $price) {
 									$price = pq($price);
+									$old_price = $product_price;
+									
 									$product_price = trim($price->text());
-									$product_price = substr($product_price,1);
-									break;
+									//echo($product_price);									
+									$product_price = utf8_decode($product_price);
+									$product_price = str_replace('£','',$product_price);									
+									$product_price = str_replace('€','',$product_price);	
+									$product_price = str_replace('?','',$product_price);
 								}
 								
 								$product_sku = $_product_detail_page->find('div.product-main-info p.product-ids')->html();
+								$product_sku = str_replace('SKU# ','',$product_sku);
 								
 								// get sizes  from json
 								$scripts = $_product_detail_page->find('script');
@@ -93,7 +138,9 @@ foreach ($data as  $key1 => $li) { // men and women
 									$json_text = str_replace(');', '', substr($script_text, 43));
 									$json_data = json_decode($json_text, true);
 									foreach ($json_data['attributes'] as $attr) {
-										foreach ($attr['options'] as $option) $product_sizes[] = $option['label'];
+										foreach ($attr['options'] as $option) 
+											if( $option['label'] != "." && $option['label'] != "" && $option['label'] != "----" )
+											    $product_sizes[] = $option['label'];											
 									}
 								// print('<pre>'); print_r($product_sizes); die;
 								} else {$product_sizes = false;}
@@ -107,35 +154,169 @@ foreach ($data as  $key1 => $li) { // men and women
 									}
 								}
 								
-								$_final[$cat_name][$subcat_name][$product_name] = array(
-									'name' => $product_name,
-									'url' => $product_url,
-									'category' => $cat_name,
-									'subcategory' => $subcat_name,
-									'colors' => array(
-										array(
-											'name' => $color_name,
-											'url' => $product_url
-										)
-									),
+								$desc = $_product_detail_page->find('div.short-description')->html();
+								$desc = str_replace("<br/>",' ',$desc);
+								$desc = str_replace("<br>",' ',$desc);
+								$desc = strip_tags($desc);
+								$desc = str_replace("\r",' ',$desc);
+								$desc = str_replace("\n",' ',$desc);
+								$desc = str_replace('Quick Overview','',$desc);
+								$desc = trim($desc);
+							
+								$gender = '';
+								if ( $cat_name == "Men")
+									{
+									$gender = 'Male';
+									}
+									
+								if( strpos( $product_url, 'boys' ) )
+									{
+									$gender = 'Male';
+									}
+								
+								if( strpos( $product_url, 'girls') )
+									{
+									$gender = 'Female';
+									}
+								
+								// or if product_box -> get parent -> parent contains MEN
+								
+								if($cat_name == 'Sale' && strpos($product_box->parent()->parent()->parent()->text(),'MEN'))
+									$gender = 'Male';
+									
+								if($cat_name == 'Sale' && strpos($product_box->parent()->parent()->parent()->text(),'WOMEN'))
+									$gender = 'Female';
+								
+								if ( $cat_name == "Women" )
+									{
+									$gender = 'Female';
+									}
+										
+// get current products from db and append color if not in list of colors
+// add each color / size variation as mew row to google_bench
+								$product_images_1 = "";
+								$product_images_2 = "";
+								
+								if( count($product_images) )
+									$product_images_1 = $product_images[0];
+									
+								if( count($product_images) > 1 )
+									$product_images_2 = $product_images[1];
+									
+								$product_sizes_str	= "";
+								if( is_array($product_sizes) )
+									$product_sizes_str = implode(",",$product_sizes);
+								
+								$product = array(
+									'category' => $cat_name . ' > ' . $subcat_name . ' > ' . $clothes_type,
+									'_id' => $product_sku, // plus size and color for sep rows
+									'id' => $product_sku, // plus size and color for sep rows
+									'sku' => $product_sku, // plus size and color for sep rows
+									'title' => $product_name,
+									'item_group_id' => '$product_sku',
+									'old_price' => $old_price,
+									'link' => $product_url,
+									'color' => $color_name,					
 									'price' => $product_price,
-									'description' => $_product_detail_page->find('div.short-description')->html(),
-									'images' => array($color_name => $product_images),
-									'sizes' => $product_sizes,
+									'description' => $desc,
+									'images' => $product_images,
+									'sizes' => $product_sizes_str,
+									'image_link' => $product_images_1,
+									'additional_image_link' => $product_images_2,
+									'shipping_cost_uk' => '0',
+									'condition' => 'new',
+									'availability' => 'in stock',
+									'brand' => 'Bench',
+									'gender' => $gender
 								);
-// print('<pre>'); print_r($_final); die;
+								
+								CreateGoogleProducts($product, $product_sizes);
+								
+								$products->save($product);
+								
+//								var_dump($_final[$cat_name][$subcat_name][$product_name]);
+								
 // die('<pre>'.var_export($_final[$cat_name][$subcat_name][$product_name], true).'</pre>');
 							}
-						}
+						//}
 					}
 					
-				}
+				
+}
+
+function AddAllColours($name, $thisColour)
+{
+$conn = new Mongo('localhost');
+$db = $conn->odstech;
+$products = $db->dump_bench;
+
+$product = $products->findOne(array('title' => $name));
+$exists = false;
+
+if( $product )
+	{
+	$colours = explode(",",$product['colors']);
+	foreach( $colours as $colour )
+		{
+		if( $colour == $thisColour )
+			{
+			$exists = true;
 			}
 		}
-		
-		// break; // @debug, skip all the rest until we make this functional
+	}
+else
+	{
+	return $thisColour;
 	}
 	
-	// break; // @debug, skip all the rest until we make this functional
+	if( $exists )
+		{
+		return implode(",",$colours);
+		}
+	else
+		{
+		return implode(",",$colours) . "," . $thisColour;
+		}
+		
 }
-print('<pre>');print_r($_final); die;
+
+function CreateGoogleProducts($product, $product_sizes)
+{
+
+$conn = new Mongo('localhost');
+$db = $conn->odstech;
+$google_products = $db->dump_google_bench;
+
+if( $product['old_price'] != "" )
+	{
+	$product['sale_price'] = $product['price'];
+	$product['price'] = $product['old_price'];
+	}
+	
+// if product with name already exists then get the group_id
+$existingGroup = $google_products->findOne(array('title' => $product['title']));
+
+if( $existingGroup )
+	{
+	$product['item_group_id'] = $existingGroup['item_group_id'];
+	}
+else
+	{
+	$product['item_group_id'] = $product['_id'];		
+	}
+
+if( is_array($product_sizes) && count($product_sizes) )
+	{
+	foreach ( $product_sizes as $size ) 
+		{
+		$product['id'] = $product['sku'] . $size;
+		$product['_id'] = $product['id'];
+		$product['size'] = $size;
+		$google_products->save($product);	
+		}
+	}
+else
+	{
+	$google_products->save($product);								
+	}
+}
