@@ -44,12 +44,7 @@ class ODSTech_xmlgenerator
 							$tData .= " Chesca Womens";	
 						}
 						
-					}
-					
-					if ($heading == 'category')
-						{
-						$heading = 'google_product_category';
-						}
+					}							
 						
 					$content = '<![CDATA[' .htmlentities(utf8_encode($tData), ENT_QUOTES, "UTF-8") . ']]>';
 				} elseif ($heading == 'shipping' || $heading == 'shipping_cost_uk') {
