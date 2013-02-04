@@ -171,7 +171,7 @@ $products = $db->dump_bench;
 								$desc = trim($desc);
 							
 								$gender = '';
-								if ( $cat_name == "Men" || $cat_name = "MENS" || $subcat_name == "Men")
+								if ( $cat_name == "Men" || $cat_name == "MENS" || $subcat_name == "Men")
 									$gender = 'Male';										
 							
 						
@@ -182,7 +182,7 @@ $products = $db->dump_bench;
 									$gender = 'Male';
 																	
 								
-								if ( $cat_name == "Women" || $cat_name = "WOMENS" || $subcat_name == "Women")
+								if ( $cat_name == "Women" || $cat_name == "WOMENS" || $subcat_name == "Women")
 									$gender = 'Female';	
 									
 								if( strpos( $product_url, 'girls') )
@@ -232,7 +232,8 @@ $products = $db->dump_bench;
 								
 								CreateGoogleProducts($product, $product_sizes);
 								
-								$products->save($product);
+								if( $product['title'] != "" )
+									$products->save($product);
 								
 //								var_dump($_final[$cat_name][$subcat_name][$product_name]);
 								
@@ -316,11 +317,13 @@ if( is_array($product_sizes) && count($product_sizes) )
 		$product['id'] = $product['sku'] . $size;
 		$product['_id'] = $product['id'];
 		$product['size'] = $size;
-		$google_products->save($product);	
+		if( $product['title'] != "" )
+		  $google_products->save($product);	
 		}
 	}
 else
 	{
-	$google_products->save($product);								
+	if( $product['title'] != "" )
+     	$google_products->save($product);								
 	}
 }
