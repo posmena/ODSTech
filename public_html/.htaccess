@@ -95,6 +95,7 @@ RewriteRule ^([feeds]+/damsel.zip+)$ index.php?loc=damsel_feed [QSA]
 RewriteRule ^([feeds]+/easyjet+)$ index.php?loc=easyjet_package_feed [QSA]
 RewriteRule ^([feeds]+/easyjet.zip+)$ index.php?loc=easyjet_package_feed [QSA]
 RewriteRule ^([feeds]+/stylepiques.zip+)$ index.php?loc=stylepiques_feed [QSA]
+RewriteRule ^([feeds]+/benchuk.zip+)$ index.php?loc=benchuk_feed [QSA]
 
 
 #thanks to http://www.evolt.org/ultimate_htaccess_examples
