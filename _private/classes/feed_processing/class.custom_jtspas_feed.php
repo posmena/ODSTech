@@ -36,7 +36,7 @@ class custom_jtspas_feed extends network_base
 				$theData = htmlentities($theData);
 				
 				$product['description'] = $theData;
-				$product['google_product_category'] = 'Home & Garden';
+			//	$product['google_product_category'] = 'Home & Garden';
 				$collection->save($product);
 				}
 			}
