@@ -46,9 +46,9 @@ class ODSTech_xmlgenerator
 						
 					}
 					
-					if ($heading == 'google_product_category')
+					if ($heading == 'category')
 						{
-						$heading = 'category';
+						$heading = 'google_product_category';
 						}
 						
 					$content = '<![CDATA[' .htmlentities(utf8_encode($tData), ENT_QUOTES, "UTF-8") . ']]>';
