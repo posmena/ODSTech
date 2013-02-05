@@ -205,20 +205,19 @@ $products = $db->dump_bench;
 										$product_images[] = $img->attr('src');
 									}
 								}
-								
 								$desc = $_product_detail_page->find('div.short-description')->html();
 								$desc = str_replace("<br/>",' ',$desc);
 								$desc = str_replace("<br>",' ',$desc);
 								$desc = strip_tags($desc);
 								$desc = str_replace("\r",' ',$desc);
 								$desc = str_replace("\n",' ',$desc);
-								$desc = str_replace('Kurzübersicht','',$desc);
+								$desc = str_replace('Kurz' . chr(0xC3) . chr(0xBC) . 'bersicht','',$desc);
 								$desc = str_replace('Quick Overview','',$desc);
 								$desc = str_replace('    ',' ',$desc);
 								$desc = str_replace('_','',$desc);
 								$desc = str_replace($product_sku,'',$desc);
 								$desc = trim($desc);
-							
+								
 								$gender = '';
 								if ( $cat_name == "Men" || $cat_name == "MENS" || $cat_name == "HERREN" || $subcat_name == "Men")
 									$gender = 'Male';										
