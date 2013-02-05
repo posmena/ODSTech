@@ -270,9 +270,7 @@ $products = $db->dump_bench;
 								if( $product['title'] != "" )
 									$products->save($product);
 								
-								var_dump($product);
-								die();
-
+								
 								}
 						//}
 					}
