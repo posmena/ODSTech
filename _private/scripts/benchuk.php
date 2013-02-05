@@ -80,11 +80,11 @@ foreach ($data as  $key1 => $li) { // men and women
 
 //	break; // @debug, skip all the rest until we make this functional
 
+GetProducts($theSite['saleUrl'],'Sale','','','',$theSite);
 
 }
 
 
-GetProducts($theSite['saleUrl'],'Sale','','','',$theSite);
 
 //print('<pre>');print_r($_final); die;
 // die('<pre>'.var_export($result, true).'</pre>');
@@ -285,7 +285,17 @@ $products = $db->dump_bench;
 									}
 									
 								if($cat_name == 'Sale' )
-									$product['category'] = 'Sale';
+									{
+									$curCat = GetCategory($product_name);
+									if( $curCat != "" )
+										{
+										$product['category'] = $curCat;
+										}
+									else
+										{
+										$product['category'] = 'Sale';
+										}
+									}
 									
 								CreateGoogleProducts($product, $product_sizes);
 								
@@ -299,6 +309,22 @@ $products = $db->dump_bench;
 					}
 					
 				
+}
+
+function GetCategory($name)
+{
+$conn = new Mongo('localhost');
+$db = $conn->odstech;
+$products = $db->dump_bench;
+
+$product = $products->findOne(array('title' => $name, 'category' => array('$ne' => 'Sale')));
+
+if( $product )
+	{
+	return $product['category'];
+	}
+	
+return "";
 }
 
 function AddAllColours($name, $thisColour)
