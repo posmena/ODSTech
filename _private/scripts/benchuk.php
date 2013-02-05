@@ -264,7 +264,6 @@ $products = $db->dump_bench;
 									'item_group_id' => '$product_sku',
 									'old_price' => $old_price,
 									'link' => $product_url,
-									'color' => $color_name,					
 									'price' => $product_price,
 									'description' => $desc,
 									'images' => $product_images,
@@ -280,6 +279,11 @@ $products = $db->dump_bench;
 									'currency' => $theSite['currency']
 								);
 								
+								if( $color_name != "" )
+									{
+									$product['color'] = $color_name;													
+									}
+									
 								if($cat_name == 'Sale' )
 									$product['category'] = 'Sale';
 									
