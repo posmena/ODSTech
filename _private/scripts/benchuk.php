@@ -124,7 +124,7 @@ $products = $db->dump_bench;
 						foreach ($product_boxes as $product_box) {
 							$product_box = pq($product_box);
 							$product_url = $product_box->find('h2.product-name a')->attr('href');
-							$product_url = 'http://www.bench.co.uk/men/polo-shirts/expolo-b-white';
+							//$product_url = 'http://www.bench.co.uk/men/polo-shirts/expolo-b-white';
 							$_product_detail_page = phpQuery::newDocumentFileHTML($product_url . "/?bench_b2c_ignoregeoip=1",'UTF-8');
 // die('die_here;'.$_product_detail_page->trigger('dom:loaded')->html());
 
