@@ -51,17 +51,19 @@ foreach ($data as  $key1 => $li) { // men and women
 		foreach ($subcat->find('ul:first li a') as $clothes_type) {
 			$clothes_type = pq($clothes_type);
 			echo("\t\t".$clothes_type->text()."\n");
-			
+			if( $clothes_type->text() != "Sweatshirts & Kapuzenjacken") continue;
+				
 			$_clothes_page = phpQuery::newDocumentFileHTML(CheckURL($clothes_type->attr('href') . '?bench_b2c_ignoregeoip=1',$theSite));
-
+			
 			foreach (pq('ul.filter-dropdown',$_clothes_page) as $k => $color_filter) {
-				if (!$k) continue;
+				//if (!$k) continue;
 				$color_filter = pq($color_filter);
 				foreach ($color_filter->find('li') as $_k => $color_item) {
-					if (!$_k) continue;
+					
+					//if (!$_k) continue;
 					$color_item = pq($color_item);
 					$color_name = trim($color_item->text());
-					
+				
 					if( strpos($color_item->attr('location'),'color' ) )
 					{					
  //print('<p>Color: '.trim($color_item->text()).'</p>');
