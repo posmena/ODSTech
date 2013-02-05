@@ -4,7 +4,7 @@ include('phpQuery/phpQuery.php');
 
 $sites = array(
 	'de' => array( 'homeUrl' => 'http://www.benchstore.de/?bench_b2c_ignoregeoip=1',
-					'saleUrl' => 'http://www.benchstore.de/sale'
+					'saleUrl' => 'http://www.benchstore.de/sale',
 					'currency' => 'EUR'),
 					
 	'uk' => array( 'homeUrl' => 'http://www.bench.co.uk/', 
