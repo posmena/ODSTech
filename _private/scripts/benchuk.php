@@ -3,11 +3,13 @@ error_reporting(E_ALL);
 include('phpQuery/phpQuery.php');
 
 $sites = array(
-	'de' => array( 'homeUrl' => 'http://www.benchstore.de/?bench_b2c_ignoregeoip=1',
+	'de' => array(  'baseUrl' => 'http://www.benchstore.de',
+					'homeUrl' => 'http://www.benchstore.de/?bench_b2c_ignoregeoip=1',
 					'saleUrl' => 'http://www.benchstore.de/sale',
 					'currency' => 'EUR'),
 					
-	'uk' => array( 'homeUrl' => 'http://www.bench.co.uk/', 
+	'uk' => array( 'baseUrl' => 'http://www.bench.co.uk',
+					'homeUrl' => 'http://www.bench.co.uk/', 
 					'saleUrl' => 'http://www.bench.co.uk/sale',
 					'currency' => 'GBP')
 );
@@ -50,7 +52,7 @@ foreach ($data as  $key1 => $li) { // men and women
 			$clothes_type = pq($clothes_type);
 			echo("\t\t".$clothes_type->text()."\n");
 			
-			$_clothes_page = phpQuery::newDocumentFileHTML($clothes_type->attr('href') . '?bench_b2c_ignoregeoip=1');
+			$_clothes_page = phpQuery::newDocumentFileHTML(CheckURL($clothes_type->attr('href') . '?bench_b2c_ignoregeoip=1',$theSite));
 						
 			foreach (pq('ul.filter-dropdown',$_clothes_page) as $k => $color_filter) {
 				if (!$k) continue;
@@ -86,6 +88,18 @@ GetProducts($theSite['saleUrl'],'Sale','','','',$theSite);
 //print('<pre>');print_r($_final); die;
 // die('<pre>'.var_export($result, true).'</pre>');
 //mongoexport -d odstech -c dump_bench --csv -f '_id','name','price','category','description','sizes','image1','image2','color','url' -o bench.csv
+
+function CheckURL($url, $theSite)
+{
+if( strpos( 'http', $url ) )
+	{
+	return $theSite['baseUrl'] . $url;
+	}
+else
+	{
+	return $url;
+	}
+}
 
 
 function GetProducts($url,$cat_name,$subcat_name,$clothes_type,$color_name,$theSite)
