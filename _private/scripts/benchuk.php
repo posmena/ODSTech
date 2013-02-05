@@ -51,7 +51,6 @@ foreach ($data as  $key1 => $li) { // men and women
 		foreach ($subcat->find('ul:first li a') as $clothes_type) {
 			$clothes_type = pq($clothes_type);
 			echo("\t\t".$clothes_type->text()."\n");
-			if( $clothes_type->text() != "Sweatshirts & Kapuzenjacken") continue;
 				
 			$_clothes_page = phpQuery::newDocumentFileHTML(CheckURL($clothes_type->attr('href') . '?bench_b2c_ignoregeoip=1',$theSite));
 			
