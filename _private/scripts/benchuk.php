@@ -80,10 +80,9 @@ foreach ($data as  $key1 => $li) { // men and women
 
 //	break; // @debug, skip all the rest until we make this functional
 
-GetProducts($theSite['saleUrl'],'Sale','','','',$theSite);
-
 }
 
+GetProducts($theSite['saleUrl'],'Sale','','','',$theSite);
 
 
 //print('<pre>');print_r($_final); die;
