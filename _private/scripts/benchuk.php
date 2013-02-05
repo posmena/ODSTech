@@ -2,12 +2,31 @@
 error_reporting(E_ALL);
 include('phpQuery/phpQuery.php');
 
+$sites = array(
+	'de' => array( 'homeUrl' => 'http://www.benchstore.de/?bench_b2c_ignoregeoip=1',
+					'saleUrl' => 'http://www.benchstore.de/sale'
+					'currency' => 'EUR'),
+					
+	'uk' => array( 'homeUrl' => 'http://www.bench.co.uk/', 
+					'saleUrl' => 'http://www.bench.co.uk/sale',
+					'currency' => 'GBP')
+);
+
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $db->dump_bench->drop();
 $db->dump_google_bench->drop();
 
-$base_page = phpQuery::newDocumentFileHTML('http://www.bench.co.uk/');
+$site = "uk";
+if( isset($argv[1]) )
+	{
+	$site = $argv[1];
+	}
+	
+$theSite = $sites[$site];
+
+
+$base_page = phpQuery::newDocumentFileHTML($theSite['homeUrl']);
 $data = pq('ul#nav li.level0', $base_page);
 $result = array();
 $_final = array();
@@ -31,7 +50,8 @@ foreach ($data as  $key1 => $li) { // men and women
 			$clothes_type = pq($clothes_type);
 			echo("\t\t".$clothes_type->text()."\n");
 			
-			$_clothes_page = phpQuery::newDocumentFileHTML($clothes_type->attr('href'));
+			$_clothes_page = phpQuery::newDocumentFileHTML($clothes_type->attr('href') . '?bench_b2c_ignoregeoip=1');
+						
 			foreach (pq('ul.filter-dropdown',$_clothes_page) as $k => $color_filter) {
 				if (!$k) continue;
 				$color_filter = pq($color_filter);
@@ -43,7 +63,8 @@ foreach ($data as  $key1 => $li) { // men and women
 					if( strpos($color_item->attr('location'),'color' ) )
 					{					
  //print('<p>Color: '.trim($color_item->text()).'</p>');
-					GetProducts($color_item->attr('location'),$cat_name,$subcat_name,$clothes_type->text(),$color_name);
+ 	
+					GetProducts($color_item->attr('location'),$cat_name,$subcat_name,$clothes_type->text(),$color_name,$theSite);
 				}
 			}
 		  }
@@ -60,22 +81,23 @@ foreach ($data as  $key1 => $li) { // men and women
 }
 
 
-GetProducts('http://www.bench.co.uk/sale','Sale','','','');
+GetProducts($theSite['saleUrl'],'Sale','','','');
 
 //print('<pre>');print_r($_final); die;
 // die('<pre>'.var_export($result, true).'</pre>');
 //mongoexport -d odstech -c dump_bench --csv -f '_id','name','price','category','description','sizes','image1','image2','color','url' -o bench.csv
 
 
-function GetProducts($url,$cat_name,$subcat_name,$clothes_type,$color_name)
+function GetProducts($url,$cat_name,$subcat_name,$clothes_type,$color_name,$theSite)
 {
 
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $products = $db->dump_bench;
 
+	
 	$_product_page = phpQuery::newDocumentFileHTML($url);
-//echo($color_item->attr('location'));
+	//echo($color_item->attr('location'));
 					// get products
 					$product_boxes = $_product_page->find('div.category-products ul.products-grid li.item');
 					if ($product_boxes->count()) {
@@ -83,7 +105,7 @@ $products = $db->dump_bench;
 							$product_box = pq($product_box);
 							$product_url = $product_box->find('h2.product-name a')->attr('href');
 							//$product_url = 'http://www.bench.co.uk/men/phonecases/15-laptop-bag-black-black';
-							$_product_detail_page = phpQuery::newDocumentFileHTML($product_url,'utf-8');
+							$_product_detail_page = phpQuery::newDocumentFileHTML($product_url . "/?bench_b2c_ignoregeoip=1",'utf-8');
 // die('die_here;'.$_product_detail_page->trigger('dom:loaded')->html());
 
 							$product_name = $_product_detail_page->find('li.product strong')->text();
@@ -116,11 +138,15 @@ $products = $db->dump_bench;
 									$old_price = $product_price;
 									
 									$product_price = trim($price->text());
-									//echo($product_price);									
+									$product_price  = str_replace(chr(0xC2).chr(0xA0).chr(0xE2).chr(0x82).chr(0xAC),"",$product_price );
+																
+									$product_price = str_replace(',','.',$product_price);									
+									
 									$product_price = utf8_decode($product_price);
 									$product_price = str_replace('£','',$product_price);									
 									$product_price = str_replace('€','',$product_price);	
 									$product_price = str_replace('?','',$product_price);
+																			
 								}
 								
 								$product_sku = $_product_detail_page->find('div.product-main-info p.product-ids')->html();
@@ -171,24 +197,25 @@ $products = $db->dump_bench;
 								$desc = str_replace("\n",' ',$desc);
 								$desc = str_replace('Quick Overview','',$desc);
 								$desc = str_replace('    ',' ',$desc);
+								$desc = str_replace($product_sku,'',$desc);
 								$desc = trim($desc);
 							
 								$gender = '';
-								if ( $cat_name == "Men" || $cat_name == "MENS" || $subcat_name == "Men")
+								if ( $cat_name == "Men" || $cat_name == "MENS" || $cat_name == "HERREN" || $subcat_name == "Men")
 									$gender = 'Male';										
 							
 						
-								if( strpos( $product_url, 'boys' ) )									
+								if( strpos( $product_url, 'boys' ) || strpos( $product_url, 'jungen' ))									
 									$gender = 'Male';									
 								
 								if($cat_name == 'Sale' && strpos($product_box->parent()->parent()->parent()->text(),'MEN'))
 									$gender = 'Male';
 																	
 								
-								if ( $cat_name == "Women" || $cat_name == "WOMENS" || $subcat_name == "Women")
+								if ( $cat_name == "Women" || $cat_name == "WOMENS" || $cat_name == "DAMEN" || $subcat_name == "Women")
 									$gender = 'Female';	
 									
-								if( strpos( $product_url, 'girls') )
+								if( strpos( $product_url, 'girls') || strpos( $product_url, 'maedchen'))
 									$gender = 'Female';
 								
 								if($cat_name == 'Sale' && strpos($product_box->parent()->parent()->parent()->text(),'WOMEN'))
@@ -227,10 +254,12 @@ $products = $db->dump_bench;
 									'image_link' => $product_images_1,
 									'additional_image_link' => $product_images_2,
 									'shipping_cost_uk' => '0',
+									'shipping' => '0',
 									'condition' => 'new',
 									'availability' => 'in stock',
 									'brand' => 'Bench',
-									'gender' => $gender
+									'gender' => $gender,
+									'currency' => $theSite['currency']
 								);
 								
 								if($cat_name == 'Sale' )
@@ -241,11 +270,10 @@ $products = $db->dump_bench;
 								if( $product['title'] != "" )
 									$products->save($product);
 								
-								
-//								var_dump($_final[$cat_name][$subcat_name][$product_name]);
-								
-// die('<pre>'.var_export($_final[$cat_name][$subcat_name][$product_name], true).'</pre>');
-							}
+								var_dump($product);
+								die();
+
+								}
 						//}
 					}
 					
