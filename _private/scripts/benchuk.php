@@ -212,8 +212,10 @@ $products = $db->dump_bench;
 								$desc = strip_tags($desc);
 								$desc = str_replace("\r",' ',$desc);
 								$desc = str_replace("\n",' ',$desc);
+								$desc = str_replace('Kurzübersicht','',$desc);
 								$desc = str_replace('Quick Overview','',$desc);
 								$desc = str_replace('    ',' ',$desc);
+								$desc = str_replace('_','',$desc);
 								$desc = str_replace($product_sku,'',$desc);
 								$desc = trim($desc);
 							
