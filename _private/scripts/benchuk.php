@@ -91,14 +91,17 @@ GetProducts($theSite['saleUrl'],'Sale','','','',$theSite);
 
 function CheckURL($url, $theSite)
 {
-if( ! strpos( $url,'http' ) )
+if( strpos( $url,"http" ) === false )
 	{
-	return $theSite['baseUrl'] . $url;
+	$theUrl =  $theSite['baseUrl'] . $url;
 	}
 else
 	{
-	return $url;
+	$theUrl = $url;
 	}
+
+return $theUrl;
+
 }
 
 
