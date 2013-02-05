@@ -107,7 +107,7 @@ return $theUrl;
 
 function GetProducts($url,$cat_name,$subcat_name,$clothes_type,$color_name,$theSite)
 {
-
+echo("\n\nProducts at:" . $url . "\n");
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $products = $db->dump_bench;
@@ -287,6 +287,7 @@ $products = $db->dump_bench;
 								if( $product['title'] != "" )
 									$products->save($product);
 								
+								echo($product_name."\n");
 								
 								}
 						//}
