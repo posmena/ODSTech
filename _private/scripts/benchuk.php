@@ -2,6 +2,9 @@
 error_reporting(E_ALL);
 include('phpQuery/phpQuery.php');
 
+mb_internal_encoding("UTF-8");
+	
+
 $sites = array(
 	'de' => array(  'baseUrl' => 'http://www.benchstore.de',
 					'homeUrl' => 'http://www.benchstore.de/?bench_b2c_ignoregeoip=1',
@@ -121,8 +124,8 @@ $products = $db->dump_bench;
 						foreach ($product_boxes as $product_box) {
 							$product_box = pq($product_box);
 							$product_url = $product_box->find('h2.product-name a')->attr('href');
-							//$product_url = 'http://www.bench.co.uk/men/phonecases/15-laptop-bag-black-black';
-							$_product_detail_page = phpQuery::newDocumentFileHTML($product_url . "/?bench_b2c_ignoregeoip=1",'utf-8');
+							$product_url = 'http://www.bench.co.uk/men/polo-shirts/expolo-b-white';
+							$_product_detail_page = phpQuery::newDocumentFileHTML($product_url . "/?bench_b2c_ignoregeoip=1",'UTF-8');
 // die('die_here;'.$_product_detail_page->trigger('dom:loaded')->html());
 
 							$product_name = $_product_detail_page->find('li.product strong')->text();
@@ -153,10 +156,11 @@ $products = $db->dump_bench;
 								foreach($_product_detail_page->find('div.product-main-info div.price-box span.price') as $price) {
 									$price = pq($price);
 									$old_price = $product_price;
-									
+																		
 									$product_price = trim($price->text());
-									$product_price  = str_replace(chr(0xC2).chr(0xA0).chr(0xE2).chr(0x82).chr(0xAC),"",$product_price );
-																
+									$product_price  = str_replace(chr(0xC2).chr(0xA0),"",$product_price); // no break space
+									$product_price  = str_replace(chr(0xE2).chr(0x82).chr(0xAC),"",$product_price ); //euro
+									
 									$product_price = str_replace(',','.',$product_price);									
 									
 									$product_price = utf8_decode($product_price);
@@ -206,6 +210,7 @@ $products = $db->dump_bench;
 									}
 								}
 								$desc = $_product_detail_page->find('div.short-description')->html();
+								
 								$desc = str_replace("<br/>",' ',$desc);
 								$desc = str_replace("<br>",' ',$desc);
 								$desc = strip_tags($desc);
@@ -216,9 +221,16 @@ $products = $db->dump_bench;
 								$desc = str_replace('    ',' ',$desc);
 								$desc = str_replace('_','',$desc);
 								$desc = str_replace($product_sku,'',$desc);
+								$pos = strpos($desc, 'Item Code');
+								
+								if( $pos !== false )
+									{
+									$desc = substr($desc,0,$pos);
+									}
 								$desc = trim($desc);
 								
 								$gender = '';
+								
 								if ( $cat_name == "Men" || $cat_name == "MENS" || $cat_name == "HERREN" || $subcat_name == "Men")
 									$gender = 'Male';										
 							
