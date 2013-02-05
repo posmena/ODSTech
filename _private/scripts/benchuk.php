@@ -52,8 +52,6 @@ foreach ($data as  $key1 => $li) { // men and women
 			$clothes_type = pq($clothes_type);
 			echo("\t\t".$clothes_type->text()."\n");
 			
-			if( $cat_name != "SPORT") continue;
-			
 			$_clothes_page = phpQuery::newDocumentFileHTML(CheckURL($clothes_type->attr('href') . '?bench_b2c_ignoregeoip=1',$theSite));
 
 			foreach (pq('ul.filter-dropdown',$_clothes_page) as $k => $color_filter) {
