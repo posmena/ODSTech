@@ -81,7 +81,7 @@ foreach ($data as  $key1 => $li) { // men and women
 }
 
 
-GetProducts($theSite['saleUrl'],'Sale','','','');
+GetProducts($theSite['saleUrl'],'Sale','','','',$theSite);
 
 //print('<pre>');print_r($_final); die;
 // die('<pre>'.var_export($result, true).'</pre>');
