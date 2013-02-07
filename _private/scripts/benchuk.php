@@ -311,6 +311,7 @@ $products = $db->dump_bench;
 									
 								CreateGoogleProducts($product, $product_sizes);
 								
+								$product['url'] = $product['url'].'?utm_source=Feed&utm_campaign=ODST&utm_medium=NSC_Affiliates';
 								if( $product['title'] != "" )
 									$products->save($product);
 								
@@ -381,7 +382,9 @@ function CreateGoogleProducts($product, $product_sizes)
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $google_products = $db->dump_google_bench;
-
+$url = $product['url'];
+$product['url'] = $url . $product['url'] = $product['url'].'?utm_source=Feed&utm_campaign=ODST&utm_medium=GoogleShopping';
+								
 if( $product['old_price'] != "" )
 	{
 	$product['sale_price'] = $product['price'];
@@ -420,4 +423,6 @@ else
 	if( $product['title'] != "" )
      	$google_products->save($product);								
 	}
+	
+$product['url'] = $url;
 }
