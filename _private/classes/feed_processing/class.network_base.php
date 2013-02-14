@@ -303,8 +303,12 @@ class network_base implements network
 					}
 				}
 			}
+
+			if( isset($item['productid']))
+				{
+				$item['_id'] = $item['productid'];
+				}
 			
-			$item['_id'] = $item['productid'];
 			if (true === $full) {
 				$otc->save($item);
 				$dc->save($item);
