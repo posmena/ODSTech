@@ -124,8 +124,8 @@
 					<tr>
 
 						<td style="position: absolute; right: 10px; top: 60px ">
-							<a href="#" class="" title="Find it" role="button" style="margin-top: 5px; width: 85px; height: 22px; background: url('images/button_120x600.gif'); display: block; margin-left: auto; margin-right: auto;">
-								<span style="display:none;" >Find it</span>
+							<a href="#" class="" title="find it" role="button" style="margin-top: 5px; width: 85px; height: 22px; background: url('images/button_120x600.gif'); display: block; margin-left: auto; margin-right: auto;">
+								<span style="display:none;" >find it</span>
 							</a>
 						</td>
 					</tr>

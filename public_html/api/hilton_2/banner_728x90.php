@@ -119,8 +119,8 @@
 					</tr>
 					<tr>
 						<div valign="top" align="left" width="84" style="position: absolute;  left: 546px; top: 29px; z-index: 999;">
-							<a href="#" class="728back" title="Find it" role="button" style="z-index: 999; background-image: url('images/120button.jpg'); margin-top: 5px; width: 74px; height: 23px; display: block;">
-								<span style="display:none;" >Find it</span>
+							<a href="#" class="728back" title="find it" role="button" style="z-index: 999; background-image: url('images/120button.jpg'); margin-top: 5px; width: 74px; height: 23px; display: block;">
+								<span style="display:none;" >find it</span>
 							</a>
 						</div>	
 					</tr>

@@ -116,8 +116,8 @@
 							</span> 
 						</td>
 						<td align="right" style="position: absolute; top: 29px; left: 337px;">
-							<a href="#" class="" title="Find it" role="button" style="margin-top: 5px; width: 56px; height: 15px; background: url('images/button_460x60.gif'); display: block; margin-left: auto; margin-right: auto;">
-								<span style="display:none;" >Find it</span>
+							<a href="#" class="" title="find it" role="button" style="margin-top: 5px; width: 56px; height: 15px; background: url('images/button_460x60.gif'); display: block; margin-left: auto; margin-right: auto;">
+								<span style="display:none;" >find it</span>
 							</a>
 						</td>
 					</tr>
