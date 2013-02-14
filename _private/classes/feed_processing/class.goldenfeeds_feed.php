@@ -94,7 +94,10 @@ class goldenfeeds_feed extends network_base
 	$i = 0;
 	foreach($dumpedProducts as $product) {
 			$i++;
-			$product['_id'] = $feed_id . "_" . $product['productid'];
+			if( isset($product['productid']) )
+				{
+				$product['_id'] = $feed_id . "_" . $product['productid'];
+				}
 		    $product['feed_id'] = $feed_id;
 			$product['program_name'] = $feed['feedname'];
 			$product['last_updated'] = new MongoDate();
