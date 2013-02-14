@@ -68,7 +68,7 @@ $campaign_id = $_GET['cid'];
 
 	<table class="odst" style="min-height:600px;display:table" width="120" height="600" border="0" cellpadding="8" cellspacing="0"  >
 		<tr>
-			<td align="left" valign="middle" background="images/120x600back.jpg" style="padding:10px">
+			<td align="left" valign="middle" background="images/120x600back2.jpg" style="padding:10px">
 				<table  class="odst" border="0" table="table" width="100" height="270" cellspacing="0" cellpadding="0" class="vstyle" style="margin-top: 100px;">
 				<tr>
 						<td>
