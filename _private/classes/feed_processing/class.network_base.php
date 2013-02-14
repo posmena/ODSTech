@@ -375,11 +375,7 @@ class network_base implements network
 			return array();
 		}
 
-		foreach($cursor as $field) {
-			if(  !isset($this->mapping[$field['column']]))
-				{
-				print("Field not set" . $field['column'] . "\n");
-				}
+		foreach($cursor as $field) {			
 			$this->mapping[$field['column']] = $field['ot_field'];
 		}
 		
