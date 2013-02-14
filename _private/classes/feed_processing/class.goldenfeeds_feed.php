@@ -90,7 +90,6 @@ class goldenfeeds_feed extends network_base
 	$feeds = $db->ot_feeds;
 	$feed = $feeds->findOne(array('client' => $feed_id));
 	
-	
 	$products = $db->p20_products;
 	$i = 0;
 	foreach($dumpedProducts as $product) {
@@ -99,7 +98,7 @@ class goldenfeeds_feed extends network_base
 		    $product['feed_id'] = $feed_id;
 			$product['program_name'] = $feed['feedname'];
 			$product['last_updated'] = new MongoDate();
-			if( $product['product_operation'] == 'delete' )
+			if( isset($product['product_operation']) && $product['product_operation'] == 'delete' )
 				{
 				$products->remove(array('_id' => $feed_id . "_" . $product['productid']) );			
 				}
@@ -128,16 +127,15 @@ class goldenfeeds_feed extends network_base
 		$feed_name = $doc['feedname'];
 		print($doc['feedname'] . "\n");
 		
-		$collection = $db->p20_products;
-		
+		$collection = $db->p20_products;	 
 		$reader = new XMLReader();
 		$reader->open($file,"UTF-8");
 
 		// Read each line of the XML
 		$i=0;
 		$query ='';
-		while ($reader->read())
 		{
+		while ($reader->read())
 			switch ($reader->nodeType)
 			{
 				// Check that this line is an element, rather than a declartion or a comment.
