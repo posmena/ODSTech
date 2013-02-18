@@ -1,0 +1,102 @@
+/*
+	LivingSocial.com widget banner 120 x 600
+	Author: Frank Juval
+	Support: Ryan Fuller
+	AffiliateManager.com
+*/
+/* //////////// GLOBAL STYLES /////////// */
+body {
+	margin: 0;
+	background: #b2b2b2;
+}
+img {
+	border: none;
+}
+.widget {
+	position: relative;
+	width:120px;
+	height:600px;
+	background-color:#262523;
+
+}
+.arrownav {
+	margin-right: 2px;
+	margin-bottom: 0;
+	padding-bottom: 10px;
+	height: 17px;
+	text-align: right;
+}
+.previous img {
+	float: left;
+}
+.next img {
+	float: right;
+}
+.topcol {
+	top:30px;
+	margin: auto;
+	width:113px;
+	border: 1px solid #fff;
+}
+.mainimg  {
+	width: 111px;
+	height: 211px;
+	text-align: center;
+}
+.daysleft {
+    position: absolute;
+    top: 219px;
+    left:4px;
+    width:90px;
+    height:20px;
+	background-color: #fff;
+    text-align: left;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+}
+.daysleft p {
+	margin: 4px 0 6px 5px;
+}
+.discount {
+	margin-top: 11px;
+	margin-bottom: 5px;
+	margin-left: 1px;
+    color:#e7398e;
+    font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+}
+h3 {
+	margin-top: 4px;
+	margin-left: 1px;
+	color: #fff;
+	font-size: 15px;
+	font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+	line-height: 1em;
+}
+.offer {
+    overflow: hidden;
+    margin-left: 5px;
+	width: 111px;
+    color:#fff;
+    font-size: 12px;
+    font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+}
+.offer p {
+	margin-top: -6px;
+	padding-right: 5px;
+}
+.cta {
+    margin-top: 15px;
+    width: 120px;
+    height: 36px;
+    text-align: center;
+}
+.logo 
+{
+    border:0px solid red;
+	padding-right: 8px;
+	width: 110px;
+	height: 20px;
+	text-align: right;
+    margin-top:10px;
+}
