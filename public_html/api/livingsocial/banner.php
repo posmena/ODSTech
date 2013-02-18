@@ -66,7 +66,7 @@
             </div>
 
             <div class="logo">
-                <a href="http://www.livingsocial.com/cities/207-portland-me/deals/597252-two-pairs-of-tights"><img src="LivingSocial_logo.png" alt="LivingSocial_logo" width="51" height="20"></a>
+                <a href="http://www.livingsocial.com/cities/207-portland-me/deals/597252-two-pairs-of-tights"><img src="120x600/LivingSocial_logo.png" alt="LivingSocial_logo" width="51" height="20"></a>
             </div>
         </div>
         
@@ -111,7 +111,7 @@
             </div>
 
             <div class="logo">
-                <a href="http://www.livingsocial.com/cities/207-portland-me/deals/596056-transformer-dress"><img src="LivingSocial_logo.png" alt="LivingSocial_logo" width="51" height="20"></a>
+                <a href="http://www.livingsocial.com/cities/207-portland-me/deals/596056-transformer-dress"><img src="120x600/LivingSocial_logo.png" alt="LivingSocial_logo" width="51" height="20"></a>
             </div>
         </div>
         
