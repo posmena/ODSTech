@@ -163,6 +163,7 @@ class custom_forthillhome_feed extends network_base
 						$item['condition'] = $item['productcondition'];
 						$item['image_link'] = $item['imagelarge'];
 						$item['category'] = $item['google_product_type'];
+						$item['product_type'] = $item['google_product_type'];
 						$item['quantity'] = 1;
 						$item['availability'] = 'In Stock';
 
