@@ -235,6 +235,7 @@ class custom_forthillhome_feed extends network_base
 							  'Availability',
 							  'FreeShippingItem',
 							  'Google_Product_Type',
+							  'Google_Product_Category',
 							  'ProductCondition',
 							  'ProductManufacturer',
 							  'ProductFeatures',
