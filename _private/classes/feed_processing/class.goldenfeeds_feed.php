@@ -53,20 +53,32 @@ class goldenfeeds_feed extends network_base
 	public function process()
 	{
 	
+	global $db;
+	$feed = $db->ot_feeds->findOne(array('client' => $this->feedid));
+	
+	
+	
 		try
 				{
 				
-			if ( stripos($this->local_file,".xml") )
+			if ( $feed['format'] == 'xml' )
 			{				
 					$this->num_products = $this->parse_xml($this->local_file, $this->feedid);	
 					}
-			else if ( stripos($this->local_file,".csv") )
+			else if ( $feed['format'] == 'csv' )
 				{
+				print($this->local_file);
 					$this->csv_call($this->local_file, $this->full, ",");
 					$this->num_products = $this->process_csvdata($this->feedid);	
 					// this reads into into kelkoo_dump = need to process this now
 				}
-				
+			else if ( $feed['format'] == 'tab' )
+			{
+			print($this->local_file);
+				$this->csv_call($this->local_file, $this->full );
+				$this->num_products = $this->process_csvdata($this->feedid);	
+				// this reads into into kelkoo_dump = need to process this now
+			}
 				
 				}
 			

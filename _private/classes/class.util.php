@@ -47,8 +47,7 @@ class util
              $entry = $zip->getNameIndex($i);
 			 $zip->extractTo(dirname($file).'/');
 			 $zip->close();
-			 return dirname($file).'/'. $entry . $extention;
-			 echo($entry);
+			 return dirname($file).'/'. $entry;
 			 }
 		 } else {
 			 //echo "trying gz" . $file;
