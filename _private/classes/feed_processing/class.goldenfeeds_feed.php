@@ -98,7 +98,7 @@ class goldenfeeds_feed extends network_base
 	$dc = 'dump_' . $feed_id;
 	$dc  = $db->$dc;
 	$dumpedProducts  = $dc->find();
-	
+	$dumpedProducts->immortal();
 	$feeds = $db->ot_feeds;
 	$feed = $feeds->findOne(array('client' => $feed_id));
 	
