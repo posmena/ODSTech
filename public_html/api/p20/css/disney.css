@@ -44,7 +44,7 @@ background-color:#ffffff  !important;;
 
 .disney.container
 {
-	  border: 2px solid #1994D7;
+	  border: 2px solid #7EAC03;
 
 }
 
@@ -126,6 +126,8 @@ div#disclaimer {
 
 
 .disney .odst_scontainer img.photo {
-    max-height: 100px;
-    min-height: 100px;
+    max-height: 95px;
+    min-height: 95px;
+       max-width: 95px;
+    min-width: 95px;
 }
