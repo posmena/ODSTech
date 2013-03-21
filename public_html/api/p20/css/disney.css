@@ -12,7 +12,7 @@
 	color:#FFFFFF  !important;}
 	
 .disney .odst_scontainer.vertical {
-border: 2px solid #1994D7 !important;
+border: 2px solid #7EAC03 !important;
 background-color:#ffffff  !important;;
 }
 
@@ -20,12 +20,12 @@ background-color:#ffffff  !important;;
 
 	
 .disney .odst_scontainer a.prevBtn{
-	background:url(../img/disneyTravel/prev-blue.png) no-repeat 0 0;	
+	background:url(../img/disneyTravel/left.png) no-repeat 0 0;	
 	}	
 
 	
 .disney .odst_scontainer a.nextBtn{ 
-	background:url(../img/disneyTravel/next-blue.png) no-repeat 0 0;		
+	background:url(../img/disneyTravel/right.png) no-repeat 0 0;		
 	}	
 		
 .disney .odst_scontainer.vertical a.nextBtn
@@ -116,4 +116,10 @@ color: #67006D  !important;
 {
 color: #67006D !important;
 text-decoration:none !important;
+}
+
+div#disclaimer {
+    color: #8C8C8C;
+    font-family: arial;
+    font-size: 10px;
 }

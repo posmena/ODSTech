@@ -383,7 +383,13 @@ function display_content_unit($products,$type,$display,$style,$width)
 							 	
 							 }
 						 }
-					$hotel .= '</ul></div></div><div class="odst_hol_logo_padding"></div></div>';
+					$hotel .= '</ul></div></div>';
+					
+					if($style == 'disney' ) 
+						{
+						$hotel .= '<div id="disclaimer" style="color: #8C8C8C;font-family: arial;font-size: 10px;margin-top:20px;padding-left:25px;width:250px;float:left">* Prices based on 2 adults and 2 children under 11.</div>';
+						}
+					$hotel .= '<div class="odst_hol_logo_padding"></div></div>';
 
 					return $hotel;
 									
