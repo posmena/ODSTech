@@ -366,11 +366,20 @@ function display_content_unit($products,$type,$display,$style,$width)
 							</td>
 
 							</tr>
-							<tr>
-
-							<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $merchant . '</a>
-
-							</td>
+							<tr>';
+							
+							if( $style == "disney" )
+							{
+							$hotel .= '<td class="merchant">Flight, Hotel + Park Tickets</td></tr>';
+							$hotel .= '<tr><td class="merchant">Starting from';							
+							}
+							else
+							{
+							$hotel .= '<td class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $merchant . '</a>';
+							}
+							
+							
+							$hotel .= '</td>
 
 							</tr>
 
