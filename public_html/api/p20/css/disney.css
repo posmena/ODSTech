@@ -123,3 +123,9 @@ div#disclaimer {
     font-family: arial;
     font-size: 10px;
 }
+
+
+.disney .odst_scontainer img.photo {
+    max-height: 100px;
+    min-height: 100px;
+}
