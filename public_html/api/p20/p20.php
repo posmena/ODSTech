@@ -190,12 +190,12 @@ function display_content_unit($products,$type,$display,$style,$width)
 												   
 							$product=  ((object)$product);
 							$deeplink = $product->deeplink;
-							if( $network == 'TD' )
+							if( $network == 'TD' && $_GET['params']['feed_id'] == 'kelkoo' )
 								{
 								$deeplink = $product->deeplink2;
 								}
 								
-							if( $network == 'AWIN' )
+							if( $network == 'AWIN' && $_GET['params']['feed_id'] == 'kelkoo' )
 								{
 								$deeplink = $product->deeplink3;
 								}
@@ -262,12 +262,12 @@ function display_content_unit($products,$type,$display,$style,$width)
 						
 							$product=  ((object)$product);
 							$deeplink = $product->deeplink;
-							if( $network == 'TD' )
+							if( $network == 'TD' && $_GET['params']['feed_id'] == 'kelkoo' )
 								{
 								$deeplink = $product->deeplink2;
 								}
 								
-							if( $network == 'AWIN' )
+							if( $network == 'AWIN' && $_GET['params']['feed_id'] == 'kelkoo' )
 								{
 								$deeplink = $product->deeplink3;
 								}
@@ -343,12 +343,12 @@ function display_content_unit($products,$type,$display,$style,$width)
 						foreach ($products as $product) {
 								$product=  ((object)$product);
 								$deeplink = $product->deeplink;
-							if( $network == 'TD' )
+							if( $network == 'TD' && $_GET['params']['feed_id'] == 'kelkoo' )
 								{
 								$deeplink = $product->deeplink2;
 								}
 								
-							if( $network == 'AWIN' )
+							if( $network == 'AWIN' && $_GET['params']['feed_id'] == 'kelkoo' )
 								{
 								$deeplink = $product->deeplink3;
 								}
