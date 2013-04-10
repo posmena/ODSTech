@@ -38,6 +38,10 @@ $options = array();
 				break;
 				
 			case "AWIN":
+				if( $_GET['params']['feed_id'] == 'disney' )
+					{
+					return "http://www.awin1.com/awclick.php?awinmid=4750&awinaffid=" . $affid . "&p=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_AWIN";				
+					}
 				return "http://www.awin1.com/awclick.php?awinmid=3278&awinaffid=" . $affid . "&p=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_AWIN";
 				break;
 			}
@@ -110,11 +114,14 @@ if( $_GET['params']['feed_id'] == 'kelkoo' )
 		{
 		$network = 'KK';
 		$affid = $publisher['KK'];
-		}
-	
-	
+		}	
 	}
-
+elseif( $_GET['params']['feed_id'] == 'disney' )
+	{
+		$network = 'AWIN';
+		$affid = $publisher['AWIN'];		
+	}
+	
 	
 	$content = display_content_unit($products,"products",$type,$style,$width);
 	}
