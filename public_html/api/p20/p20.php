@@ -90,15 +90,17 @@ $network = "";
 $affid = "";
 $campaign_id = "";
 
+// work out which network to use from publisherId;
+$conn = new Mongo('localhost');
+// access database
+$mdb = $conn->odstech;
+// access collection
+$collection = $mdb->ot_users;
+$publisher = $collection->findOne(array('_id' => new MongoId($publisher_id)));
+
 if( $_GET['params']['feed_id'] == 'kelkoo' )
 	{
-	// work out which network to use from publisherId;
-	$conn = new Mongo('localhost');
-	// access database
-	$mdb = $conn->odstech;
-	// access collection
-	$collection = $mdb->ot_users;
-	$publisher = $collection->findOne(array('_id' => new MongoId($publisher_id)));
+	
 	if( isset($publisher['AWIN']) )
 		{
 		$network = 'AWIN';
