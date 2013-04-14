@@ -45,7 +45,7 @@ class goldenfeeds_feed extends network_base
 		//$diff = 60 * 60 * 12 ; //12 hours in seconds
 		//$mongotime = New Mongodate(time()-$diff);
 		
-		$feed = $db->findOne(array('feed_id' => $this->feedid));
+		$feed = $db->ot_feeds->findOne(array('feed_id' => $this->feedid));
 		$mongotime = $feed['last_updated'];
 		
 		$condition = array('last_updated' => array('$lt'=>$mongotime), 'feed_id' => $this->feedid );
