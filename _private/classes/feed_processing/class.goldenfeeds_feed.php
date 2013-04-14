@@ -47,9 +47,10 @@ class goldenfeeds_feed extends network_base
 		
 		$feed = $db->ot_feeds->findOne(array('feed_id' => $this->feedid));
 		$mongotime = $feed['last_updated'];
-		
+		print($feed);
 		$condition = array('last_updated' => array('$lt'=>$mongotime), 'feed_id' => $this->feedid );
-		$products->remove($condition);		
+		$x = $products->remove($condition);		
+		print("removed $x products");
 		}
 		
 	}
