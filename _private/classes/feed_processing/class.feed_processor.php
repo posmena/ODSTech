@@ -185,7 +185,7 @@ class feed_processor
 	{
 		global $db;
 		
-		echo($feed_id);
+		print("post process" . $feed_id . "\n");
 		$collection = $db->ot_feeds;
 	
 		$cursor = $collection->find(array('client' => $feed_id));
