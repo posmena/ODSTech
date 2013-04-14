@@ -116,16 +116,16 @@ class feed_processor
 					
 					$network = new $feed['classname']($local_file, $full, $feed_id);
 					
+					
 					if( method_exists($network,'process') )
 						{
 						$network->process();
 						}
 					$count = $network->num_products;
-					echo("Inserted $count products");
+					print("Inserted $count products");
 					if( $count ) 
 						{
 						$feed['last_update_state'] = 1;
-						$feed['last_updated'] = new MongoDate();
 						$collection->save($feed);
 						}
 					
@@ -150,6 +150,8 @@ class feed_processor
 		foreach ($cursor as $item) {
 		
 		$item['last_update_state'] = 0;
+		$feed['last_updated'] = new MongoDate();
+					
 		$collection ->save($item);
 		
 			$feeds[] = $item;

@@ -42,8 +42,12 @@ class goldenfeeds_feed extends network_base
 		
 		$products = $db->p20_products;
 		
-		$diff = 60 * 60 * 12 ; //12 hours in seconds
-		$mongotime = New Mongodate(time()-$diff);
+		//$diff = 60 * 60 * 12 ; //12 hours in seconds
+		//$mongotime = New Mongodate(time()-$diff);
+		
+		$feed = $dv->findOne(array('feed_id' => $this->feedid));
+		$mongotime = $feed['last_updated'];
+		
 		$condition = array('last_updated' => array('$lt'=>$mongotime), 'feed_id' => $this->feedid );
 		$products->remove($condition);		
 		}
@@ -55,8 +59,6 @@ class goldenfeeds_feed extends network_base
 	
 	global $db;
 	$feed = $db->ot_feeds->findOne(array('client' => $this->feedid));
-	
-	
 	
 		try
 				{
@@ -80,6 +82,7 @@ class goldenfeeds_feed extends network_base
 				// this reads into into kelkoo_dump = need to process this now
 			}
 				
+				print("85. Processed " . $this->num_products . " products\n");
 				}
 			
 		catch(Exception $e)
@@ -90,7 +93,7 @@ class goldenfeeds_feed extends network_base
 
 	function process_csvdata($feed_id)
 	{
-	echo("Process\n");
+	echo("Process csvdata\n");
 	
 	// for each product in kelkoo_dump
 	// update or add to p20_products
@@ -126,6 +129,7 @@ class goldenfeeds_feed extends network_base
 				}
 		}
 		
+		print("processed " . $i . "\n");
 		return $i;
 	
 	}
