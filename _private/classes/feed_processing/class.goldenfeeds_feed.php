@@ -32,7 +32,7 @@ class goldenfeeds_feed extends network_base
 	echo("POST PROCESS FEED");
 	if(false === $success)
 	{
-	echo("Error - did not update Kekloo succesfully");
+	echo("Error - did not update feed succesfully");
 	die();
 	}
 	
@@ -44,10 +44,10 @@ class goldenfeeds_feed extends network_base
 		
 		$diff = 60 * 60 * 12 ; //12 hours in seconds
 		$mongotime = New Mongodate(time()-$diff);
-		$condition = array('last_updated' => array('$lt'=>$mongotime) );
-
-		//$products->remove($condition);
+		$condition = array('last_updated' => array('$lt'=>$mongotime), 'feed_id' => $this->feedid );
+		$products->remove($condition);		
 		}
+		
 	}
 	
 	public function process()

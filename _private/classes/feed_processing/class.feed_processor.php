@@ -121,6 +121,7 @@ class feed_processor
 						$network->process();
 						}
 					$count = $network->num_products;
+					echo("Inserted $count products");
 					if( $count ) 
 						{
 						$feed['last_update_state'] = 1;
