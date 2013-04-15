@@ -25,6 +25,7 @@ $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $db->dump_bench->drop();
 $db->dump_google_bench->drop();
+$db->dump_bench_idealo->drop();
 
 $site = "uk";
 if( isset($argv[1]) )
@@ -118,7 +119,7 @@ echo("\n\nProducts at:" . $url . "\n");
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $products = $db->dump_bench;
-
+$products_idealo = $db->dump_bench_idealo;
 	
 	$_product_page = phpQuery::newDocumentFileHTML($url);
 	//echo($color_item->attr('location'));
@@ -324,8 +325,21 @@ $products = $db->dump_bench;
 								
 								$product['link'] = $product['link'].'?utm_source=Feed&utm_campaign=ODST&utm_medium=NSC_Affiliates';
 								if( $product['title'] != "" )
-									$products->save($product);
-								
+									{
+									$products->save($product);																					
+									$product['title'] = trim($product['title'] . ' ' . $product['color']);
+									
+									$existingProduct = $products_idealio->findOne(array('title' => $product['title']));
+
+									if( $existingProduct )
+										{									
+										$product['_id'] = $existingProduct['_id'];		
+										}
+									
+									$products_idealio->save($product);
+									
+									}
+									
 								echo($product_name."\n");
 								
 								}
