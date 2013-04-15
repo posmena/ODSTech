@@ -29,7 +29,7 @@
 
 		var fromDate = new Date();
 		var toDate = new Date();
-		fromDate.setTime(fromDate.getTime() + (1000*3600*24*1));
+		fromDate.setTime(fromDate.getTime() + (1000*3600*24*30));
 		toDate.setTime(fromDate.getTime() + (1000*3600*24*7));
 	
 		$("#from").datepicker('setDate', fromDate);
