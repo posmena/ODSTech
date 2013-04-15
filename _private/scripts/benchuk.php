@@ -25,7 +25,7 @@ $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $db->dump_bench->drop();
 $db->dump_google_bench->drop();
-$db->dump_bench_idealo->drop();
+$db->dump_bench_idealio->drop();
 
 $site = "uk";
 if( isset($argv[1]) )
@@ -119,7 +119,7 @@ echo("\n\nProducts at:" . $url . "\n");
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $products = $db->dump_bench;
-$products_idealo = $db->dump_bench_idealo;
+$products_idealio = $db->dump_bench_idealio;
 	
 	$_product_page = phpQuery::newDocumentFileHTML($url);
 	//echo($color_item->attr('location'));
