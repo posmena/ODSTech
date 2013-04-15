@@ -9,12 +9,16 @@ $sites = array(
 	'de' => array(  'baseUrl' => 'http://www.benchstore.de',
 					'homeUrl' => 'http://www.benchstore.de/?bench_b2c_ignoregeoip=1',
 					'saleUrl' => 'http://www.benchstore.de/sale/?bench_b2c_ignoregeoip=1',
-					'currency' => 'EUR'),
+					'currency' => 'EUR',
+					'free_delivery' => 40,
+					'delivery_charge' => '2.90'),
 					
 	'uk' => array( 'baseUrl' => 'http://www.bench.co.uk',
 					'homeUrl' => 'http://www.bench.co.uk/', 
 					'saleUrl' => 'http://www.bench.co.uk/sale',
-					'currency' => 'GBP')
+					'currency' => 'GBP',
+					'free_delivery' => 30,
+					'delivery_charge' => '1.99')
 );
 
 $conn = new Mongo('localhost');
@@ -267,6 +271,13 @@ $products = $db->dump_bench;
 								if( is_array($product_sizes) )
 									$product_sizes_str = implode(",",$product_sizes);
 								
+								$shipping = $theSite['delivery_charge'];
+								
+								if( $product_price > $theSite['free_delivery'] )
+									{
+									$shipping = 0;
+									}
+									
 								$product = array(
 									'category' => $cat_name . ' > ' . $subcat_name . ' > ' . $clothes_type,
 									'_id' => $product_sku, // plus size and color for sep rows
@@ -282,8 +293,8 @@ $products = $db->dump_bench;
 									'sizes' => $product_sizes_str,
 									'image_link' => $product_images_1,
 									'additional_image_link' => $product_images_2,
-									'shipping_cost_uk' => '0',
-									'shipping' => '0',
+									'shipping_cost_uk' => $shipping,
+									'shipping' => $shipping,
 									'condition' => 'new',
 									'availability' => 'in stock',
 									'brand' => 'Bench',
