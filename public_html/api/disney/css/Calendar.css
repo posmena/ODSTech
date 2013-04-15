@@ -1,0 +1,55 @@
+/* Custom styles for Walt Disney Travel Company v1.0 */
+/* Adapted from jQuery UI CSS Framework 1.8.16 */
+/* Author: Tom Nelson, October 2011 */
+
+/* Global */
+.ui-widget-overlay { position: absolute; top:0; left:0; width:100%; height:100%; } 
+.ui-datepicker { display:none; width:196px; padding:1px; border:1px solid #dcd9d9; background:#ffffff; color:#333333; }
+#ui-datepicker-div { -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:-moz-none; -o-user-select:none; user-select:none; top: 36px!important; left: 50px!important;} /* Avoid highlight when paging */
+.ui-datepicker-trigger { width:27px; height:20px; }
+
+/* Header */
+.ui-datepicker-header { width:196px; position:relative; padding:3px 0; background:#a1c70a !important; color:#ffffff; font-weight:bold; font-size:93%; }
+.ui-datepicker-header a { color:#333333; }
+.ui-icon { display:block; text-indent:-99999px; overflow: hidden; background-repeat:no-repeat; }
+.ui-datepicker .ui-datepicker-title { width:196px; line-height:20px; text-align:center; }
+
+/* Table */
+.ui-datepicker table { width:196px; margin:0; font-size:85%; border:3px solid #a1c70a !important; border-top:none !important; }
+/* .ie8 .ui-datepicker table { border-collapse:separate; } /* Force table borders to green */
+.ui-datepicker th { padding:3px 0; text-align:center; border:1px solid #dcd9d9; background:#dcd9d9; }
+.ui-datepicker td { border:1px solid #dcd9d9; }
+.ui-datepicker td span, .ui-datepicker td a { display:block; padding:3px 3px 2px 2px; text-align:right; text-decoration:none; }
+
+/* Default */
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { background:#ffffff; font-weight:normal; color:#1e789c; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { text-decoration: none; }
+
+/* Disabled */
+.ui-state-disabled { cursor:default !important; }
+td.ui-state-disabled span.ui-state-default { color:#dcd9d9 !important; background:#f5f3f3 !important; }
+
+/* Active, hover, focus, highlight */
+.ui-state-active, .ui-state-hover, .ui-state-focus { background:#de802b !important; color:#ffffff !important; font-weight:normal; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { text-decoration:none !important; }
+.ui-widget :active { outline:none; }
+.ui-state-hover a, .ui-state-hover a:hover { text-decoration:none !important; }
+.ui-datepicker-today a.ui-state-highlight { background:#fffad4; color:#333333; } /* Today */
+
+/* Next and previous buttons */
+.ui-datepicker-prev, .ui-datepicker-next { position:absolute; top:3px; height:20px; text-align:center; }
+.ui-datepicker-prev, .ui-datepicker-prev-hover { left:3px; width:20px; border-right:1px solid #c6dc9e !important; background:#a1c70a url(../images/Previous.gif) no-repeat 5px 50% !important; }
+.ui-datepicker-next, .ui-datepicker-next-hover { right:3px; width:20px; border-left:1px solid #c6dc9e !important; background:#a1c70a url(../images/Next.gif) no-repeat 8px 50% !important; }
+
+/* IE6 iFrame fix */
+.ui-datepicker-cover {
+display:none; /* IE5 bug */
+display/**/:block; /* IE5 bug */
+position:absolute;
+z-index:-1;
+filter:mask();
+top:-4px;
+left:-4px;
+width:200px;
+height:200px;
+}
