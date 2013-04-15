@@ -54,16 +54,17 @@
 		jQuery('#btnSearch').click(function(event){
 			 event.preventDefault();
 			 
-			 var arrive = jQuery('#from').val();
-			 var depart = jQuery('#to').val();
-			 
-			 jQuery('input[name="arrivalDay"]').val('15');
-			 jQuery('input[name="arrivalMonth"]').val('5');
-			 jQuery('input[name="arrivalYear"]').val('2013');
+			 var arrive = $("#from").datepicker('getDate');
+			 var depart = $("#to").datepicker('getDate');
+			
+		
+			 jQuery('input[name="arrivalDay"]').val(arrive.getDate());
+			 jQuery('input[name="arrivalMonth"]').val(arrive.getMonth()+1);
+			 jQuery('input[name="arrivalYear"]').val(arrive.getFullYear());
 						
-			 jQuery('input[name="departureDay"]').val('29');
-			 jQuery('input[name="departureMonth"]').val('5');
-			 jQuery('input[name="departureYear"]').val('2013');
+			 jQuery('input[name="departureDay"]').val(depart.getDate());
+			 jQuery('input[name="departureMonth"]').val(depart.getMonth()+1);
+			 jQuery('input[name="departureYear"]').val(depart.getFullYear());
 			
 			
 			 jQuery('#form').submit();
