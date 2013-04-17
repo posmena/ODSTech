@@ -86,7 +86,7 @@ $aid = $_GET['aid'];
 </head>
 
 <body>
- <form id="form" action="http://www.awin1.com/awclick.php?mid=2632&id=<?php echo $aid?>&p=https://disneyworld.disney.go.com/services/BookingGenie/submitUK" method="post">
+ <form id="form" target="_blank" action="http://www.awin1.com/awclick.php?mid=2632&id=<?php echo $aid?>&p=https://disneyworld.disney.go.com/services/BookingGenie/submitUK" method="post">
  <input type="hidden" value="NextGenFlightPackagesSQQProductOption_BookingGenie_en_GB" name="publishedKey">
  <input type="hidden" value="WDWFlightPackages" name="BusinessType">
  <input type="hidden" value="WDW" name="BusinessUnit">
