@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <?php
-$aid = $_GET['aid'];
-$r = rand();
- 
+$aid = $_GET['aid']; 
 ?>
+
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <link rel="stylesheet" href="css/Calendar.css" type="text/css" />
@@ -85,7 +86,7 @@ $r = rand();
 </head>
 
 <body>
- <form id="form" target="_blank" action="http://www.awin1.com/cread.php?s=386817&v=2632&q=182451&r=<?php echo $aid?>&p=https://disneyworld.disney.go.com/services/BookingGenie/submitUK" method="get">
+ <form id="form" action="http://www.awin1.com/awclick.php?mid=2632&id=<?php echo $aid?>&p=https://disneyworld.disney.go.com/services/BookingGenie/submitUK" method="post">
  <input type="hidden" value="NextGenFlightPackagesSQQProductOption_BookingGenie_en_GB" name="publishedKey">
  <input type="hidden" value="WDWFlightPackages" name="BusinessType">
  <input type="hidden" value="WDW" name="BusinessUnit">
