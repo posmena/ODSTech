@@ -7,7 +7,7 @@ class core_p20_disney_banners extends core_default
 	
 	public function __construct($db, $qs, $ajax) {
 		
-		$affiliate_id = $qs['affiliate_id'];
+		$affiliate_id = $qs['publisher_id'];
 				
 		$this->assignments['p20']['affiliate_id'] = $affiliate_id;
 			
