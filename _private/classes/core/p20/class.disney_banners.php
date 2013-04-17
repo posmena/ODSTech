@@ -1,6 +1,6 @@
 <?php
 
-class core_p20_hilton_banners extends core_default
+class core_p20_disney_banners extends core_default
 {
 	private $template = 'p20/disney_banners.tpl.html';
 	private $assignments;
