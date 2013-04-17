@@ -85,7 +85,7 @@ $r = rand();
 </head>
 
 <body>
- <form id="form" target="_blank" action="http://www.awin1.com/cread.php?s=386817&v=2632&q=182451&r=<?php echo $aid?>&p=https://disneyworld.disney.go.com/services/BookingGenie/submitUK" method="post">
+ <form id="form" target="_blank" action="http://www.awin1.com/cread.php?s=386817&v=2632&q=182451&r=<?php echo $aid?>&p=https://disneyworld.disney.go.com/services/BookingGenie/submitUK" method="get">
  <input type="hidden" value="NextGenFlightPackagesSQQProductOption_BookingGenie_en_GB" name="publishedKey">
  <input type="hidden" value="WDWFlightPackages" name="BusinessType">
  <input type="hidden" value="WDW" name="BusinessUnit">
