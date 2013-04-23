@@ -129,7 +129,7 @@ $products_idealio = $db->dump_bench_idealio;
 						foreach ($product_boxes as $product_box) {
 							$product_box = pq($product_box);
 							$product_url = $product_box->find('h2.product-name a')->attr('href');
-							//$product_url = 'http://www.bench.co.uk/men/polo-shirts/expolo-b-white';
+							//$product_url = 'http://www.bench.co.uk/women/denim/rhythmic-v2-dark-worn';
 							$_product_detail_page = phpQuery::newDocumentFileHTML($product_url . "/?bench_b2c_ignoregeoip=1",'UTF-8');
 // die('die_here;'.$_product_detail_page->trigger('dom:loaded')->html());
 
@@ -227,6 +227,8 @@ $products_idealio = $db->dump_bench_idealio;
 								$desc = str_replace('_','',$desc);
 								$desc = str_replace($product_sku,'',$desc);
 								$pos = strpos($desc, 'Item Code');
+								
+								
 								
 								if( $pos !== false )
 									{
@@ -405,6 +407,68 @@ else
 		
 }
 
+function ExtractColor($title)
+{
+$title = strtolower($title);
+
+if( strpos($title,'black' ) )
+	{
+	return 'black';
+	}
+
+if( strpos($title,'blue' ) )
+	{
+	return 'blue';
+	}
+
+if( strpos($title,'orange' ) )
+	{
+	return 'orange';
+	}
+
+if( strpos($title,'yellow' ) )
+	{
+	return 'yellow';
+	}
+
+if( strpos($title,'khaki' ) )
+	{
+	return 'khaki';
+	}
+	
+if( strpos($title,'red' ) )
+	{
+	return 'red';
+	}
+
+if( strpos($title,'marl' ) )
+	{
+	return 'marl';
+	}
+
+if( strpos($title,'pink' ) )
+	{
+	return 'pink';
+	}
+if( strpos($title,'purple' ) )
+	{
+	return 'purple';
+	}
+if( strpos($title,'cream' ) )
+	{
+	return 'cream';
+	}
+if( strpos($title,'grey' ) )
+	{
+	return 'grey';
+	}
+if( strpos($title,'green' ) )
+	{
+	return 'green';
+	}
+	
+}
+
 function CreateGoogleProducts($product, $product_sizes)
 {
 
@@ -415,7 +479,12 @@ $url = $product['link'];
 $product['link'] = $url .'?utm_source=Feed&utm_campaign=ODST&utm_medium=GoogleShopping';
 $product['google_product_category'] = "Clothing &amp; Accessories > Clothing";
 $product['mpn'] = $product['id'];
-												
+									
+if( $product['color'] == "" )
+	{
+	$product['color'] = ExtractColor($product['title'] );
+	}
+									
 if( $product['old_price'] != "" )
 	{
 	$product['sale_price'] = $product['price'];
