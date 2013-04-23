@@ -482,7 +482,7 @@ $product['mpn'] = $product['id'];
 									
 if( $product['color'] == "" )
 	{
-	$product['color'] = ExtractColor($product['title'] );
+	$product['color'] = ExtractColor($product['link'] );
 	}
 									
 if( $product['old_price'] != "" )
