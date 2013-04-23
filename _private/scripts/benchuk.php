@@ -413,7 +413,9 @@ $db = $conn->odstech;
 $google_products = $db->dump_google_bench;
 $url = $product['link'];
 $product['link'] = $url .'?utm_source=Feed&utm_campaign=ODST&utm_medium=GoogleShopping';
-								
+$product['google_product_category'] = "Clothing &amp; Accessories > Clothing";
+$product['mpn'] = $product['id'];
+												
 if( $product['old_price'] != "" )
 	{
 	$product['sale_price'] = $product['price'];
@@ -444,7 +446,6 @@ if( is_array($product_sizes) && count($product_sizes) )
 		$product['_id'] = $product['id'];
 		$product['mpn'] = $product['id'];
 		$product['size'] = $size;
-		$product['google_product_category'] = "Clothing &amp; Accessories > Clothing";
 		
 		if( $product['title'] != "" )
 		  $google_products->save($product);	
