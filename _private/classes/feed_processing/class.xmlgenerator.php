@@ -46,7 +46,7 @@ class ODSTech_xmlgenerator
 						
 					}							
 						
-					$content = '<![CDATA[' .htmlentities(utf8_encode($tData), ENT_QUOTES, "UTF-8") . ']]>';
+					$content = '<![CDATA[' .htmlentities($tData, ENT_QUOTES, "UTF-8") . ']]>';
 				} elseif ($heading == 'shipping' || $heading == 'shipping_cost_uk') {
 					$heading = 'shipping';
 					$content = '<g:price>' . $data[$key] . '</g:price>';
