@@ -441,7 +441,7 @@ if( is_array($product_sizes) && count($product_sizes) )
 		$product['_id'] = $product['id'];
 		$product['mpn'] = $product['id'];
 		$product['size'] = $size;
-		$product['google_product_category'] = "Clothing &amp; Accessories > Clothing"
+		$product['google_product_category'] = "Clothing &amp; Accessories > Clothing";
 		
 		if( $product['title'] != "" )
 		  $google_products->save($product);	
