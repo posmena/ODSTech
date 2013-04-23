@@ -214,7 +214,7 @@ $products_idealio = $db->dump_bench_idealio;
 										$product_images[] = $img->attr('src');
 									}
 								}
-								$desc = $_product_detail_page->find('div.short-description')->html();
+								$desc = $_product_detail_page->find('div.shortdescpr')->html();
 								
 								$desc = str_replace("<br/>",' ',$desc);
 								$desc = str_replace("<br>",' ',$desc);
@@ -320,7 +320,8 @@ $products_idealio = $db->dump_bench_idealio;
 										$product['category'] = 'Sale';
 										}
 									}
-									
+										
+								$product['availability'] = 'in stock';
 								CreateGoogleProducts($product, $product_sizes);
 								
 								$product['link'] = $product['link'].'?utm_source=Feed&utm_campaign=ODST&utm_medium=NSC_Affiliates';
@@ -438,7 +439,10 @@ if( is_array($product_sizes) && count($product_sizes) )
 		{
 		$product['id'] = $product['sku'] . $size;
 		$product['_id'] = $product['id'];
+		$product['mpn'] = $product['id'];
 		$product['size'] = $size;
+		$product['google_product_category'] = "Clothing &amp; Accessories > Clothing"
+		
 		if( $product['title'] != "" )
 		  $google_products->save($product);	
 		}

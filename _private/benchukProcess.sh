@@ -19,7 +19,7 @@ sed 's/\\"/""/g' files/hostedfeeds/benchuk/idealio.csv > files/hostedfeeds/bench
 mv files/hostedfeeds/benchuk/idealio2.csv files/hostedfeeds/benchuk/idealio.csv
 
 echo 'http://www.odst.co.uk/feeds/benchuk.zip?type=froogle' > logs/jtspatype.log
-mongoexport -d odstech -c dump_google_bench --csv -f 'id','item_group_id','title','link','price','sale_price','color','size','gender','description','condition','shipping_cost_uk','brand','image_link','additional_image_link','category' -o files/hostedfeeds/benchuk/froogle.csv
+mongoexport -d odstech -c dump_google_bench --csv -f 'id','item_group_id','title','link','price','sale_price','color','size','gender','description','mpn','availability','google_product_category','condition','shipping_cost_uk','brand','image_link','additional_image_link','category' -o files/hostedfeeds/benchuk/froogle.csv
 
 sed 's/\\"/""/g' files/hostedfeeds/benchuk/froogle.csv > files/hostedfeeds/benchuk/froogle2.csv
 mv files/hostedfeeds/benchuk/froogle2.csv files/hostedfeeds/benchuk/froogle.csv
