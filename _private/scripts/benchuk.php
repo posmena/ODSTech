@@ -235,26 +235,28 @@ $products_idealio = $db->dump_bench_idealio;
 								$desc = trim($desc);
 								
 								$gender = '';
+								$age = 'adult';
 								
-								if ( $cat_name == "Men" || $cat_name == "MENS" || $cat_name == "HERREN" || $subcat_name == "Men")
-									$gender = 'Male';										
+								
+								if ( strtolower($cat_name) == "men" || strtolower($cat_name) == "mens" || strtolower($cat_name) == "HERREN" || strtolower($subcat_name) == "men" || strtolower($subcat_name) == "mens" )
+									$gender = 'male';										
 							
 						
 								if( strpos( $product_url, 'boys' ) || strpos( $product_url, 'jungen' ))									
-									$gender = 'Male';									
+									{ $gender = 'male';	$age = 'kids'; }								 
 								
 								if($cat_name == 'Sale' && strpos($product_box->parent()->parent()->parent()->text(),'MEN'))
-									$gender = 'Male';
+									$gender = 'male';
 																	
 								
-								if ( $cat_name == "Women" || $cat_name == "WOMENS" || $cat_name == "DAMEN" || $subcat_name == "Women")
-									$gender = 'Female';	
+								if ( strtolower($cat_name) == "womens" || strtolower($cat_name) == "women" || strtolower($cat_name) == "damen" || strtolower($subcat_name) == "women" || strtolower($subcat_name) == "womens")
+									$gender = 'female';	
 									
 								if( strpos( $product_url, 'girls') || strpos( $product_url, 'maedchen'))
-									$gender = 'Female';
+									{ $gender = 'female';	$age = 'kids'; }
 								
 								if($cat_name == 'Sale' && strpos($product_box->parent()->parent()->parent()->text(),'WOMEN'))
-									$gender = 'Female';
+									$gender = 'female';
 								
 								
 // get current products from db and append color if not in list of colors
@@ -300,6 +302,7 @@ $products_idealio = $db->dump_bench_idealio;
 									'availability' => 'in stock',
 									'brand' => 'Bench',
 									'gender' => $gender,
+									'age_group' => $age,									
 									'currency' => $theSite['currency']
 								);
 								
