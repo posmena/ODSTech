@@ -7,5 +7,5 @@ $url = $_GET['p'];
 
 setcookie("bnb_guid", $guid,365);
 
-header( "Location: $p" ) ;
+header( "Location: $url" ) ;
 ?>
