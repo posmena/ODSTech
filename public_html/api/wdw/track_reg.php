@@ -1,16 +1,18 @@
 <?php
-/*
+
 $conn = new Mongo('localhost');
 // access database
 $mdb = $conn->ubud;
 // access collection
-$collection = $mdb->registrations;
+$collection = $mdb->ubud_tracking_reg;
 
 $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
 
-$obj = array('Agent' => $_SERVER['HTTP_USER_AGENT'], 'IP' => $_SERVER['REMOTE_ADDR'], 'date' => $mongotime, 'alias' => $_GET['alias'], 'guid' => $_GET['guid'],'email' => $_GET['email'],'fname' => $_GET['fname'],'lname' => $_GET['lname'], 'site' => $_GET['site'], 'utm_source' => $_GET['utm_source'], 'utm_medium' => $_GET['utm_medium'], 'utm_term' => $_GET['utm_term'], 'utm_content' => $_GET['utm_content'], 'utm_id' => $_GET['utm_id']);
-$collection->save($obj);
-*/					
+$guid = $_COOKIE['bnb_guid'];
+
+$collection->insert(array('IP' => $_SERVER['REMOTE_ADDR'], 'date' => $mongotime, 'guid' => $guid, 'site' => $_GET['site'], 'customer' => $_GET['id']));
+
 header( 'Location: blank.gif' ) ;
+ 
 ?>
