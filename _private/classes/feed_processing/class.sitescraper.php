@@ -647,7 +647,7 @@ class sitescraper
 							if (false !== strpos($product_url, '&amp;page=')) {
 							 echo("Found page:" . $product_url . "\n");
 								$pages[] = $site.$product_url;
-								$pageUrls[$category][] = $site.$product_url;
+								$pageUrls[$category][] = html_entity_decode($site.$product_url);
 							}
 							
 							// page 1
@@ -716,11 +716,11 @@ class sitescraper
 									$end   = strpos($info, '</h1>', $start);
 									$name  = substr($info,$start,$end-$start);
 									
-									print("name" . $name . "\n");
+									//print("name" . $name . "\n");
 									$start = strpos($info, "<p class='code'>") + 30;
 									$end   = strpos($info, '</p>', $start);
 									$code  = trim(substr($info,$start,$end-$start));
-									print("code" . $code . "\n");
+									//print("code" . $code . "\n");
 									
 									$start = strpos($info, "<div class='price'>") + 20;
 									$end   = strpos($info, "</div>");
@@ -735,13 +735,13 @@ class sitescraper
 										$price = str_replace("\n", '', $newPrice);
 									}
 
-										print("price" . $price . "\n");
+										//print("price" . $price . "\n");
 										
 									$start = strpos($product, "<p class='description'>") + 23;
 									$end   = strpos($product, "</p>", $start);
 									$desc  = trim(substr($product,$start,$end-$start));
 
-										print("desc" . $desc . "\n");
+										//print("desc" . $desc . "\n");
 										
 									$start = strpos($product, "<div class='images'>");
 									$end   = strpos($product, "</a>", $start) + 4;
@@ -754,7 +754,7 @@ class sitescraper
 										$thumbnail = str_replace('large', 'small', $largeImage);
 									}
 
-									print("image" . $largeImage . "\n");
+									//print("image" . $largeImage . "\n");
 									
 									if (preg_match('/<select\s[^>](.*)<\/select>/msU',$product,$sizes)) {
 										$option = $sizes[0];
@@ -770,7 +770,7 @@ class sitescraper
 									$end   = strpos($product, "</span>", $start);
 									$stock = trim(substr($product,$start,$end-$start));
 
-									print("stock" . $stock . "\n");
+									//print("stock" . $stock . "\n");
 									
 									$start = strpos($product, "<p class='composition'>");
 									if( $start != FALSE )
@@ -793,10 +793,12 @@ class sitescraper
 									}
 
 									if (false === isset($name) || $name == '') {
+										print("No name");
 										continue;
 									}
 
 									if (false === isset($code) || $code == '') {
+										print("No code");
 										continue;
 									}
 
@@ -822,8 +824,10 @@ class sitescraper
 
 									$item['product_type']    = $categories;
 									$item['size']       = $itemSize;
-
-									$collection->save($item, array('_id' => $code));
+									
+									print("saving" . $code);
+									$collection->save($item);
+									print("  done\n");
 									
 								} catch(Exception $ex) {
 									print "ERROR" .$ex;
