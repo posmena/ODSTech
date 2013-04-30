@@ -697,6 +697,8 @@ class sitescraper
 						//	if (preg_match($regexp, $pUrl, $matches)) {
 							//	$url = $site.$matches[2];
 								//$url = 'http://chescadirect.co.uk/products/97-champagne-panelled-skirt-limited-size-range-please-phone-0207-60-3434-before-ordering';
+								//$pUrl = 'http://chescadirect.co.uk/products/1535-fuchsia-ruffle-neck-linen-jacket';
+								
 								$product = feed_processor::curl_get_file_contents($pUrl);
 								
 								$item = array();
@@ -770,15 +772,22 @@ class sitescraper
 
 									print("stock" . $stock . "\n");
 									
-									$start = strpos($product, "<p class='composition'>") + 23;
-									$end   = strpos($product, "</p>", $start);
-									$material = trim(substr($product,$start,$end-$start));
-									$material = str_replace('Composition:','',$material);
-									$material = str_replace('<span>','',$material);
-									$material = str_replace('</span>','',$material);
-									$material = str_replace("\n",'',$material);
-
-									
+									$start = strpos($product, "<p class='composition'>");
+									if( $start != FALSE )
+										{
+										$start += 23;
+										$end   = strpos($product, "</p>", $start);
+										$material = trim(substr($product,$start,$end-$start));
+										$material = str_replace('Composition:','',$material);
+										$material = str_replace('<span>','',$material);
+										$material = str_replace('</span>','',$material);
+										$material = str_replace("\n",'',$material);
+										}
+									else
+										{
+										$material = "";
+										}
+										
 									if ($stock != 'IN STOCK') {			
 										$stock = 'OUT OF STOCK';
 									}
@@ -817,7 +826,7 @@ class sitescraper
 									$collection->save($item, array('_id' => $code));
 									
 								} catch(Exception $ex) {
-									print $ex;
+									print "ERROR" .$ex;
 								}
 							
 						}
