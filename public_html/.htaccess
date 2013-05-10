@@ -43,6 +43,11 @@ Deny from .ru
    DefaultLanguage en-GB
 </FilesMatch>
 
+<IfModule mod_headers.c>
+Header set P3P: 'cp=ALL DSP COR CURa ADMa DEVa CONa SAMa BUS"
+Header append P3P: 'policyref="/w3c/p3p.xml"'
+</IfModule>
+
 RewriteEngine On
 RewriteBase /
 
