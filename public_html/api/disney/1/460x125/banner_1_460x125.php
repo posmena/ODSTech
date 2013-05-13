@@ -35,8 +35,6 @@ $aid = $_GET['aid'];
 			 jQuery('#form').submit();
 			 
 			});
-			
-	});
 	
 	
 	

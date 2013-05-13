@@ -36,8 +36,7 @@ $aid = $_GET['aid'];
 			 
 			});
 			
-	
-	
+
 	
 </script>
   
