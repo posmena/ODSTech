@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="stylesheet" href="css/Calendar.css" type="text/css" />
+  <link rel="stylesheet" href="css/odst_disney_160x600.css" type="text/css" />
+  <script type="text/javascript" src="js/jquery-1.8.0.min.js"  /></script>
+  <script type="text/javascript" src="js/jQuery-UI-1.8.16.min.js" ></script>
+  <script type="text/javascript" src="js/jsQuickQuote.js" ></script>
+  
+  
+<script>
+	
+	$(function() {
+		$( "#from" ).datepicker({
+			showOn: "button",
+			buttonImage: "images/Calendar.gif",
+			buttonImageOnly: true,
+			dateFormat: "dd M yy",
+			minDate: -20, 
+			maxDate: "+1Y",
+			defaultDate: "+1w",
+			changeMonth: false,
+			numberOfMonths: 1,
+			onSelect: function( selectedDate ) {
+				$( "#to" ).datepicker( "option", "minDate", selectedDate );
+			}
+		});
+
+		
+		$( "#to" ).datepicker({
+			showOn: "button",
+			buttonImage: "images/Calendar.gif",
+			buttonImageOnly: true,
+			dateFormat: "dd M yy",
+			minDate: -20, 
+			maxDate: "+1Y",
+			defaultDate: "+1w",
+			changeMonth: false,
+			numberOfMonths: 1,
+			onSelect: function( selectedDate ) {
+				$( "#from" ).datepicker( "option", "maxDate", selectedDate );
+			}
+		});
+	});
+	
+	
+	
+</script>
+  
+  <title>Disney</title>
+</head>
+
+<body>
+ <form id="form" action="/" method="post">
+ <fieldset>
+        <div>
+            <label for="departure">From</label> 
+            <select id="departure" name="Departure" class="wide">
+              <option value="LON">
+                London (All Airports)
+              </option>
+
+              <option value="LHR">
+                London Heathrow 
+              </option>
+
+              <option value="LGW">
+                London Gatwick 
+              </option>
+
+              <option value="MAN">
+                Manchester 
+              </option>
+
+              <option value="ABZ">
+                Aberdeen
+              </option>
+
+              <option value="BFS">
+                Belfast
+              </option>
+
+              <option value="BHX">
+                Birmingham
+              </option>
+
+              <option value="BRS">
+                Bristol
+              </option>
+
+              <option value="CWL">
+                Cardiff 
+              </option>
+
+              <option value="EDI">
+                Edinburgh 
+              </option>
+
+              <option value="GLA">
+                Glasgow
+              </option>
+
+              <option value="INV">
+                Inverness 
+              </option>
+
+              <option value="JER">
+                Jersey
+              </option>
+
+              <option value="NCL">
+                Newcastle
+              </option>
+            </select> 
+        </div>
+        <div>
+            <label for="destination">To</label> 
+            <select id="destination" name="Destination" class="wide">
+              <option value="ORL">
+                Orlando (All Airports)
+              </option>
+
+              <option value="MCO">
+                Orlando International
+              </option>
+
+              <option value="SFB">
+                Sanford
+              </option>
+
+              <option value="TPA">
+                Tampa
+              </option>
+            </select> 
+          </div>
+        <div>
+   			<label for="flight-leavingday" class="block">Depart</label>
+			<input type="text" id="from" name="from" >
+			<span style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your departure date must be within 4 months after your arrival date.</span>
+    	 </div>
+    	 <div>
+   			<label for="flight-leavingday" class="block">Return</label>
+			<input type="text" id="to" name="to" >
+			<span style="display:none;">You are now focused on a datepicker field. Press the down arrow to enter the calendar table. Once focused on the table, press left or right to navigate days. Press up or down to navigate between weeks. Enter to select. Escape to close datepicker. Your departure date must be within 4 months after your arrival date.</span>
+    	 </div>
+        
+          <div class="pax">
+            <label for="adults">Adults (12+)</label>
+            <select id="adults" name="Adults" class="narrow">
+              <option value="1">
+                1
+              </option>
+
+              <option value="2" selected="selected">
+                2
+              </option>
+
+              <option value="3">
+                3
+              </option>
+
+              <option value="4">
+                4
+              </option>
+
+              <option value="5">
+                5
+              </option>
+
+              <option value="6">
+                6
+              </option>
+            </select> 
+        </div>
+        <div class="pax">
+            <label for="children">Children (2-11)</label><select id="children" name="Children" class="narrow">
+              <option value="0" selected="selected">
+                0
+              </option>
+
+              <option value="1">
+                1
+              </option>
+
+              <option value="2">
+                2
+              </option>
+
+              <option value="3">
+                3
+              </option>
+
+              <option value="4">
+                4
+              </option>
+
+              <option value="5">
+                5
+              </option>
+            </select> 
+            
+          </div>
+         <div id="last-div">
+         <input type="button" name="inputSubmit" class="button" value="Find Prices">
+         </div>
+
+	</fieldset>
+
+
+  </form>
+
+</body>
+
+

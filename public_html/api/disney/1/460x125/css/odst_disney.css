@@ -1,0 +1,163 @@
+/*
+Theme Name: Disney World
+Theme URI: http://odst.co.uk/
+Author: ODST
+Version: 1
+*/
+
+
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+:focus {/* remember to define focus styles! */
+	outline: 0;
+}
+body {
+	background: #fff;
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+table {/* tables still need 'cellspacing="0"' in the markup */
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	font-weight: normal;
+	text-align: left;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+a img {
+	border: 0;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+
+/* =Structure
+----------------------------------------------- */
+
+body {
+    width: 450px;
+    height: 115px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+form {
+    padding: 5px;
+    width: 340px;
+    max-height: 230px;
+    overflow: hidden;
+}
+
+/* =Style
+----------------------------------------------- */
+
+body {
+	background-color: #F0EEEE;
+    font: normal normal normal 100%/ normal Arial,Sans-Serif;
+    color: #333;
+    background: url('../images/background.jpg') no-repeat;
+
+}
+
+form {
+    background: #ffffff\9;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+label {
+    font-size: 11px;
+    margin-right: 4px;
+}
+
+label.label-bold {
+    font-weight: bold
+}
+
+select {
+    font-size: 11px;
+    font-size: 12px\9;
+}
+
+input.button {
+    cursor: pointer;
+    background: #e8a42f url(../images/buttonBackground.png) no-repeat left top;
+    border: 0;
+    width: 95px;
+    height: 25px;
+    font-weight: 700;
+    color: #FFF!important;
+    margin: 0 auto;
+    padding: 0;
+}
+
+input[type=text] {
+    width: 65px;
+    display: inline-block;
+    clear: both;
+    font-size: 11px;
+}
+
+select#departure, 
+select#destination {
+	width: 137px;
+}
+
+
+fieldset div {
+	margin-right: 5px;
+    margin-bottom: 4px;
+    margin-bottom: 8px\9;
+    float:left;
+}
+
+.ui-datepicker-trigger {
+    width: 27px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background: url(../images/Calendar.gif);
+    margin-left: 5px;
+    cursor: pointer;
+    clear: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+div.pax label {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+div#last-div {
+    margin-bottom: 0
+}
