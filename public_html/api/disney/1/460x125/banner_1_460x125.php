@@ -16,6 +16,7 @@ $aid = $_GET['aid'];
   
 <script>
 		
+	$(function() {
 		jQuery('#btnSearch').click(function(event){
 			 event.preventDefault();
 			 
@@ -36,7 +37,7 @@ $aid = $_GET['aid'];
 			 
 			});
 	
-	
+		});
 	
 </script>
   
