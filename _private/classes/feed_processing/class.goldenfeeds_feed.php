@@ -91,7 +91,29 @@ class goldenfeeds_feed extends network_base
 				print("Error parsing " . $this->feedid . ", file " . $this->local_file . $e);
 				}
 	}
-
+	
+	function GetTimeLeft($dt)
+	{
+	$now = new DateTime("now");
+	
+	$interval = $now->diff($dt);
+	$days = $interval->format('%a');
+	$hours = $interval->format('%h');
+	$mins = $interval->format('%i');
+	
+	if( $days <= 1 )
+		{
+		if( $hours <= 1 )
+			{
+			return $mins . " mins";
+			}
+		return $hours . " hours";
+		}
+		
+	return $days . " days";
+	
+	}
+	
 	function process_csvdata($feed_id)
 	{
 	echo("Process csvdata\n");
@@ -114,6 +136,19 @@ class goldenfeeds_feed extends network_base
 				{
 				$product['_id'] = $feed_id . "_" . $product['productid'];
 				}
+			
+			if( isset($product['Offers_ends_at']) )
+				{
+				//$product['Offers_ends_in'] =  $this->GetTimeLeft(new DateTime($product['Offers_ends_at']));
+				//$product['Offers_ends_at'] =  new MongoDate(new DateTime($product['Offers_ends_at']));
+				$d = new DateTime($product['Offers_ends_at']);
+				$md = new MongoDate($d->getTimestamp());
+				
+
+				$product['Offers_ends'] = $md;
+				//$product['offer_time_left'] = $this->GetTimeLeft($product['Offers_ends_at']);
+				}
+				
 		    $product['feed_id'] = $feed_id;
 			$product['program_name'] = $feed['feedname'];
 			$product['last_updated'] = new MongoDate();
