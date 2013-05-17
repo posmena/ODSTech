@@ -193,7 +193,7 @@ class feed_processor
 		$success = true;
 		foreach ($cursor as $item) {
 		
-		 if( $item['last_update_state'] == 0 ) 
+		 if( $item['last_update_state'] == 1 ) 
 			{
 			$success = false;
 			break;
