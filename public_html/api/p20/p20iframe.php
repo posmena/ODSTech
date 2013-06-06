@@ -98,7 +98,11 @@ elseif( $_GET['params']['feed_id'] == 'disney' )
 		$network = 'AWIN';
 		$affid = $publisher['AWIN'];		
 	}
-	
+elseif( $_GET['params']['feed_id'] == 'crieffhydro' )
+	{
+		$network = 'AWIN';
+		$affid = $publisher['AWIN'];		
+	}	
 		
 $products=json_decode($data,true);
 echo(display_content_unit($products,"products",$type,$style,$width));
