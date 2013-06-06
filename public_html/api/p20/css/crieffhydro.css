@@ -2,16 +2,16 @@
 /* Carousel */
 
 
-.adorama .odst_scontainer .slider li  a.name {background-color:#1994D7 !important; color:#FFFFFF !important}
-.adorama .odst_scontainer .grid li  a.name {background-color:#1994D7 !important; color:#FFFFFF !important}
-.adorama .odst_scontainer.vertical li  a.name{background-color:#1994D7 !important; color:#FFFFFF !important}
+.crieffhydro .odst_scontainer .slider li  a.name {background-color:#1994D7 !important; color:#FFFFFF !important}
+.crieffhydro .odst_scontainer .grid li  a.name {background-color:#1994D7 !important; color:#FFFFFF !important}
+.crieffhydro .odst_scontainer.vertical li  a.name{background-color:#1994D7 !important; color:#FFFFFF !important}
 
 
-.widget .odst_hotels.adorama a.name, .odst_hotel_table.adorama div.name a.name {background-color:#1994D7  !important; color:##FFFFFF  !important;}
-.post .odst_hotels.adorama a.name{background-color:#1994D7  !important; 
+.widget .odst_hotels.crieffhydro a.name, .odst_hotel_table.crieffhydro div.name a.name {background-color:#1994D7  !important; color:##FFFFFF  !important;}
+.post .odst_hotels.crieffhydro a.name{background-color:#1994D7  !important; 
 	color:#FFFFFF  !important;}
 	
-.adorama .odst_scontainer.vertical {
+.crieffhydro .odst_scontainer.vertical {
 border: 2px solid #1994D7 !important;
 background-color:#ffffff  !important;;
 }
@@ -19,44 +19,44 @@ background-color:#ffffff  !important;;
 
 
 	
-.adorama .odst_scontainer a.prevBtn{
-	background:url(../img/adorama/prev-blue.png) no-repeat 0 0;	
+.crieffhydro .odst_scontainer a.prevBtn{
+	background:url(../img/crieffhydro/prev-blue.png) no-repeat 0 0;	
 	}	
 
 	
-.adorama .odst_scontainer a.nextBtn{ 
-	background:url(../img/adorama/next-blue.png) no-repeat 0 0;		
+.crieffhydro .odst_scontainer a.nextBtn{ 
+	background:url(../img/crieffhydro/next-blue.png) no-repeat 0 0;		
 	}	
 		
-.adorama .odst_scontainer.vertical a.nextBtn
+.crieffhydro .odst_scontainer.vertical a.nextBtn
 {
-	background:url(../img/adorama/vert-next-blue.png) no-repeat 0 0;	
+	background:url(../img/crieffhydro/vert-next-blue.png) no-repeat 0 0;	
 }
 
-.adorama .odst_scontainer.vertical a.prevBtn
+.crieffhydro .odst_scontainer.vertical a.prevBtn
 {
-	background:url(../img/adorama/vert-prev-blue.png) no-repeat 0 0;	
+	background:url(../img/crieffhydro/vert-prev-blue.png) no-repeat 0 0;	
 }
 
 /* // Carousel */
 
 
 
-.adorama.container
+.crieffhydro.container
 {
 	  border: 2px solid #1994D7;
 
 }
 
-.adorama.odst_hol_logo,.adorama .odst_hol_logo
+.crieffhydro.odst_hol_logo,.crieffhydro .odst_hol_logo
 {
-background: url(../img/adorama/adorama.png) no-repeat scroll right bottom transparent;
+background: url(../img/crieffhydro/crieffhydro.png) no-repeat scroll right bottom transparent;
 }
-.adorama.odst_hol_logo.vertical,.adorama .odst_hol_logo.vertical{background: url(../img/adorama/adorama.png) no-repeat scroll right bottom transparent;}
+.crieffhydro.odst_hol_logo.vertical,.crieffhydro .odst_hol_logo.vertical{background: url(../img/crieffhydro/crieffhydro.png) no-repeat scroll right bottom transparent;}
 
-.odst_hotels.adorama div.odst_hol_logo.vertical
+.odst_hotels.crieffhydro div.odst_hol_logo.vertical
 {
-background: url(../img/adorama/adorama.png) no-repeat scroll right bottom transparent;
+background: url(../img/crieffhydro/crieffhydro.png) no-repeat scroll right bottom transparent;
 height:26px;
 border-bottom: solid 1px #343434;
 margin-bottom:5px;
@@ -64,7 +64,7 @@ background-position:left;
 width:137px
 }
 
-.odst_hotels.adorama.odst_hotel_table div.odst_hol_logo
+.odst_hotels.crieffhydro.odst_hotel_table div.odst_hol_logo
 {
 border-bottom: none;
 margin-bottom:0px;
@@ -73,15 +73,15 @@ width:137px
 }
 
 
-.adorama.odst_hol_logo .odst_hol_logo_padding, .adorama .odst_hol_logo_padding
+.crieffhydro.odst_hol_logo .odst_hol_logo_padding, .crieffhydro .odst_hol_logo_padding
 {
 display:block;
 height:30px;
 }
 
-.adorama .thumb_star
+.crieffhydro .thumb_star
 {
-background: url(../img/adorama/stars.png) no-repeat 0 0;
+background: url(../img/crieffhydro/stars.png) no-repeat 0 0;
 }
 
 .thumb_more
@@ -94,7 +94,7 @@ color:#67006D !important;
 color:#67006D  !important;
 }
 
-.adorama .thumb_price
+.crieffhydro .thumb_price
 
 {
 color:#67006D  !important;
@@ -102,17 +102,17 @@ color:#67006D  !important;
 
 
 
-.odst_hotel_table.adorama .row.even
+.odst_hotel_table.crieffhydro .row.even
 {
 background-color:#ECEBE9  !important;
 }
 
-.odst_hotel_table.adorama div.price span.from
+.odst_hotel_table.crieffhydro div.price span.from
 {
 color: #67006D  !important;
 }
 
-.odst_hotel_table.adorama div.price a
+.odst_hotel_table.crieffhydro div.price a
 {
 color: #67006D !important;
 text-decoration:none !important;
