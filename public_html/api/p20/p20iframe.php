@@ -480,10 +480,10 @@ function display_content_unit($products,$type,$display,$style,$width)
 					{
 					//return "http://www.awin1.com/awclick.php?awinmid=2632&awinaffid=" . $affid . "&p=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_AWIN";				
 					  return "http://www.awin1.com/cread.php?s=386817&v=2632&q=182451&r=" . $affid . "&p=" . urlencode($url) . "%26addedParams%3Dtrue%26custom1%3D" . $affid . "%26custom2%3Dnetwork_AWIN";
-
+					}
 					
 					
-				if( $_GET['params']['feed_id'] == 'crieff' )
+				if( $_GET['params']['feed_id'] == 'crieffhydro' )
 					{
 					 return "http://www.awin1.com/awclick.php?awinmid=3524&awinaffid=" . $affid . "&clickref=&p=" . urlencode($url);
 					}

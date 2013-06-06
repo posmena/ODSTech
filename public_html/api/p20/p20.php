@@ -45,7 +45,7 @@ $options = array();
 					
 					}
 					
-				if( $_GET['params']['feed_id'] == 'crieff' )
+				if( $_GET['params']['feed_id'] == 'crieffhydro' )
 					{
 					 return "http://www.awin1.com/awclick.php?awinmid=3524&awinaffid=" . $affid . "&clickref=&p=" . urlencode($url);
 					}
