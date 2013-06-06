@@ -2,17 +2,17 @@
 /* Carousel */
 
 
-.crieffhydro .odst_scontainer .slider li  a.name {background-color:#1994D7 !important; color:#FFFFFF !important}
-.crieffhydro .odst_scontainer .grid li  a.name {background-color:#1994D7 !important; color:#FFFFFF !important}
-.crieffhydro .odst_scontainer.vertical li  a.name{background-color:#1994D7 !important; color:#FFFFFF !important}
+.crieffhydro .odst_scontainer .slider li  a.name {background-color:#48718d !important; color:#FFFFFF !important}
+.crieffhydro .odst_scontainer .grid li  a.name {background-color:#48718d !important; color:#FFFFFF !important}
+.crieffhydro .odst_scontainer.vertical li  a.name{background-color:#48718d !important; color:#FFFFFF !important}
 
 
-.widget .odst_hotels.crieffhydro a.name, .odst_hotel_table.crieffhydro div.name a.name {background-color:#1994D7  !important; color:##FFFFFF  !important;}
-.post .odst_hotels.crieffhydro a.name{background-color:#1994D7  !important; 
+.widget .odst_hotels.crieffhydro a.name, .odst_hotel_table.crieffhydro div.name a.name {background-color:#48718d  !important; color:#FFFFFF  !important;}
+.post .odst_hotels.crieffhydro a.name{background-color:#48718d  !important; 
 	color:#FFFFFF  !important;}
 	
 .crieffhydro .odst_scontainer.vertical {
-border: 2px solid #1994D7 !important;
+border: 2px solid #48718d !important;
 background-color:#ffffff  !important;;
 }
 
@@ -44,7 +44,7 @@ background-color:#ffffff  !important;;
 
 .crieffhydro.container
 {
-	  border: 2px solid #1994D7;
+	  border: 2px solid #48718d;
 
 }
 
