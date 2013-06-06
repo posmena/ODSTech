@@ -17,6 +17,17 @@ background-color:#ffffff  !important;;
 }
 
 
+.crieffhydro .odst_scontainer img.photo {
+    min-height: 90px;
+}
+
+.crieffhydro .content_units .slider li, .crieffhydro .content_units .grid li {
+    height: 165px;
+}
+
+.crieffhydro .odst_scontainer div.grid img.photo {
+    min-height: 90px;
+}
 
 	
 .crieffhydro .odst_scontainer a.prevBtn{
