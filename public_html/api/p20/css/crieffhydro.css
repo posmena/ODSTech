@@ -16,6 +16,21 @@ border: 2px solid #48718d !important;
 background-color:#ffffff  !important;;
 }
 
+.odst_hotel_table.crieffhydro div.price div.merchant
+{
+margin-top:5px;
+}
+
+.odst_hotel_table.crieffhydro div.photo img {
+    max-height: 90px;
+    max-width: 120px;
+    min-height: 90px;
+    min-width: 120px;
+}
+
+.odst_hotel_table.crieffhydro div.photo {    
+    max-width: 120px;
+}
 
 .crieffhydro .odst_scontainer img.photo {
     min-height: 90px;
