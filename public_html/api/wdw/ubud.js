@@ -56,8 +56,8 @@ if( document.location.hostname == 'www.bootybingo.com' )
 function ubud_getBBAlias()
 {
 var val = '';
-$("li.hello span").each( function(i,x) {  
-  val =  $(x).html();
+jQuery("li.hello span").each( function(i,x) {  
+  val =  jQuery(x).html();
 });
 return val;
 }
@@ -66,10 +66,10 @@ function ubud_getVBAlias()
 {
 var val = '';
 
-$("li.hello").each( function(i,x) {  
-var str = $(x).html();
+jQuery("li.hello").each( function(i,x) {  
+var str = jQuery(x).html();
 var y = str.split('<br>');
-  val =  $.trim(y[1]);
+  val =  jQuery.trim(y[1]);
 });
 return val;
 }
@@ -78,8 +78,8 @@ function ubud_getBalance()
 {
 var val;
 
-$("li.cb span").each( function(i,x) {  
-  val = $(x).html();
+jQuery("li.cb span").each( function(i,x) {  
+  val = jQuery(x).html();
 });
 
 return val;
@@ -139,8 +139,8 @@ var err = false;
 
 if( ubud_getSite() == 'Booty')
 	{
-	$("div.myerror_msg").each( function(i,x) {  
-	  if($(x).html() == "The entered email address already exists !")
+	jQuery("div.myerror_msg").each( function(i,x) {  
+	  if(jQuery(x).html() == "The entered email address already exists !")
 		{
 		err = true;
 		}
@@ -148,8 +148,8 @@ if( ubud_getSite() == 'Booty')
 	}
 else
 	{
-		$("table.error").each( function(i,x) {  
-	  if( $(x).html().indexOf('Duplicate') > 0 )
+		jQuery("table.error").each( function(i,x) {  
+	  if( jQuery(x).html().indexOf('Duplicate') > 0 )
 		{
 		err = true;
 		}
@@ -162,8 +162,8 @@ if( err == true )
 	var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/dup.php?';
 	
 	src = src + 'site=' + encodeURIComponent(ubud_getSite());
-	src = src + '&alias=' + encodeURIComponent($('#alias').val());
-	src = src + '&email=' + encodeURIComponent($('#email').val());
+	src = src + '&alias=' + encodeURIComponent(jQuery('#alias').val());
+	src = src + '&email=' + encodeURIComponent(jQuery('#email').val());
 	src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
 	src = src + '&utm_source=' + encodeURIComponent(ubud_readCookie('utm_source'));
 	src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
@@ -179,14 +179,19 @@ if( err == true )
 
 function ubud_RecReg()
 {
+if( ubud_getSite() == 'Vampire' )
+{
+return ubud_RecReg_V2();
+}
+
 var img = new Image();
 var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/reg.php?';
 
 src = src + 'site=' + encodeURIComponent(ubud_getSite());
-src = src + '&alias=' + encodeURIComponent($('#alias').val());
-src = src + '&email=' + encodeURIComponent($('#email').val());
-src = src + '&fname=' + encodeURIComponent($('#firstname').val());
-src = src + '&lname=' + encodeURIComponent($('#lastname').val());
+src = src + '&alias=' + encodeURIComponent(jQuery('#alias').val());
+src = src + '&email=' + encodeURIComponent(jQuery('#email').val());
+src = src + '&fname=' + encodeURIComponent(jQuery('#firstname').val());
+src = src + '&lname=' + encodeURIComponent(jQuery('#lastname').val());
 src = src + '&utm_source=' + encodeURIComponent(ubud_readCookie('utm_source'));
 src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
 src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
@@ -199,6 +204,28 @@ img.src = src;
 document.body.appendChild( img );
 }
 
+function ubud_RecReg_V2()
+{
+var img = new Image();
+var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/reg.php?';
+
+src = src + 'site=' + encodeURIComponent(ubud_getSite());
+src = src + '&email=' + encodeURIComponent(jQuery('#edit-mail').val());
+src = src + '&fname=' + encodeURIComponent(jQuery('#edit-first-name').val());
+src = src + '&lname=' + encodeURIComponent(jQuery('#edit-last-name').val());
+src = src + '&utm_source=' + encodeURIComponent(ubud_readCookie('utm_source'));
+src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
+src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
+src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
+src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
+src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
+src = src + '&r=' + Math.floor(Math.random()*99999);
+
+img.src = src;
+document.body.appendChild( img );
+}
+
+
 function ubud_Track(ref)
 {
 ubud_RecUTM();
@@ -208,9 +235,9 @@ var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'w
 
 src = src + 'site=' + encodeURIComponent(ubud_getSite());
 src = src + '&alias=' + encodeURIComponent(ubud_getAlias());
-src = src + '&email=' + encodeURIComponent($('#email').val());
-src = src + '&fname=' + encodeURIComponent($('#firstname').val());
-src = src + '&lname=' + encodeURIComponent($('#lastname').val());
+src = src + '&email=' + encodeURIComponent(jQuery('#email').val());
+src = src + '&fname=' + encodeURIComponent(jQuery('#firstname').val());
+src = src + '&lname=' + encodeURIComponent(jQuery('#lastname').val());
 src = src + '&utm_source=' + encodeURIComponent(ubud_readCookie('utm_source'));
 src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
 src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
