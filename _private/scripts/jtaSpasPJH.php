@@ -112,6 +112,24 @@ if (preg_match_all($regexp, $res, $matches)) {
 					
 }
  
+ 
+ function IsPaged($page)
+{
+return strpos($page,"<b>1</b>");							
+}
+
+ function getAllProductsURL($res)
+ {
+ $regexp = "/<option value=\"(.*)\">100<\/option>/";
+ if( preg_match_all($regexp, $res, $matches) ) {
+			
+			foreach($matches[1] as $key =>  $val) {
+			return htmlspecialchars_decode(trim($val));
+			
+		}
+	}
+ }
+ 
  function ProcessCategoryPage($product_url,$fromSub)
  {
  
@@ -126,6 +144,12 @@ if ( strpos( $res, "<ul class=\"categories\">" ) != FALSE )
 		return;
 	}
 	
+if( IsPaged($res) )
+	{
+	$allProdURL = getAllProductsURL($res);
+	echo("All URL:" . $allProdURL);
+	ProcessCategoryPage($allProdURL,$fromSub);
+	}
 	
 $regexp = "/(?<=<div class=\"product-details\">)(.*)(?=<div class=\"compare-link\">)/siU";
 	if( preg_match_all($regexp, $res, $matches) ) {
