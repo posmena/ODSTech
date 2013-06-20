@@ -254,6 +254,7 @@ $regexp = "/<div class=\"breadcrumb\">\s*<p>\s*(.*)\s*?<\/p>/siU" ;
 						foreach($matches[1] as $key =>  $crumb) {
 							//if ($key % 2) {
 								//print("NAV:" . $crumb . "<br>");
+								$crumb = html_entity_decode($crumb,ENT_NOQUOTES,'UTF-8');
 								$item['nav'] = $item['nav'] . ($crumb) . " | ";
 							//}
 						}						
@@ -266,6 +267,7 @@ $regexp = "/<h4 class=\"generalHC\">(.*)<\/h4>/siU" ;
 								
 if( preg_match($regexp, $product, $arr) ) {								
 	$item['title'] = (trim($arr[1]));
+	$item['title'] = html_entity_decode($item['title'],ENT_NOQUOTES,'UTF-8');
 	//print($item['title']);
 	}
 	
@@ -338,7 +340,7 @@ if (preg_match_all($regexp, $product, $matches)) {
 $item['specification'] = "";
 foreach( $item['atts'] as $att )
 {
-$item['specification'] .= $att['name'] . ": " . $att['value'] . "\r\n";
+$item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') . ": " . html_entity_decode($att['value'],ENT_NOQUOTES,'UTF-8') . "\r\n";
 }
 
 	// get download links
