@@ -169,6 +169,17 @@ $regexp = "/(?<=<div  class=\"price offerprice bold\">)(.*)(?=<\/div>)/siU";
 			$price= trim($val);
 		}
 	}
+
+// get product code
+$code = "";
+
+$regexp = "/(?<=<span class=\"code\">)(.*)(?=<\/span>)/siU";
+	if( preg_match_all($regexp, $product, $matches2) ) {
+			
+			foreach($matches2[1] as $key =>  $val) {
+			$code= trim($val);
+		}
+	}
 	
  $regexp = "/href=\"(http:\/\/retail.pjhgroup.com\/webapp\/wcs\/stores\/servlet\/ProductDisplay?.*)\"/siU";
 
@@ -177,7 +188,7 @@ $regexp = "/(?<=<div  class=\"price offerprice bold\">)(.*)(?=<\/div>)/siU";
 							//if ($key % 2) {
 								//print("PRODUCT:" . $product_url . "<br>");
 								echo("Found product " . $product_url . " Price: " . $price . "<br>");
-								DownloadProductURL($product_url, $price);
+								DownloadProductURL($product_url, $price, $code);
 							//}
 						}						
 					}
@@ -194,10 +205,24 @@ $regexp = "/(?<=<div  class=\"price offerprice bold\">)(.*)(?=<\/div>)/siU";
 }
 					
 					
-function DownloadProductURL($url, $price)
+function DownloadProductURL($url, $price, $code)
 {
 //$url = "http://retail.pjhgroup.com/webapp/wcs/stores/servlet/ProductDisplay?urlRequestType=Base&catalogId=10051&categoryId=12590&productId=48211&errorViewName=ProductDisplayErrorView&urlLangId=-1&langId=-1&top_category=12551&parent_category_rn=12551&storeId=10001";
 $product = get_content($url);
+
+item['product_code'] = $code;
+
+if ( $code == "" ) 
+{
+// code wasn't on prevbious page due to multiple codes, extract and combine
+	$regexp = "/(?<=Product code: )(.*)(?=<\/p>)/siU";
+
+	if (preg_match_all($regexp, $product, $matches)) {
+		foreach($matches[1] as $key =>  $code) {
+		$item['product_code'] .= trim($code) . " ";	
+		}						
+	}
+}
 
 // use regexp to extract data and write to mongo
 
@@ -291,9 +316,15 @@ $i = 0;
 
 if (preg_match_all($regexp, $product, $matches)) {
 	foreach($matches[1] as $key =>  $val) {
-	$item['atts'][$i]['value'] = trim($val);
+	$item['atts'][$i]['value'] = trim($val);	
 	$i += 1;
 	}						
+}
+
+$item['specification'] = "";
+foreach( $atts as $att )
+{
+$item['specification'] .= $att['name'] . ": " . $att['value'] . "\r\n";
 }
 
 	// get download links
@@ -314,15 +345,13 @@ if (preg_match_all($regexp, $product, $matches)) {
 				foreach($matches[2] as $key =>  $val) {
 			$download[$key]['url'] = trim($val);
 			$download[$key]['title'] = trim($matches[3][$key]);
+			$item[$download[$key]['title']] = $download[$key]['url'];
 			}	
 		
 		}
 		
-		$item['downloads'] = $download;
 		
-		
-		
-		print($item['title'] . " " . $item['price'] . " " . $item['nav'] . "<br>");
+		print($item['title'] . " " . $item['code'] . " " . $item['nav'] . "\r\n");
 		
 		
 		$conn = new Mongo('localhost');
