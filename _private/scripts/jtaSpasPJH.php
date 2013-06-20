@@ -349,8 +349,7 @@ $item['specification'] .= $att['name'] . ": " . $att['value'] . "\r\n";
 			$downloads = trim($val);
 			
 			}		
-					
-			}
+			
 			
 	$download = "";
 			
@@ -363,7 +362,8 @@ $item['specification'] .= $att['name'] . ": " . $att['value'] . "\r\n";
 			}	
 		
 		}
-		
+	
+	}	
 		
 		print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
 	//	print( "\r\n\r\n" .  html_entity_decode($item['specification'],ENT_NOQUOTES,'UTF-8') . "\r\n\r\n" );	
