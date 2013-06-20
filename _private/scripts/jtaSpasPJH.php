@@ -212,7 +212,8 @@ function DownloadProductURL($url, $price, $code)
 $product = get_content($url);
 
 $item['product_code'] = $code;
-
+$item['url'] = $url;
+	
 if ( $code == "" ) 
 {
 
@@ -301,7 +302,6 @@ else
 	$regexp = "/<div class=\"jquery-panes\">(.*)<\/div>/siU";
 	
 	if( preg_match($regexp, $product, $arr) ) {
-			$desc = strip_tags(trim($arr[1]));
 			$desc = str_replace("\t","",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
@@ -310,6 +310,11 @@ else
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
+			$desc = str_replace("\r\n\r\n","\r\n",$desc);
+			$desc = str_replace("\r\n\r\n","\r\n",$desc);
+			$desc = str_replace("\r\n\r\n","\r\n",$desc);
+			$item['html_desc'] = $desc;
+			$desc = strip_tags(trim($arr[1]));
 			$desc = html_entity_decode($desc,ENT_NOQUOTES,'UTF-8');
 			$item['desc'] = $desc;
 	//			print((trim($arr[1])));
