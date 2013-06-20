@@ -801,6 +801,11 @@ class sitescraper
 										print("No code");
 										continue;
 									}
+									
+									if( preg_match('/<p class=\'washing-instructions\'>\s*Washing instructions:\s*<span>(.*?)<\/span>/is',$product,$matches) )
+										{
+										$item['wshing_instructions'] =  $matches[1];
+										}
 
 									$item['_id']         = $code;
 									$item['title']        = $name;
