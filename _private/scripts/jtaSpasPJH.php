@@ -308,7 +308,7 @@ else
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
-			$desc = html_entity_decode($desc);
+			$desc = html_entity_decode($desc,ENT_NOQUOTES,'UTF-8');
 			$item['desc'] = $desc;
 	//			print((trim($arr[1])));
 			}
@@ -366,7 +366,7 @@ $item['specification'] .= $att['name'] . ": " . $att['value'] . "\r\n";
 		
 		
 		print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
-		print( "\r\n\r\n" .  html_entity_decode($item['specification']) . "\r\n\r\n" );	
+		print( "\r\n\r\n" .  html_entity_decode($item['specification'],ENT_NOQUOTES,'UTF-8') . "\r\n\r\n" );	
 		
 		$conn = new Mongo('localhost');
 		$db = $conn->odstech;
