@@ -802,9 +802,9 @@ class sitescraper
 										continue;
 									}
 									
-									if( preg_match('/<p class=\'washing-instructions\'>\s*Washing instructions:\s*<span>(.*?)<\/span>/is',$product,$matches) )
+									if( preg_match("/<p class='washing-instructions'>\s*Washing instructions:\s*<span>(.*?)<\/span>/is",$product,$matches) )
 										{
-										$item['wshing_instructions'] =  $matches[1];
+										$item['washing_instructions'] =  trim( html_entity_decode($matches[1],ENT_NOQUOTES,'UTF-8'));
 										}
 
 									$item['_id']         = $code;
