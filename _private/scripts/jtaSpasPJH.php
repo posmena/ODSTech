@@ -69,7 +69,7 @@ if (preg_match_all($regexp, $res, $matches)) {
 						foreach($matches[1] as $key =>  $product_url) {
 							//if ($key % 2) {
 								//print($matches[2][$key] . ":::" . $product_url . "<br>");
-								    echo("Found " . $product_url . "<br>");
+								    //echo("Found " . $product_url . "<br>");
 									ProcessCategoryPage(htmlspecialchars_decode($product_url), FALSE);
 									
 							//}
@@ -104,7 +104,7 @@ if (preg_match_all($regexp, $res, $matches)) {
 						foreach($matches[1] as $key =>  $product_url) {
 							//if ($key % 2) {
 								//print($matches[2][$key] . ":::" . $product_url . "<br>");
-									echo("Found on Sub " . $product_url . "<br>");									
+									//echo("Found on Sub " . $product_url . "<br>");									
 									ProcessCategoryPage(htmlspecialchars_decode($product_url), TRUE);
 									
 								
@@ -141,7 +141,7 @@ $res = get_content($product_url);
 
 if ( strpos( $res, "<ul class=\"categories\">" ) != FALSE )
 	{
-		echo("CATEGORIES FOUND<br>");
+		//echo("CATEGORIES FOUND<br>");
 		ProcessTopLevelPage($res);
 		return;
 	}
@@ -149,7 +149,7 @@ if ( strpos( $res, "<ul class=\"categories\">" ) != FALSE )
 if( IsPaged($res) )
 	{
 	$allProdURL = getAllProductsURL($res);
-	echo("All URL:" . $allProdURL);
+	//echo("All URL:" . $allProdURL);
 	ProcessCategoryPage($allProdURL,$fromSub);
 	}
 	
@@ -178,6 +178,7 @@ $regexp = "/(?<=<span class=\"code\">)(.*)(?=<\/span>)/siU";
 			
 			foreach($matches2[1] as $key =>  $val) {
 			$code= trim($val);
+			
 		}
 	}
 	
@@ -187,7 +188,7 @@ $regexp = "/(?<=<span class=\"code\">)(.*)(?=<\/span>)/siU";
 						foreach($matches[1] as $key =>  $product_url) {
 							//if ($key % 2) {
 								//print("PRODUCT:" . $product_url . "<br>");
-								echo("Found product " . $product_url . " Price: " . $price . "<br>");
+								//echo("Found product " . $product_url . " Price: " . $price . "<br>");
 								DownloadProductURL($product_url, $price, $code);
 							//}
 						}						
@@ -199,7 +200,7 @@ $regexp = "/(?<=<span class=\"code\">)(.*)(?=<\/span>)/siU";
 			
 			else
 				{
-				echo("NOT FOUND PRODUCTS");
+				//echo("NOT FOUND PRODUCTS");
 				}
 					
 }
@@ -210,19 +211,32 @@ function DownloadProductURL($url, $price, $code)
 //$url = "http://retail.pjhgroup.com/webapp/wcs/stores/servlet/ProductDisplay?urlRequestType=Base&catalogId=10051&categoryId=12590&productId=48211&errorViewName=ProductDisplayErrorView&urlLangId=-1&langId=-1&top_category=12551&parent_category_rn=12551&storeId=10001";
 $product = get_content($url);
 
-item['product_code'] = $code;
+$item['product_code'] = $code;
 
 if ( $code == "" ) 
 {
+
+$codes_found = array();
+
 // code wasn't on prevbious page due to multiple codes, extract and combine
-	$regexp = "/(?<=Product code: )(.*)(?=<\/p>)/siU";
+	$regexp = "/(?<=Product code: )\s*(.*)(?=\s)/siU";
 
 	if (preg_match_all($regexp, $product, $matches)) {
+
 		foreach($matches[1] as $key =>  $code) {
-		$item['product_code'] .= trim($code) . " ";	
+		$code = trim($code);
+		 if( !in_array($code, $codes_found) )
+			{
+			$codes_found[] = $code;			
+			}
 		}						
 	}
+	
+	
+	$item['product_code'] = implode($codes_found, ",");
+
 }
+
 
 // use regexp to extract data and write to mongo
 
@@ -294,7 +308,7 @@ else
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
-			
+			$desc = html_entity_decode($desc);
 			$item['desc'] = $desc;
 	//			print((trim($arr[1])));
 			}
@@ -322,7 +336,7 @@ if (preg_match_all($regexp, $product, $matches)) {
 }
 
 $item['specification'] = "";
-foreach( $atts as $att )
+foreach( $item['atts'] as $att )
 {
 $item['specification'] .= $att['name'] . ": " . $att['value'] . "\r\n";
 }
@@ -351,8 +365,8 @@ $item['specification'] .= $att['name'] . ": " . $att['value'] . "\r\n";
 		}
 		
 		
-		print($item['title'] . " " . $item['code'] . " " . $item['nav'] . "\r\n");
-		
+		print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
+		print( "\r\n\r\n" .  html_entity_decode($item['specification']) . "\r\n\r\n" );	
 		
 		$conn = new Mongo('localhost');
 		$db = $conn->odstech;
