@@ -54,8 +54,10 @@ function post_content($url,$fields_string, $fields_count)
     return $string;      
 }
 
-$res = post_content('https://retail.pjhgroup.com/webapp/wcs/stores/servlet/rc701-rc701-sales-catalog/Logon','storeId=10001&catalogId=10051&langId=-1&reLogonURL=GuestHomePageView&errorViewName=GuestHomePageView&myAcctMain=&URL=UserAccountView%3FcatalogId%3D10051%26fromIndex%3D1%26myAcctMain%3D1%26langId%3D-1%26storeId%3D10001%26page%3D&logonId=21687&logonPassword=vallymoney12%3F',9);
 
+$res = post_content('https://retail.pjhgroup.com/webapp/wcs/stores/servlet/rc701-rc701-sales-catalog/Logon','storeId=10001&catalogId=10051&langId=-1&reLogonURL=GuestHomePageView&errorViewName=GuestHomePageView&myAcctMain=&URL=UserAccountView%3FcatalogId%3D10051%26fromIndex%3D1%26myAcctMain%3D1%26langId%3D-1%26storeId%3D10001%26page%3D&logonId=21687&logonPassword=vallymoney12%3F',9);
+$res = post_content('https://retail.pjhgroup.com/webapp/wcs/stores/servlet/rc701-rc701-sales-catalog/Logon','storeId=10001&catalogId=10051&langId=-1&reLogonURL=GuestHomePageView&errorViewName=GuestHomePageView&myAcctMain=&URL=UserAccountView%3FcatalogId%3D10051%26fromIndex%3D1%26myAcctMain%3D1%26langId%3D-1%26storeId%3D10001%26page%3D&logonId=21687&logonPassword=vallymoney12%3F',9);
+$res = get_content('https://retail.pjhgroup.com/webapp/wcs/stores/servlet/rc701-rc701-sales-catalog/guest-products');
 $res = get_content('https://retail.pjhgroup.com/webapp/wcs/stores/servlet/rc701-rc701-sales-catalog/guest-products');
 
 // use regexp to get all the urls in <li> navigation
