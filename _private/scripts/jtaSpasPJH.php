@@ -430,7 +430,7 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 				$item['price'] = $offerPrice;
 				$item['product_code'] = $partNumber;
 				
-				print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
+				print("Sub" . $item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
 
 				$jtdb->save($item);
 				}
@@ -444,7 +444,7 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 			}
 		else
 			{
-			print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
+			print("Main" . $item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
 
 			$jtdb->save($item);
 			}
