@@ -219,7 +219,7 @@ $product = json_decode($productStr);
 
 $partNumber = $product->catalogEntry->catalogEntryIdentifier->externalIdentifier->partNumber;
 $description = $product->catalogEntry->description[0]->name;
-$offerPrice = str_replace("&pound;","£",$product->catalogEntry->offerPrice);
+$offerPrice = $product->catalogEntry->offerPrice;
 
 
 }
@@ -315,7 +315,7 @@ if( preg_match($regexp, $product, $arr) ) {
 }
 
 	
-	$item['price']  = str_replace("&pound;","£",$price);
+	$item['price']  = $price;
 /*
 	$regexp = "/<span class=\"price\">(.*)<\/span>/siU";
 	
