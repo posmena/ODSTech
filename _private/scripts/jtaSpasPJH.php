@@ -47,10 +47,10 @@ function post_content($url,$fields_string, $fields_count)
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
        
-    $string = curl_exec ($ch);  
-	
-    curl_close ($ch);  
- 
+	    $response  = curl_exec ($ch);  
+   $header_size = curl_getinfo($ch,CURLINFO_HEADER_SIZE);
+        $string = substr( $response, $header_size );
+	 curl_close ($ch); 	
     return $string;      
 }
 
@@ -205,18 +205,37 @@ $regexp = "/(?<=<span class=\"code\">)(.*)(?=<\/span>)/siU";
 					
 }
 					
+function GetProductDetailsFromAjaxURL($id,&$description, &$offerPrice, &$partNumber)
+{
+$fields = "storeId=10001&langId=-1&catalogId=10051&productId=$id&onlyCatalogEntryPrice=true";
+
+$productStr = post_content("http://retail.pjhgroup.com/webapp/wcs/stores/servlet/GetCatalogEntryDetailsByID",$fields,5);
+
+$productStr = str_replace("/*","",$productStr);
+$productStr = str_replace("*/","",$productStr);
+$productStr = trim($productStr);
+
+$product = json_decode($productStr);
+
+$partNumber = $product->catalogEntry->catalogEntryIdentifier->externalIdentifier->partNumber;
+$description = $product->catalogEntry->description[0]->name;
+$offerPrice = str_replace("&pound;","£",$product->catalogEntry->offerPrice);
+
+
+}
 					
 function DownloadProductURL($url, $price, $code)
 {
 //$url = "http://retail.pjhgroup.com/webapp/wcs/stores/servlet/ProductDisplay?urlRequestType=Base&catalogId=10051&categoryId=12590&productId=48211&errorViewName=ProductDisplayErrorView&urlLangId=-1&langId=-1&top_category=12551&parent_category_rn=12551&storeId=10001";
 $product = get_content($url);
+$multi = false;
 
 $item['product_code'] = $code;
 $item['url'] = $url;
 	
 if ( $code == "" ) 
 {
-
+$multi = true;
 $codes_found = array();
 
 // code wasn't on prevbious page due to multiple codes, extract and combine
@@ -271,16 +290,32 @@ if( preg_match($regexp, $product, $arr) ) {
 	$item['title'] = html_entity_decode($item['title'],ENT_NOQUOTES,'UTF-8');
 	//print($item['title']);
 	}
+
+
+// if has gallery images  then extract images else
+$iImage = 1;
+$regexp = "/largeimage:\s'(.*?)\s*'/siU";
+	
+	if (preg_match_all($regexp, $product, $matches)) {
+	foreach($matches[1] as $key =>  $name) {
+	$item['image_' . $iImage] = trim($name);
+	$iImage += 1;
+	}						
+}
+else
+{
 	
 	$regexp = "/<img id=\"productMainImage\".* src=\"(.*)\"/siU";
 	
 if( preg_match($regexp, $product, $arr) ) {								
-	$item['image'] = (trim($arr[1]));
+	$item['image_' . $iImage] = (trim($arr[1]));
 	//print($item['image']);
 	}
+	
+}
 
 	
-	$item['price']  = $price;
+	$item['price']  = str_replace("&pound;","£",$price);
 /*
 	$regexp = "/<span class=\"price\">(.*)<\/span>/siU";
 	
@@ -304,6 +339,8 @@ else
 	if( preg_match($regexp, $product, $arr) ) {
 			$desc = trim($arr[1]);
 			$desc = str_replace("\t","",$desc);
+			$desc = str_replace("\r\n\r\n\r\n\r\n\r\n\r\n","\r\n",$desc);
+			$desc = str_replace("\r\n\r\n\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
@@ -312,8 +349,8 @@ else
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
-			$desc = str_replace("\r\n\r\n","\r\n",$desc);
-			$desc = str_replace("\r\n\r\n","\r\n",$desc);
+			$desc = str_replace("\r\n\r\n","\n",$desc);
+			
 			$item['html_desc'] = $desc;
 			$desc = strip_tags($desc);
 			$desc = html_entity_decode($desc,ENT_NOQUOTES,'UTF-8');
@@ -373,13 +410,40 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 	
 	}	
 		
+		
+		
 		print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
 	//	print( "\r\n\r\n" .  html_entity_decode($item['specification'],ENT_NOQUOTES,'UTF-8') . "\r\n\r\n" );	
 		
 		$conn = new Mongo('localhost');
 		$db = $conn->odstech;
 		$jtdb = $db->jtSpas_PJH;
-		$jtdb->save($item);
+		
+		
+		// get mutli products
+		if ( $multi == true ) 
+			{
+			$regexp = "/\"catentry_id\" : \"([0-9]+)\"/siU";
+			if (preg_match_all($regexp, $product, $matches)) {
+				foreach($matches[1] as $key =>  $id) {
+				GetProductDetailsFromAjaxURL($id,$description, $offerPrice, $partNumber);
+				$item['title'] = $description;
+				$item['price'] = $offerPrice;
+				$item['code'] = $partNumber;
+				
+				$jtdb->save($item);
+				}
+				}
+				else	
+					{
+					$jtdb->save($item);
+					}
+			}
+		else
+			{
+			$jtdb->save($item);
+			}
+		
 
 }
 					
