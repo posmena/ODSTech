@@ -294,22 +294,22 @@ if( preg_match($regexp, $product, $arr) ) {
 
 // if has gallery images  then extract images else
 $iImage = 1;
-$regexp = "/largeimage:\s'(.*?)\s*'/siU";
+$regexp = "/largeimage: '(.*?)'/iU";
 	
 	if (preg_match_all($regexp, $product, $matches)) {
 	foreach($matches[1] as $key =>  $name) {
 	$item['image_' . $iImage] = trim($name);
+	echo($item['title'] . " " . $item['image_' . $iImage] . "\r\n");
 	$iImage += 1;
 	}						
 }
 else
 {
-	
-	$regexp = "/<img id=\"productMainImage\".* src=\"(.*)\"/siU";
+	$regexp = "/<a href=\"(.*?)\" class=\"jqueryImageZoom\"/iU";
 	
 if( preg_match($regexp, $product, $arr) ) {								
 	$item['image_' . $iImage] = (trim($arr[1]));
-	//print($item['image']);
+	echo($item['title'] . " " . $item['image_' . $iImage] . "\r\n");
 	}
 	
 }
@@ -334,10 +334,10 @@ else
 		}
 	*/
 	
-	$regexp = "/<div class=\"jquery-panes\">(.*?)<\/div>/siU";
+	$regexp = "/<div class=\"jquery-panes\">(.*?)<\/div>/si";
 	
 	if( preg_match($regexp, $product, $arr) ) {
-			$desc = trim($arr[1]);
+			$desc = trim($arr[0]);
 			$desc = str_replace("\t","",$desc);
 			$desc = str_replace("\r\n\r\n\r\n\r\n\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n\r\n\r\n","\r\n",$desc);
