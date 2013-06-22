@@ -428,7 +428,7 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 				GetProductDetailsFromAjaxURL($id,$description, $offerPrice, $partNumber);
 				$item['title'] = $description;
 				$item['price'] = $offerPrice;
-				$item['code'] = $partNumber;
+				$item['product_code'] = $partNumber;
 				
 				print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
 
