@@ -326,7 +326,6 @@ if( preg_match($regexp, $product, $arr) ) {
 	$item['image' . $iImage] = (trim($arr[1]));
 	}
 	
-}
 	
 	$item['price']  = $price;
 /*
