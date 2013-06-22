@@ -314,6 +314,13 @@ if( preg_match($regexp, $product, $arr) ) {
 	
 }
 
+$regexp = "/<img id=\"productMainImage\".* src=\"(.*)\"/siU";
+	
+if( preg_match($regexp, $product, $arr) ) {								
+	$item['image' . $iImage] = (trim($arr[1]));
+	}
+	
+}
 	
 	$item['price']  = $price;
 /*
