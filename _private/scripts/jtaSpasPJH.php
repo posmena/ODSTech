@@ -412,8 +412,7 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 		
 		
 		
-		print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
-	//	print( "\r\n\r\n" .  html_entity_decode($item['specification'],ENT_NOQUOTES,'UTF-8') . "\r\n\r\n" );	
+			//	print( "\r\n\r\n" .  html_entity_decode($item['specification'],ENT_NOQUOTES,'UTF-8') . "\r\n\r\n" );	
 		
 		$conn = new Mongo('localhost');
 		$db = $conn->odstech;
@@ -431,16 +430,22 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 				$item['price'] = $offerPrice;
 				$item['code'] = $partNumber;
 				
+				print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
+
 				$jtdb->save($item);
 				}
 				}
 				else	
 					{
+					print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
+
 					$jtdb->save($item);
 					}
 			}
 		else
 			{
+			print($item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
+
 			$jtdb->save($item);
 			}
 		
