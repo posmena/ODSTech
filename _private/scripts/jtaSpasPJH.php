@@ -334,7 +334,7 @@ else
 		}
 	*/
 	
-	$regexp = "/<div class=\"jquery-panes\">(.*)<\/div>/siU";
+	$regexp = "/<div class=\"jquery-panes\">(.*?)<\/div>/siU";
 	
 	if( preg_match($regexp, $product, $arr) ) {
 			$desc = trim($arr[1]);
@@ -349,7 +349,13 @@ else
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
 			$desc = str_replace("\r\n\r\n","\r\n",$desc);
-			$desc = str_replace("\r\n\r\n","\n",$desc);
+			$desc = str_replace("\t"," ",$desc);
+			$desc = str_replace("  "," ",$desc);
+			$desc = str_replace("    "," ",$desc);
+			$desc = str_replace("   "," ",$desc);
+			$desc = str_replace("  "," ",$desc);
+			
+			$desc = str_replace("\r\n","\n",$desc);
 			
 			$item['html_desc'] = $desc;
 			$desc = strip_tags($desc);
