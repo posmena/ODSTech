@@ -432,7 +432,8 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 			if (preg_match_all($regexp, $product, $matches)) {
 				foreach($matches[1] as $key =>  $id) {
 				GetProductDetailsFromAjaxURL($id,$description, $offerPrice, $partNumber);
-				$item['title'] = $description;
+				$item['title'] = $item['title'] = html_entity_decode($description,ENT_NOQUOTES,'UTF-8');
+	
 				$item['price'] = $offerPrice;
 				$item['product_code'] = $partNumber;
 				
