@@ -298,7 +298,9 @@ $regexp = "/largeimage: '(.*?)'/iU";
 	
 	if (preg_match_all($regexp, $product, $matches)) {
 	foreach($matches[1] as $key =>  $name) {
-	$item['image_' . $iImage] = trim($name);
+	$name = trim($name);
+	$name = str_replace("/thumbnail/","/zoom/",$name);
+	$item['image_' . $iImage] = $name;
 	echo($item['title'] . " " . $item['image_' . $iImage] . "\r\n");
 	$iImage += 1;
 	}						
@@ -307,8 +309,12 @@ else
 {
 	$regexp = "/<a href=\"(.*?)\" class=\"jqueryImageZoom\"/iU";
 	
-if( preg_match($regexp, $product, $arr) ) {								
-	$item['image_' . $iImage] = (trim($arr[1]));
+if( preg_match($regexp, $product, $arr) ) {		
+						
+	$img = trim($arr[1]);
+	$img = str_replace("/thumbnail/","/zoom/",$img);
+	$item['image_' . $iImage] = $img;
+	
 	echo($item['title'] . " " . $item['image_' . $iImage] . "\r\n");
 	}
 	
