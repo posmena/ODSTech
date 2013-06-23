@@ -451,9 +451,9 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 					
 					print("Sub" . $item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
 					
-					if( isset($item['id']) )
+					if( isset($item['_id']) )
 						{
-						unset($item['id']);
+						unset($item['_id']);
 						}
 						
 					$jtdb->save($item);
