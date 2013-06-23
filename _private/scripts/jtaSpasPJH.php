@@ -443,16 +443,21 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 			$regexp = "/\"catentry_id\" : \"([0-9]+)\"/siU";
 			if (preg_match_all($regexp, $product, $matches)) {
 				foreach($matches[1] as $key =>  $id) {
-				GetProductDetailsFromAjaxURL($id,$description, $offerPrice, $partNumber);
-				$item['title'] = $item['title'] = html_entity_decode($description,ENT_NOQUOTES,'UTF-8');
-	
-				$item['price'] = $offerPrice;
-				$item['product_code'] = $partNumber;
-				
-				print("Sub" . $item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
-
-				$jtdb->save($item);
-				}
+					GetProductDetailsFromAjaxURL($id,$description, $offerPrice, $partNumber);
+					$item['title'] = $item['title'] = html_entity_decode($description,ENT_NOQUOTES,'UTF-8');
+		
+					$item['price'] = $offerPrice;
+					$item['product_code'] = $partNumber;
+					
+					print("Sub" . $item['title'] . " " . $item['product_code'] . " " . $item['nav'] . "\r\n");
+					
+					if( isset($item['id']) )
+						{
+						unset($item['id']);
+						}
+						
+					$jtdb->save($item);
+					}
 				}
 				else	
 					{
