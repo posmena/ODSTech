@@ -88,7 +88,7 @@ function GetTimeLeft($dt)
                         <p><a href="<?php echo(GetLink($product['deeplink']));?>" style="text-decoration:none; color:black;"><?php echo(GetTimeLeft(new DateTime($product['Offers_ends_at'])))?> left</a></p>
                     </div>
                     <div class="leftimg" style="width:166px; height:237px; overflow:hidden;">
-                        <a href="<?php echo(GetLink($product['deeplink']));?>"><img width="166px" height="237px" src="<?php echo($product['image_thumbnail'])?>" alt="" /></a>
+                        <a href="<?php echo(GetLink($product['deeplink']));?>"><img src="<?php echo($product['image_thumbnail'])?>" alt="" /></a>
                     </div>
 
                     <div style="display:none" class="socialemail">

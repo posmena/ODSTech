@@ -82,7 +82,7 @@ function GetTimeLeft($dt)
                         <p><a style="text-decoration:none; color:black;" href="<?php echo(GetLink($product['deeplink']));?>"><?php echo(GetTimeLeft(new DateTime($product['Offers_ends_at'])))?> Left</a></p>
                     </div>
                     <div class="mainImageContainer">
-                        <a href="<?php echo(GetLink($product['deeplink']));?>"><img class="mainimg" width="175px" height="250px" src="<?php echo($product['image_thumbnail'])?>" alt="Samsi" /></a>
+                        <a href="<?php echo(GetLink($product['deeplink']));?>"><img class="mainimg" style="min-width:60px" src="<?php echo($product['image_thumbnail'])?>" alt="Samsi" /></a>
                     </div>
                     <div style="display:none" class="socialemail">
                         <a class="socialemail2" href="/widgetshare/facebook?merchantName=Samsi&amp;dealTitle=Four-Course%20Japanese%20Tasting%20Menu%20for%20Two%20(%C2%A329)%2C%20Four%20(%C2%A356)%20or%20Six%20(%C2%A382)%20Including%20Jug%20of%20Sake&amp;shareLink=http%3A%2F%2Fwww.livingsocial.com%2Fcities%2F73-manchester%2Fdeals%2F634324-four-course-japanese-meal-for-two-with-jug-of-sake&amp;sidebarImageUrl=http%3A%2F%2Fa1.lscdn.net%2Fimgs%2F1a5f77c4-42d4-4e2d-b55f-ad8cc8dc682d%2F100_q60_.jpg"><img src="250x250/fb_logo.png" alt="Facebook logo" width="18" height="19" /></a>

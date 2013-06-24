@@ -87,7 +87,7 @@ function GetTimeLeft($dt)
 		
             <div class="topcol">
                 <div class="mainimg" style="width:113px; height:215px; overflow:hidden; position:relative; border:0px solid red;">
-                    <a href="<?php echo(GetLink($product['deeplink']));?>" style="display:block;"><img src="<?php echo($product['image_thumbnail'])?>" alt="mainImg" style="width:150px; height:214px; position:absolute; left:-15px;"></a>
+                    <a href="<?php echo(GetLink($product['deeplink']));?>" style="display:block;"><img src="<?php echo($product['image_thumbnail'])?>" alt="mainImg" style="min-width:60px; position:absolute; left:-15px;"></a>
                 </div>
 
                 <div class="daysleft">

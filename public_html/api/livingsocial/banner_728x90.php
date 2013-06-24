@@ -91,7 +91,7 @@ function GetTimeLeft($dt)
                     <p><a style="text-decoration:none; color:black;" href="<?php echo(GetLink($product['deeplink']));?>"><?php echo(GetTimeLeft(new DateTime($product['Offers_ends_at'])))?> left</a></p>
 	            </div>
 		        <div class="leftimg" style="width:60px; height:86px; border:0px solid red; overflow:hidden;">
-			        <a href="<?php echo(GetLink($product['deeplink']));?>"><img title="" src="<?php echo($product['image_thumbnail'])?>" style="min-width:60px;" width="60px" height="86px" alt="" /></a>
+			        <a href="<?php echo(GetLink($product['deeplink']));?>"><img title="" src="<?php echo($product['image_thumbnail'])?>" style="min-width:60px;" alt="" /></a>
 		        </div>
 		        <h3 class="discount" style="border:0px solid red; margin-top:8px;"><a style="text-decoration:none; color:#E7398E;" href="<?php echo(GetLink($product['deeplink']));?>"><?php echo($product['Savings'])?>  off</a></h3>
 		        <div style="position:relative; font-weight:bold; left:70px; font-family:Arial; font-size:15px; color:white; display:block; text-overflow:ellipsis; height:17px; overflow:hidden; white-space:nowrap; border:0px solid red; width:220px;">
@@ -112,7 +112,7 @@ function GetTimeLeft($dt)
             <div class="midcol">
 		            <div class="daysleft"><p><a style="text-decoration:none; color:black;" href="<?php echo(GetLink($product['deeplink']));?>"><?php echo(GetTimeLeft(new DateTime($product['Offers_ends_at'])))?> left</a></p></div>
 		            <div class="leftimg" style="width:60px; height:86px; border:0px solid red; overflow:hidden;">
-			            <a href="<?php echo(GetLink($product['deeplink']));?>"><img title="" src="<?php echo($product['image_thumbnail'])?>" style="min-width:60px;" width="60px" height="86px" alt="" /></a>
+			            <a href="<?php echo(GetLink($product['deeplink']));?>"><img title="" src="<?php echo($product['image_thumbnail'])?>" style="min-width:60px;" alt="" /></a>
 		            </div>
 		            <h3 class="discount" style="margin-top:8px;">
                         <a style="text-decoration:none; color:#E7398E;" href="<?php echo(GetLink($product['deeplink']));?>"><?php echo($product['Savings'])?> off</a>
