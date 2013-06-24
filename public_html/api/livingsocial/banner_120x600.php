@@ -92,7 +92,7 @@ function GetTimeLeft($dt)
 
                 <div class="daysleft">
                     <p>
-                        <a style="text-decoration:none; color:black;" href="<?php echo(GetLink($product['deeplink']));?>"><?php echo(GetTimeLeft(new DateTime($product['Offers_ends_at'])))?> <?php echo(GetTimeLeft(new DateTime($product['Offers_ends_at'])))?> Left</a>
+                        <a style="text-decoration:none; color:black;" href="<?php echo(GetLink($product['deeplink']));?>"><?php echo(GetTimeLeft(new DateTime($product['Offers_ends_at'])))?> Left</a>
                     </p>
                 </div>
 
