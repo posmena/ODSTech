@@ -227,6 +227,8 @@ $offerPrice = $product->catalogEntry->offerPrice;
 function DownloadProductURL($url, $price, $code)
 {
 //$url = "http://retail.pjhgroup.com/webapp/wcs/stores/servlet/ProductDisplay?urlRequestType=Base&catalogId=10051&categoryId=12590&productId=48211&errorViewName=ProductDisplayErrorView&urlLangId=-1&langId=-1&top_category=12551&parent_category_rn=12551&storeId=10001";
+$url = "http://retail.pjhgroup.com/webapp/wcs/stores/servlet/ProductDisplay?urlRequestType=Base&catalogId=10051&categoryId=&productId=49596&errorViewName=ProductDisplayErrorView&urlLangId=-1&langId=-1&top_category=&parent_category_rn=&storeId=10001";
+
 $product = get_content($url);
 $multi = false;
 
@@ -411,20 +413,31 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 			foreach($matches[1] as $key =>  $val) {
 			$downloads = trim($val);
 			
+			$download = "";
+			
+			$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)[^>]*>(.*)<\/a>/siU";
+				if (preg_match_all($regexp, $downloads, $matches)) {
+						foreach($matches[2] as $key =>  $val) {
+					
+					$download[$key]['url'] = trim($val);
+					$download[$key]['title'] = trim($matches[3][$key]);
+					if( isset($item[$download[$key]['title']]) )
+						{
+						$item[$download[$key]['title']] = $item[$download[$key]['title']] . "\n" . $download[$key]['url'] ;	
+						}
+					else
+						{
+						$item[$download[$key]['title']] = $download[$key]['url'] ;
+						}
+					
+					}	
+				
+				}
+				
 			}		
 			
 			
-	$download = "";
-			
-	$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)[^>]*>(.*)<\/a>/siU";
-		if (preg_match_all($regexp, $downloads, $matches)) {
-				foreach($matches[2] as $key =>  $val) {
-			$download[$key]['url'] = trim($val);
-			$download[$key]['title'] = trim($matches[3][$key]);
-			$item[$download[$key]['title']] = $download[$key]['url'];
-			}	
-		
-		}
+	
 	
 	}	
 		
