@@ -6,6 +6,9 @@
 .crieffhydro .odst_scontainer .grid li  a.name {background-color:#48718d !important; color:#FFFFFF !important}
 .crieffhydro .odst_scontainer.vertical li  a.name{background-color:#48718d !important; color:#FFFFFF !important}
 
+.crieffhydro .odst_scontainer .slider li  a.name {line-height:13px;font-size:11px}
+.crieffhydro .odst_scontainer .grid li  a.name {line-height:13px;font-size:11px}
+
 
 .widget .odst_hotels.crieffhydro a.name, .odst_hotel_table.crieffhydro div.name a.name {background-color:#48718d  !important; color:#FFFFFF  !important;}
 .post .odst_hotels.crieffhydro a.name{background-color:#48718d  !important; 
@@ -144,7 +147,4 @@ color: #48718d!important;
 text-decoration:none !important;
 }
 
-.odst_hotel_table.crieffhydro div.name a.name
-{
-font-size:11px;
-}
+
