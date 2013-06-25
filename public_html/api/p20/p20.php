@@ -523,16 +523,16 @@ elseif( $_GET['params']['feed_id'] == 'crieffhydro' )
  	 function odst_abbr($str, $maxLen) {
       
       if (strlen($str) > $maxLen && $maxLen > 1) {
--         preg_match("\^.{1,".$maxLen."}\.\s", $str, $matches);
--         return $matches[0];
-+         if( preg_match("/^.{1,".$maxLen."}[\.!]/s", $str, $matches) ) 
-+			{
-+			return $matches[0];
-+			}
-+		else
-+			{
-+			return odst_truncate($str, $maxLen," ","");
-+			}
+         preg_match("\^.{1,".$maxLen."}\.\s", $str, $matches);
+         return $matches[0];
+         if( preg_match("/^.{1,".$maxLen."}[\.!]/s", $str, $matches) ) 
+			{
+			return $matches[0];
+			}
+		else
+			{
+			return odst_truncate($str, $maxLen," ","");
+			}
       } else {
           return $str;
       }
