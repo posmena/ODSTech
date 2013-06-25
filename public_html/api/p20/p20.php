@@ -522,14 +522,20 @@ function display_content_unit($products,$type,$display,$style,$width)
 	 function odst_abbr($str, $maxLen) {
      
      if (strlen($str) > $maxLen && $maxLen > 1) {
-         preg_match("\^.{1,".$maxLen."}\.\s", $str, $matches);
-         return $matches[0];
+         if( preg_match("/^.{1,".$maxLen."}[\.!]/s", $str, $matches) ) 
+			{
+			return $matches[0];
+			}
+		else
+			{
+			return odst_truncate($str, $maxLen," ","");
+			}
      } else {
          return $str;
      }
  }  
  
-	function odst_truncate($string, $limit, $break=" .", $pad="...") { 
+	function odst_truncate($string, $limit, $break=" ", $pad="...") { 
 // return with no change if string is shorter than $limit 
 
 if(strlen($string) <= $limit) return $string; 
