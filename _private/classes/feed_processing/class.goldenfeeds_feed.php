@@ -148,7 +148,13 @@ class goldenfeeds_feed extends network_base
 				$product['Offers_ends'] = $md;
 				//$product['offer_time_left'] = $this->GetTimeLeft($product['Offers_ends_at']);
 				}
-				
+			if( $feed_id == "creiffhydro")
+				{
+				$product['product_name'] = str_replace('package','pkg',$product['product_name']);
+				$product['product_name'] = str_replace('Package','Pkg',$product['product_name']);
+				$product['product_name'] = str_replace('including','incl',strtolower($product['product_name']));
+				$product['product_name'] = str_replace('includes','incl',strtolower($product['product_name']));				
+				}
 		    $product['feed_id'] = $feed_id;
 			$product['program_name'] = $feed['feedname'];
 			$product['last_updated'] = new MongoDate();
