@@ -522,7 +522,7 @@ function display_content_unit($products,$type,$display,$style,$width)
 	 function odst_abbr($str, $maxLen) {
      
      if (strlen($str) > $maxLen && $maxLen > 1) {
-         preg_match("#^.{1,".$maxLen."}\.#s", $str, $matches);
+         preg_match("\#^.{1,".$maxLen."}\.#s", $str, $matches);
          return $matches[0];
      } else {
          return $str;
