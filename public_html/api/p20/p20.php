@@ -233,7 +233,7 @@ elseif( $_GET['params']['feed_id'] == 'crieffhydro' )
  							$hotel .= '<div class="name"><a ' . format_style(apply_style($style,'product_name_colour') . apply_style($style,'product_name_bg_colour')) . ' class="name" target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $product->product_name . '</a>';			
  							$hotel .= '</div>';
  
- 							$hotel .= '<div class="location" ' . format_style(apply_style($style,'link_colour')) . '>' . odst_truncate($product->description,170) . '</div>';	
+ 							$hotel .= '<div class="location" ' . format_style(apply_style($style,'link_colour')) . '>' . odst_abbr($product->description,160) . '</div>';	
  						
  							$hotel .= '<div class="price"><a ' . format_style(apply_style($style,'price_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">&pound;' . format_price($product->price) . '</a>';
  							$hotel .= '<div class="clear"></div><div class="merchant"><a ' . format_style(apply_style($style,'link_colour')) . ' target="_blank" rel="nofollow" href="' . make_deep_link($network, $affid, $deeplink, $campaign_id) . '">' . $merchant . '</a></div></div>';
@@ -523,8 +523,7 @@ elseif( $_GET['params']['feed_id'] == 'crieffhydro' )
  	 function odst_abbr($str, $maxLen) {
       
       if (strlen($str) > $maxLen && $maxLen > 1) {
-         preg_match("\^.{1,".$maxLen."}\.\s", $str, $matches);
-         return $matches[0];
+        
          if( preg_match("/^.{1,".$maxLen."}[\.!]/s", $str, $matches) ) 
 			{
 			return $matches[0];
