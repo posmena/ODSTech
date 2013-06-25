@@ -143,3 +143,8 @@ color: #48718d !important;
 color: #48718d!important;
 text-decoration:none !important;
 }
+
+.odst_hotel_table.crieffhydro div.name a.name
+{
+font-size:11px;
+}
