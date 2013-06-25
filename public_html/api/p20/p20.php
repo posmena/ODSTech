@@ -530,14 +530,14 @@ elseif( $_GET['params']['feed_id'] == 'crieffhydro' )
 			}
 		else
 			{
-			return odst_truncate($str, $maxLen," ","");
+			return odst_truncate($str, $maxLen," ");
 			}
       } else {
           return $str;
       }
   }  
   
- 	function odst_truncate($string, $limit, $break=" ", $pad="...") { 
+ 	function odst_truncate($string, $limit, $break=" ", $pad="..") { 
  // return with no change if string is shorter than $limit 
  
  if(strlen($string) <= $limit) return $string; 
