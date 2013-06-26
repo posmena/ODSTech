@@ -227,7 +227,7 @@ $offerPrice = $product->catalogEntry->offerPrice;
 function DownloadProductURL($url, $price, $code)
 {
 //$url = "http://retail.pjhgroup.com/webapp/wcs/stores/servlet/ProductDisplay?urlRequestType=Base&catalogId=10051&categoryId=12590&productId=48211&errorViewName=ProductDisplayErrorView&urlLangId=-1&langId=-1&top_category=12551&parent_category_rn=12551&storeId=10001";
-$url = "http://retail.pjhgroup.com/webapp/wcs/stores/servlet/ProductDisplay?urlRequestType=Base&catalogId=10051&categoryId=&productId=49596&errorViewName=ProductDisplayErrorView&urlLangId=-1&langId=-1&top_category=&parent_category_rn=&storeId=10001";
+//$url = "http://retail.pjhgroup.com/webapp/wcs/stores/servlet/ProductDisplay?urlRequestType=Base&catalogId=10051&categoryId=&productId=49596&errorViewName=ProductDisplayErrorView&urlLangId=-1&langId=-1&top_category=&parent_category_rn=&storeId=10001";
 
 $product = get_content($url);
 $multi = false;
@@ -275,8 +275,8 @@ $regexp = "/<div class=\"breadcrumb\">\s*<p>\s*(.*)\s*?<\/p>/siU" ;
 											if (preg_match_all($regexp, $breadcrumb, $matches)) {
 						foreach($matches[1] as $key =>  $crumb) {
 							//if ($key % 2) {
-								//print("NAV:" . $crumb . "<br>");
-								$crumb = html_entity_decode($crumb,ENT_NOQUOTES,'UTF-8');
+	//							print("NAV:" . $crumb . "<br>");
+								$crumb = html_entity_decode(trim($crumb),ENT_NOQUOTES,'UTF-8');
 								$item['nav'] = $item['nav'] . ($crumb) . " | ";
 							//}
 						}						
