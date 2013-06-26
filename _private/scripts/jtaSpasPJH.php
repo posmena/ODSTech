@@ -411,18 +411,19 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 }
 
 	// get download links
-	$regexp = "/(?<=BEGIN CatalogAttachmentAssetsDisplay.jsp -->)(.*)(?=END CatalogAttachmentAssetsDisplay)/si";
+	$regexp = "/(?<=BEGIN CatalogAttachmentAssetsDisplay.jsp -->)(.*)(?=END CatalogAttachmentAssetsDisplay)/siU";
 	if( preg_match_all($regexp, $product, $matches) ) {
 			
 			foreach($matches[1] as $key =>  $val) {
 			$downloads = trim($val);
 			
 			$download = "";
-			
-			$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)[^>]*>(.*)<\/a>/si";
+			print("DOWNLOADS" . $downloads ."\n\n");
+			$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)[^>]*>(.*)<\/a>/siU";
 				if (preg_match_all($regexp, $downloads, $matches)) {
 						foreach($matches[2] as $key =>  $val) {
-					print($val);
+					var_dump($matches);
+					
 					$download[$key]['url'] = trim($val);
 					$download[$key]['title'] = trim($matches[3][$key]);
 					if( isset($item[$download[$key]['title']]) )
