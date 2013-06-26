@@ -3,7 +3,7 @@
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $jtdb = $db->jtSpas_PJH;
-//$jtdb->drop();
+$jtdb->drop();
 
 function get_content($url)  
 {
