@@ -422,8 +422,7 @@ $item['specification'] .= html_entity_decode($att['name'],ENT_NOQUOTES,'UTF-8') 
 			$regexp = "/<a\s[^>]*href=(\"??)([^\" >]*?)[^>]*>(.*)<\/a>/siU";
 				if (preg_match_all($regexp, $downloads, $matches)) {
 						foreach($matches[2] as $key =>  $val) {
-					var_dump($matches);
-					
+					print($val);
 					$download[$key]['url'] = trim($val);
 					$download[$key]['title'] = trim($matches[3][$key]);
 					if( isset($item[$download[$key]['title']]) )
