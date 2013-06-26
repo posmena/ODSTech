@@ -3,7 +3,7 @@
 $conn = new Mongo('localhost');
 $db = $conn->odstech;
 $jtdb = $db->jtSpas_PJH;
-$jtdb->drop();
+//$jtdb->drop();
 
 function get_content($url)  
 {
@@ -64,13 +64,19 @@ $res = get_content('https://retail.pjhgroup.com/webapp/wcs/stores/servlet/rc701-
 
 $regexp = "/<a href=\"(http:\/\/retail.pjhgroup.com\/webapp\/wcs\/stores\/servlet\/rc701-rc701-sales-catalog\/search\/.*)\">(.*)<\/a>/siU";
 
+$started = false;
+
 if (preg_match_all($regexp, $res, $matches)) {
 
 						foreach($matches[1] as $key =>  $product_url) {
 							//if ($key % 2) {
 								//print($matches[2][$key] . ":::" . $product_url . "<br>");
 								    //echo("Found " . $product_url . "<br>");
+									if( $started || $product_url = "http://retail.pjhgroup.com/webapp/wcs/stores/servlet/rc701-rc701-sales-catalog/search/refrigeration")
+									{
+									$started = true;
 									ProcessCategoryPage(htmlspecialchars_decode($product_url), FALSE);
+									}
 									
 							//}
 						}						
