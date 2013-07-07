@@ -17,11 +17,11 @@ if($_POST['pwd'] != "kjsdhf898sdhnjkh")
 	}
 
 		
-	$ftds = $registrations->find(array('email' => array('$in' => $emails ) ) );
-	echo('<table><tr><td>Email</td><td>Date Reg</td><td>GUID</td></tr>');
+	$ftds = $registrations->find(array('email' => array('$in' => $emails ) , 'guid' => array( '$ne' => null )  ) );
+	echo('<table><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
 		{
-		echo("<tr><td>" . $ftd['email'] . "</td><td>" . $ftd['date'] . "</td><td>" . $ftd['utm_id'] . "</td></tr>");
+		echo("<tr><td>" . $ftd['utm_id'] . "</td></tr>");
 		}
 	echo("</table>");
 	
