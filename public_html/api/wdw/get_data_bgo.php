@@ -4,7 +4,7 @@ $conn = new Mongo('localhost');
 // access database
 $mdb = $conn->ubud;
 // access collection
-$collection = $mdb->ubud_tracking_dep;
+$collection = $mdb->ubud_tracking_deposit;
 $registrations = $mdb->ubud_tracking_reg;
 
 
