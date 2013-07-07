@@ -38,7 +38,7 @@ foreach($rows as $row)
 	}
 	
 	
-	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), array('guid' => array('$exists' => true) )  ) );
+	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), array('guid' => array('$ne' => null) )  ) );
 	echo('<table><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
 		{
