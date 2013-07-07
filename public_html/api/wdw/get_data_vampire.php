@@ -9,12 +9,14 @@ $registrations = $mdb->ubud_tracking_reg;
 
 $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
-$emails = $_POST['emails'];
+$emails = explode(",", $_POST['emails']);
+
 if($_POST['pwd'] != "kjsdhf898sdhnjkh")
 	{
 	die();
 	}
 
+		
 	$ftds = $registrations->find(array('email' => array('$in' => $emails ) ) );
 	echo('<table><tr><td>Email</td><td>Date Reg</td><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
