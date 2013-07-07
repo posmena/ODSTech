@@ -11,9 +11,9 @@ $registrations = $mdb->ubud_tracking_reg;
 $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
 
-$collection->find(array('processed' => array('$exists' => false)));
+$rows = $collection->find(array('processed' => array('$exists' => false)));
 
-foreach($collection as $row)
+foreach($rows as $row)
 	{
 	$row['processed'] = true;
 	$collection->save($row);
