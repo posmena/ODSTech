@@ -38,11 +38,11 @@ foreach($rows as $row)
 	}
 	
 	
-	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ) ) );
-	echo('<table><tr><td>Date FTD</td><td>Date Reg</td><td>GUID</td></tr>');
+	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), array('guid' => array('$exists' => true) )  ) );
+	echo('<table><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
 		{
-		echo("<tr><td>" . $ftd['date'] . "</td><td>" . $ftd['ftd'] . "</td><td>" . $ftd['guid'] . "</td></tr>");
+		echo("<tr><td>" . $ftd['guid'] . "</td></tr>");
 		}
 	echo("</table>");
 
