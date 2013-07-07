@@ -11,6 +11,9 @@ $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
 $emails = explode(",", $_POST['emails']);
 
+print_r($emails);
+die();
+
 if($_POST['pwd'] != "kjsdhf898sdhnjkh")
 	{
 	die();
