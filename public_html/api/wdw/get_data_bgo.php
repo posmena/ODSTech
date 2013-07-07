@@ -6,12 +6,12 @@ $mdb = $conn->ubud;
 // access collection
 $collection = $mdb->ubud_tracking_dep;
 $registrations = $mdb->ubud_tracking_reg;
-$vampire_registrations = $mdb->registrations;
+
 
 $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
 
-$collection->find(array('processed' => array('$exists' => false));
+$collection->find(array('processed' => array('$exists' => false)));
 
 foreach($collection as $row)
 	{
@@ -31,6 +31,9 @@ foreach($collection as $row)
 			$reg['ftds'] = $reg['ftds'] + 1;
 			$reg['last_ftd'] = $reg['date'] + 1;
 			}
+		
+		$registrations->save($reg);
+		
 		}
 	}
 	
