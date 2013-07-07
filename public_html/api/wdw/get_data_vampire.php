@@ -4,15 +4,12 @@ $conn = new Mongo('localhost');
 // access database
 $mdb = $conn->ubud;
 // access collection
-$collection = $mdb->ubud_tracking_dep;
-$registrations = $mdb->ubud_tracking_reg;
+$registrations = $mdb->registrations;
 
 $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
 $emails = explode(",", $_POST['emails']);
 
-print_r($emails);
-die();
 
 if($_POST['pwd'] != "kjsdhf898sdhnjkh")
 	{
