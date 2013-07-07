@@ -18,7 +18,7 @@ foreach($rows as $row)
 	$row['processed'] = true;
 	$collection->save($row);
 	
-	$regs = $registrations->find(array('customer' => $row['customer'], 'guid' => array('$ne') ));
+	$regs = $registrations->find(array('customer' => $row['customer']));
 	foreach($regs as $reg)
 		{
 		if( !isset($reg['ftd']) )
@@ -29,7 +29,7 @@ foreach($rows as $row)
 		else
 			{
 			$reg['ftds'] = $reg['ftds'] + 1;
-			$reg['last_ftd'] = $reg['date'] + 1;
+			$reg['last_ftd'] = $row['date'];
 			}
 		
 		$registrations->save($reg);
