@@ -42,7 +42,7 @@ foreach($rows as $row)
 	echo('<table><td>Date</td><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
 		{
-		echo("<tr><td>" . date('Y-m-d H:i:s', $ftd['date']) . "</td><td>" . $ftd['guid'] . "</td></tr>");
+		echo("<tr><td>" . date('Y-m-d H:i:s', $ftd['date']->sec) . "</td><td>" . $ftd['guid'] . "</td></tr>");
 		}
 	echo("</table>");
 
