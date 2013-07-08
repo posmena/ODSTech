@@ -17,7 +17,7 @@ if($_POST['pwd'] != "kjsdhf898sdhnjkh")
 	}
 
 		
-	$ftds = $registrations->find(array('email' => array('$in' => $emails ) , 'guid' => array( '$nin' => array(null,'null') ) ) );
+	$ftds = $registrations->find(array('email' => array('$in' => $emails ) , 'guid' => array( '$nin' => array(null,"null") ) ) );
 	echo('<table><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
 		{
