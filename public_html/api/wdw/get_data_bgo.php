@@ -39,10 +39,10 @@ foreach($rows as $row)
 	
 	
 	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), 'guid' => array('$ne' => null) ) );
-	echo('<table><td>GUID</td></tr>');
+	echo('<table><td>Date</td><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
 		{
-		echo("<tr><td>" . $ftd['guid'] . "</td></tr>");
+		echo("<tr><td>" . date('Y-m-d H:i:s', $ftd['date']); . "</td><td>" . $ftd['guid'] . "</td></tr>");
 		}
 	echo("</table>");
 
