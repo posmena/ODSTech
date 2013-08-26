@@ -37,7 +37,7 @@ function GetTimeLeft($dt)
 	$coll = $db->p20_products;
 	$start = new MongoDate();
 	
-	$products = $coll->find(array('feed_id' => 'livingsocial', 'Offers_ends' => array('$gte' => $start), 'Savings' => array ('$ne' => '')))->limit(6)->sort(array('Offers_end' => 1));
+	$products = $coll->find(array('feed_id' => 'livingsocial', 'Savings' => array ('$ne' => '')))->limit(6)->sort(array('Offers_end' => 1));
 	
 ?>
 
