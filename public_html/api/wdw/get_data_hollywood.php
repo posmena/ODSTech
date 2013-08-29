@@ -11,7 +11,7 @@ $registrations = $mdb->ubud_tracking_reg;
 $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
 
-$rows = $collection->find(array('processed' => array('$exists' => false), 'site' => 'BGO'));
+$rows = $collection->find(array('processed' => array('$exists' => false), 'site' => 'HOLLYWOOD'));
 
 foreach($rows as $row)
 	{
@@ -19,6 +19,15 @@ foreach($rows as $row)
 	$collection->save($row);
 	
 	$regs = $registrations->find(array('customer' => $row['customer']));
+	
+	if( $regs->count() == 0 )
+		{
+		// not been added yet so add now
+		$registrations->insert(array( 'customer' => $row['customer'], 'site' => 'HOLLYWOOD'))
+		}
+
+	$regs = $registrations->find(array('customer' => $row['customer']));
+		
 	foreach($regs as $reg)
 		{
 		if( !isset($reg['ftd']) )
@@ -38,7 +47,7 @@ foreach($rows as $row)
 	}
 	
 	
-	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), 'guid' => array('$ne' => null), 'site' => 'BGO' ) );
+	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), 'guid' => array('$ne' => null), 'site' => 'HOLLYWOOD' ) );
 	echo('<table><td>Date</td><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
 		{
