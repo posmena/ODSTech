@@ -23,7 +23,7 @@ foreach($rows as $row)
 	if( $regs->count() == 0 )
 		{
 		// not been added yet so add now
-		$registrations->insert(array( 'customer' => $row['customer'], 'site' => 'HOLLYWOOD', 'guid' => $row['guid']));
+		$registrations->insert(array( 'customer' => $row['customer'], 'site' => 'HOLLYWOOD', 'guid' => $row['guid'], 'date' => $row['date']));
 		}
 
 	$regs = $registrations->find(array('customer' => $row['customer']));
