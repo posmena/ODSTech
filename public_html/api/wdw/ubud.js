@@ -126,6 +126,8 @@ src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
 src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
 src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
 src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
+src = src + '&matchtype=' + encodeURIComponent(ubud_readCookie('matchtype'));
+src = src + '&placement=' + encodeURIComponent(ubud_readCookie('placement'));
 src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
 src = src + '&oldbal=' + encodeURIComponent(oldbal);
 src = src + '&newbal=' + encodeURIComponent(newbal);
@@ -169,6 +171,8 @@ if( err == true )
 	src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
 	src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
 	src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
+	src = src + '&matchtype=' + encodeURIComponent(ubud_readCookie('matchtype'));
+	src = src + '&placement=' + encodeURIComponent(ubud_readCookie('placement'));
 	src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
 	src = src + '&r=' + Math.floor(Math.random()*99999);
 
@@ -218,6 +222,8 @@ src = src + '&guid=' + encodeURIComponent(ubud_readCookie('guid'));
 src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
 src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
 src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
+src = src + '&matchtype=' + encodeURIComponent(ubud_readCookie('matchtype'));
+src = src + '&placement=' + encodeURIComponent(ubud_readCookie('placement'));
 src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
 src = src + '&r=' + Math.floor(Math.random()*99999);
 
@@ -244,6 +250,8 @@ src = src + '&utm_medium=' + encodeURIComponent(ubud_readCookie('utm_medium'));
 src = src + '&utm_term=' + encodeURIComponent(ubud_readCookie('utm_term'));
 src = src + '&utm_content=' + encodeURIComponent(ubud_readCookie('utm_content'));
 src = src + '&utm_id=' + encodeURIComponent(ubud_readCookie('utm_id'));
+src = src + '&matchtype=' + encodeURIComponent(ubud_readCookie('matchtype'));
+src = src + '&placement=' + encodeURIComponent(ubud_readCookie('placement'));
 src = src + '&page=' + encodeURIComponent(window.location.href) + '_ref=' + ref;
 src = src + '&r=' + Math.floor(Math.random()*99999);
 
@@ -259,10 +267,12 @@ function ubud_RecUTM()
 	UTM2Cookie('utm_term');
 	UTM2Cookie('utm_content');
 	UTM2Cookie('utm_campaign');
-	UTM2Cookie('utm_id');	
+	UTM2Cookie('utm_id');
+	UTM2Cookie('matchtype');
+	UTM2Cookie('placdement');	
 	if( ubud_readCookie('guid') == null )
 		{
-		ubud_createCookie('guid',ubud_generateGuid());
+		ubud_createCookie('guid',ubud_generateGuid(),365);
 		}
 
 }
