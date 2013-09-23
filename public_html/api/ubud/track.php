@@ -1,7 +1,7 @@
 <?php
 if( !isset($_COOKIE['bnb_guid']) )
 	{
-	document.write("NO GUID");
+	echo('document.write("NO GUID")');
 	die();
 	}
 
