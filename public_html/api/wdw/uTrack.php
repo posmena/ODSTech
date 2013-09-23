@@ -1,7 +1,6 @@
 <?php
 if( !isset($_COOKIE['bnb_guid']) )
 	{
-	var_dump($_COOKIE);
 	die();
 	}
 
