@@ -46,7 +46,7 @@ catch(Exception $e)
 	{
 	}
 	
-	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), 'guid' => array('$ne' => null), 'site' => 'BGO' ) );
+	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), 'guid' => array('$ne' => null), 'site' => 'BGO' ) )->sort( array( 'date' => 1 ) );
 	$ftds->timeout(100000);
 	echo('<table><td>Date</td><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
