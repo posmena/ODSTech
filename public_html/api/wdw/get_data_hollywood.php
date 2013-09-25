@@ -13,6 +13,8 @@ $mongotime = New Mongodate(strtotime($realtime));
 
 $rows = $collection->find(array('processed' => array('$exists' => false), 'site' => 'HOLLYWOOD'));
 
+if( $rows )
+{
 foreach($rows as $row)
 	{
 	$row['processed'] = true;
@@ -45,7 +47,7 @@ foreach($rows as $row)
 		
 		}
 	}
-	
+}
 	
 	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), 'guid' => array('$ne' => null), 'site' => 'HOLLYWOOD' ) );
 	echo('<table><td>Date</td><td>GUID</td></tr>');
