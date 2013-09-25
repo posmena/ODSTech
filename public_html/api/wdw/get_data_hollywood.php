@@ -11,7 +11,7 @@ $registrations = $mdb->ubud_tracking_reg;
 $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
 
-$rows = $collection->find(array('processed' => array('$exists' => false), 'site' => 'HOLLYWOOD'));
+$rows = $collection->find(array('processed' => array('$exists' => false), 'site' => 'HOLLYWOOD'))->limit(500);
 $rows->timeout(100000);
 
 try
@@ -22,6 +22,7 @@ foreach($rows as $row)
 	$collection->save($row);
 	
 	$regs = $registrations->find(array('customer' => $row['customer']));
+	$regs->timeout(100000);
 	
 	if( $regs->count() == 0 )
 		{
