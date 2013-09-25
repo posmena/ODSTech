@@ -47,7 +47,10 @@ foreach($rows as $row)
 		
 		}
 	}
-} catch() {}
+} 
+catch(Exception $e) 
+{
+}
 	
 	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), 'guid' => array('$ne' => null), 'site' => 'HOLLYWOOD' ) );
 	echo('<table><td>Date</td><td>GUID</td></tr>');

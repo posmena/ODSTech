@@ -39,7 +39,7 @@ foreach($rows as $row)
 		}
 	}
 }	
-catch()
+catch(Exception $e)
 	{
 	}
 	
