@@ -12,7 +12,8 @@ $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
 
 $rows = $collection->find(array('processed' => array('$exists' => false), 'site' => 'BGO'));
-
+$rows->timeout(100000);
+	
 try
 {
 foreach($rows as $row)
@@ -21,6 +22,8 @@ foreach($rows as $row)
 	$collection->save($row);
 	
 	$regs = $registrations->find(array('customer' => $row['customer']));
+	$regs->timeout(100000);
+	
 	foreach($regs as $reg)
 		{
 		if( !isset($reg['ftd']) )
@@ -44,6 +47,7 @@ catch(Exception $e)
 	}
 	
 	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), 'guid' => array('$ne' => null), 'site' => 'BGO' ) );
+	$ftds->timeout(100000);
 	echo('<table><td>Date</td><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
 		{

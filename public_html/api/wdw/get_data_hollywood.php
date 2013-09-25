@@ -12,6 +12,7 @@ $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
 
 $rows = $collection->find(array('processed' => array('$exists' => false), 'site' => 'HOLLYWOOD'));
+$rows->timeout(100000);
 
 try
 {
@@ -53,6 +54,7 @@ catch(Exception $e)
 }
 	
 	$ftds = $registrations->find(array('ftds' => array('$gte' => 1 ), 'guid' => array('$ne' => null), 'site' => 'HOLLYWOOD' ) );
+	$ftds->timeout(100000);
 	echo('<table><td>Date</td><td>GUID</td></tr>');
 	foreach($ftds as $ftd)
 		{
