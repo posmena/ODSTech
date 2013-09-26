@@ -14,7 +14,7 @@ $registrations = $mdb->ubud_tracking_reg;
 
 $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
-$site = mysql_real_escape_string($_GET['site']);
+$site = $_GET['site'];
 
 $rows = $collection->find(array('processed' => array('$exists' => false), 'site' => "$site"))->limit(500);
 $rows->timeout(100000);
