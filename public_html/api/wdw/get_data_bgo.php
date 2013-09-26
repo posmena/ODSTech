@@ -10,7 +10,7 @@ $registrations = $mdb->ubud_tracking_reg;
 
 $realtime = date("Y-m-d H:i:s");
 $mongotime = New Mongodate(strtotime($realtime));
-
+ 
 $rows = $collection->find(array('processed' => array('$exists' => false), 'site' => 'BGO'))->limit(500);
 $rows->timeout(100000);
 	

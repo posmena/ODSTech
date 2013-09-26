@@ -30,7 +30,7 @@ foreach($rows as $row)
 		$registrations->insert(array( 'customer' => $row['customer'], 'site' => 'HOLLYWOOD', 'guid' => $row['guid'], 'date' => $row['date']));
 		}
 
-	$regs = $registrations->find(array('customer' => $row['customer']));
+//	$regs = $registrations->find(array('customer' => $row['customer']));
 		
 	foreach($regs as $reg)
 		{
