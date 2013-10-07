@@ -21,10 +21,10 @@ if($_POST['pwd'] != "kjsdhf898sdhnjkh")
 	echo('<table><td>utm_source</td><td>utm_medium</td><td>utm_term</td><td>utm_content</td><td>match_type</td></tr>');
 	foreach($ftds as $ftd)
 		{
-		if($ftd['utm_medium'] == "cpc" )
-			{
+		//if($ftd['utm_medium'] == "cpc" )
+			//{
 			echo("<tr><td>" . $ftd['utm_source'] . "</td><td>" . $ftd['utm_medium'] . "</td><td>" . $ftd['utm_term'] . "</td><td>" . $ftd['utm_content'] . "</td><td>" . $ftd['matchtype'] . "</td></tr>");
-			}
+			//}
 	}
 	echo("</table>");
 	
