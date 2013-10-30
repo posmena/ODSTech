@@ -58,6 +58,7 @@ foreach($rows as $row)
 				$reg['customer'] = $row['customer'];
 				$reg['guid'] = $row['guid'];
 				$reg['site'] = $row['site'];
+				$reg['date'] = $row['date'];
 				
 				$registrations->save($reg);
 				
