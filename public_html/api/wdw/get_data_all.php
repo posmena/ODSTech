@@ -26,25 +26,41 @@ foreach($rows as $row)
 	$row['processed'] = true;
 	$collection->save($row);
 	
-	$regs = $registrations->find(array('customer' => $row['customer']));
+	$regs = $registrations->find(array('customer' => $row['customer'], 'site' => $site));
 	$regs->timeout(100000);
 	
-	foreach($regs as $reg)
-		{
-		if( !isset($reg['ftd']) )
+	if( $cursor->count() > 0 )
+	{
+		foreach($regs as $reg)
 			{
-			$reg['ftd'] = $row['date'];
-			$reg['ftds'] = 1;
+			if( !isset($reg['ftd']) )
+				{
+				$reg['ftd'] = $row['date'];
+				$reg['ftds'] = 1;
+				}
+			else
+				{
+				$reg['ftds'] = $reg['ftds'] + 1;
+				$reg['last_ftd'] = $row['date'];
+				}
+			
+			
+			$registrations->save($reg);
+			
 			}
-		else
-			{
-			$reg['ftds'] = $reg['ftds'] + 1;
-			$reg['last_ftd'] = $row['date'];
-			}
-		
-		$registrations->save($reg);
-		
 		}
+		else // no corresponding reg for this user - will have to create it
+			{
+				$reg = array();
+				$reg['ftd'] = $row['date'];
+				$reg['last_ftd'] = $row['date'];
+				$reg['ftds'] = 1;
+				$reg['customer'] = $row['customer'];
+				$reg['guid'] = $row['guid'];
+				
+				$registrations->save($reg);
+				
+			}
 	}
 }	
 catch(Exception $e)
