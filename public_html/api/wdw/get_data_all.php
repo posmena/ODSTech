@@ -57,6 +57,7 @@ foreach($rows as $row)
 				$reg['ftds'] = 1;
 				$reg['customer'] = $row['customer'];
 				$reg['guid'] = $row['guid'];
+				$reg['site'] = $row['site'];
 				
 				$registrations->save($reg);
 				
