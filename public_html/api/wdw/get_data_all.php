@@ -29,7 +29,7 @@ foreach($rows as $row)
 	$regs = $registrations->find(array('customer' => $row['customer'], 'site' => $site));
 	$regs->timeout(100000);
 	
-	if( $cursor->count() > 0 )
+	if( $regs->count() > 0 )
 	{
 		foreach($regs as $reg)
 			{
