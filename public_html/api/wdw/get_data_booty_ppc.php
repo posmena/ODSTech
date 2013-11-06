@@ -17,7 +17,7 @@ if($_POST['pwd'] != "kjsdhf898sdhnjkh")
 	}
 
 		
-	$ftds = $registrations->find(array('email' => array('$in' => $emails ), 'site' => 'Vampire'  ) );
+	$ftds = $registrations->find(array('email' => array('$in' => $emails ), 'site' => 'Booty' ) );
 	echo('<table><td>utm_source</td><td>utm_medium</td><td>utm_term</td><td>utm_content</td><td>match_type</td></tr>');
 	foreach($ftds as $ftd)
 		{

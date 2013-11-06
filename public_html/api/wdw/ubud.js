@@ -56,9 +56,13 @@ if( document.location.hostname == 'www.bootybingo.com' )
 function ubud_getBBAlias()
 {
 var val = '';
-jQuery("li.hello span").each( function(i,x) {  
-  val =  jQuery(x).html();
+
+jQuery(".bingo-user-info-label").each( function(i,x) {  
+var str = jQuery(x).html();
+var y = str.split('<br>');
+  val =  jQuery.trim(y[1]);
 });
+
 return val;
 }
 
@@ -66,7 +70,7 @@ function ubud_getVBAlias()
 {
 var val = '';
 
-jQuery("li.hello").each( function(i,x) {  
+jQuery(".bingo-user-info-label").each( function(i,x) {  
 var str = jQuery(x).html();
 var y = str.split('<br>');
   val =  jQuery.trim(y[1]);
