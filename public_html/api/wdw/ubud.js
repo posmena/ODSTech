@@ -187,10 +187,8 @@ if( err == true )
 
 function ubud_RecReg()
 {
-if( ubud_getSite() == 'Vampire' )
-{
+
 return ubud_RecReg_V2();
-}
 
 var img = new Image();
 var src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.odst.co.uk/api/wdw/reg.php?';
