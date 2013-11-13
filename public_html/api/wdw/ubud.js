@@ -271,7 +271,7 @@ function ubud_RecUTM()
 	UTM2Cookie('utm_campaign');
 	UTM2Cookie('utm_id');
 	UTM2Cookie('matchtype');
-	UTM2Cookie('placdement');	
+	UTM2Cookie('placement');	
 	if( ubud_readCookie('guid') == null )
 		{
 		ubud_createCookie('guid',ubud_generateGuid(),365);
