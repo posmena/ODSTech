@@ -1,6 +1,10 @@
 <?php
 $affiliate_id = $_GET['aid'];
 $campaign_id = $_GET['cid'];
+
+$url1 = "http://www.awin1.com/cread.php?awinmid=3624&awinaffid=" . $affiliate_id . "&clickref=&p=";
+$url2 = "http://ad-emea.doubleclick.net/clk;243544482;67254168;o;u=affid". $affiliate_id . "&u1=networkid1;?";
+$url3 = "";//http://www3.hilton.com/en_US/hi/doorway/index.htm?sourceCode=00081350&redirectURL=";
 ?>
 
 
