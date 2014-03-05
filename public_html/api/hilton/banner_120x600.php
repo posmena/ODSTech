@@ -17,7 +17,7 @@ $campaign_id = $_GET['cid'];
 
 <form id="frm_odst_hilton" target="_blank" method="POST" action="http://www.awin1.com/awclick.php?awinmid=3624&awinaffid=<?php echo($affiliate_id)?>&clickref=<?php echo($campaign_id)?>&p=http://www.odst.co.uk/api/hilton/post.php?x=1">
 	<input type="hidden" name="searchType" value="ALL">
-	<input type="hidden" name="searchQuery" value="">
+	<input type="hidden" id="searchQuery" name="searchQuery" value="">
 <input type="hidden" name="arrivalDate" value="">
 <input type="hidden" name="departureDate" value="">
 <input type="hidden" name="radiusFromLocation" value="40">
@@ -130,6 +130,27 @@ $campaign_id = $_GET['cid'];
 
 <script src="js/odst_hilton_v2.js" type="text/javascript"></script>
 <script src="js/calendars_v2.js" type="text/javascript"></script>
+
+<script>
+
+$("form").submit(function(e){
+
+      var url1 = "<?php echo($url1 . $url2 . $url3)?>";
+	  var fromDate = $("#from").datepicker('getDate');
+	  var toDate = $("#to").datepicker('getDate');
+	  var query = $("#searchQuery").val();
+	 
+	  var url2 = "http://www3.hilton.com/en_us/hh/search/findhotels/extSearch.htm?arrivalDay=" + fromDate.getDate() + "&arrivalMonth=" + (fromDate.getMonth()+1) + "&arrivalYear=" + fromDate.getFullYear() + "&departureDay=" + toDate.getDate() + "&departureMonth=" + (toDate.getMonth()+1) +"&departureYear=" + toDate.getFullYear() + "&spec_plan=&searchQuery=" + query;
+		
+	 url2 = encodeURIComponent((url2));
+	 url2 = url2.replace(new RegExp('%20', 'g'),"%2B");
+	 
+	 window.location.replace(url1 + url2);
+	 
+    e.preventDefault();
+  });
+  
+</script>
 
 <!--[if lt IE 8]>
 <link rel="stylesheet" type="text/css" href="ie7.css" />
