@@ -9,16 +9,16 @@ $url3 = "";//http://www3.hilton.com/en_US/hi/doorway/index.htm?sourceCode=000813
 ?>
 
 
-<link href="http://s.odst.co.uk/api/hilton/styles.css" rel="stylesheet" type="text/css" />
+<link href="styles.css" rel="stylesheet" type="text/css" />
 <!--[if IE]>
 	<link rel="stylesheet" type="text/css" href="ieStyles.css" />
 <![endif]-->
-<link href="http://s.odst.co.uk/api/hilton/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
-<link href="http://s.odst.co.uk/api/hilton/sayt.css" rel="stylesheet" type="text/css" />
+<link href="jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
+<link href="sayt.css" rel="stylesheet" type="text/css" />
 
 
-<script src="http://s.odst.co.uk/api/hilton/js/jquery-1.8.0.min.js" type="text/javascript" /></script>
-<script src="http://s.odst.co.uk/api/hilton/js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
+<script src="js/jquery-1.8.0.min.js" type="text/javascript" /></script>
+<script src="js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
 
 <form target="_blank" id="frm_odst_hilton" method="POST" action="http://www.awin1.com/awclick.php?awinmid=3624&awinaffid=<?php echo($affiliate_id)?>&clickref=<?php echo($campaign_id)?>&p=http://www.odst.co.uk/api/hilton/post.php?x=1">
 	<input type="hidden" name="searchType" value="ALL">
