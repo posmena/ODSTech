@@ -1,10 +1,9 @@
 
 <?php
 
-$url "http://s.odst.co.uk";
+$url = "http://s.odst.co.uk";
 
-if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'
-    || $_SERVER['SERVER_PORT'] == 443) {
+if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) {
 
     $url = "https://www.odst.co.uk";
 }
