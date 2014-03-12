@@ -144,7 +144,8 @@ $("form").submit(function(e){
 	 url2 = encodeURIComponent((url2));
 	 url2 = url2.replace(new RegExp('%20', 'g'),"%2B");
 	 
-	 window.location.replace(url1 + url2);
+	 top.location.href = url1 + url2;
+	 //window.location.replace(url1 + url2);
 	 
     e.preventDefault();
   });
