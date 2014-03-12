@@ -10,6 +10,9 @@ var searchAsYouTypeConfiguration =  {
     ajaxResponderUrl:
       "http://s.odst.co.uk/api/hilton/search.php",
 
+	ajaxResponderUrlSSL:
+      "https://www.odst.co.uk/api/hilton/search.php",
+	  
     // The fully qualified URL to the help page. Leave as empty string if
     // not available
     // e.g. http://intranet.company.com/search-as-you-type/help.html
@@ -596,6 +599,11 @@ SearchAsYouType.prototype.search_ = function(dontDelayShowResults) {
   }
 
   URL = searchAsYouTypeConfiguration.ajaxResponderUrl;
+  
+  if (location.protocol === 'https:') {
+    URL = searchAsYouTypeConfiguration.ajaxResponderUrlSSL;
+  }
+
   URL += "?query=" + encodeURIComponent(this.typedQuery);
   URL += "&jsonp=searchAsYouType.handleAjaxResponse";
   if (this.debugMode) {
