@@ -128,8 +128,8 @@ $url3 = "";//http://www3.hilton.com/en_US/hi/doorway/index.htm?sourceCode=000813
 	</table>
 </form>
 
-<script src="http://s.odst.co.uk/api/hilton/js/odst_hilton_v2.js" type="text/javascript"></script>
-<script src="http://s.odst.co.uk/api/hilton/js/calendars_v2.js" type="text/javascript"></script>
+<script src="js/odst_hilton_v2.js" type="text/javascript"></script>
+<script src="js/calendars_v2.js" type="text/javascript"></script>
 
 <script>
 
