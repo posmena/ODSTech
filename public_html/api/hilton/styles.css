@@ -85,14 +85,16 @@ table.odst {
 
 
 .odst_findbutton:hover {
+	background-color: #515050;
 	background: #515050; /* Old browsers */
 	background: -moz-linear-gradient(top, #515050 0%, #363636 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#363636), color-stop(100%,#1d3a70)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top, #515050 0%,#363636 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top, #515050 0%,#363636 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top, #515050 0%,#363636 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #515050 0%,#363636 100%); /* W3C */
+	background: linear-gradient(to bottom, #515050 0%,#363636 100%); /* W3C */	
 }
+
 input#from, input#to {
 	font-family: Arial;
 	width: 76px;
