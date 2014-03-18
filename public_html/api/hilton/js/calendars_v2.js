@@ -36,6 +36,23 @@
           });
 		  
 		if ($.browser.msie  && ( parseInt($.browser.version, 10) === 7) || parseInt($.browser.version, 10) === 8 ) {
+		
+		
+		var fromDate = new Date();
+		var toDate = new Date();
+		fromDate.setTime(fromDate.getTime() + (1000*3600*24*1));
+		toDate.setTime(fromDate.getTime() + (1000*3600*24*3));
+		
+		var m_names = new Array("Jan", "Feb", "Mar", 
+			"Apr", "May", "Jun", "Jul", "Aug", "Sep", 
+			"Oct", "Nov", "Dec");
+			
+
+	    $("#from").val(fromDate.getDate() + "-" + m_names[fromDate.getMonth()] 
+			+ "-" + fromDate.getFullYear());
+		$("#to").val(toDate.getDate() + "-" + m_names[toDate.getMonth()] 
+			+ "-" + toDate.getFullYear());
+		
 
 	} else {
   
@@ -64,15 +81,6 @@
 		fromDate.setTime(fromDate.getTime() + (1000*3600*24*1));
 		toDate.setTime(fromDate.getTime() + (1000*3600*24*3));
 		
-		var m_names = new Array("Jan", "Feb", "Mar", 
-			"Apr", "May", "Jun", "Jul", "Aug", "Sep", 
-			"Oct", "Nov", "Dec");
-			
-
-	    $("#from").val(fromDate.getDate() + "-" + m_names[fromDate.getMonth()] 
-			+ "-" + fromDate.getFullYear());
-		$("#to").val(toDate.getDate() + "-" + m_names[toDate.getMonth()] 
-			+ "-" + toDate.getFullYear());
 		
 		$("#from").datepicker('setDate', fromDate);
 
