@@ -35,7 +35,7 @@
             }
           });
 		  
-		if ($.browser.msie  && ( parseInt($.browser.version, 10) === 7) || parseInt($.browser.version, 10) === 8 ) {
+		if ($.browser.msie  && ( parseInt($.browser.version, 10) === 7) || parseInt($.browser.version, 10) === 6 ) {
 		
 		
 		var fromDate = new Date();
