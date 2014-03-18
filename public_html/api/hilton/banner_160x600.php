@@ -133,6 +133,19 @@ $url3 = "";//http://www3.hilton.com/en_US/hi/doorway/index.htm?sourceCode=000813
 
 <script>
 
+function convertMonthNameToNumber(monthName) {
+    var myDate = new Date(monthName + " 1, 2000");
+    var monthDigit = myDate.getMonth();
+    return isNaN(monthDigit) ? 0 : (monthDigit + 1);
+}
+
+function parseDate(d)
+{
+var res = d.split("-");
+return res[2] + "/" + convertMonthNameToNumber(res[1]) + "/" + res[0];
+}
+
+
 $("form").submit(function(e){
 
       var url1 = "<?php echo($url1 . $url2 . $url3)?>";
@@ -140,16 +153,23 @@ $("form").submit(function(e){
 	  var toDate = $("#to").datepicker('getDate');
 	  var query = $("#searchQuery").val();
 	 
+	  if( fromDate == null || fromDate == undefined )
+		{
+			fromDate = new Date(parseDate($("#from").val()));
+			toDate = new Date(parseDate($("#to").val()));
+		}
+		
 	  var url2 = "http://www3.hilton.com/en_us/hh/search/findhotels/extSearch.htm?arrivalDay=" + fromDate.getDate() + "&arrivalMonth=" + (fromDate.getMonth()+1) + "&arrivalYear=" + fromDate.getFullYear() + "&departureDay=" + toDate.getDate() + "&departureMonth=" + (toDate.getMonth()+1) +"&departureYear=" + toDate.getFullYear() + "&spec_plan=&searchQuery=" + query;
 		
 	 url2 = encodeURIComponent((url2));
 	 url2 = url2.replace(new RegExp('%20', 'g'),"%2B");
 	 
-	 top.location.href = url1 + url2; 
+	 top.location.href = url1 + url2;
 	 //window.location.replace(url1 + url2);
 	 
     e.preventDefault();
   });
+  
   
 </script>
 

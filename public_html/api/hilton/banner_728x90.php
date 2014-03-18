@@ -129,6 +129,18 @@ $url3 = "";//http://www3.hilton.com/en_US/hi/doorway/index.htm?sourceCode=000813
 <script src="js/calendars_v2.js" type="text/javascript"></script>
 
 <script>
+function convertMonthNameToNumber(monthName) {
+    var myDate = new Date(monthName + " 1, 2000");
+    var monthDigit = myDate.getMonth();
+    return isNaN(monthDigit) ? 0 : (monthDigit + 1);
+}
+
+function parseDate(d)
+{
+var res = d.split("-");
+return res[2] + "/" + convertMonthNameToNumber(res[1]) + "/" + res[0];
+}
+
 
 $("form").submit(function(e){
 
@@ -137,6 +149,12 @@ $("form").submit(function(e){
 	  var toDate = $("#to").datepicker('getDate');
 	  var query = $("#searchQuery").val();
 	 
+	  if( fromDate == null || fromDate == undefined )
+		{
+			fromDate = new Date(parseDate($("#from").val()));
+			toDate = new Date(parseDate($("#to").val()));
+		}
+		
 	  var url2 = "http://www3.hilton.com/en_us/hh/search/findhotels/extSearch.htm?arrivalDay=" + fromDate.getDate() + "&arrivalMonth=" + (fromDate.getMonth()+1) + "&arrivalYear=" + fromDate.getFullYear() + "&departureDay=" + toDate.getDate() + "&departureMonth=" + (toDate.getMonth()+1) +"&departureYear=" + toDate.getFullYear() + "&spec_plan=&searchQuery=" + query;
 		
 	 url2 = encodeURIComponent((url2));
@@ -147,6 +165,7 @@ $("form").submit(function(e){
 	 
     e.preventDefault();
   });
+  
   
 </script>
 <!--[if lt IE 8]>
