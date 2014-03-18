@@ -145,6 +145,12 @@ $("form").submit(function(e){
 	  var toDate = $("#to").datepicker('getDate');
 	  var query = $("#searchQuery").val();
 	 
+	  if( fromDate == null || fromDate == undefined )
+		{
+			fromDate = new Date($("#from").val());
+			toDate = new Date($("#to").val());
+		}
+		
 	  var url2 = "http://www3.hilton.com/en_us/hh/search/findhotels/extSearch.htm?arrivalDay=" + fromDate.getDate() + "&arrivalMonth=" + (fromDate.getMonth()+1) + "&arrivalYear=" + fromDate.getFullYear() + "&departureDay=" + toDate.getDate() + "&departureMonth=" + (toDate.getMonth()+1) +"&departureYear=" + toDate.getFullYear() + "&spec_plan=&searchQuery=" + query;
 		
 	 url2 = encodeURIComponent((url2));
